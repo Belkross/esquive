@@ -1,5 +1,14 @@
+import GlobalFeatures from "./components/global-features"
+import InterfaceShared from "./components/interface-shared"
+
 function App() {
-	return <h1>Esquive</h1>
+  return (
+    <GlobalFeatures>
+      <InterfaceShared>
+        <h1>Esquive</h1>
+      </InterfaceShared>
+    </GlobalFeatures>
+  )
 }
 
 export default App
