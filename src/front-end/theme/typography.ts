@@ -7,7 +7,7 @@ const mainFont = "Roboto, sans-serif"
 export default {
   h1: {
     fontFamily: titleFont,
-    fontSize: 40,
+    fontSize: 60,
     lineHeight: 1,
     fontWeight: 400,
     letterSpacing: -0.5,

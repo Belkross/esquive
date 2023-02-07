@@ -7,6 +7,7 @@ import { AppState } from "../types/types"
 import getInitialUsername from "../functions/get-initial-username"
 import localStorageKeys from "./config/local-storage-keys"
 import InterfaceLoading from "./components/interface-loading/interface-loading"
+import InterfaceLogging from "./components/interface-logging/interface-logging"
 
 initializeSocketIo()
 const initialAppState: AppState = {
@@ -26,7 +27,7 @@ function App() {
       appInterface = <InterfaceLoading appStatus={appState.status} setAppState={setAppState} />
       break
     case "logging":
-      appInterface = <h1>interface logging</h1>
+      appInterface = <InterfaceLogging appState={appState} setAppState={setAppState} />
       break
     case "logged":
       appInterface = <InterfaceGame />

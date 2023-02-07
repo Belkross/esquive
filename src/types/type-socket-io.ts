@@ -5,7 +5,7 @@ export interface ServerToClientEvents {
 }
 
 export interface ClientToServerEvents {
-  socketData?: unknown //deletable. Just to avoid empty interface and respect socket.io’s recommended Server architecture
+  joinRoom: (room: string, username: string) => void
 }
 
 export interface InterServerEvents {
