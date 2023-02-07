@@ -7,7 +7,12 @@ type Props = {
 }
 
 export default function InterfaceShared({ children }: Props) {
-  return <Container sx={style_container}>{children}</Container>
+  return (
+    <>
+      
+      <Container sx={style_container}>{children}</Container>
+    </>
+  )
 }
 
 const style_container: SxProps = {
