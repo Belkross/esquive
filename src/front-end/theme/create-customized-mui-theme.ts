@@ -6,7 +6,7 @@ import typography from "./typography.js"
 import { createTheme, responsiveFontSizes } from "@mui/material"
 import { ThemeMode } from "../../types/types.js"
 
-export default function createMuiTheme(mode: ThemeMode) {
+export default function createCustomizedMuiTheme(mode: ThemeMode) {
   const theme = createTheme({
     breakpoints: { values: { ...breakpoints } },
     palette: { mode, ...palette[mode] },

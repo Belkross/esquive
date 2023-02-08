@@ -1,6 +1,6 @@
 import { CssBaseline, GlobalStyles, ThemeProvider } from "@mui/material"
 import { ReactElement } from "react"
-import createMuiTheme from "../theme/create-mui-theme"
+import createCustomizedMuiTheme from "../theme/create-customized-mui-theme"
 import { useThemeMode } from "./provider-theme-mode/provider-theme-mode"
 
 type Props = {
@@ -11,7 +11,7 @@ export default function ProviderMuiTheming({ children }: Props) {
   const themeMode = useThemeMode()
 
   return (
-    <ThemeProvider theme={createMuiTheme(themeMode)}>
+    <ThemeProvider theme={createCustomizedMuiTheme(themeMode)}>
       <CssBaseline enableColorScheme />
       {StaticGlobalStyles}
       {children}
