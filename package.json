@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start:frontend": "vite",
     "start:development-server": "nodemon --watch src -e js,ts,json --exec \"ts-node --esm src/back-end/server.ts\"",
+    "start:frontend": "vite",
     "start:production-server": "node ./compiled-ts/back-end/server.js",
     "build:frontend": "tsc && vite build",
     "build:production-server": "pnpm install && tsc",

@@ -13,8 +13,15 @@ export default function FormLogging({ appState, setAppState }: InterfaceLoggingP
   const [roomInput, onRoomInputChange] = useValidTextInput("", checkRoomValidity)
 
   const handleSubmit = () => {
-    if (roomInput.validity && checkUsernameValidity(appState.username))
-      socket.emit("joinRoom", roomInput.value, appState.username)
+    if (roomInput.validity && checkUsernameValidity(appState.username)) {
+      socket.auth = {
+        ...socket.auth,
+        username: appState.username,
+        room: roomInput.value,
+      }
+      socket.connect()
+      setAppState((prevAppState) => ({ ...prevAppState, status: "connectingToSocketIo" }))
+    }
   }
 
   return (

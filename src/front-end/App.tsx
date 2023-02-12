@@ -6,7 +6,7 @@ import initializeSocketIo from "./config/initialize-socket-io"
 import { AppState } from "../types/types"
 import getInitialUsername from "../functions/get-initial-username"
 import localStorageKeys from "./config/local-storage-keys"
-import InterfaceLoading from "./components/interface-loading/interface-loading"
+import InterfaceConnecting from "./components/interface-connecting/interface-connecting"
 import InterfaceLogging from "./components/interface-logging/interface-logging"
 
 initializeSocketIo()
@@ -16,15 +16,13 @@ const initialAppState: AppState = {
   room: null,
 }
 
-function App() {
+export default function App() {
   const [appState, setAppState] = useState(initialAppState)
 
-  console.log(setAppState)
   let appInterface
   switch (appState.status) {
     case "connectingToSocketIo":
-    case "loadingApp":
-      appInterface = <InterfaceLoading appStatus={appState.status} setAppState={setAppState} />
+      appInterface = <InterfaceConnecting setAppState={setAppState} />
       break
     case "logging":
       appInterface = <InterfaceLogging appState={appState} setAppState={setAppState} />
@@ -42,5 +40,3 @@ function App() {
     </GlobalFeatures>
   )
 }
-
-export default App

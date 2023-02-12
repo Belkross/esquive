@@ -1,11 +1,6 @@
 import { Server as SocketIoServer } from "socket.io"
 import type { Server } from "node:http"
-import {
-  ClientToServerEvents,
-  InterServerEvents,
-  ServerToClientEvents,
-  SocketData,
-} from "../../types/type-socket-io.js"
+import { ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData } from "../../types/type-server"
 
 export default function createIo(httpServer: Server) {
   return new SocketIoServer<ClientToServerEvents, ServerToClientEvents, InterServerEvents, SocketData>(httpServer, {

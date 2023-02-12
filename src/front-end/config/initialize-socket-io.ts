@@ -1,5 +1,6 @@
 import { io, Socket } from "socket.io-client"
-import { ClientToServerEvents, ServerToClientEvents } from "../../types/type-socket-io.js"
+import { ServerToClientEvents, ClientToServerEvents } from "../../types/type-server"
+import localStorageKeys from "./local-storage-keys.js"
 
 export let socket: Socket<ServerToClientEvents, ClientToServerEvents>
 
@@ -19,5 +20,12 @@ export default function initializeSocketIo() {
       console.error("Unknown environment value detected.")
   }
 
-  socket = io(serverUrl)
+  socket = io(serverUrl, {
+    auth: { sessionId: localStorage.getItem(localStorageKeys.sessionId), username: "", room: "" },
+    //TODO: it would be more logic to set username and room to undefined, but I need to fix their validity checker first
+  })
+
+  socket.onAny((eventName, ...args) => {
+    console.log("onAny", eventName, args)
+  })
 }

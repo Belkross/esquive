@@ -1,4 +1,5 @@
 import { ReactElement } from "react"
+import AlertFeature from "./alert-feature/alert-feature"
 import ProviderMuiTheming from "./provider-mui-theming"
 import ProviderThemeMode from "./provider-theme-mode/provider-theme-mode"
 
@@ -10,7 +11,9 @@ export default function GlobalFeatures({ children }: Props) {
   return (
     <>
       <ProviderThemeMode>
-        <ProviderMuiTheming>{children}</ProviderMuiTheming>
+        <ProviderMuiTheming>
+          <AlertFeature>{children}</AlertFeature>
+        </ProviderMuiTheming>
       </ProviderThemeMode>
     </>
   )

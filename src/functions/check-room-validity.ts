@@ -1,4 +1,4 @@
-import { ROOM_MAX_LENGTH, ROOM_MIN_LENGTH } from "../config/app-constants"
+import { ROOM_MIN_LENGTH, ROOM_MAX_LENGTH } from "../config/app-constants.js"
 
 export default function checkRoomValidity(room: string) {
   const modele = `^[a-zéèëêàâäïîôöÿçùûüœæ]{${ROOM_MIN_LENGTH},${ROOM_MAX_LENGTH}}$`

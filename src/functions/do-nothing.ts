@@ -1,7 +1,5 @@
-export default function doNothing() {
-  //do nothing
-}
+/* eslint-disable @typescript-eslint/no-unused-vars*/
 
-export function doNothingWith(something: unknown) {
-  return something
+export default function doNothing(...something: unknown[]) {
+  //do nothing
 }
