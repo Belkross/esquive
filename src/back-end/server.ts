@@ -5,6 +5,7 @@ import checkRoomValidity from "../functions/check-room-validity.js"
 import checkUsernameValidity from "../functions/check-username-validity.js"
 import createIo from "./config/create-io.js"
 import SessionStorage from "./config/session-storage.js"
+import connection from "./socket-events/connection.js"
 import disconnect from "./socket-events/disconnect.js"
 
 const port = process.env.PORT || 1000
@@ -35,19 +36,8 @@ io.use((socket, next) => {
 })
 
 io.on("connection", (socket) => {
-  const server = { socket, io }
-  const session = sessions.findSession(socket.handshake.auth.sessionId)
-  if (session) {
-    socket.emit("clientJoinedRoom", {
-      sessionId: socket.handshake.auth.sessionId,
-      username: session.username,
-      room: session.room,
-      roomState: "roomState",
-    })
-    socket.join(session.room)
-    //TODO: partager à tout le monde l’arrivée d’un nouveau joueur
-  }
-
+  const server = { socket, io, sessions }
+  connection(server)
   disconnect(server)
 })
 
