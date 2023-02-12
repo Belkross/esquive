@@ -17,7 +17,7 @@ app.get("/", (request, response) => response.send("Server is active"))
 
 io.use((socket, next) => {
   const { sessionId, username, room } = socket.handshake.auth
-  const noLoginInformation = username === "" && room === ""
+  const noLoginInformation = username === undefined && room === undefined
 
   if (noLoginInformation) {
     const sessionExist = sessions.findSession(sessionId)

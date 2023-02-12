@@ -21,8 +21,7 @@ export default function initializeSocketIo() {
   }
 
   socket = io(serverUrl, {
-    auth: { sessionId: localStorage.getItem(localStorageKeys.sessionId), username: "", room: "" },
-    //TODO: it would be more logic to set username and room to undefined, but I need to fix their validity checker first
+    auth: { sessionId: localStorage.getItem(localStorageKeys.sessionId) },
   })
 
   socket.onAny((eventName, ...args) => {
