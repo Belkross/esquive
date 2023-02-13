@@ -25,6 +25,7 @@ export  function initializeSocketIo() {
   })
 
   socket.onAny((eventName, ...args) => {
-    console.log("onAny", eventName, args)
+    console.log(eventName, args)
   })
+  
 }
