@@ -8,7 +8,8 @@ export interface Alert {
 
 export function createAlert(alertId: AlertId): Alert {
   return {
-    ...alerts[alertId],
     key: Date.now(),
+    severity: alerts[alertId].severity,
+    message: alerts[alertId].message,
   }
 }

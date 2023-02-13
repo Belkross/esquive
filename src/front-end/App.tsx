@@ -2,7 +2,7 @@ import { useMemo, useState } from "react"
 import { getInitialUsername } from "../functions/get-initial-username.js"
 import { AppState } from "../types/types"
 import { GlobalFeatures } from "./components/global-features.js"
-import { InterfaceConnectingServer } from "./components/interface-connecting/interface-connecting.js"
+import { InterfaceConnectingServer } from "./components/interface-connecting/interface-connecting-server.js"
 import { InterfaceGame } from "./components/interface-game.js"
 import { InterfaceLogging } from "./components/interface-logging/interface-logging.js"
 import { InterfaceShared } from "./components/interface-shared.js"
@@ -26,10 +26,10 @@ export default function App() {
   let appInterface
   switch (appState.status) {
     case "connectingToSocketIo":
-      appInterface = <InterfaceConnectingServer setAppState={setAppState} />
+      appInterface = <InterfaceConnectingServer setAppState={memoizedSetAppState} />
       break
     case "logging":
-      appInterface = <InterfaceLogging appState={appState} setAppState={setAppState} />
+      appInterface = <InterfaceLogging appState={appState} setAppState={memoizedSetAppState} />
       break
     case "logged":
       appInterface = <InterfaceGame />

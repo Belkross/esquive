@@ -1,5 +1,5 @@
 export type AlertId =
-  | "defaultEmpty"
+  | "null"
   | "invalidUsername"
   | "invalidRoom"
   | "invalidLoginInformations"
@@ -13,7 +13,7 @@ export type AlertData = {
 }
 
 export const alerts: Record<AlertId, AlertData> = {
-  defaultEmpty: {
+  null: {
     severity: "info",
     message: "",
   },

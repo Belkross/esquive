@@ -1,6 +1,6 @@
 import { Server, Socket } from "socket.io"
 import { SessionStorage } from "../back-end/config/session-storage.js"
-import { AlertId } from "../front-end/components/alert-feature/functions/alerts"
+import { AlertId } from "../front-end/components/alert-feature/alerts"
 
 export type ServerToClientEvents = {
   alert: (alertId: AlertId) => void
