@@ -6,9 +6,9 @@ import { SnackbarCloseReason } from "@mui/material"
 import createAlert from "./functions/create-alert.js"
 import useSnackbarState from "./functions/use-snackbar-state.js"
 import useAlertQueueManager from "./functions/use-alert-queue-manager.js"
-import useSubscribeEventAlert from "./functions/use-subscribe-event-alert.js"
 import { AlertId, AlertSeverity } from "./functions/alerts.js"
 import doNothing from "../../../functions/do-nothing.js"
+import { useSubscribeAlert } from "./functions/use-subscribe-alert.js"
 
 const ALERT_DISPLAY_DURATION = 6000
 
@@ -33,7 +33,7 @@ export default function AlertFeature({ children }: Props) {
   }
 
   useAlertQueueManager(snackbar)
-  useSubscribeEventAlert(snackbar)
+  useSubscribeAlert(snackbar)
 
   return (
     <AlertFeatureContext.Provider value={displayNewAlert}>

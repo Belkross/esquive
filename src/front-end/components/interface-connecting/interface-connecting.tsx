@@ -3,17 +3,17 @@ import Stack from "@mui/material/Stack"
 import CircularProgress from "@mui/material/CircularProgress"
 import Typography from "@mui/material/Typography"
 import { AppState } from "../../../types/types.js"
-import useSubscribeEventSocketIoConnection from "./use-subscribe-event-socket-io-connection.js"
 import { SxProps } from "@mui/material"
 import useSubscribeConnectError from "../form-logging/use-subscribe-connect-error.js"
+import { useSubscribeSocketIoConnection } from "./use-subscribe-socket-io-connection.js"
 
 type Props = {
   setAppState: Dispatch<SetStateAction<AppState>>
 }
 
-export default function InterfaceLoading({  setAppState }: Props) {
+export default function InterfaceLoading({ setAppState }: Props) {
   useSubscribeConnectError(setAppState)
-  useSubscribeEventSocketIoConnection(setAppState)
+  useSubscribeSocketIoConnection(setAppState)
 
   return (
     <Stack sx={style_container}>

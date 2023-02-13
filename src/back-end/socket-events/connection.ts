@@ -4,7 +4,7 @@ export default function connection(server: ServerManager) {
   const session = server.sessions.findSession(server.socket.handshake.auth.sessionId)
 
   if (session) {
-    server.socket.emit("clientJoinedRoom", {
+    server.socket.emit("joinRoom", {
       sessionId: server.socket.handshake.auth.sessionId,
       username: session.username,
       room: session.room,

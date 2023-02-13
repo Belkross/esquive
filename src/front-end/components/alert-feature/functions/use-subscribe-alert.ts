@@ -4,14 +4,14 @@ import { socket } from "../../../config/initialize-socket-io.js"
 import createAlert from "./create-alert.js"
 import { SnackBarState } from "./use-snackbar-state.js"
 
-export default function useSubscribeEventAlert(snackbar: SnackBarState) {
+export function useSubscribeAlert(snackbar: SnackBarState) {
   const setAlertQueueRef = useRef(snackbar.setAlertQueue)
 
   useEffect((): FlowlessFunction => {
-    socket.on("alertClient", (alertId) =>
+    socket.on("alert", (alertId) =>
       setAlertQueueRef.current((prevAlertQueue) => [...prevAlertQueue, createAlert(alertId)])
     )
 
-    return () => socket.off("alertClient")
+    return () => socket.off("alert")
   }, [])
 }

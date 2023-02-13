@@ -4,11 +4,11 @@ import { AppState, FlowlessFunction } from "../../../types/types.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import localStorageKeys from "../../config/local-storage-keys.js"
 
-export default function useSubscribeEventSocketIoConnection(setAppState: Dispatch<SetStateAction<AppState>>) {
+export function useSubscribeSocketIoConnection(setAppState: Dispatch<SetStateAction<AppState>>) {
   const setAppStateRef = useRef(setAppState)
 
   useEffect((): FlowlessFunction => {
-    socket.on("clientJoinedRoom", (session) => {
+    socket.on("joinRoom", (session) => {
       localStorage.setItem(localStorageKeys.sessionId, session.sessionId)
 
       //TODO: get the roomState
@@ -25,6 +25,6 @@ export default function useSubscribeEventSocketIoConnection(setAppState: Dispatc
       )
     })
 
-    return () => socket.off("clientJoinedRoom")
+    return () => socket.off("joinRoom")
   }, [])
 }

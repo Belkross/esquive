@@ -3,8 +3,8 @@ import SessionStorage from "../back-end/config/session-storage.js"
 import { AlertId } from "../front-end/components/alert-feature/functions/alerts"
 
 export type ServerToClientEvents = {
-  alertClient: (alertId: AlertId) => void
-  clientJoinedRoom: (data: { sessionId: string; username: string; room: string; roomState: "roomState" }) => void
+  alert: (alertId: AlertId) => void
+  joinRoom: (data: { sessionId: string; username: string; room: string; roomState: "roomState" }) => void
   leaveRoom: () => void
 }
 
