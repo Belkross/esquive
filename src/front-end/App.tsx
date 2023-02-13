@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import GlobalFeatures from "./components/global-features"
 import InterfaceShared from "./components/interface-shared"
 import InterfaceGame from "./components/interface-game"
@@ -8,16 +8,20 @@ import getInitialUsername from "../functions/get-initial-username"
 import localStorageKeys from "./config/local-storage-keys"
 import InterfaceConnecting from "./components/interface-connecting/interface-connecting"
 import InterfaceLogging from "./components/interface-logging/interface-logging"
+import useSubscribeLeaveRoom from "./custom-hooks/use-subscribe-leave-room.js"
 
 initializeSocketIo()
 const initialAppState: AppState = {
   status: "connectingToSocketIo",
   username: getInitialUsername(localStorageKeys.username),
-  room: null,
+  room: undefined,
 }
 
 export default function App() {
   const [appState, setAppState] = useState(initialAppState)
+  const memoizedSetAppState = useMemo(() => setAppState, [])
+
+  useSubscribeLeaveRoom(memoizedSetAppState)
 
   let appInterface
   switch (appState.status) {

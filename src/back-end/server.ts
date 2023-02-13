@@ -7,6 +7,7 @@ import createIo from "./config/create-io.js"
 import SessionStorage from "./config/session-storage.js"
 import connection from "./socket-events/connection.js"
 import disconnect from "./socket-events/disconnect.js"
+import leaveRoom from "./socket-events/leave-room.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -38,6 +39,7 @@ io.use((socket, next) => {
 io.on("connection", (socket) => {
   const server = { socket, io, sessions }
   connection(server)
+  leaveRoom(server)
   disconnect(server)
 })
 

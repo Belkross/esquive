@@ -7,5 +7,5 @@ export type AppStatus = "logging" | "connectingToSocketIo" | "logged"
 export type AppState = {
   status: AppStatus
   username: string
-  room: string | null
+  room: string | undefined
 }

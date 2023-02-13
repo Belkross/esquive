@@ -3,6 +3,7 @@ import Button from "@mui/material/Button"
 import { SxProps } from "@mui/material"
 import Typography from "@mui/material/Typography"
 import Box from "@mui/material/Box"
+import ButtonMenu from "./button-menu.js"
 
 export default function ApplicationBar() {
   return (
@@ -11,7 +12,7 @@ export default function ApplicationBar() {
       <Stack sx={style_stackButtons}>
         <Button>Submit</Button>
         <Button>Chat</Button>
-        <Button>Menu</Button>
+        <ButtonMenu />
       </Stack>
     </Box>
   )

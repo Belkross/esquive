@@ -5,10 +5,11 @@ import { AlertId } from "../front-end/components/alert-feature/functions/alerts"
 export type ServerToClientEvents = {
   alertClient: (alertId: AlertId) => void
   clientJoinedRoom: (data: { sessionId: string; username: string; room: string; roomState: "roomState" }) => void
+  leaveRoom: () => void
 }
 
 export type ClientToServerEvents = {
-  //..
+  leaveRoom: () => void
 }
 
 export type SocketManager = Socket<ClientToServerEvents, ServerToClientEvents>
