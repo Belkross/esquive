@@ -1,5 +1,5 @@
 import { useState, Dispatch, SetStateAction } from "react"
-import createAlert, { Alert } from "./create-alert.js"
+import { Alert, createAlert } from "./create-alert.js"
 
 export type SnackBarState = {
   display: boolean
@@ -10,7 +10,7 @@ export type SnackBarState = {
   setCurrentAlert: Dispatch<SetStateAction<Alert>>
 }
 
-export default function useSnackbarState(): SnackBarState {
+export function useSnackbarState(): SnackBarState {
   const [display, setDisplay] = useState(false)
   const [alertQueue, setAlertQueue] = useState<Alert[]>([])
   const [currentAlert, setCurrentAlert] = useState(createAlert("defaultEmpty"))

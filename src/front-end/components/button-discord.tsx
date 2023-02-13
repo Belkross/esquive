@@ -1,9 +1,6 @@
-import { SxProps } from "@mui/material"
-import Button from "@mui/material/Button"
-import SvgIcon from "@mui/material/SvgIcon"
-import Typography from "@mui/material/Typography"
+import { Button, SvgIcon, SxProps, Typography } from "@mui/material"
 
-export default function ButtonDiscord() {
+export function ButtonDiscord() {
   return (
     <Button
       sx={style_button}

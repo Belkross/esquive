@@ -3,7 +3,7 @@ type Session = {
   room: string
 }
 
-export default class SessionStorage {
+export class SessionStorage {
   private sessions = new Map()
 
   findSession(key: string): Session | undefined {

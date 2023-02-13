@@ -1,14 +1,14 @@
 import { useMemo, useState } from "react"
-import GlobalFeatures from "./components/global-features"
-import InterfaceShared from "./components/interface-shared"
-import InterfaceGame from "./components/interface-game"
-import initializeSocketIo from "./config/initialize-socket-io"
+import { getInitialUsername } from "../functions/get-initial-username.js"
 import { AppState } from "../types/types"
-import getInitialUsername from "../functions/get-initial-username"
-import localStorageKeys from "./config/local-storage-keys"
-import InterfaceConnecting from "./components/interface-connecting/interface-connecting"
-import InterfaceLogging from "./components/interface-logging/interface-logging"
-import useSubscribeLeaveRoom from "./custom-hooks/use-subscribe-leave-room.js"
+import { GlobalFeatures } from "./components/global-features.js"
+import { InterfaceConnectingServer } from "./components/interface-connecting/interface-connecting.js"
+import { InterfaceGame } from "./components/interface-game.js"
+import { InterfaceLogging } from "./components/interface-logging/interface-logging.js"
+import { InterfaceShared } from "./components/interface-shared.js"
+import { initializeSocketIo } from "./config/initialize-socket-io.js"
+import localStorageKeys from "./config/local-storage-keys.js"
+import { useSubscribeLeaveRoom } from "./custom-hooks/use-subscribe-leave-room.js"
 
 initializeSocketIo()
 const initialAppState: AppState = {
@@ -26,7 +26,7 @@ export default function App() {
   let appInterface
   switch (appState.status) {
     case "connectingToSocketIo":
-      appInterface = <InterfaceConnecting setAppState={setAppState} />
+      appInterface = <InterfaceConnectingServer setAppState={setAppState} />
       break
     case "logging":
       appInterface = <InterfaceLogging appState={appState} setAppState={setAppState} />

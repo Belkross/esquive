@@ -1,15 +1,12 @@
 import { InterfaceLoggingProps } from "../interface-logging/interface-logging"
-import Paper from "@mui/material/Paper"
-import Button from "@mui/material/Button"
-import TextField from "@mui/material/TextField"
-import useValidTextInput from "../../custom-hooks/use-valid-text-input"
-import { Stack, SxProps } from "@mui/material"
-import checkRoomValidity from "../../../functions/check-room-validity"
-import checkUsernameValidity from "../../../functions/check-username-validity"
+import { Button, Paper, Stack, SxProps, TextField } from "@mui/material"
 import { socket } from "../../config/initialize-socket-io"
-import ButtonChangeUsername from "./button-change-username"
+import { checkRoomValidity } from "../../../functions/check-room-validity.js"
+import { checkUsernameValidity } from "../../../functions/check-username-validity.js"
+import { useValidTextInput } from "../../custom-hooks/use-valid-text-input.js"
+import { ButtonChangeUsername } from "./button-change-username.js"
 
-export default function FormLogging({ appState, setAppState }: InterfaceLoggingProps) {
+export function FormLogging({ appState, setAppState }: InterfaceLoggingProps) {
   const [roomInput, onRoomInputChange] = useValidTextInput("", checkRoomValidity)
 
   const handleSubmit = () => {

@@ -1,14 +1,12 @@
 import { createContext, ReactElement, SyntheticEvent, useContext } from "react"
-import IconButton from "@mui/material/IconButton"
-import Snackbar from "@mui/material/Snackbar"
-import Close from "@mui/icons-material/Close"
-import { SnackbarCloseReason } from "@mui/material"
-import createAlert from "./functions/create-alert.js"
-import useSnackbarState from "./functions/use-snackbar-state.js"
-import useAlertQueueManager from "./functions/use-alert-queue-manager.js"
+import { IconButton, Snackbar, SnackbarCloseReason } from "@mui/material"
 import { AlertId, AlertSeverity } from "./functions/alerts.js"
-import doNothing from "../../../functions/do-nothing.js"
 import { useSubscribeAlert } from "./functions/use-subscribe-alert.js"
+import { doNothing } from "../../../functions/do-nothing.js"
+import { createAlert } from "./functions/create-alert.js"
+import { useAlertQueueManager } from "./functions/use-alert-queue-manager.js"
+import { useSnackbarState } from "./functions/use-snackbar-state.js"
+import { Close } from "@mui/icons-material"
 
 const ALERT_DISPLAY_DURATION = 6000
 
@@ -19,7 +17,7 @@ type Props = {
   children: ReactElement
 }
 
-export default function AlertFeature({ children }: Props) {
+export function AlertFeature({ children }: Props) {
   const snackbar = useSnackbarState()
 
   const handleClose = (event: SyntheticEvent | Event, reason?: SnackbarCloseReason) => {

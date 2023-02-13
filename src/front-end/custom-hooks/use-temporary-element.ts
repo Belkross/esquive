@@ -6,7 +6,7 @@ export type TemporaryElementState = {
   remove: () => void
 }
 
-export default function useTemporaryElement(initialState: boolean) {
+export  function useTemporaryElement(initialState: boolean) {
   const [elementDisplay, setElementDisplay] = useState(initialState)
 
   const displayElement = () => setElementDisplay(true)

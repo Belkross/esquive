@@ -1,6 +1,6 @@
 import { Theme, ThemeOptions } from "@mui/material"
 
-export default function createMuiComponents(theme: Theme): ThemeOptions {
+export function createMuiComponents(theme: Theme): ThemeOptions {
   return {
     components: {
       MuiDrawer: {

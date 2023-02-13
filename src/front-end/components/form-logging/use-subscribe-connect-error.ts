@@ -5,7 +5,7 @@ import { socket } from "../../config/initialize-socket-io.js"
 import { useAlertFeature } from "../alert-feature/alert-feature.js"
 import { AlertId } from "../alert-feature/functions/alerts.js"
 
-export default function useSubscribeConnectError(setAppState: Dispatch<SetStateAction<AppState>>) {
+export  function useSubscribeConnectError(setAppState: Dispatch<SetStateAction<AppState>>) {
   const displayNewAlertRef = useRef(useAlertFeature())
   const setAppStateRef = useRef(setAppState)
 

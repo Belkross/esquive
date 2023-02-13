@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { SnackBarState } from "./use-snackbar-state.js"
 
-export default function useAlertQueueManager(snackbar: SnackBarState) {
+export function useAlertQueueManager(snackbar: SnackBarState) {
   useEffect(() => {
     if (checkIfNeedToDisplayAnAlert(snackbar)) setUpNewAlert(snackbar)
     else if (checkIfInterruptCurrentAlertWithAnother(snackbar)) snackbar.setDisplay(false)

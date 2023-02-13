@@ -1,8 +1,8 @@
 import { createContext, ReactElement, useContext, useState } from "react"
-import doNothing from "../../../functions/do-nothing"
+import { doNothing } from "../../../functions/do-nothing.js"
 import { ThemeMode } from "../../../types/types"
 import localStorageKeys from "../../config/local-storage-keys"
-import getInitialThemeMode from "./get-initial-theme-mode"
+import { getInitialThemeMode } from "./get-initial-theme-mode.js"
 
 const defaultThemeMode = "dark"
 const initialThemeMode = getInitialThemeMode(localStorageKeys.themeMode, defaultThemeMode)
@@ -17,7 +17,7 @@ type Props = {
   children: ReactElement
 }
 
-export default function ProviderThemeMode({ children }: Props) {
+export function ProviderThemeMode({ children }: Props) {
   const [themeMode, setThemeMode] = useState(initialThemeMode)
 
   const toggleThemeMode = () => {

@@ -1,15 +1,13 @@
+import { Container, SxProps } from "@mui/material"
 import { ReactElement } from "react"
-import Container from "@mui/material/Container"
-import { SxProps } from "@mui/material"
 
 type Props = {
   children: ReactElement
 }
 
-export default function InterfaceShared({ children }: Props) {
+export function InterfaceShared({ children }: Props) {
   return (
     <>
-      
       <Container sx={style_container}>{children}</Container>
     </>
   )

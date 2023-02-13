@@ -1,6 +1,6 @@
 import { ServerManager } from "../../types/type-server.js"
 
-export default function connection(server: ServerManager) {
+export function connection(server: ServerManager) {
   const session = server.sessions.findSession(server.socket.handshake.auth.sessionId)
 
   if (session) {
@@ -11,6 +11,6 @@ export default function connection(server: ServerManager) {
       roomState: "roomState",
     })
     server.socket.join(session.room)
-      //TODO: partager à tout le monde l’arrivée d’un nouveau joueur
+    //TODO: partager à tout le monde l’arrivée d’un nouveau joueur
   }
 }

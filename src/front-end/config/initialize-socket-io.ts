@@ -4,7 +4,7 @@ import localStorageKeys from "./local-storage-keys.js"
 
 export let socket: Socket<ServerToClientEvents, ClientToServerEvents>
 
-export default function initializeSocketIo() {
+export  function initializeSocketIo() {
   const environment = process.env.NODE_ENV
 
   let serverUrl

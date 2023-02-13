@@ -1,11 +1,10 @@
-import useTemporaryElement from "../custom-hooks/use-temporary-element.js"
-import Drawer from "@mui/material/Drawer"
-import Button from "@mui/material/Button"
+import { Button, Drawer } from "@mui/material"
 import { socket } from "../config/initialize-socket-io.js"
+import { useTemporaryElement } from "../custom-hooks/use-temporary-element.js"
 
 const handleClick = () => socket.emit("leaveRoom")
 
-export default function ButtonMenu() {
+export function ButtonMenu() {
   const drawer = useTemporaryElement(false)
 
   return (

@@ -1,16 +1,15 @@
+import { Stack, Typography } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
-import Typography from "@mui/material/Typography"
-import Stack from "@mui/material/Stack"
 import { AppState } from "../../../types/types"
-import ButtonDiscord from "../button-discord"
-import FormLogging from "../form-logging/form-logging"
+import { ButtonDiscord } from "../button-discord.js"
+import { FormLogging } from "../form-logging/form-logging.js"
 
 export type InterfaceLoggingProps = {
   appState: AppState
   setAppState: Dispatch<SetStateAction<AppState>>
 }
 
-export default function InterfaceLogging({ appState, setAppState }: InterfaceLoggingProps) {
+export function InterfaceLogging({ appState, setAppState }: InterfaceLoggingProps) {
   return (
     <Stack sx={style_container}>
       <Typography variant="h1" sx={style_title}>

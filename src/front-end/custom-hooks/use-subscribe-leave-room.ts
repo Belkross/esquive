@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useEffect } from "react"
 import { AppState, FlowlessFunction } from "../../types/types.js"
 import { socket } from "../config/initialize-socket-io.js"
 
-export default function useSubscribeLeaveRoom(setAppState: Dispatch<SetStateAction<AppState>>) {
+export function useSubscribeLeaveRoom(setAppState: Dispatch<SetStateAction<AppState>>) {
   useEffect((): FlowlessFunction => {
     socket.on("leaveRoom", () => {
       socket.disconnect()

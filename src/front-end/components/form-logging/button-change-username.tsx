@@ -1,18 +1,16 @@
 import EditIcon from "@mui/icons-material/Edit"
-import IconButton from "@mui/material/IconButton"
-import Stack from "@mui/material/Stack"
-import Typography from "@mui/material/Typography"
+import { Stack, IconButton, Typography } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../../types/types"
-import useTemporaryElement from "../../custom-hooks/use-temporary-element"
-import ModalChangeUsername from "./modal-change-username"
+import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
+import { ModalChangeUsername } from "./modal-change-username.js"
 
 type Props = {
   appState: AppState
   setAppState: Dispatch<SetStateAction<AppState>>
 }
 
-export default function ButtonChangeUsername({ appState, setAppState }: Props) {
+export function ButtonChangeUsername({ appState, setAppState }: Props) {
   const modal = useTemporaryElement(false)
 
   return (

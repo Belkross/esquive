@@ -1,6 +1,6 @@
-import ApplicationBar from "./application-bar"
+import { ApplicationBar } from "./application-bar.js"
 
-export default function InterfaceGame() {
+export function InterfaceGame() {
   return (
     <>
       <ApplicationBar />

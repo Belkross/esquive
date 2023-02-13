@@ -1,13 +1,13 @@
 import { ReactElement } from "react"
-import AlertFeature from "./alert-feature/alert-feature"
-import ProviderMuiTheming from "./provider-mui-theming"
-import ProviderThemeMode from "./provider-theme-mode/provider-theme-mode"
+import { AlertFeature } from "./alert-feature/alert-feature.js"
+import { ProviderMuiTheming } from "./provider-mui-theming.js"
+import { ProviderThemeMode } from "./provider-theme-mode/provider-theme-mode.js"
 
 type Props = {
   children: ReactElement
 }
 
-export default function GlobalFeatures({ children }: Props) {
+export function GlobalFeatures({ children }: Props) {
   return (
     <>
       <ProviderThemeMode>

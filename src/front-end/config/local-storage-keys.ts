@@ -1,7 +1,5 @@
-const localStorageKeys = {
+export default {
   username: "username",
   themeMode: "themeMode",
-  sessionId: "sessionId"
+  sessionId: "sessionId",
 }
-
-export default localStorageKeys

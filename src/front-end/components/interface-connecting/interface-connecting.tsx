@@ -1,17 +1,14 @@
 import { Dispatch, SetStateAction } from "react"
-import Stack from "@mui/material/Stack"
-import CircularProgress from "@mui/material/CircularProgress"
-import Typography from "@mui/material/Typography"
 import { AppState } from "../../../types/types.js"
-import { SxProps } from "@mui/material"
-import useSubscribeConnectError from "../form-logging/use-subscribe-connect-error.js"
+import { CircularProgress, Stack, SxProps, Typography } from "@mui/material"
 import { useSubscribeSocketIoConnection } from "./use-subscribe-socket-io-connection.js"
+import { useSubscribeConnectError } from "../form-logging/use-subscribe-connect-error.js"
 
 type Props = {
   setAppState: Dispatch<SetStateAction<AppState>>
 }
 
-export default function InterfaceLoading({ setAppState }: Props) {
+export function InterfaceConnectingServer({ setAppState }: Props) {
   useSubscribeConnectError(setAppState)
   useSubscribeSocketIoConnection(setAppState)
 

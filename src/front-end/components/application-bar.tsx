@@ -1,11 +1,7 @@
-import Stack from "@mui/material/Stack"
-import Button from "@mui/material/Button"
-import { SxProps } from "@mui/material"
-import Typography from "@mui/material/Typography"
-import Box from "@mui/material/Box"
-import ButtonMenu from "./button-menu.js"
+import { Box, Button, Stack, SxProps, Typography } from "@mui/material"
+import { ButtonMenu } from "./button-menu.js"
 
-export default function ApplicationBar() {
+export function ApplicationBar() {
   return (
     <Box sx={style_container}>
       <Typography sx={style_timer}>3:00</Typography>

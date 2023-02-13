@@ -1,15 +1,9 @@
 import { Dispatch, SetStateAction } from "react"
-import Dialog from "@mui/material/Dialog"
-import DialogActions from "@mui/material/DialogActions"
-import DialogContent from "@mui/material/DialogContent"
-import DialogContentText from "@mui/material/DialogContentText"
-import DialogTitle from "@mui/material/DialogTitle"
-import TextField from "@mui/material/TextField"
-import Button from "@mui/material/Button"
 import { AppState, FlowlessFunction } from "../../../types/types"
 import { USERNAME_MIN_LENGTH, USERNAME_MAX_LENGTH } from "../../../config/app-constants"
-import checkUsernameValidity from "../../../functions/check-username-validity"
-import useValidTextInput from "../../custom-hooks/use-valid-text-input"
+import { checkUsernameValidity } from "../../../functions/check-username-validity.js"
+import { useValidTextInput } from "../../custom-hooks/use-valid-text-input.js"
+import { Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, Button } from "@mui/material"
 
 type Props = {
   displayed: boolean
@@ -17,7 +11,7 @@ type Props = {
   setAppState: Dispatch<SetStateAction<AppState>>
 }
 
-export default function ModalChangeUsername({ displayed, close, setAppState }: Props) {
+export function ModalChangeUsername({ displayed, close, setAppState }: Props) {
   const [input, onInputChange] = useValidTextInput("", checkUsernameValidity)
 
   const handleSubmit = () => {
