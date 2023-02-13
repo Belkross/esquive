@@ -22,7 +22,7 @@ io.use((socket, next) => {
   const noLoginInformation = username === undefined && room === undefined
 
   if (noLoginInformation) {
-    const sessionExist = sessions.findSession(sessionId)
+    const sessionExist = sessions.get(sessionId)
     return sessionId && sessionExist ? next() : next(new Error("no session found"))
   } else {
     if (!checkUsernameValidity(username) || !checkRoomValidity(room)) {
@@ -31,7 +31,7 @@ io.use((socket, next) => {
     //TODO: vérifier que la room n’est pas pleine
     const newSessionId = randomUUID()
     socket.handshake.auth.sessionId = newSessionId
-    sessions.saveSession(newSessionId, { username, room })
+    sessions.save(newSessionId, { username, room })
     return next()
   }
 })

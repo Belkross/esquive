@@ -1,7 +1,7 @@
 import { ServerManager } from "../../types/type-server.js"
 
 export function connection(server: ServerManager) {
-  const session = server.sessions.findSession(server.socket.handshake.auth.sessionId)
+  const session = server.sessions.get(server.socket.handshake.auth.sessionId)
 
   if (session) {
     server.socket.onAny((eventName, ...args) => {
