@@ -17,7 +17,7 @@ export function useSubscribeSocketIoConnection(setAppState: Dispatch<SetStateAct
             ...prevAppState,
             status: "logged",
             username: session.username,
-            room: session.room,
+            room: session.roomState.roomName,
           })),
         FAKE_LOADING_DURATION
       )

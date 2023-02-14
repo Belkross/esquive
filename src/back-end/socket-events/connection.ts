@@ -1,4 +1,6 @@
+import secretWordList from "../../config/secret-word-list.js"
 import { ServerManager } from "../../types/type-server.js"
+import { RoomState } from "../config/room-state.js"
 
 export function connection(server: ServerManager) {
   const session = server.sessions.get(server.socket.handshake.auth.sessionId)
@@ -12,8 +14,7 @@ export function connection(server: ServerManager) {
     server.socket.emit("joinRoom", {
       sessionId: server.socket.handshake.auth.sessionId,
       username: session.username,
-      room: session.room,
-      roomState: "roomState",
+      roomState: new RoomState(session.room, secretWordList),
     })
     server.socket.join(session.room)
     //TODO: partager à tout le monde l’arrivée d’un nouveau joueur

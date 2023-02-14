@@ -9,10 +9,12 @@ export class SessionStorage {
   get(key: string): Session | undefined {
     return this.sessions.get(key)
   }
+
   save(sessionId: string, session: Session) {
-    this.sessions.set(sessionId, session)
+    return this.sessions.set(sessionId, session)
   }
+
   delete(sessionId: string) {
-    this.sessions.delete(sessionId)
+    return this.sessions.delete(sessionId)
   }
 }
