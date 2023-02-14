@@ -1,5 +1,5 @@
 import { shuffleArray } from "../../functions/shuffle-array.js"
-import { MapStorage } from "./map-storage.js"
+import { MapStorage } from "../../functions/map-storage.js"
 
 type Team = "one" | "two"
 type Role = "guesser" | "orator"
@@ -61,7 +61,7 @@ export class RoomState {
   startingTeam: Team = "one"
   isJudgingTrap = false
   secretWordsDeckDrawIndex = 0
-  timer: number 
+  timer: number
   timerIsRunning = false
 
   constructor(roomName: string, secretWordList: string) {
