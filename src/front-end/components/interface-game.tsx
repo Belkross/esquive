@@ -14,7 +14,7 @@ export function InterfaceGame({ appState }: Props) {
   return (
     <>
       <Score roomState={roomState} />
-      <AdminButtons roomState={roomState} />
+      {<AdminButtons roomState={roomState} />}
       <ApplicationBar roomState={roomState} />
     </>
   )

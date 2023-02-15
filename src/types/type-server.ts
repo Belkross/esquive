@@ -13,7 +13,7 @@ export type RoomStorage = MapStorage<string, RoomState>
 
 export type ServerToClientEvents = {
   alert: (alertId: AlertId) => void
-  joinRoom: (data: { sessionId: string; username: string; roomState: RoomState }) => void
+  joinRoom: (data: { browserId: string; username: string; roomState: RoomState }) => void
   leaveRoom: () => void
   roomStateUpdate: (state: RoomState) => void
 }

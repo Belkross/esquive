@@ -3,8 +3,8 @@ import { ServerManager } from "../../types/type-server.js"
 import { RoomState } from "../config/room-state.js"
 
 export function connection(server: ServerManager) {
-  const { sessionId } = server.socket.handshake.auth
-  const session = server.sessions.get(sessionId)
+  const { browserId } = server.socket.handshake.auth
+  const session = server.sessions.get(browserId)
   if (session === undefined) return
 
   logClientEvents(server, session.username)
@@ -13,22 +13,22 @@ export function connection(server: ServerManager) {
 
   if (roomState === undefined) {
     roomState = new RoomState(session.room, secretWordList)
-    roomState.addPlayer(sessionId, session.username)
+    roomState.addPlayer(browserId, session.username)
     server.rooms.save(session.room, roomState)
   } else {
-    const isInactivePlayer = roomState.players.some((player) => player.sessionId === sessionId)
+    const isInactivePlayer = roomState.players.some((player) => player.browserId === browserId)
     if (isInactivePlayer) {
-      const indexOfClient = roomState.players.findIndex((player) => player.sessionId === sessionId)
+      const indexOfClient = roomState.players.findIndex((player) => player.browserId === browserId)
       roomState.players[indexOfClient].connected = true
     } else {
-      roomState.addPlayer(sessionId, session.username)
+      roomState.addPlayer(browserId, session.username)
     }
   }
 
   server.io.to(session.room).emit("roomStateUpdate", roomState)
   server.socket.join(session.room)
   server.socket.emit("joinRoom", {
-    sessionId,
+    browserId,
     roomState,
     username: session.username,
   })

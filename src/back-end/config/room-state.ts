@@ -5,7 +5,7 @@ type Role = "guesser" | "orator"
 type RoundPhase = "pre round" | "trapping" | "pre guessing one" | "guessing one" | "pre guessing two" | "guessing two"
 
 class PlayerData {
-  readonly sessionId: string
+  readonly browserId: string
   username: string
   team: Team = "one"
   role: Role = "guesser"
@@ -15,8 +15,8 @@ class PlayerData {
   secretWordOpinion: boolean | undefined = undefined
   trapOpinion: undefined
 
-  constructor(sessionId: string, username: string) {
-    this.sessionId = sessionId
+  constructor(browserId: string, username: string) {
+    this.browserId = browserId
     this.username = username
   }
 }
@@ -81,8 +81,8 @@ export class RoomState {
     return shuffleArray(array)
   }
 
-  addPlayer(sessionId: string, username: string) {
-    const playerData = new PlayerData(sessionId, username)
+  addPlayer(browserId: string, username: string) {
+    const playerData = new PlayerData(browserId, username)
 
     const isCreatorOfTheRoom = this.players.length === 0
     if (isCreatorOfTheRoom) playerData.isAdmin = true

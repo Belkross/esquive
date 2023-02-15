@@ -3,7 +3,7 @@ import { ServerManager } from "../../types/type-server.js"
 export function leaveRoom(server: ServerManager) {
   server.socket.on("leaveRoom", () => {
     //supprimer la session
-    server.sessions.delete(server.socket.handshake.auth.sessionId)
+    server.sessions.delete(server.socket.handshake.auth.browserId)
     //modifier le roomState
     //envoyer leaveRoom au demandeur
     server.socket.emit("leaveRoom")

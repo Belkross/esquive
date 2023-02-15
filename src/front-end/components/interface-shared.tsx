@@ -19,4 +19,5 @@ const style_container: SxProps = {
   alignItems: "center",
   maxWidth: "20cm",
   paddingBottom: { xs: 6, md: 10 },
+  paddingTop: 2,
 }

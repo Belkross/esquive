@@ -16,6 +16,7 @@ const initialAppState: AppState = {
   username: getInitialUsername(localStorageKeys.username),
   room: undefined,
   roomState: undefined,
+  browserId: localStorage.getItem(localStorageKeys.browserId)
 }
 
 export default function App() {

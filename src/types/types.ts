@@ -11,4 +11,5 @@ export type AppState = {
   username: string
   room: string | undefined
   roomState: RoomState | undefined
+  browserId: string | null
 }

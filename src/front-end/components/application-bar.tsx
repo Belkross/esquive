@@ -10,6 +10,7 @@ type Props = {
 }
 
 export function ApplicationBar({ roomState }: Props) {
+
   return (
     <Box sx={style_container}>
       <Typography sx={style_timer}>3:00</Typography>

@@ -20,20 +20,20 @@ const rooms: RoomStorage = new MapStorage()
 app.get("/", (request, response) => response.send("Server is active"))
 
 io.use((socket, next) => {
-  const { sessionId, username, room } = socket.handshake.auth
+  const { browserId, username, room } = socket.handshake.auth
   const noLoginInformation = username === undefined && room === undefined
 
   if (noLoginInformation) {
-    const sessionExist = sessions.get(sessionId)
-    return sessionId && sessionExist ? next() : next(new Error("no session found"))
+    const sessionExist = sessions.get(browserId)
+    return browserId && sessionExist ? next() : next(new Error("no session found"))
   } else {
     if (!checkUsernameValidity(username) || !checkRoomValidity(room)) {
       return next(new Error("invalid login informations"))
     }
     //TODO: vérifier que la room n’est pas pleine
-    const newSessionId = randomUUID()
-    socket.handshake.auth.sessionId = newSessionId
-    sessions.save(newSessionId, { username, room })
+    const newBrowserId = randomUUID()
+    socket.handshake.auth.browserId = newBrowserId
+    sessions.save(newBrowserId, { username, room })
     return next()
   }
 })

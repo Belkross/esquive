@@ -7,7 +7,7 @@ import localStorageKeys from "../../config/local-storage-keys.js"
 export function useSubscribeSocketIoConnection(setAppState: Dispatch<SetStateAction<AppState>>) {
   useEffect((): FlowlessFunction => {
     socket.on("joinRoom", (session) => {
-      localStorage.setItem(localStorageKeys.sessionId, session.sessionId)
+      localStorage.setItem(localStorageKeys.browserId, session.browserId)
 
       setTimeout(
         () =>
@@ -17,6 +17,7 @@ export function useSubscribeSocketIoConnection(setAppState: Dispatch<SetStateAct
             username: session.username,
             room: session.roomState.roomName,
             roomState: session.roomState,
+            browserId: session.browserId
           })),
         FAKE_LOADING_DURATION
       )

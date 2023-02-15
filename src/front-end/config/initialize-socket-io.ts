@@ -4,7 +4,7 @@ import localStorageKeys from "./local-storage-keys.js"
 
 export let socket: Socket<ServerToClientEvents, ClientToServerEvents>
 
-export  function initializeSocketIo() {
+export function initializeSocketIo() {
   const environment = process.env.NODE_ENV
 
   let serverUrl
@@ -21,11 +21,10 @@ export  function initializeSocketIo() {
   }
 
   socket = io(serverUrl, {
-    auth: { sessionId: localStorage.getItem(localStorageKeys.sessionId) },
+    auth: { browserId: localStorage.getItem(localStorageKeys.browserId) },
   })
 
   socket.onAny((eventName, ...args) => {
     console.log(eventName, args)
   })
-  
 }
