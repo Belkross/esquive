@@ -23,7 +23,7 @@ export function createMuiComponents(theme: Theme): ThemeOptions {
             boxShadow: theme.shadows[2],
             "&:disabled": {
               backgroundColor: theme.palette.action.disabledBackground,
-              borderColor: theme.palette.action.disabled,
+              borderColor: theme.palette.action.disabledBackground,
             },
           },
         },
