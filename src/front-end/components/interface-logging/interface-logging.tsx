@@ -1,6 +1,6 @@
 import { Stack, Typography } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
-import { AppState } from "../../../types/types"
+import { AppState } from "../../../types/main"
 import { ButtonDiscord } from "../button-discord.js"
 import { FormLogging } from "../form-logging/form-logging.js"
 

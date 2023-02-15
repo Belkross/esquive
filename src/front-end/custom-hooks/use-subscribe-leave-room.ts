@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect } from "react"
-import { AppState, FlowlessFunction } from "../../types/types.js"
+import { AppState, FlowlessFunction } from "../../types/main.js"
 import { socket } from "../config/initialize-socket-io.js"
 
 export function useSubscribeLeaveRoom(setAppState: Dispatch<SetStateAction<AppState>>) {

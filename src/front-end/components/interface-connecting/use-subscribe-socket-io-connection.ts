@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useEffect } from "react"
 import { FAKE_LOADING_DURATION } from "../../../config/app-constants.js"
-import { AppState, FlowlessFunction } from "../../../types/types.js"
+import { AppState, FlowlessFunction } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import localStorageKeys from "../../config/local-storage-keys.js"
 
@@ -17,7 +17,7 @@ export function useSubscribeSocketIoConnection(setAppState: Dispatch<SetStateAct
             username: session.username,
             room: session.roomState.roomName,
             roomState: session.roomState,
-            browserId: session.browserId
+            browserId: session.browserId,
           })),
         FAKE_LOADING_DURATION
       )

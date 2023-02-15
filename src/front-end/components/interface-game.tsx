@@ -1,5 +1,5 @@
 import { RoomState } from "../../back-end/config/room-state.js"
-import { AppState } from "../../types/types.js"
+import { AppState } from "../../types/main.js"
 import { AdminButtons } from "./admin-buttons.js"
 import { ApplicationBar } from "./application-bar.js"
 import { Score } from "./score/score.js"

@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
-import { AppState, FlowlessFunction } from "../../../types/types"
+import { AppState, FlowlessFunction } from "../../../types/main"
 import { USERNAME_MIN_LENGTH, USERNAME_MAX_LENGTH } from "../../../config/app-constants"
 import { checkUsernameValidity } from "../../../functions/check-username-validity.js"
 import { useValidTextInput } from "../../custom-hooks/use-valid-text-input.js"

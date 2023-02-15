@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react"
 import { getInitialUsername } from "../functions/get-initial-username.js"
-import { AppState } from "../types/types"
+import { AppState } from "../types/main.js"
 import { GlobalFeatures } from "./components/global-features.js"
 import { InterfaceConnectingServer } from "./components/interface-connecting/interface-connecting-server.js"
 import { InterfaceGame } from "./components/interface-game.js"
@@ -16,7 +16,7 @@ const initialAppState: AppState = {
   username: getInitialUsername(localStorageKeys.username),
   room: undefined,
   roomState: undefined,
-  browserId: localStorage.getItem(localStorageKeys.browserId)
+  browserId: localStorage.getItem(localStorageKeys.browserId),
 }
 
 export default function App() {

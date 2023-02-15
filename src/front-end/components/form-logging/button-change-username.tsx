@@ -1,7 +1,7 @@
 import EditIcon from "@mui/icons-material/Edit"
 import { Stack, IconButton, Typography } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
-import { AppState } from "../../../types/types"
+import { AppState } from "../../../types/main"
 import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
 import { ModalChangeUsername } from "./modal-change-username.js"
 

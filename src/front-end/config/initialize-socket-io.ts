@@ -1,5 +1,5 @@
 import { io, Socket } from "socket.io-client"
-import { ServerToClientEvents, ClientToServerEvents } from "../../types/type-server"
+import { ServerToClientEvents, ClientToServerEvents } from "../../types/server"
 import localStorageKeys from "./local-storage-keys.js"
 
 export let socket: Socket<ServerToClientEvents, ClientToServerEvents>

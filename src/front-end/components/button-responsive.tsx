@@ -1,6 +1,6 @@
 import { Button, IconButton, useMediaQuery, useTheme } from "@mui/material"
 import { ReactElement } from "react"
-import { FlowlessFunction } from "../../types/types.js"
+import { FlowlessFunction } from "../../types/main.js"
 
 type Props = {
   icon: ReactElement

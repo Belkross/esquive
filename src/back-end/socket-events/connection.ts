@@ -1,5 +1,5 @@
 import secretWordList from "../../config/secret-word-list.js"
-import { ServerManager } from "../../types/type-server.js"
+import { ServerManager } from "../../types/server.js"
 import { RoomState } from "../config/room-state.js"
 
 export function connection(server: ServerManager) {

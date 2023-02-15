@@ -1,4 +1,4 @@
-import { ServerManager } from "../../types/type-server.js"
+import { ServerManager } from "../../types/server.js"
 
 export function leaveRoom(server: ServerManager) {
   server.socket.on("leaveRoom", () => {
