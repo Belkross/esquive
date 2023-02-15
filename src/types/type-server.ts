@@ -9,11 +9,13 @@ type Session = {
 }
 
 export type SessionStorage = MapStorage<string, Session>
+export type RoomStorage = MapStorage<string, RoomState>
 
 export type ServerToClientEvents = {
   alert: (alertId: AlertId) => void
   joinRoom: (data: { sessionId: string; username: string; roomState: RoomState }) => void
   leaveRoom: () => void
+  roomStateUpdate: (state: RoomState) => void
 }
 
 export type ClientToServerEvents = {
@@ -27,4 +29,5 @@ export type ServerManager = {
   io: IoManager
   socket: SocketManager
   sessions: SessionStorage
+  rooms: RoomStorage
 }

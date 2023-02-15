@@ -3,7 +3,7 @@ import { randomUUID } from "node:crypto"
 import { createServer } from "node:http"
 import { checkRoomValidity } from "../functions/check-room-validity.js"
 import { checkUsernameValidity } from "../functions/check-username-validity.js"
-import { SessionStorage } from "../types/type-server.js"
+import { RoomStorage, SessionStorage } from "../types/type-server.js"
 import { createIo } from "./config/create-io.js"
 import { MapStorage } from "../functions/map-storage.js"
 import { connection } from "./socket-events/connection.js"
@@ -15,6 +15,7 @@ const app = express()
 const httpServer = createServer(app)
 const io = createIo(httpServer)
 const sessions: SessionStorage = new MapStorage()
+const rooms: RoomStorage = new MapStorage()
 
 app.get("/", (request, response) => response.send("Server is active"))
 
@@ -38,7 +39,7 @@ io.use((socket, next) => {
 })
 
 io.on("connection", (socket) => {
-  const server = { socket, io, sessions }
+  const server = { socket, io, sessions, rooms }
 
   connection(server)
   leaveRoom(server)

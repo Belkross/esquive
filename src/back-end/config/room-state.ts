@@ -1,20 +1,24 @@
 import { shuffleArray } from "../../functions/shuffle-array.js"
-import { MapStorage } from "../../functions/map-storage.js"
 
 export type Team = "one" | "two"
 type Role = "guesser" | "orator"
 type RoundPhase = "pre round" | "trapping" | "pre guessing one" | "guessing one" | "pre guessing two" | "guessing two"
 
-type PlayerData = {
+class PlayerData {
   readonly sessionId: string
   username: string
-  team: Team
-  role: Role
-  connected: boolean
-  isAdmin: boolean
-  isTyping: boolean
-  secretWordOpinion: boolean | undefined
-  trapOpinion: unknown
+  team: Team = "one"
+  role: Role = "guesser"
+  connected = true
+  isAdmin = false
+  isTyping = false
+  secretWordOpinion: boolean | undefined = undefined
+  trapOpinion: undefined
+
+  constructor(sessionId: string, username: string) {
+    this.sessionId = sessionId
+    this.username = username
+  }
 }
 
 class TeamData {
@@ -47,7 +51,7 @@ export class RoomState {
   private readonly historicLengthLimit = 50
 
   readonly roomName: string
-  readonly players: MapStorage<string, PlayerData> = new MapStorage()
+  readonly players: PlayerData[] = []
   readonly teams: Record<Team, TeamData>
   readonly historic: string[] = []
 
@@ -75,5 +79,14 @@ export class RoomState {
   initializeSecretWordsDeck(wordsList: string) {
     const array = wordsList.split("\n")
     return shuffleArray(array)
+  }
+
+  addPlayer(sessionId: string, username: string) {
+    const playerData = new PlayerData(sessionId, username)
+
+    const isCreatorOfTheRoom = this.players.length === 0
+    if (isCreatorOfTheRoom) playerData.isAdmin = true
+
+    this.players.push(playerData)
   }
 }

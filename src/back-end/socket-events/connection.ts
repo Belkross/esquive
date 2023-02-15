@@ -3,19 +3,39 @@ import { ServerManager } from "../../types/type-server.js"
 import { RoomState } from "../config/room-state.js"
 
 export function connection(server: ServerManager) {
-  const session = server.sessions.get(server.socket.handshake.auth.sessionId)
+  const { sessionId } = server.socket.handshake.auth
+  const session = server.sessions.get(sessionId)
+  if (session === undefined) return
 
-  if (session) {
-    server.socket.onAny((eventName, ...args) => {
-      console.log(`${session.username}: ${eventName}`, args)
-    })
+  logClientEvents(server, session.username)
 
-    server.socket.emit("joinRoom", {
-      sessionId: server.socket.handshake.auth.sessionId,
-      username: session.username,
-      roomState: new RoomState(session.room, secretWordList),
-    })
-    server.socket.join(session.room)
-    //TODO: partager à tout le monde l’arrivée d’un nouveau joueur
+  let roomState = server.rooms.get(session.room)
+
+  if (roomState === undefined) {
+    roomState = new RoomState(session.room, secretWordList)
+    roomState.addPlayer(sessionId, session.username)
+    server.rooms.save(session.room, roomState)
+  } else {
+    const isInactivePlayer = roomState.players.some((player) => player.sessionId === sessionId)
+    if (isInactivePlayer) {
+      const indexOfClient = roomState.players.findIndex((player) => player.sessionId === sessionId)
+      roomState.players[indexOfClient].connected = true
+    } else {
+      roomState.addPlayer(sessionId, session.username)
+    }
   }
+
+  server.io.to(session.room).emit("roomStateUpdate", roomState)
+  server.socket.join(session.room)
+  server.socket.emit("joinRoom", {
+    sessionId,
+    roomState,
+    username: session.username,
+  })
+}
+
+function logClientEvents(server: ServerManager, username: string) {
+  server.socket.onAny((eventName, ...args) => {
+    console.log(`${username}: ${eventName}`, args)
+  })
 }
