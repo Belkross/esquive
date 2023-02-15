@@ -1,10 +1,12 @@
-import { blue } from "@mui/material/colors"
+import { blue, indigo, red } from "@mui/material/colors"
 
 const smoothWhiteText = "rgba(255, 255, 255, .85)"
 const smoothBlackText = "rgba(0, 0, 0, .85)"
 
 const darkModePalette = {
   primary: { main: blue[800] },
+  teamOne: { main: indigo[400] },
+  teamTwo: { main: red[400] },
   text: {
     primary: smoothWhiteText,
     opposite: smoothBlackText,

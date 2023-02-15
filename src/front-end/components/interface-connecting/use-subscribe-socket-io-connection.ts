@@ -9,8 +9,6 @@ export function useSubscribeSocketIoConnection(setAppState: Dispatch<SetStateAct
     socket.on("joinRoom", (session) => {
       localStorage.setItem(localStorageKeys.sessionId, session.sessionId)
 
-      //TODO: get the roomState
-
       setTimeout(
         () =>
           setAppState((prevAppState) => ({
@@ -18,6 +16,7 @@ export function useSubscribeSocketIoConnection(setAppState: Dispatch<SetStateAct
             status: "logged",
             username: session.username,
             room: session.roomState.roomName,
+            roomState: session.roomState,
           })),
         FAKE_LOADING_DURATION
       )

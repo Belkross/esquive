@@ -15,6 +15,7 @@ const initialAppState: AppState = {
   status: "connectingToSocketIo",
   username: getInitialUsername(localStorageKeys.username),
   room: undefined,
+  roomState: undefined
 }
 
 export default function App() {
@@ -32,7 +33,7 @@ export default function App() {
       appInterface = <InterfaceLogging appState={appState} setAppState={memoizedSetAppState} />
       break
     case "logged":
-      appInterface = <InterfaceGame />
+      appInterface = <InterfaceGame appState={appState}/>
       break
     default:
       appInterface = <h1>Error</h1>

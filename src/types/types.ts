@@ -1,3 +1,5 @@
+import { RoomState } from "../back-end/config/room-state.js"
+
 export type FlowlessFunction = () => void
 
 export const themeModes = ["dark", "light"] as const
@@ -8,4 +10,5 @@ export type AppState = {
   status: AppStatus
   username: string
   room: string | undefined
+  roomState: RoomState | undefined
 }

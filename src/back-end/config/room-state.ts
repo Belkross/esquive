@@ -1,7 +1,7 @@
 import { shuffleArray } from "../../functions/shuffle-array.js"
 import { MapStorage } from "../../functions/map-storage.js"
 
-type Team = "one" | "two"
+export type Team = "one" | "two"
 type Role = "guesser" | "orator"
 type RoundPhase = "pre round" | "trapping" | "pre guessing one" | "guessing one" | "pre guessing two" | "guessing two"
 
@@ -48,7 +48,7 @@ export class RoomState {
 
   readonly roomName: string
   readonly players: MapStorage<string, PlayerData> = new MapStorage()
-  readonly teams: MapStorage<Team, TeamData> = new MapStorage()
+  readonly teams: Record<Team, TeamData>
   readonly historic: string[] = []
 
   roundPhase: RoundPhase = "pre round"
@@ -66,8 +66,7 @@ export class RoomState {
 
   constructor(roomName: string, secretWordList: string) {
     this.roomName = roomName
-    this.teams.save("one", new TeamData("one"))
-    this.teams.save("two", new TeamData("two"))
+    this.teams = { one: new TeamData("one"), two: new TeamData("two") }
     this.historic.push(`Bienvenue dans le salon ${this.roomName}.`, "La phase de piège va commencer.")
     this.secretWordsDeck = this.initializeSecretWordsDeck(secretWordList)
     this.timer = this.trappingDuration

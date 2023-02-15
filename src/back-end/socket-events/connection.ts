@@ -9,7 +9,6 @@ export function connection(server: ServerManager) {
     server.socket.onAny((eventName, ...args) => {
       console.log(`${session.username}: ${eventName}`, args)
     })
-    //TODO: Envoyer un roomState par défaut au client
 
     server.socket.emit("joinRoom", {
       sessionId: server.socket.handshake.auth.sessionId,
