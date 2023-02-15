@@ -1,5 +1,6 @@
 import { RoomState } from "../../back-end/config/room-state.js"
 import { AppState } from "../../types/types.js"
+import { AdminButtons } from "./admin-buttons.js"
 import { ApplicationBar } from "./application-bar.js"
 import { Score } from "./score/score.js"
 
@@ -13,7 +14,8 @@ export function InterfaceGame({ appState }: Props) {
   return (
     <>
       <Score roomState={roomState} />
-      <ApplicationBar />
+      <AdminButtons roomState={roomState} />
+      <ApplicationBar roomState={roomState} />
     </>
   )
 }
