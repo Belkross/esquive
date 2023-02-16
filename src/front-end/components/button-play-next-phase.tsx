@@ -1,14 +1,14 @@
 import { IconButton } from "@mui/material"
-import { RoomState } from "../../back-end/config/room-state.js"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
 import { doNothing } from "../../functions/do-nothing.js"
+import { AppState } from "../../types/main.js"
 
 type Props = {
-  roomState: RoomState
+  appState: AppState
 }
 
-export function ButtonPlayNextPhase({ roomState }: Props) {
-  doNothing(roomState)
+export function ButtonPlayNextPhase({ appState }: Props) {
+  doNothing(appState)
 
   //const handle_click = () => socket.emit("nextRoundPhase")
 

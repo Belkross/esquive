@@ -1,21 +1,22 @@
-import { RoomState } from "../../back-end/config/room-state.js"
+import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../types/main.js"
 import { AdminButtons } from "./admin-buttons.js"
 import { ApplicationBar } from "./application-bar.js"
 import { Score } from "./score/score.js"
 
-type Props = {
+export type InterfaceGameProps = {
   appState: AppState
+  setAppState: Dispatch<SetStateAction<AppState>>
 }
 
-export function InterfaceGame({ appState }: Props) {
-  const roomState = appState.roomState as RoomState
+export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
+  const clientIsAdmin = appState.roomState.players[appState.browserId].isAdmin
 
   return (
     <>
-      <Score roomState={roomState} />
-      {<AdminButtons roomState={roomState} />}
-      <ApplicationBar roomState={roomState} />
+      <Score roomState={appState.roomState} />
+      {clientIsAdmin && <AdminButtons appState={appState} />}
+      <ApplicationBar appState={appState} setAppState={setAppState} />
     </>
   )
 }

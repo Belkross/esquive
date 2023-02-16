@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react"
+import { RoomState } from "../back-end/config/room-state.js"
 import { getInitialUsername } from "../functions/get-initial-username.js"
 import { AppState } from "../types/main.js"
 import { GlobalFeatures } from "./components/global-features.js"
@@ -8,22 +9,21 @@ import { InterfaceLogging } from "./components/interface-logging/interface-loggi
 import { InterfaceShared } from "./components/interface-shared.js"
 import { initializeSocketIo } from "./config/initialize-socket-io.js"
 import localStorageKeys from "./config/local-storage-keys.js"
-import { useSubscribeLeaveRoom } from "./custom-hooks/use-subscribe-leave-room.js"
 
 initializeSocketIo()
 const initialAppState: AppState = {
   status: "connectingToSocketIo",
   username: getInitialUsername(localStorageKeys.username),
-  room: undefined,
-  roomState: undefined,
-  browserId: localStorage.getItem(localStorageKeys.browserId),
+  browserId: "",
+  room: "",
+  roomState: new RoomState("", ""),
 }
 
 export default function App() {
   const [appState, setAppState] = useState(initialAppState)
   const memoizedSetAppState = useMemo(() => setAppState, [])
 
-  useSubscribeLeaveRoom(memoizedSetAppState)
+  
 
   let appInterface
   switch (appState.status) {
@@ -34,7 +34,7 @@ export default function App() {
       appInterface = <InterfaceLogging appState={appState} setAppState={memoizedSetAppState} />
       break
     case "logged":
-      appInterface = <InterfaceGame appState={appState} />
+      appInterface = <InterfaceGame appState={appState} setAppState={memoizedSetAppState}/>
       break
     default:
       appInterface = <h1>Error</h1>

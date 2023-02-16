@@ -1,16 +1,16 @@
 import { Stack } from "@mui/material"
-import { RoomState } from "../../back-end/config/room-state.js"
+import { AppState } from "../../types/main.js"
 import ButtonsJudgeTrap from "./button-judge-trap.js"
 import { ButtonPlayNextPhase } from "./button-play-next-phase.js"
 
 type Props = {
-  roomState: RoomState
+  appState: AppState
 }
 
-export function AdminButtons({ roomState }: Props) {
+export function AdminButtons({ appState }: Props) {
   return (
     <Stack sx={style_container}>
-      <ButtonPlayNextPhase roomState={roomState} />
+      <ButtonPlayNextPhase appState={appState} />
       <ButtonsJudgeTrap />
     </Stack>
   )

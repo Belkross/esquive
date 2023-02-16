@@ -1,23 +1,18 @@
 import { Box, Stack, SxProps, Typography } from "@mui/material"
-import { RoomState } from "../../back-end/config/room-state.js"
 import shape from "../theme/shape.js"
 import { ButtonChat } from "./button-chat.js"
 import { ButtonMenu } from "./button-menu.js"
 import { ButtonSubmitWord } from "./button-submit-word.js"
+import { InterfaceGameProps } from "./interface-game.js"
 
-type Props = {
-  roomState: RoomState
-}
-
-export function ApplicationBar({ roomState }: Props) {
-
+export function ApplicationBar({ appState, setAppState }: InterfaceGameProps) {
   return (
     <Box sx={style_container}>
       <Typography sx={style_timer}>3:00</Typography>
       <Stack sx={style_stackButtons}>
-        <ButtonSubmitWord roomState={roomState} />
-        <ButtonChat roomState={roomState} />
-        <ButtonMenu />
+        <ButtonSubmitWord roomState={appState.roomState} />
+        <ButtonChat roomState={appState.roomState} />
+        <ButtonMenu appState={appState} setAppState={setAppState}/>
       </Stack>
     </Box>
   )

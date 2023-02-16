@@ -3,19 +3,18 @@ import { randomUUID } from "node:crypto"
 import { createServer } from "node:http"
 import { checkRoomValidity } from "../functions/check-room-validity.js"
 import { checkUsernameValidity } from "../functions/check-username-validity.js"
-import { RoomStorage, SessionStorage } from "../types/server.js"
 import { createIo } from "./config/create-io.js"
-import { MapStorage } from "../functions/map-storage.js"
-import { connection } from "./socket-events/connection.js"
+import { connection } from "./socket-events/connection/connection.js"
 import { disconnect } from "./socket-events/disconnect.js"
-import { leaveRoom } from "./socket-events/leave-room.js"
+import { RoomStorage } from "./config/room-storage.js"
+import { SessionStorage } from "./config/session-storage.js"
 
 const port = process.env.PORT || 1000
 const app = express()
 const httpServer = createServer(app)
 const io = createIo(httpServer)
-const sessions: SessionStorage = new MapStorage()
-const rooms: RoomStorage = new MapStorage()
+const sessions = new SessionStorage()
+const rooms = new RoomStorage()
 
 app.get("/", (request, response) => response.send("Server is active"))
 
@@ -33,7 +32,7 @@ io.use((socket, next) => {
     //TODO: vérifier que la room n’est pas pleine
     const newBrowserId = randomUUID()
     socket.handshake.auth.browserId = newBrowserId
-    sessions.save(newBrowserId, { username, room })
+    sessions.add(newBrowserId, username, room)
     return next()
   }
 })
@@ -42,7 +41,6 @@ io.on("connection", (socket) => {
   const server = { socket, io, sessions, rooms }
 
   connection(server)
-  leaveRoom(server)
   disconnect(server)
 })
 

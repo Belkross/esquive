@@ -9,7 +9,7 @@ export type AppStatus = "logging" | "connectingToSocketIo" | "logged"
 export type AppState = {
   status: AppStatus
   username: string
-  room: string | undefined
-  roomState: RoomState | undefined
-  browserId: string | null
+  room: string
+  browserId: string
+  roomState: RoomState
 }

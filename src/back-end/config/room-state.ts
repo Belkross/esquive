@@ -51,7 +51,7 @@ export class RoomState {
   private readonly historicLengthLimit = 50
 
   readonly roomName: string
-  readonly players: PlayerData[] = []
+  readonly players: { [browserId: string]: PlayerData } = {}
   readonly teams: Record<Team, TeamData>
   readonly historic: string[] = []
 
@@ -84,9 +84,18 @@ export class RoomState {
   addPlayer(browserId: string, username: string) {
     const playerData = new PlayerData(browserId, username)
 
-    const isCreatorOfTheRoom = this.players.length === 0
+    const isCreatorOfTheRoom = Object.keys(this.players).length === 0
     if (isCreatorOfTheRoom) playerData.isAdmin = true
 
-    this.players.push(playerData)
+    this.players[browserId] = playerData
+  }
+
+  deletePlayer(browserId: string) {
+    delete this.players[browserId]
+  }
+
+  getActivePlayerNumber() {
+    const players = Object.values(this.players)
+    return players.filter((player) => player.connected === true).length
   }
 }
