@@ -3,7 +3,7 @@ import { doNothing } from "../../../functions/do-nothing.js"
 import ChangeIcon from "@mui/icons-material/Replay.js"
 import { AppState } from "../../../types/main.js"
 import { getClientTeam } from "../../../functions/get-client-team.js"
-import { RoomState } from "../../../back-end/config/room-state.js"
+import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 
 type Props = {
   appState: AppState

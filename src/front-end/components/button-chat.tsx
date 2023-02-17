@@ -1,4 +1,4 @@
-import { RoomState } from "../../back-end/config/room-state.js"
+import { RoomState } from "../../back-end/config/room-state/room-state.js"
 import { doNothing } from "../../functions/do-nothing.js"
 import { ButtonResponsive } from "./button-responsive.js"
 import ChatIcon from "@mui/icons-material/Chat"

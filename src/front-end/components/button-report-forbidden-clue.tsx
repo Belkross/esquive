@@ -1,5 +1,5 @@
 import { Stack, IconButton, Typography } from "@mui/material"
-import { RoomState } from "../../back-end/config/room-state.js"
+import { RoomState } from "../../back-end/config/room-state/room-state.js"
 import { doNothing } from "../../functions/do-nothing.js"
 import { getClientTeam } from "../../functions/get-client-team.js"
 import { AppState } from "../../types/main.js"

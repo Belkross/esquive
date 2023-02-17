@@ -1,5 +1,5 @@
 import { Stack, SxProps, Typography } from "@mui/material"
-import { RoomState } from "../../../back-end/config/room-state.js"
+import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 import { Points } from "./points.js"
 import { RoundAdvancementVisual } from "./round-advancement-visual.js"
 

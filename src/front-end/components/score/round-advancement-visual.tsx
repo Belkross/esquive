@@ -1,7 +1,8 @@
 import SuccessIcon from "@mui/icons-material/CheckCircle"
 import NeutralIcon from "@mui/icons-material/Pageview"
 import FailureIcon from "@mui/icons-material/Cancel"
-import { RoomState, Team } from "../../../back-end/config/room-state.js"
+import { RoomState } from "../../../back-end/config/room-state/room-state.js"
+import { Team } from "../../../types/room-state.js"
 
 type Props = {
   team: Team

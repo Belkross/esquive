@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
-import { RoomState } from "../back-end/config/room-state.js"
+import { RoomState } from "../back-end/config/room-state/room-state.js"
 
 export type FlowlessFunction = () => void
 

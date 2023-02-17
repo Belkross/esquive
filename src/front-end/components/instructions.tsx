@@ -1,5 +1,5 @@
 import { SxProps, Typography } from "@mui/material"
-import { RoomState } from "../../back-end/config/room-state.js"
+import { RoomState } from "../../back-end/config/room-state/room-state.js"
 import { AppState } from "../../types/main.js"
 
 type Props = {

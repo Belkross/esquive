@@ -1,4 +1,4 @@
-import { RoomState } from "./room-state.js"
+import { RoomState } from "./room-state/room-state.js"
 
 export class RoomStorage {
   private readonly storage: { [roomName: string]: RoomState } = {}

@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react"
-import { RoomState } from "../back-end/config/room-state.js"
+import { RoomState } from "../back-end/config/room-state/room-state.js"
 import { getInitialUsername } from "../functions/get-initial-username.js"
 import { AppState } from "../types/main.js"
 import { GlobalFeatures } from "./components/global-features.js"
@@ -23,8 +23,6 @@ export default function App() {
   const [appState, setAppState] = useState(initialAppState)
   const memoizedSetAppState = useMemo(() => setAppState, [])
 
-  
-
   let appInterface
   switch (appState.status) {
     case "connectingToSocketIo":
@@ -34,7 +32,7 @@ export default function App() {
       appInterface = <InterfaceLogging appState={appState} setAppState={memoizedSetAppState} />
       break
     case "logged":
-      appInterface = <InterfaceGame appState={appState} setAppState={memoizedSetAppState}/>
+      appInterface = <InterfaceGame appState={appState} setAppState={memoizedSetAppState} />
       break
     default:
       appInterface = <h1>Error</h1>

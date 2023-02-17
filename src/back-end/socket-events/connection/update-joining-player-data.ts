@@ -1,4 +1,4 @@
-import { RoomState } from "../../config/room-state.js"
+import { RoomState } from "../../config/room-state/room-state.js"
 
 export function updateJoiningPlayerData(roomState: RoomState, browserId: string, username: string) {
   const isNewPlayer = roomState.players[browserId] === undefined

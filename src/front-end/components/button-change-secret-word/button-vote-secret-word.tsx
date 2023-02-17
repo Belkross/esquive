@@ -1,5 +1,5 @@
 import { AppState } from "../../../types/main.js"
-import { RoomState } from "../../../back-end/config/room-state.js"
+import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 import { getClientTeam } from "../../../functions/get-client-team.js"
 import { ButtonThumb } from "../button-thumb.js"
 

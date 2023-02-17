@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography"
-import { Team, RoomState } from "../../../back-end/config/room-state.js"
+import { Team, RoomState } from "../../../back-end/config/room-state/room-state.js"
 
 type Props = {
   team: Team
