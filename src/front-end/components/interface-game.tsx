@@ -5,10 +5,12 @@ import { getClientTeam } from "../../functions/get-client-team.js"
 import { AppState } from "../../types/main.js"
 import { AdminButtons } from "./admin-buttons.js"
 import { ApplicationBar } from "./application-bar.js"
+import { ButtonReportForbiddenClue } from "./button-report-forbidden-clue.js"
 import { ChangeSecretWord } from "./change-secret-word.js"
 import { GameHistoric } from "./game-historic.js"
 import { Instructions } from "./instructions.js"
 import { Score } from "./score/score.js"
+import { TrapsRemaining } from "./traps-remaining.js"
 
 export type InterfaceGameProps = {
   appState: AppState
@@ -28,8 +30,8 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
       <GameHistoric appState={appState} />
       <Stack sx={style_container(clientTeam)}>
         <ChangeSecretWord appState={appState} />
-        {/* <ButtonReportForbiddenClue /> */}
-        {/* <TrapsRemaining team={clientTeam} />e */}
+        <ButtonReportForbiddenClue appState={appState} />
+        <TrapsRemaining appState={appState} />
         {/* <Traps team={clientTeam} /> */}
       </Stack>
     </>
