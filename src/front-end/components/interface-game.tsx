@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../types/main.js"
 import { AdminButtons } from "./admin-buttons.js"
 import { ApplicationBar } from "./application-bar.js"
+import { Instructions } from "./instructions.js"
 import { Score } from "./score/score.js"
 
 export type InterfaceGameProps = {
@@ -14,9 +15,10 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
 
   return (
     <>
+      <ApplicationBar appState={appState} setAppState={setAppState} />
       <Score roomState={appState.roomState} />
       {clientIsAdmin && <AdminButtons appState={appState} />}
-      <ApplicationBar appState={appState} setAppState={setAppState} />
+      <Instructions appState={appState} />
     </>
   )
 }
