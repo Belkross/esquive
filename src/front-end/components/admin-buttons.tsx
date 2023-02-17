@@ -20,4 +20,5 @@ const style_container = {
   flexDirection: "row",
   alignSelf: "center",
   gap: { xs: 1, sm: 2 },
+  my: 1
 }

@@ -13,7 +13,7 @@ export function Instructions({ appState }: Props) {
 }
 
 const style_typography: SxProps = {
-  marginTop: 2,
+  my: 1,
 }
 
 function pickInstruction(roomState: RoomState, browserId: string) {
