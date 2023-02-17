@@ -1,7 +1,5 @@
-import { Stack } from "@mui/material"
+import { Stack, SxProps } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
-import { Team } from "../../back-end/config/room-state.js"
-import { getClientTeam } from "../../functions/get-client-team.js"
 import { AppState } from "../../types/main.js"
 import { AdminButtons } from "./admin-buttons.js"
 import { ApplicationBar } from "./application-bar.js"
@@ -20,16 +18,17 @@ export type InterfaceGameProps = {
 
 export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
   const clientIsAdmin = appState.roomState.players[appState.browserId].isAdmin
-  const clientTeam = getClientTeam(appState.roomState, appState.browserId)
 
   return (
     <>
       <ApplicationBar appState={appState} setAppState={setAppState} />
-      <Score roomState={appState.roomState} />
-      {clientIsAdmin && <AdminButtons appState={appState} />}
-      <Instructions appState={appState} />
-      <GameHistoric appState={appState} />
-      <Stack sx={style_container(clientTeam)}>
+      <Stack sx={style_partOne}>
+        <Score roomState={appState.roomState} />
+        {clientIsAdmin && <AdminButtons appState={appState} />}
+        <Instructions appState={appState} />
+        <GameHistoric appState={appState} />
+      </Stack>
+      <Stack sx={style_partTwo}>
         <ChangeSecretWord appState={appState} />
         <ButtonReportForbiddenClue appState={appState} />
         <TrapsRemaining appState={appState} />
@@ -39,14 +38,14 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
   )
 }
 
-const style_container = (team: Team) => ({
+const style_partOne: SxProps = {
+  marginBottom: 4
+}
+
+const style_partTwo: SxProps = {
   width: "100%",
-  borderWidth: "3px",
-  borderStyle: "solid",
-  borderColor: team === "one" ? "teamOne.main" : "teamTwo.main",
   borderLeft: { sm: "none" },
   height: "100%",
-  backgroundColor: "background.paper",
   paddingBottom: 2,
   paddingTop: 1,
-})
+}

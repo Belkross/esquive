@@ -6,7 +6,7 @@ type Props = {
   appState: AppState
 }
 
-export function VoteSecretWordButtons({ appState }: Props) {
+export function ButtonGroupVoteSecretWord({ appState }: Props) {
   return (
     <Stack sx={style_thumbButtons}>
       <ButtonVoteSecretWord voteType={true} appState={appState} />

@@ -20,5 +20,5 @@ const style_container: SxProps = {
   maxWidth: "20cm",
   paddingBottom: { xs: 12, md: 10 },
   paddingTop: 2,
-  px: { xs: 1.5 },
+  px: { xs: 1.3, sm: 2 },
 }

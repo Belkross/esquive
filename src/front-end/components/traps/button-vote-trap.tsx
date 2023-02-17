@@ -16,6 +16,7 @@ export function ButtonVoteTrap({ voteType, trapIndex, appState }: Props) {
     isThumbUp: voteType,
     clientVote: roomState.players[clientTeam].trapOpinions[trapIndex],
     votersUsername: getVotersUsername(appState, voteType, trapIndex),
+    small: true
     //onClick: (boolean) => () => socket.emit("submitTrapOpinion", trapIndex, boolean),
   }
 

@@ -29,7 +29,7 @@ const style_container = {
   alignItems: "center",
   paddingTop: 2,
   gap: 1,
-  px: 2,
+  px: 1,
   marginBottom: 2,
 }
 

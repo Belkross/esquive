@@ -29,7 +29,7 @@ const style_container: SxProps = {
   backgroundColor: "background.navBar",
   px: 3,
   py: 1.5,
-  boxShadow: 6,
+  boxShadow: 7,
   width: "100%",
 }
 

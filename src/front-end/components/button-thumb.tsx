@@ -3,13 +3,16 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown"
 import { Tooltip, Badge, IconButton } from "@mui/material"
 import { doNothing } from "../../functions/do-nothing.js"
 
+
+
 type Props = {
   isThumbUp: boolean
   clientVote: boolean | undefined
   votersUsername: string[]
+  small?: boolean
 }
 
-export function ButtonThumb({ isThumbUp, clientVote, votersUsername }: Props) {
+export function ButtonThumb({ isThumbUp, clientVote, votersUsername, small }: Props) {
   const votersUsernameString = votersUsername.join(", ")
   const badgeColor = isThumbUp ? "success" : "error"
   const icon = isThumbUp ? <ThumbUpIcon /> : <ThumbDownIcon />
@@ -17,7 +20,7 @@ export function ButtonThumb({ isThumbUp, clientVote, votersUsername }: Props) {
   return (
     <Tooltip title={votersUsernameString}>
       <Badge color={badgeColor} badgeContent={votersUsername.length}>
-        <IconButton sx={style_button(isThumbUp, clientVote)} onClick={doNothing}>
+        <IconButton sx={style_button(isThumbUp, clientVote, small)} onClick={doNothing}>
           {icon}
         </IconButton>
       </Badge>
@@ -25,9 +28,10 @@ export function ButtonThumb({ isThumbUp, clientVote, votersUsername }: Props) {
   )
 }
 
-const style_button = (buttonVoteType: boolean, clientVote: boolean | undefined) => {
+const style_button = (buttonVoteType: boolean, clientVote: boolean | undefined, small: boolean) => {
   const buttonType = buttonVoteType ? "thumbUp" : "thumbDown"
   const buttonMainColor = buttonType === "thumbUp" ? "success.main" : "error.main"
+  const size = small ? "30px" : "inherit"
 
   const getIconColor = () => {
     const buttonIsPressed =
@@ -36,8 +40,8 @@ const style_button = (buttonVoteType: boolean, clientVote: boolean | undefined) 
   }
 
   return {
-    width: "30px",
-    height: "30px",
+    width: size,
+    height: size,
     borderColor: buttonMainColor,
     color: getIconColor(),
     backgroundColor: "background.paper",
