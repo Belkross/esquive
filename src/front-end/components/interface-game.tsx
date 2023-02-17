@@ -11,6 +11,7 @@ import { GameHistoric } from "./game-historic.js"
 import { Instructions } from "./instructions.js"
 import { Score } from "./score/score.js"
 import { TrapsRemaining } from "./traps-remaining.js"
+import { Traps } from "./traps/traps.js"
 
 export type InterfaceGameProps = {
   appState: AppState
@@ -32,7 +33,7 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
         <ChangeSecretWord appState={appState} />
         <ButtonReportForbiddenClue appState={appState} />
         <TrapsRemaining appState={appState} />
-        {/* <Traps team={clientTeam} /> */}
+        <Traps appState={appState} />
       </Stack>
     </>
   )

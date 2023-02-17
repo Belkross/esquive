@@ -3,9 +3,11 @@ import { shuffleArray } from "../../functions/shuffle-array.js"
 export type Team = "one" | "two"
 type Role = "guesser" | "orator"
 type RoundPhase = "pre round" | "trapping" | "pre guessing one" | "guessing one" | "pre guessing two" | "guessing two"
+type Trap = { value: string; author: string }
 
 class PlayerData {
   readonly browserId: string
+  readonly trapOpinions: { [trapIndex: number]: boolean | undefined } = {}
   username: string
   team: Team = "one"
   role: Role = "guesser"
@@ -13,7 +15,6 @@ class PlayerData {
   isAdmin = false
   isTyping = false
   secretWordOpinion: boolean | undefined = undefined
-  trapOpinion: undefined
 
   constructor(browserId: string, username: string) {
     this.browserId = browserId
@@ -24,7 +25,7 @@ class PlayerData {
 class TeamData {
   readonly color: "indigo" | "rouge"
   readonly opponent: Team
-  readonly traps: string[] = []
+  readonly traps: Trap[] = []
   readonly guesses: string[] = []
   score = 0
   secretWord = ""
