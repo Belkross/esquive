@@ -1,5 +1,4 @@
-type Props = {}
-export function MenuSettings({}: Props) {
+export function MenuSettings() {
   return (
     <>
       <div>Tab-Menu-Settings</div>

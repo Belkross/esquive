@@ -1,5 +1,4 @@
-type Props = {}
-export function MenuRules({}: Props) {
+export function MenuRules() {
   return (
     <>
       <div>Tab-Menu-Rules</div>

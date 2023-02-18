@@ -18,7 +18,7 @@ const style_container: SxProps = {
   flexDirection: "column",
   alignItems: "center",
   maxWidth: "20cm",
-  paddingBottom: { xs: 12, md: 10 },
+  paddingBottom: { xs: 12, md: 10 }, //to make sure content don’t hide behind app bar
   paddingTop: 2,
   px: { xs: 1.3, sm: 2 },
 }

@@ -21,7 +21,7 @@ export function ButtonMenu({ appState, setAppState }: InterfaceGameProps) {
       tabContent = <MenuMain setAppState={setAppState} />
       break
     case "team":
-      tabContent = <MenuTeam />
+      tabContent = <MenuTeam appState={appState} />
       break
     case "rules":
       tabContent = <MenuRules />
@@ -42,24 +42,21 @@ export function ButtonMenu({ appState, setAppState }: InterfaceGameProps) {
         PaperProps={{ sx: style_drawer }}
       >
         <Stack sx={style_tabContent}>{tabContent}</Stack>
-        <TabGroupMenu setSelectedTab={setSelectedTab} close={drawer.remove}/>
+        <TabGroupMenu setSelectedTab={setSelectedTab} close={drawer.remove} />
       </Drawer>
     </>
   )
 }
 
 const style_drawer: SxProps = {
-  
-flexFlow: "column nowrap",
-justifyContent: "space-between",
+  flexFlow: "column nowrap",
+  justifyContent: "space-between",
   width: "100%",
   height: "100%",
   padding: 2,
+  paddingBottom: 12 //to make sure content don’t hide behind app bar
 }
-
-
 
 const style_tabContent: SxProps = {
   //
 }
-

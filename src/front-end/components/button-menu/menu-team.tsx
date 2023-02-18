@@ -1,8 +1,13 @@
-type Props = {}
-export function MenuTeam({}: Props) {
+import { AppState } from "../../../types/main.js"
+import { Teams } from "../teams.js"
+
+type Props = {
+  appState: AppState
+}
+export function MenuTeam({ appState }: Props) {
   return (
     <>
-      <div>Tab-Menu-Team</div>
+      <Teams appState={appState} />
     </>
   )
 }
