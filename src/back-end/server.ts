@@ -19,7 +19,12 @@ const rooms = new RoomStorage()
 app.get("/", (request, response) => response.send("Server is active"))
 
 io.use((socket, next) => {
-  const { browserId, username, room } = socket.handshake.auth
+  //const { browserId, username, room } = socket.handshake.auth
+  //to skip the login when developing
+  const browserId = ""
+  const username = "DevBelkross"
+  const room = "DevRoom"
+
   const noLoginInformation = username === undefined && room === undefined
 
   if (noLoginInformation) {

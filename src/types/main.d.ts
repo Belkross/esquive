@@ -15,3 +15,5 @@ export type AppState = {
 }
 
 export type setState<Type> = Dispatch<SetStateAction<Type>>
+
+export type MenuTabId = "main" | "team" | "rules" | "settings"
