@@ -58,5 +58,8 @@ const style_drawer: SxProps = {
 }
 
 const style_tabContent: SxProps = {
-  //
+  display: "flex",
+  flexFlow: "column nowrap",
+  alignItems: "center",
+  gap: 2
 }
