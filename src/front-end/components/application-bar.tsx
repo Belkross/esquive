@@ -3,7 +3,7 @@ import shape from "../theme/shape.js"
 import { ButtonChat } from "./button-chat.js"
 import { ButtonMenu } from "./button-menu/button-menu.js"
 import { ButtonSubmitWord } from "./button-submit-word.js"
-import { InterfaceGameProps } from "./interface-game.js"
+import { InterfaceGameProps } from "./interface-game/interface-game.js"
 
 export function ApplicationBar({ appState, setAppState }: InterfaceGameProps) {
   return (

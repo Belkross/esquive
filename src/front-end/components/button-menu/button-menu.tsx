@@ -2,7 +2,7 @@ import { Drawer, Stack, SxProps } from "@mui/material"
 import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
 import { ButtonResponsive } from "../button-responsive.js"
 import MenuIcon from "@mui/icons-material/Menu"
-import { InterfaceGameProps } from "../interface-game.js"
+import { InterfaceGameProps } from "../interface-game/interface-game.js"
 import { useState } from "react"
 import { MenuMain } from "./menu-main.js"
 import { MenuTeam } from "./menu-team.js"
@@ -54,12 +54,12 @@ const style_drawer: SxProps = {
   width: "100%",
   height: "100%",
   padding: 2,
-  paddingBottom: 12 //to make sure content don’t hide behind app bar
+  paddingBottom: 12, //to make sure content don’t hide behind app bar
 }
 
 const style_tabContent: SxProps = {
   display: "flex",
   flexFlow: "column nowrap",
   alignItems: "center",
-  gap: 2
+  gap: 2,
 }

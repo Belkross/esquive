@@ -1,15 +1,16 @@
 import { Stack, SxProps } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
-import { AppState } from "../../types/main.js"
-import { AdminButtons } from "./admin-buttons.js"
-import { ApplicationBar } from "./application-bar.js"
-import { ButtonReportForbiddenClue } from "./button-report-forbidden-clue.js"
-import { ChangeSecretWord } from "./change-secret-word.js"
-import { GameHistoric } from "./game-historic.js"
-import { Instructions } from "./instructions.js"
-import { Score } from "./score/score.js"
-import { TrapsRemaining } from "./traps-remaining.js"
-import { Traps } from "./traps/traps.js"
+import { AppState } from "../../../types/main.js"
+import { AdminButtons } from "../admin-buttons.js"
+import { ApplicationBar } from "../application-bar.js"
+import { ButtonReportForbiddenClue } from "../button-report-forbidden-clue.js"
+import { ChangeSecretWord } from "../change-secret-word.js"
+import { GameHistoric } from "../game-historic.js"
+import { Instructions } from "../instructions.js"
+import { Score } from "../score/score.js"
+import { TrapsRemaining } from "../traps-remaining.js"
+import { Traps } from "../traps/traps.js"
+import { useSubscribeRoomStateUpdate } from "./use-subscribe-room-state-update.js"
 
 export type InterfaceGameProps = {
   appState: AppState
@@ -18,6 +19,8 @@ export type InterfaceGameProps = {
 
 export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
   const clientIsAdmin = appState.roomState.players[appState.browserId].isAdmin
+
+  useSubscribeRoomStateUpdate(setAppState)
 
   return (
     <>
@@ -39,7 +42,7 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
 }
 
 const style_partOne: SxProps = {
-  marginBottom: 4
+  marginBottom: 4,
 }
 
 const style_partTwo: SxProps = {
