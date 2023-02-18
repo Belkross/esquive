@@ -1,5 +1,6 @@
 import { Team, RoundPhase } from "../../../types/room-state.js"
 import { addPlayer } from "./methods/add-player.js"
+import { changeRole } from "./methods/change-role.js"
 import { deletePlayer } from "./methods/delete-player.js"
 import { getActivePlayerNumber } from "./methods/get-active-player-number.js"
 import { initializeSecretWordsDeck } from "./methods/initialize-secret-word-deck.js"
@@ -45,6 +46,7 @@ export class RoomState {
   }
 
   addPlayer = addPlayer
+  changeRole = changeRole
   deletePlayer = deletePlayer
   getActivePlayerNumber = getActivePlayerNumber
   initializeSecretWordsDeck = initializeSecretWordsDeck

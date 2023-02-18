@@ -8,6 +8,7 @@ import { connection } from "./socket-events/connection/connection.js"
 import { disconnect } from "./socket-events/disconnect.js"
 import { RoomStorage } from "./config/room-storage.js"
 import { SessionStorage } from "./config/session-storage.js"
+import { changeRole } from "./socket-events/change-role.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -46,6 +47,7 @@ io.on("connection", (socket) => {
   const server = { socket, io, sessions, rooms }
 
   connection(server)
+  changeRole(server)
   disconnect(server)
 })
 

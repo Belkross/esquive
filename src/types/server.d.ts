@@ -11,7 +11,7 @@ export type ServerToClientEvents = {
 }
 
 export type ClientToServerEvents = {
-  //...
+  changeRole: (team: Team, role: Role) => void
 }
 
 export type SocketManager = Socket<ClientToServerEvents, ServerToClientEvents>

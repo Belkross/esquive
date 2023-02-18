@@ -3,10 +3,10 @@ import TalkerIcon from "@mui/icons-material/RecordVoiceOver"
 import { AppState } from "../../../types/main.js"
 import { Team, Role } from "../../../types/room-state.js"
 import { getClientTeam } from "../../../functions/get-client-team.js"
-import { doNothing } from "../../../functions/do-nothing.js"
 import { ButtonChangeRoleTitle } from "./title-button-change-role.js"
 import { TeammatesList } from "./teammate-list.js"
 import { Stack, IconButton } from "@mui/material"
+import { socket } from "../../config/initialize-socket-io.js"
 
 type Props = {
   appState: AppState
@@ -17,11 +17,11 @@ type Props = {
 export function ButtonChangeRole({ team, role, appState }: Props) {
   const whileDisabled = getWhileDisabled(appState, team)
 
-  //const handleClick = () => socket.emit("changeRole", team, role)
+  const handleClick = () => socket.emit("changeRole", team, role)
 
   return (
     <Stack sx={style_container}>
-      <IconButton aria-label="Changer Role" sx={style_iconButton(team)} onClick={doNothing} disabled={whileDisabled}>
+      <IconButton aria-label="Changer Role" sx={style_iconButton(team)} onClick={handleClick} disabled={whileDisabled}>
         {role === "guesser" ? <GuesserIcon /> : <TalkerIcon />}
       </IconButton>
       <Stack>
