@@ -1,6 +1,7 @@
 import { Button } from "@mui/material"
 import { AppState, setState } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
+import { SwitchThemeMode } from "../switch-theme-mode.js"
 
 type Props = {
   setAppState: setState<AppState>
@@ -12,7 +13,7 @@ export function MenuMain({ setAppState }: Props) {
   }
   return (
     <>
-      <div>TabMain</div>
+      <SwitchThemeMode />
       <Button onClick={handleClick}>Leave</Button>
     </>
   )
