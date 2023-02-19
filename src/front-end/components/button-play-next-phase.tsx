@@ -1,33 +1,34 @@
 import { IconButton } from "@mui/material"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
-import { doNothing } from "../../functions/do-nothing.js"
 import { AppState } from "../../types/main.js"
+import { socket } from "../config/initialize-socket-io.js"
 
 type Props = {
   appState: AppState
 }
 
-export function ButtonPlayNextPhase({ appState }: Props) {
-  doNothing(appState)
+const handle_click = () => socket.emit("nextRoundPhase")
 
-  //const handle_click = () => socket.emit("nextRoundPhase")
+export function ButtonPlayNextPhase({ appState }: Props) {
+  const whileDisabled = getWhileDisabled(appState)
 
   return (
-    <IconButton /* onClick={handle_click} disabled={whileDisabled(roomState)} */>
+    <IconButton onClick={handle_click} disabled={whileDisabled}>
       <PlayArrowIcon />
     </IconButton>
   )
 }
 
-/* function whileDisabled(roomState: RoomState) {
-  const clientId = socket.id
-  const clientIsAdmin = roomState.players[clientId].isAdmin
+function getWhileDisabled(appState: AppState) {
+  const { roomState, browserId } = appState
+
+  const clientIsAdmin = roomState.players[browserId].isAdmin
 
   const roundPhase = roomState.roundPhase
-  const duringPassiveRoundPhase =
+  const duringPassivePhase =
     roundPhase === "pre round" || roundPhase === "pre guessing one" || roundPhase === "pre guessing two"
 
-  const whileActivated = clientIsAdmin && duringPassiveRoundPhase
+  const whileActivated = clientIsAdmin && duringPassivePhase
 
   return !whileActivated
-} */
+}
