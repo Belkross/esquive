@@ -1,8 +1,8 @@
-import { io, Socket } from "socket.io-client"
-import { ServerToClientEvents, ClientToServerEvents } from "../../types/server"
+import { io } from "socket.io-client"
+import { SocketClient } from "../../types/server"
 import localStorageKeys from "./local-storage-keys.js"
 
-export let socket: Socket<ServerToClientEvents, ClientToServerEvents>
+export let socket: SocketClient
 
 export function initializeSocketIo() {
   const environment = process.env.NODE_ENV
