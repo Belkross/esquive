@@ -17,10 +17,10 @@ export type ClientToServerEvents = {
 }
 
 export type SocketManager = Socket<ClientToServerEvents, ServerToClientEvents>
-export type IoManager = Server<ClientToServerEvents, ServerToClientEvents>
+export type Io = Server<ClientToServerEvents, ServerToClientEvents>
 
 export type ServerManager = {
-  io: IoManager
+  io: Io
   socket: SocketManager
   sessions: SessionStorage
   rooms: RoomStorage

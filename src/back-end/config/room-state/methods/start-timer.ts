@@ -1,7 +1,7 @@
-import { IoManager } from "../../../../types/server.js"
+import { Io } from "../../../../types/server.js"
 import { RoomState } from "../room-state.js"
 
-export async function startTimer(this: RoomState, io: IoManager) {
+export async function startTimer(this: RoomState, io: Io) {
   this.timerIsRunning = true
 
   await new Promise((resolve /* , reject */) => setTimeout(resolve, 1000)) //avoid the timer to instantly loose a second on activation
