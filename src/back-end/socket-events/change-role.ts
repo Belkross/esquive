@@ -1,6 +1,7 @@
 import { getSocketRoom } from "../../functions/get-socket-room.js"
 import { ServerManager } from "../../types/server.js"
 import { sessionNotFound } from "../../functions/session-not-found.js"
+import { RoomState } from "../config/room-state/room-state.js"
 
 export function changeRole(server: ServerManager) {
   const { socket, io, browserId } = server
@@ -9,12 +10,15 @@ export function changeRole(server: ServerManager) {
     if (sessionNotFound(server)) return
 
     const { roomName, roomState } = getSocketRoom(server)
-    const roundPhase = roomState.roundPhase
-    const notGuessingPhasesYet = roundPhase === "pre round" || roundPhase === "trapping"
 
-    if (notGuessingPhasesYet) {
+    if (actionAllowed(roomState)) {
       roomState.changeRole({ browserId, newTeam: team, newRole: role })
       io.in(roomName).emit("roomStateUpdate", roomState)
     }
   })
+}
+
+function actionAllowed(roomState: RoomState) {
+  const roundPhase = roomState.roundPhase
+  return roundPhase === "pre round" || roundPhase === "trapping"
 }
