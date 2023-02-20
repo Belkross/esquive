@@ -10,6 +10,7 @@ export type ServerToClientEvents = {
   alert: (alertId: AlertId) => void
   joinRoom: (browserId: string, roomState: RoomState) => void
   roomStateUpdate: (state: RoomState) => void
+  closeDuplicatedSessions: (browserId: string) => void
 }
 
 export type ClientToServerEvents = {

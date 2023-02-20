@@ -3,6 +3,7 @@ export type AlertId =
   | "invalidUsername"
   | "invalidRoom"
   | "invalidLoginInformations"
+  | "sessionNotFound"
   | "serverDown"
   | "criticalError"
 
@@ -37,4 +38,8 @@ export const alerts: Record<AlertId, AlertData> = {
     severity: "error",
     message: "Erreur critique. Merci de signaler le problème en expliquant le contexte.",
   },
+  sessionNotFound: {
+    severity: "warning",
+    message: "Vous avez été déconnecté du salon. Veuillez rafraîchir la page."
+  }
 }

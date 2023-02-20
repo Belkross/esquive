@@ -1,10 +1,13 @@
 import { getSocketRoom } from "../../functions/get-socket-room.js"
 import { ServerManager } from "../../types/server.js"
+import { sessionNotFound } from "../../functions/session-not-found.js"
 
 export function nextRoundPhase(server: ServerManager) {
   const { io, socket, browserId } = server
 
   socket.on("nextRoundPhase", () => {
+    if (sessionNotFound(server)) return
+
     const { roomName, roomState } = getSocketRoom(server)
     const clientIsAdmin = roomState.players[browserId].isAdmin
 

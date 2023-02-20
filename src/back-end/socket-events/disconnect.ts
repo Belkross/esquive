@@ -3,8 +3,10 @@ import { ServerManager } from "../../types/server"
 
 export function disconnect(server: ServerManager) {
   const { sessions, rooms, io, socket, browserId } = server
-  
+
   socket.on("disconnect", (reason) => {
+    if (sessions.get(browserId) === undefined) return //session not found
+
     const { roomName, roomState } = getSocketRoom(server)
     const nobodyStillPlaying = roomState.getActivePlayerNumber() <= 1
     const clientManuallyDisconnect = reason === "client namespace disconnect"
@@ -22,6 +24,7 @@ export function disconnect(server: ServerManager) {
       roomState.players[browserId].connected = false
     }
 
+    io.in(roomName).emit("closeDuplicatedSessions", browserId)
     io.in(roomName).emit("roomStateUpdate", roomState)
   })
 }

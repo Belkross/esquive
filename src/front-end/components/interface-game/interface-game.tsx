@@ -10,6 +10,7 @@ import { Instructions } from "../instructions.js"
 import { Score } from "../score/score.js"
 import { TrapsRemaining } from "../traps-remaining.js"
 import { Traps } from "../traps/traps.js"
+import { useSubscribeCloseDuplicatedSessions } from "./use-subscribe-close-duplicated-sessions.js"
 import { useSubscribeRoomStateUpdate } from "./use-subscribe-room-state-update.js"
 
 export type InterfaceGameProps = {
@@ -20,6 +21,7 @@ export type InterfaceGameProps = {
 export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
   const clientIsAdmin = appState.roomState.players[appState.browserId].isAdmin
 
+  useSubscribeCloseDuplicatedSessions(appState, setAppState)
   useSubscribeRoomStateUpdate(setAppState)
 
   return (
