@@ -1,6 +1,6 @@
 import { io } from "socket.io-client"
 import { SocketClient } from "../../types/server"
-import localStorageKeys from "./local-storage-keys.js"
+import storageKeys from "./storage-keys.js"
 
 export let socket: SocketClient
 
@@ -21,7 +21,7 @@ export function initializeSocketIo() {
   }
 
   socket = io(serverUrl, {
-    auth: { browserId: sessionStorage.getItem(localStorageKeys.browserId) },
+    auth: { browserId: sessionStorage.getItem(storageKeys.browserId) },
   })
 
   socket.onAny((eventName, ...args) => {

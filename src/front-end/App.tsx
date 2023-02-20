@@ -8,12 +8,12 @@ import { InterfaceGame } from "./components/interface-game/interface-game.js"
 import { InterfaceLogging } from "./components/interface-logging/interface-logging.js"
 import { InterfaceShared } from "./components/interface-shared.js"
 import { initializeSocketIo } from "./config/initialize-socket-io.js"
-import localStorageKeys from "./config/local-storage-keys.js"
+import storageKeys from "./config/storage-keys.js"
 
 initializeSocketIo()
 const initialAppState: AppState = {
   status: "connectingToSocketIo",
-  username: getInitialUsername(localStorageKeys.username),
+  username: getInitialUsername(storageKeys.username),
   browserId: "",
   room: "",
   roomState: new RoomState("", ""),
