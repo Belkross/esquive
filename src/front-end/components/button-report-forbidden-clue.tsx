@@ -10,7 +10,7 @@ type Props = {
 }
 
 export function ButtonReportForbiddenClue({ appState }: Props) {
-  const whileDisabled = getWhileDisabled(appState.roomState, appState.browserId)
+  const whileDisabled = getWhileDisabled(appState.roomState, appState.sessionId)
 
   //const handleClick = () => socket.emit("reportForbiddenClue")
 
@@ -33,8 +33,8 @@ const style_container = {
   marginBottom: 2,
 }
 
-function getWhileDisabled(roomState: RoomState, browserId: string) {
-  const opponentTeam = getClientTeam(roomState, browserId) === "one" ? "two" : "one"
+function getWhileDisabled(roomState: RoomState, sessionId: string) {
+  const opponentTeam = getClientTeam(roomState, sessionId) === "one" ? "two" : "one"
   const duringOpponentGuessingPhase = roomState.roundPhase === `guessing ${opponentTeam}`
 
   const notJudgingTrap = roomState.isJudgingTrap === false

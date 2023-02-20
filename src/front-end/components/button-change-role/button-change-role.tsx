@@ -33,12 +33,12 @@ export function ButtonChangeRole({ team, role, appState }: Props) {
 }
 
 function getWhileDisabled(appState: AppState, team: Team) {
-  const { roomState, browserId } = appState
+  const { roomState, sessionId } = appState
   const roundPhase = roomState.roundPhase
   const duringPreRound = roundPhase === "pre round"
   const duringTrapping = roundPhase === "trapping"
 
-  const clientTeam = getClientTeam(roomState, browserId)
+  const clientTeam = getClientTeam(roomState, sessionId)
   const notOpponentTeamButton = clientTeam === team
 
   const whileActivated = duringPreRound || (duringTrapping && notOpponentTeamButton)

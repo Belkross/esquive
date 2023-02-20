@@ -4,7 +4,7 @@ import { sessionNotFound } from "../../functions/session-not-found.js"
 import { RoomState } from "../config/room-state/room-state.js"
 
 export function changeRole(server: ServerManager) {
-  const { socket, io, browserId } = server
+  const { socket, io, sessionId } = server
 
   socket.on("changeRole", (team, role) => {
     if (sessionNotFound(server)) return
@@ -12,7 +12,7 @@ export function changeRole(server: ServerManager) {
     const { roomName, roomState } = getSocketRoom(server)
 
     if (actionAllowed(roomState)) {
-      roomState.changeRole({ browserId, newTeam: team, newRole: role })
+      roomState.changeRole({ sessionId, newTeam: team, newRole: role })
       io.in(roomName).emit("roomStateUpdate", roomState)
     }
   })

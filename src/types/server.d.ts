@@ -8,9 +8,9 @@ import { FlowlessFunction } from "./main.js"
 
 export type ServerToClientEvents = {
   alert: (alertId: AlertId) => void
-  joinRoom: (browserId: string, roomState: RoomState) => void
+  joinRoom: (sessionId: string, roomState: RoomState) => void
   roomStateUpdate: (state: RoomState) => void
-  closeDuplicatedSessions: (browserId: string) => void
+  closeDuplicatedSessions: (sessionId: string) => void
 }
 
 export type ClientToServerEvents = {
@@ -27,5 +27,5 @@ export type ServerManager = {
   socket: SocketServer
   sessions: SessionStorage
   rooms: RoomStorage
-  browserId: string
+  sessionId: string
 }

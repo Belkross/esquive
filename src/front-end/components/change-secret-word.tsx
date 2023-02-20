@@ -9,8 +9,8 @@ type Props = {
 }
 
 export function ChangeSecretWord({ appState }: Props) {
-  const { roomState, browserId } = appState
-  const team = getClientTeam(roomState, browserId)
+  const { roomState, sessionId } = appState
+  const team = getClientTeam(roomState, sessionId)
   const secretWord = roomState.teams[team].secretWord
   const duringTrappingPhase = roomState.roundPhase === "trapping"
 

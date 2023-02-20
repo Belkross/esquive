@@ -20,9 +20,9 @@ export function ButtonPlayNextPhase({ appState }: Props) {
 }
 
 function getWhileDisabled(appState: AppState) {
-  const { roomState, browserId } = appState
+  const { roomState, sessionId } = appState
 
-  const clientIsAdmin = roomState.players[browserId].isAdmin
+  const clientIsAdmin = roomState.players[sessionId].isAdmin
 
   const roundPhase = roomState.roundPhase
   const duringPassivePhase =

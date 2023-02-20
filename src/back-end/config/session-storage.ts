@@ -4,18 +4,18 @@ type Session = {
 }
 
 export class SessionStorage {
-  private readonly storage: { [browserId: string]: Session } = {}
+  private readonly storage: { [sessionId: string]: Session } = {}
 
-  add(browserId: string, username: string, roomName: string) {
-    this.storage[browserId] = { username, roomName }
-    return this.storage[browserId]
+  add(sessionId: string, username: string, roomName: string) {
+    this.storage[sessionId] = { username, roomName }
+    return this.storage[sessionId]
   }
 
-  delete(browserId: string) {
-    delete this.storage[browserId]
+  delete(sessionId: string) {
+    delete this.storage[sessionId]
   }
 
-  get(browserId: string) {
-    return this.storage[browserId] || undefined
+  get(sessionId: string) {
+    return this.storage[sessionId] || undefined
   }
 }

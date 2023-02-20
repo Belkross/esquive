@@ -4,8 +4,8 @@ import { logClientEvents } from "./log-client-events.js"
 import { updateJoiningPlayerData } from "./update-joining-player-data.js"
 
 export function connection(server: ServerManager) {
-  const { io, socket, sessions, rooms, browserId } = server
-  const { username, roomName } = sessions.get(browserId)
+  const { io, socket, sessions, rooms, sessionId } = server
+  const { username, roomName } = sessions.get(sessionId)
   const roomDoesNotExistYet = rooms.get(roomName) === undefined
   logClientEvents(server, username)
 
@@ -13,13 +13,13 @@ export function connection(server: ServerManager) {
 
   if (roomDoesNotExistYet) {
     roomState = rooms.add(roomName, secretWordList)
-    roomState.addPlayer(browserId, username)
+    roomState.addPlayer(sessionId, username)
   } else {
     roomState = rooms.get(roomName)
-    updateJoiningPlayerData(roomState, browserId, username)
+    updateJoiningPlayerData(roomState, sessionId, username)
     io.to(roomName).emit("roomStateUpdate", roomState)
   }
 
   socket.join(roomName)
-  socket.emit("joinRoom", browserId, roomState)
+  socket.emit("joinRoom", sessionId, roomState)
 }

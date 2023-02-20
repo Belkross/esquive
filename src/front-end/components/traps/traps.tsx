@@ -10,8 +10,8 @@ type Props = {
 }
 
 export function Traps({ appState }: Props) {
-  const { roomState, browserId } = appState
-  const team = getClientTeam(roomState, browserId)
+  const { roomState, sessionId } = appState
+  const team = getClientTeam(roomState, sessionId)
   const traps = roomState.teams[team].traps
 
   const list_traps = traps.map((trap, index) => {

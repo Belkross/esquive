@@ -10,9 +10,9 @@ type Props = {
 }
 
 export function ButtonChangeSecretWord({ appState }: Props) {
-  const { roomState, browserId } = appState
+  const { roomState, sessionId } = appState
 
-  const changeRemaining = getChangeRemaining(roomState, browserId)
+  const changeRemaining = getChangeRemaining(roomState, sessionId)
   const whileDisabled = getWhileDisabled(roomState, changeRemaining)
   const badgeContent = whileDisabled ? 0 : changeRemaining
 
@@ -30,8 +30,8 @@ export function ButtonChangeSecretWord({ appState }: Props) {
   )
 }
 
-function getChangeRemaining(roomState: RoomState, browserId: string) {
-  const clientTeam = getClientTeam(roomState, browserId)
+function getChangeRemaining(roomState: RoomState, sessionId: string) {
+  const clientTeam = getClientTeam(roomState, sessionId)
   return roomState.teams[clientTeam].secretWordChangeRemaining
 }
 

@@ -21,7 +21,7 @@ export function initializeSocketIo() {
   }
 
   socket = io(serverUrl, {
-    auth: { browserId: sessionStorage.getItem(storageKeys.browserId) },
+    auth: { sessionId: sessionStorage.getItem(storageKeys.sessionId) },
   })
 
   socket.onAny((eventName, ...args) => {

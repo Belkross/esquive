@@ -22,31 +22,31 @@ const rooms = new RoomStorage()
 app.get("/", (request, response) => response.send("Server is active"))
 
 io.use((socket, next) => {
-  const { browserId, username, room } = socket.handshake.auth
+  const { sessionId, username, room } = socket.handshake.auth
   //to skip the login when developing
-  /* const browserId = ""
+  /* const sessionId = ""
   const username = "DevBelkross"
   const room = "DevRoom" */
 
   const noLoginInformation = username === undefined && room === undefined
 
   if (noLoginInformation) {
-    const sessionExist = sessions.get(browserId)
-    return browserId && sessionExist ? next() : next(new Error("no session found"))
+    const sessionExist = sessions.get(sessionId)
+    return sessionId && sessionExist ? next() : next(new Error("no session found"))
   } else {
     if (!checkUsernameValidity(username) || !checkRoomValidity(room)) {
       return next(new Error("invalid login informations"))
     }
     //TODO: vérifier que la room n’est pas pleine
-    const newBrowserId = randomUUID()
-    socket.handshake.auth.browserId = newBrowserId
-    sessions.add(newBrowserId, username, room)
+    const newSessionId = randomUUID()
+    socket.handshake.auth.sessionId = newSessionId
+    sessions.add(newSessionId, username, room)
     return next()
   }
 })
 
 io.on("connection", (socket) => {
-  const server: ServerManager = { socket, io, sessions, rooms, browserId: socket.handshake.auth.browserId }
+  const server: ServerManager = { socket, io, sessions, rooms, sessionId: socket.handshake.auth.sessionId }
 
   connection(server)
   changeRole(server)

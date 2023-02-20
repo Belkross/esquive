@@ -10,7 +10,7 @@ export type AppState = {
   status: AppStatus
   username: string
   room: string
-  browserId: string
+  sessionId: string
   roomState: RoomState
 }
 

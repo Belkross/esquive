@@ -7,8 +7,8 @@ type Props = {
 }
 
 export function TrapsRemaining({ appState }: Props) {
-  const { roomState, browserId } = appState
-  const clientTeam = getClientTeam(roomState, browserId)
+  const { roomState, sessionId } = appState
+  const clientTeam = getClientTeam(roomState, sessionId)
   const traps = roomState.teams[clientTeam].traps
   const currentTrapsNumber = traps.length
   const trapSlotLimit = roomState.trapSlotsProvided

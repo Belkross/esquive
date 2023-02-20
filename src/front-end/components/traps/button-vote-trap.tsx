@@ -9,8 +9,8 @@ type Props = {
 }
 
 export function ButtonVoteTrap({ voteType, trapIndex, appState }: Props) {
-  const { roomState, browserId } = appState
-  const clientTeam = getClientTeam(roomState, browserId)
+  const { roomState, sessionId } = appState
+  const clientTeam = getClientTeam(roomState, sessionId)
 
   const componentProps = {
     isThumbUp: voteType,
@@ -24,8 +24,8 @@ export function ButtonVoteTrap({ voteType, trapIndex, appState }: Props) {
 }
 
 function getVotersUsername(appState: AppState, voteType: boolean, trapIndex: number) {
-  const { roomState, browserId } = appState
-  const clientTeam = getClientTeam(roomState, browserId)
+  const { roomState, sessionId } = appState
+  const clientTeam = getClientTeam(roomState, sessionId)
   const allPlayers = Object.values(roomState.players)
 
   const clientTeammatesWhoPressedTheButton = allPlayers.filter((player) => {

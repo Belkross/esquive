@@ -40,7 +40,7 @@ export class RoomState {
   private readonly trapSlotLimit = 12
   
   readonly roomName: string
-  readonly players: { [browserId: string]: PlayerData } = {}
+  readonly players: { [sessionId: string]: PlayerData } = {}
   readonly teams: Record<Team, TeamData>
   readonly historic: string[] = []
   readonly highestRoundAdvancement = 6

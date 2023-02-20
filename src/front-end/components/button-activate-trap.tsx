@@ -22,8 +22,8 @@ export function ButtonActivateTrap({ index, appState }: Props) {
 }
 
 function getWhileDisabled(appState: AppState) {
-  const { roomState, browserId } = appState
-  const opponentTeam = getClientTeam(roomState, browserId) === "one" ? "two" : "one"
+  const { roomState, sessionId } = appState
+  const opponentTeam = getClientTeam(roomState, sessionId) === "one" ? "two" : "one"
   const currentRoundPhase = roomState.roundPhase
   const DuringOpponentGuessingPhase = currentRoundPhase === `guessing ${opponentTeam}`
 

@@ -14,7 +14,7 @@ initializeSocketIo()
 const initialAppState: AppState = {
   status: "connectingToSocketIo",
   username: getInitialUsername(storageKeys.username),
-  browserId: "",
+  sessionId: "",
   room: "",
   roomState: new RoomState("", ""),
 }

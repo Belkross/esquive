@@ -4,15 +4,15 @@ import { sessionNotFound } from "../../functions/session-not-found.js"
 import { RoomState } from "../config/room-state/room-state.js"
 
 export function nextRoundPhase(server: ServerManager) {
-  const { io, socket, browserId } = server
+  const { io, socket, sessionId } = server
 
   socket.on("nextRoundPhase", () => {
     if (sessionNotFound(server)) return
-    
+
     const { roomName, roomState } = getSocketRoom(server)
 
     if (actionAllowed(server, roomState)) {
-      const clientUsername = roomState.players[browserId].username
+      const clientUsername = roomState.players[sessionId].username
       roomState.configureNextRoundPhase(clientUsername)
 
       io.in(roomName).emit("roomStateUpdate", roomState)
@@ -22,7 +22,7 @@ export function nextRoundPhase(server: ServerManager) {
 }
 
 function actionAllowed(server: ServerManager, roomState: RoomState) {
-  const clientIsAdmin = roomState.players[server.browserId].isAdmin
+  const clientIsAdmin = roomState.players[server.sessionId].isAdmin
 
   const roundPhase = roomState.roundPhase
   const duringPassivePhase =

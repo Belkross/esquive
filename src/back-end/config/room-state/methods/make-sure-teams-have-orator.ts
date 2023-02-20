@@ -20,7 +20,7 @@ export function makeSureTeamsHaveOrator(this: RoomState) {
 function randomPlayerBecomeOrator(this: RoomState, teammates: PlayerData[]) {
   const teammatesNumber = teammates.length
   const randomPlayerIndex = randomIntFromInterval(0, teammatesNumber - 1)
-  const randomPlayerId = teammates[randomPlayerIndex].browserId
+  const randomPlayerId = teammates[randomPlayerIndex].sessionId
 
   this.players[randomPlayerId].role = "orator"
 }

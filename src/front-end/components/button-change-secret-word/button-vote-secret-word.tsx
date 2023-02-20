@@ -9,21 +9,21 @@ type Props = {
 }
 
 export function ButtonVoteSecretWord({ voteType, appState }: Props) {
-  const { roomState, browserId } = appState
+  const { roomState, sessionId } = appState
 
   const componentProps = {
     isThumbUp: voteType,
-    clientVote: roomState.players[browserId].secretWordOpinion,
-    votersUsername: getVotersUsername(roomState, browserId, voteType),
+    clientVote: roomState.players[sessionId].secretWordOpinion,
+    votersUsername: getVotersUsername(roomState, sessionId, voteType),
     //onClick: (boolean) => () => socket.emit("submitSecretWordOpinion", boolean),
   }
 
   return <ButtonThumb {...componentProps} />
 }
 
-function getVotersUsername(roomState: RoomState, browserId: string, voteType: boolean) {
+function getVotersUsername(roomState: RoomState, sessionId: string, voteType: boolean) {
   const allPlayers = Object.values(roomState.players)
-  const clientTeam = getClientTeam(roomState, browserId)
+  const clientTeam = getClientTeam(roomState, sessionId)
 
   const clientTeammatesWhoPressedTheButton = allPlayers.filter((player) => {
     const isClientMate = player.team === clientTeam

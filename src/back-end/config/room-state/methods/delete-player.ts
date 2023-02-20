@@ -1,5 +1,5 @@
 import { RoomState } from "../room-state.js"
 
-export function deletePlayer(this: RoomState, browserId: string) {
-  delete this.players[browserId]
+export function deletePlayer(this: RoomState, sessionId: string) {
+  delete this.players[sessionId]
 }

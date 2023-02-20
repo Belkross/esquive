@@ -19,7 +19,7 @@ export type InterfaceGameProps = {
 }
 
 export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
-  const clientIsAdmin = appState.roomState.players[appState.browserId].isAdmin
+  const clientIsAdmin = appState.roomState.players[appState.sessionId].isAdmin
 
   useSubscribeCloseDuplicatedSessions(appState, setAppState)
   useSubscribeRoomStateUpdate(setAppState)

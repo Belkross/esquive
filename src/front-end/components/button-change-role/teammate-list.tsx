@@ -16,7 +16,7 @@ export function TeammatesList({ team, role, appState }: Props) {
   const list = teammates.map((player) => {
     const style_typography = player.connected ? style_connected : style_disconnected
     return (
-      <ListItem key={player.browserId} sx={style_listItem}>
+      <ListItem key={player.sessionId} sx={style_listItem}>
         <Typography sx={style_typography}>{`${player.username} `}</Typography>
       </ListItem>
     )

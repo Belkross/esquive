@@ -6,16 +6,16 @@ import storageKeys from "../../config/storage-keys.js"
 
 export function useSubscribeSocketIoConnection(setAppState: Dispatch<SetStateAction<AppState>>) {
   useEffect((): FlowlessFunction => {
-    socket.on("joinRoom", (browserId, roomState) => {
-      sessionStorage.setItem(storageKeys.browserId, browserId)
+    socket.on("joinRoom", (sessionId, roomState) => {
+      sessionStorage.setItem(storageKeys.sessionId, sessionId)
 
       setTimeout(
         () =>
           setAppState((prevAppState) => ({
             ...prevAppState,
             status: "logged",
-            username: roomState.players[browserId].username,
-            browserId,
+            username: roomState.players[sessionId].username,
+            sessionId,
             room: roomState.roomName,
             roomState: roomState,
           })),

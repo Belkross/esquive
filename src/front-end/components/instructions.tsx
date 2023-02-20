@@ -7,7 +7,7 @@ type Props = {
 }
 
 export function Instructions({ appState }: Props) {
-  const instruction = pickInstruction(appState.roomState, appState.browserId)
+  const instruction = pickInstruction(appState.roomState, appState.sessionId)
 
   return <Typography sx={style_typography}>{instruction}</Typography>
 }
@@ -16,10 +16,10 @@ const style_typography: SxProps = {
   my: 1,
 }
 
-function pickInstruction(roomState: RoomState, browserId: string) {
+function pickInstruction(roomState: RoomState, sessionId: string) {
   const roundPhase = roomState.roundPhase
-  const team = roomState.players[browserId].team
-  const role = roomState.players[browserId].role
+  const team = roomState.players[sessionId].team
+  const role = roomState.players[sessionId].role
 
   /* eslint-disable sonarjs/no-duplicate-string */
   const teamOneSecretWord = roomState.teams.one.secretWord

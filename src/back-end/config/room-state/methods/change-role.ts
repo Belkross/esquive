@@ -2,18 +2,18 @@ import { Team, Role } from "../../../../types/room-state.js"
 import { RoomState } from "../room-state.js"
 
 type Parameters = {
-  browserId: string
+  sessionId: string
   newTeam: Team
   newRole: Role
 }
 
 export function changeRole(this: RoomState, parameters: Parameters) {
-  const { browserId, newTeam, newRole } = parameters
+  const { sessionId, newTeam, newRole } = parameters
 
   if (newRole === "orator") makeSureOnlyOneOrator.call(this, newTeam)
 
-  this.players[browserId].role = newRole
-  this.players[browserId].team = newTeam
+  this.players[sessionId].role = newRole
+  this.players[sessionId].team = newTeam
 }
 
 function makeSureOnlyOneOrator(this: RoomState, newTeam: Team) {

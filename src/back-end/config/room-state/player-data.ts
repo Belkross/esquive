@@ -1,7 +1,7 @@
 import { Team, Role } from "../../../types/room-state.js"
 
 export class PlayerData {
-  readonly browserId: string
+  readonly sessionId: string
   readonly trapOpinions: { [trapIndex: number]: boolean | undefined } = {}
   username: string
   team: Team = "one"
@@ -11,8 +11,8 @@ export class PlayerData {
   isTyping = false
   secretWordOpinion: boolean | undefined = undefined
 
-  constructor(browserId: string, username: string) {
-    this.browserId = browserId
+  constructor(sessionId: string, username: string) {
+    this.sessionId = sessionId
     this.username = username
   }
 }
