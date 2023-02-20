@@ -1,5 +1,4 @@
 type Session = {
-  browserId: string
   username: string
   roomName: string
 }
@@ -8,7 +7,7 @@ export class SessionStorage {
   private readonly storage: { [browserId: string]: Session } = {}
 
   add(browserId: string, username: string, roomName: string) {
-    this.storage[browserId] = { browserId, username, roomName }
+    this.storage[browserId] = { username, roomName }
     return this.storage[browserId]
   }
 

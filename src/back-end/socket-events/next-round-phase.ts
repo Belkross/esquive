@@ -1,13 +1,13 @@
-import { getSocketData } from "../../functions/get-socket-data.js"
+import { getSocketRoom } from "../../functions/get-socket-room.js"
 import { ServerManager } from "../../types/server.js"
 
 export function nextRoundPhase(server: ServerManager) {
-  const { io, socket } = server
-  const { browserId, roomName, roomState } = getSocketData(server)
+  const { io, socket, browserId } = server
 
   socket.on("nextRoundPhase", () => {
+    const { roomName, roomState } = getSocketRoom(server)
     const clientIsAdmin = roomState.players[browserId].isAdmin
-    
+
     const roundPhase = roomState.roundPhase
     const duringPassivePhase =
       roundPhase === "pre round" || roundPhase === "pre guessing one" || roundPhase === "pre guessing two"

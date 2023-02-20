@@ -26,4 +26,5 @@ export type ServerManager = {
   socket: SocketServer
   sessions: SessionStorage
   rooms: RoomStorage
+  browserId: string
 }

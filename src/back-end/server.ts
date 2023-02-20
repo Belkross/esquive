@@ -10,6 +10,7 @@ import { RoomStorage } from "./config/room-storage.js"
 import { SessionStorage } from "./config/session-storage.js"
 import { changeRole } from "./socket-events/change-role.js"
 import { nextRoundPhase } from "./socket-events/next-round-phase.js"
+import { ServerManager } from "../types/server.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -21,11 +22,11 @@ const rooms = new RoomStorage()
 app.get("/", (request, response) => response.send("Server is active"))
 
 io.use((socket, next) => {
-  //const { browserId, username, room } = socket.handshake.auth
+  const { browserId, username, room } = socket.handshake.auth
   //to skip the login when developing
-  const browserId = ""
+  /* const browserId = ""
   const username = "DevBelkross"
-  const room = "DevRoom"
+  const room = "DevRoom" */
 
   const noLoginInformation = username === undefined && room === undefined
 
@@ -45,7 +46,7 @@ io.use((socket, next) => {
 })
 
 io.on("connection", (socket) => {
-  const server = { socket, io, sessions, rooms }
+  const server: ServerManager = { socket, io, sessions, rooms, browserId: socket.handshake.auth.browserId }
 
   connection(server)
   changeRole(server)

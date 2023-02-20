@@ -1,11 +1,11 @@
-import { getSocketData } from "../../functions/get-socket-data.js"
+import { getSocketRoom } from "../../functions/get-socket-room.js"
 import { ServerManager } from "../../types/server"
 
 export function disconnect(server: ServerManager) {
-  const { sessions, rooms, io, socket } = server
-  const { browserId, roomName, roomState } = getSocketData(server)
-
+  const { sessions, rooms, io, socket, browserId } = server
+  
   socket.on("disconnect", (reason) => {
+    const { roomName, roomState } = getSocketRoom(server)
     const nobodyStillPlaying = roomState.getActivePlayerNumber() <= 1
     const clientManuallyDisconnect = reason === "client namespace disconnect"
 

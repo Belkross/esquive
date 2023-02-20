@@ -4,8 +4,8 @@ import { logClientEvents } from "./log-client-events.js"
 import { updateJoiningPlayerData } from "./update-joining-player-data.js"
 
 export function connection(server: ServerManager) {
-  const { io, socket, sessions, rooms } = server
-  const { browserId, username, roomName } = sessions.get(socket.handshake.auth.browserId)
+  const { io, socket, sessions, rooms, browserId } = server
+  const { username, roomName } = sessions.get(browserId)
   const roomDoesNotExistYet = rooms.get(roomName) === undefined
   logClientEvents(server, username)
 
