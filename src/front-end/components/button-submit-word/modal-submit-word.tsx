@@ -1,4 +1,5 @@
 import { Dialog, DialogTitle, DialogContent, TextField, Button, SxProps } from "@mui/material"
+import { KeyboardEvent } from "react"
 import { checkSubmitedWordValidity } from "../../../functions/check-submited-word-validity.js"
 import { getClientTeam } from "../../../functions/get-client-team.js"
 import { AppState, FlowlessFunction } from "../../../types/main.js"
@@ -18,14 +19,27 @@ export default function ModalSubmitWord({ appState, displayed, close }: Props) {
   const handleSubmit = () => {
     const inputIsNotValid = input.validity === false
     const roundPhase = roomState.roundPhase
+    const clientGuessingPhase = `guessing ${getClientTeam(roomState, sessionId)}`
+
     const isTrappingPhase = roundPhase === "trapping"
-    const isClientGuessingPhase = roundPhase === `guessing ${getClientTeam(roomState, sessionId)}`
+    const isClientGuessingPhase = roundPhase === clientGuessingPhase
+    const InvalidRoundPhase = roundPhase !== ("trapping" || clientGuessingPhase)
 
-    if (inputIsNotValid || !isTrappingPhase || !isClientGuessingPhase) return
-
+    if (inputIsNotValid || InvalidRoundPhase) return
     if (isTrappingPhase) socket.emit("submitTrap", input.value)
     else if (isClientGuessingPhase) socket.emit("submitGuess", input.value)
     clearInput()
+  }
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    const clientPressEnter = event.keyCode === 13
+    const clientPressBackspace = event.keyCode === 8
+
+    if (clientPressBackspace) return
+    else if (clientPressEnter) handleSubmit()
+    else {
+      //TODO: typing activity feature
+    }
   }
 
   return (
@@ -37,6 +51,7 @@ export default function ModalSubmitWord({ appState, displayed, close }: Props) {
           label="Écrire un mot"
           value={input.value}
           onChange={onInputChange}
+          onKeyDown={handleKeyDown}
           autoComplete="off"
           disabled={!displayed}
           sx={style_textField}
