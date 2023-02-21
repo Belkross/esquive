@@ -31,6 +31,7 @@ const style_container: SxProps = {
   py: 1.5,
   boxShadow: 7,
   width: "100%",
+  zIndex: 1
 }
 
 const style_stackButtons = {
