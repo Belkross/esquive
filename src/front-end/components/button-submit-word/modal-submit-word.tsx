@@ -6,6 +6,7 @@ import { AppState, FlowlessFunction } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { useValidTextInputWithError } from "../../custom-hooks/use-valid-text-input-with-error.js"
 import { BadgeGuessRemaining } from "./badge-guess-remaining.js"
+import { useAutoCloseWhenTimerEnd } from "./use-auto-close-when-timer-end.js"
 
 type Props = {
   appState: AppState
@@ -15,10 +16,10 @@ type Props = {
 export default function ModalSubmitWord({ appState, displayed, close }: Props) {
   const { input, onInputChange, clearInput } = useValidTextInputWithError("", checkSubmitedWordValidity)
   const { roomState, sessionId } = appState
+  const roundPhase = roomState.roundPhase
 
   const handleSubmit = () => {
     const inputIsNotValid = input.validity === false
-    const roundPhase = roomState.roundPhase
     const clientGuessingPhase = `guessing ${getClientTeam(roomState, sessionId)}`
 
     const isTrappingPhase = roundPhase === "trapping"
@@ -41,6 +42,8 @@ export default function ModalSubmitWord({ appState, displayed, close }: Props) {
       //TODO: typing activity feature
     }
   }
+  
+  useAutoCloseWhenTimerEnd(roundPhase, close, clearInput)
 
   return (
     <Dialog open={displayed} onClose={close}>

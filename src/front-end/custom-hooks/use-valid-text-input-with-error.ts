@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useCallback, useState } from "react"
 
 type InputData = { value: string; validity: boolean; error: boolean }
 type InputChanger = (event: ChangeEvent<HTMLInputElement>) => void
@@ -16,16 +16,19 @@ export function useValidTextInputWithError(initialValue: string, validityChecker
     error: deduceIfError(initialValue, validityChecker),
   })
 
-  const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value
-    setInput({
-      value,
-      validity: validityChecker(value),
-      error: deduceIfError(value, validityChecker),
-    })
-  }
+  const onInputChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value
+      setInput({
+        value,
+        validity: validityChecker(value),
+        error: deduceIfError(value, validityChecker),
+      })
+    },
+    [validityChecker]
+  )
 
-  const clearInput = () => setInput({ value: "", validity: false, error: false })
+  const clearInput = useCallback(() => setInput({ value: "", validity: false, error: false }), [])
 
   return { input, onInputChange, clearInput } as Output
 }

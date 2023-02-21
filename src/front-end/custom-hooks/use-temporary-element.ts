@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 
 export type TemporaryElementState = {
   displayed: boolean
@@ -6,11 +6,11 @@ export type TemporaryElementState = {
   remove: () => void
 }
 
-export  function useTemporaryElement(initialState: boolean) {
+export function useTemporaryElement(initialState: boolean) {
   const [elementDisplay, setElementDisplay] = useState(initialState)
 
-  const displayElement = () => setElementDisplay(true)
-  const removeElement = () => setElementDisplay(false)
+  const displayElement = useCallback(() => setElementDisplay(true), [])
+  const removeElement = useCallback(() => setElementDisplay(false), [])
 
   return {
     displayed: elementDisplay,
