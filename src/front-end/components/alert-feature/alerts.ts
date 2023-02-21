@@ -6,6 +6,7 @@ export type AlertId =
   | "sessionNotFound"
   | "serverDown"
   | "criticalError"
+  | "trapLimitExceeded"
 
 export type AlertSeverity = "info" | "success" | "warning" | "error"
 export type AlertData = {
@@ -41,5 +42,9 @@ export const alerts: Record<AlertId, AlertData> = {
   sessionNotFound: {
     severity: "warning",
     message: "Vous avez été déconnecté du salon. Veuillez rafraîchir la page."
+  },
+  trapLimitExceeded: {
+    severity: "info",
+    message: "Votre équipe a atteint le nombre maximum de piège."
   }
 }

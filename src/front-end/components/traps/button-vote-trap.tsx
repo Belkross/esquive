@@ -10,11 +10,10 @@ type Props = {
 
 export function ButtonVoteTrap({ voteType, trapIndex, appState }: Props) {
   const { roomState, sessionId } = appState
-  const clientTeam = getClientTeam(roomState, sessionId)
 
   const componentProps = {
     isThumbUp: voteType,
-    clientVote: roomState.players[clientTeam].trapOpinions[trapIndex],
+    clientVote: roomState.players[sessionId].trapOpinions[trapIndex],
     votersUsername: getVotersUsername(appState, voteType, trapIndex),
     small: true
     //onClick: (boolean) => () => socket.emit("submitTrapOpinion", trapIndex, boolean),

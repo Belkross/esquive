@@ -3,8 +3,6 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown"
 import { Tooltip, Badge, IconButton } from "@mui/material"
 import { doNothing } from "../../functions/do-nothing.js"
 
-
-
 type Props = {
   isThumbUp: boolean
   clientVote: boolean | undefined
@@ -28,7 +26,7 @@ export function ButtonThumb({ isThumbUp, clientVote, votersUsername, small }: Pr
   )
 }
 
-const style_button = (buttonVoteType: boolean, clientVote: boolean | undefined, small: boolean) => {
+const style_button = (buttonVoteType: boolean, clientVote: boolean | undefined, small: boolean | undefined) => {
   const buttonType = buttonVoteType ? "thumbUp" : "thumbDown"
   const buttonMainColor = buttonType === "thumbUp" ? "success.main" : "error.main"
   const size = small ? "30px" : "inherit"

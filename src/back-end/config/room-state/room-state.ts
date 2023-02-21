@@ -26,8 +26,8 @@ import { resetTeamOutcomes } from "./methods/reset-team-outcomes.js"
 import { resetTraps } from "./methods/reset-traps.js"
 import { setTimer } from "./methods/set-timer.js"
 import { startTimer } from "./methods/start-timer.js"
+import { submitTrap } from "./methods/submit-trap.js"
 import { switchStartingTeam } from "./methods/switch-starting-team.js"
-
 import { PlayerData } from "./player-data.js"
 import { TeamData } from "./team-data.js"
 
@@ -37,8 +37,7 @@ export class RoomState {
   private readonly winConditionLimit = 20
   private readonly playersLimit = 10
   private readonly timerLimit = 360 //seconds
-  private readonly trapSlotLimit = 12
-  
+
   readonly roomName: string
   readonly players: { [sessionId: string]: PlayerData } = {}
   readonly teams: Record<Team, TeamData>
@@ -46,7 +45,8 @@ export class RoomState {
   readonly highestRoundAdvancement = 6
   readonly historicLengthLimit = 50
   readonly secretWordChangeLimit = 3
-  
+  readonly trapSlotLimit = 12
+
   roundPhase: RoundPhase = "pre round"
   roundAdvancement = 1
   winCondition = 2
@@ -96,5 +96,6 @@ export class RoomState {
   resetTraps = resetTraps
   setTimer = setTimer
   startTimer = startTimer
+  submitTrap = submitTrap
   switchStartingTeam = switchStartingTeam
 }
