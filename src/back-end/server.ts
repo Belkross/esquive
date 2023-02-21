@@ -12,6 +12,7 @@ import { changeRole } from "./socket-events/change-role.js"
 import { nextRoundPhase } from "./socket-events/next-round-phase.js"
 import { ServerManager } from "../types/server.js"
 import { submitTrap } from "./socket-events/submit-trap.js"
+import { submitGuess } from "./socket-events/submit-guess.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -53,6 +54,7 @@ io.on("connection", (socket) => {
   changeRole(server)
   nextRoundPhase(server)
   submitTrap(server)
+  submitGuess(server)
   disconnect(server)
 })
 

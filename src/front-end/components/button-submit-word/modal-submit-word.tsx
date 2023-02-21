@@ -17,14 +17,16 @@ export default function ModalSubmitWord({ appState, displayed, close }: Props) {
   const { input, onInputChange, clearInput } = useValidTextInputWithError("", checkSubmitedWordValidity)
   const { roomState, sessionId } = appState
   const roundPhase = roomState.roundPhase
+  const roundAdvancement = roomState.roundAdvancement
 
   const handleSubmit = () => {
     const inputIsNotValid = input.validity === false
     const clientGuessingPhase = `guessing ${getClientTeam(roomState, sessionId)}`
 
-    const isTrappingPhase = roundPhase === "trapping"
-    const isClientGuessingPhase = roundPhase === clientGuessingPhase
-    const InvalidRoundPhase = roundPhase !== ("trapping" || clientGuessingPhase)
+    const isTrappingPhase = roundPhase === "trapping" && roundAdvancement === 2
+    const isClientGuessingPhase =
+      roundPhase === clientGuessingPhase && (roundAdvancement === 4 || roundAdvancement === 6)
+    const InvalidRoundPhase = !isTrappingPhase && !isClientGuessingPhase
 
     if (inputIsNotValid || InvalidRoundPhase) return
     if (isTrappingPhase) socket.emit("submitTrap", input.value)
@@ -42,7 +44,7 @@ export default function ModalSubmitWord({ appState, displayed, close }: Props) {
       //TODO: typing activity feature
     }
   }
-  
+
   useAutoCloseWhenTimerEnd(roundPhase, close, clearInput)
 
   return (
