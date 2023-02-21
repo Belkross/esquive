@@ -1,8 +1,6 @@
 import { RoomState } from "../room-state.js"
 
 export function progressToNextRoundPhase(this: RoomState) {
-  incrementRoundAdvancement.call(this)
-
   switch (this.roundPhase) {
     case "pre round":
       this.roundPhase = "trapping"
@@ -28,6 +26,8 @@ export function progressToNextRoundPhase(this: RoomState) {
       this.roundPhase = this.roundAdvancement === this.highestRoundAdvancement ? "pre round" : "pre guessing one"
       break
   }
+
+  incrementRoundAdvancement.call(this)
 }
 
 function incrementRoundAdvancement(this: RoomState) {
