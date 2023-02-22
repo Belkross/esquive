@@ -39,12 +39,13 @@ export function AlertFeature({ children }: Props) {
   }, [])
 
   useSubscribeServerAlert(memoizedSetAlertQueue)
-  useEffect(() => { //I don’t want to extract this Effect because it has too much mutable dependencies
+  useEffect(() => {
+    //I don’t want to extract this Effect because it has too much mutable dependencies
     const needToDisplayAlert = alertQueue.length > 0 && currentAlert.message === ""
     const anAlertCurrentlyDisplayed = display && currentAlert.message
     const anAlertWaits = alertQueue.length > 0
 
-    if (needToDisplayAlert) { 
+    if (needToDisplayAlert) {
       setDisplay(true)
       setCurrentAlert(alertQueue[0])
       setAlertQueue((prevQueue) => prevQueue.slice(1))
@@ -57,7 +58,7 @@ export function AlertFeature({ children }: Props) {
     <AlertFeatureContext.Provider value={displayNewAlert}>
       <Snackbar
         key={currentAlert.key}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
         open={display} //when this props switch from true to false, it trigger a transition
         message={currentAlert.message}
         autoHideDuration={ALERT_DISPLAY_DURATION}
