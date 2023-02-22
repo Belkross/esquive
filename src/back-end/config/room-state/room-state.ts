@@ -6,6 +6,7 @@ import { announceMatchWinner } from "./methods/announce-match-winner.js"
 import { announceNextPhase } from "./methods/announce-next-phase.js"
 import { announceTimerStart } from "./methods/announce-timer-start.js"
 import { applyRoundOutcome } from "./methods/apply-round-outcome.js"
+import { cancelTrap } from "./methods/cancel-trap.js"
 import { changeRole } from "./methods/change-role.js"
 import { checkIfEndOfMatch } from "./methods/check-if-end-of-match.js"
 import { configureNextRoundPhase } from "./methods/configure-next-round-phase.js"
@@ -30,6 +31,7 @@ import { stopTimer } from "./methods/stop-timer.js"
 import { submitGuess } from "./methods/submit-guess.js"
 import { submitTrap } from "./methods/submit-trap.js"
 import { switchStartingTeam } from "./methods/switch-starting-team.js"
+import { trapSlotsAvailable } from "./methods/trap-slots-available.js"
 import { PlayerData } from "./player-data.js"
 import { TeamData } from "./team-data.js"
 
@@ -54,8 +56,8 @@ export class RoomState {
   winCondition = 2
   trappingDuration = this.isProductionEnvironment ? 180 : 10
   guessingDuration = this.isProductionEnvironment ? 120 : 8
-  guessAttemptsProvided = this.isProductionEnvironment ? 5 : 2
-  trapSlotsProvided = this.isProductionEnvironment ? 4 : 8
+  guessAttemptsProvided = this.isProductionEnvironment ? 5 : 8
+  trapSlotsProvided = this.isProductionEnvironment ? 4 : 1
   startingTeam: Team = "two"
   isJudgingTrap = false
   secretWordsDeck: string[]
@@ -65,7 +67,7 @@ export class RoomState {
 
   constructor(roomName: string, secretWordList: string) {
     this.roomName = roomName
-    this.teams = { one: new TeamData("one"), two: new TeamData("two") }
+    this.teams = { one: new TeamData("one", this.trapSlotsProvided), two: new TeamData("two", this.trapSlotsProvided) }
     this.historic.push(`Bienvenue dans le salon ${this.roomName}.`, "La phase de piège va commencer.")
     this.secretWordsDeck = this.initializeSecretWordsDeck(secretWordList)
     this.timer = this.trappingDuration
@@ -78,6 +80,7 @@ export class RoomState {
   announceMatchWinner = announceMatchWinner
   announceNextPhase = announceNextPhase
   announceTimerStart = announceTimerStart
+  cancelTrap = cancelTrap
   changeRole = changeRole
   checkIfEndOfMatch = checkIfEndOfMatch
   configureNextRoundPhase = configureNextRoundPhase
@@ -102,4 +105,5 @@ export class RoomState {
   submitGuess = submitGuess
   submitTrap = submitTrap
   switchStartingTeam = switchStartingTeam
+  trapSlotsAvailable = trapSlotsAvailable
 }

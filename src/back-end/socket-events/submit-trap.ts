@@ -31,7 +31,6 @@ function clientIsAllowed(roomState: RoomState, sessionId: string, word: string) 
 
 function someSlotAvailable(roomState: RoomState, sessionId: string) {
   const clientTeam = getClientTeam(roomState, sessionId)
-  const currentTrapNumber = roomState.teams[clientTeam].traps.length
 
-  return currentTrapNumber < roomState.trapSlotsProvided
+  return roomState.trapSlotsAvailable(clientTeam)
 }

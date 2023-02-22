@@ -13,6 +13,7 @@ import { nextRoundPhase } from "./socket-events/next-round-phase.js"
 import { ServerManager } from "../types/server.js"
 import { submitTrap } from "./socket-events/submit-trap.js"
 import { submitGuess } from "./socket-events/submit-guess.js"
+import { cancelTrap } from "./socket-events/cancel-trap.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -49,8 +50,9 @@ io.use((socket, next) => {
 
 io.on("connection", (socket) => {
   const server: ServerManager = { socket, io, sessions, rooms, sessionId: socket.handshake.auth.sessionId }
-
   connection(server)
+
+  cancelTrap(server)
   changeRole(server)
   nextRoundPhase(server)
   submitTrap(server)

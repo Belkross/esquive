@@ -1,6 +1,11 @@
 import { RoomState } from "../room-state.js"
 
 export function resetTraps(this: RoomState) {
-  this.teams.one.traps.length = 0
-  this.teams.two.traps.length = 0
+  for(const trapKey in this.teams.one.traps) {
+    this.teams.one.traps[trapKey] = undefined
+  }
+  
+  for(const trapKey in this.teams.two.traps) {
+    this.teams.two.traps[trapKey] = undefined
+  }
 }

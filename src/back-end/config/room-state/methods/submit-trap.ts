@@ -10,5 +10,11 @@ export function submitTrap(this: RoomState, sessionId: string, trap: string) {
     author: username,
   }
 
-  this.teams[clientTeam].traps.push(submition)
+  for (const trapKey in this.teams[clientTeam].traps) {
+    const slotAvailable = this.teams[clientTeam].traps[trapKey] === undefined
+    if (slotAvailable) {
+      this.teams[clientTeam].traps[trapKey] = submition
+      return
+    }
+  }
 }

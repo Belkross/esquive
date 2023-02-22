@@ -14,7 +14,9 @@ export function Traps({ appState }: Props) {
   const team = getClientTeam(roomState, sessionId)
   const traps = roomState.teams[team].traps
 
-  const list_traps = traps.map((trap, index) => {
+  const list_traps = Object.values(traps).map((trap, index) => {
+    if(trap === undefined) return
+
     const duringTrappingPhase = roomState.roundPhase === "trapping"
 
     const trapID = index + 1
@@ -23,7 +25,7 @@ export function Traps({ appState }: Props) {
 
     return (
       <ListItem key={index} sx={style_container}>
-        {duringTrappingPhase && <ButtonCancelTrap index={index} />}
+        {duringTrappingPhase && <ButtonCancelTrap trap={trap.value} />}
         {!duringTrappingPhase && <ButtonActivateTrap appState={appState} index={index} />}
 
         <ListItemText primary={trapValue} secondary={trapAuthor} />

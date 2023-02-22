@@ -8,16 +8,17 @@ import { FlowlessFunction } from "./main.js"
 
 export type ServerToClientEvents = {
   alert: (alertId: AlertId) => void
+  closeDuplicatedSessions: (sessionId: string) => void
   joinRoom: (sessionId: string, roomState: RoomState) => void
   roomStateUpdate: (state: RoomState) => void
-  closeDuplicatedSessions: (sessionId: string) => void
 }
 
 export type ClientToServerEvents = {
+  cancelTrap: (word: string) => void
   changeRole: (team: Team, role: Role) => void
   nextRoundPhase: FlowlessFunction
-  submitTrap: (word: string) => void
   submitGuess: (word: string) => void
+  submitTrap: (word: string) => void
 }
 
 export type Io = Server<ClientToServerEvents, ServerToClientEvents>

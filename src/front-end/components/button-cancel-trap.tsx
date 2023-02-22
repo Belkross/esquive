@@ -1,12 +1,12 @@
 import CancelIcon from "@mui/icons-material/Cancel"
 import { IconButton } from "@mui/material"
-import { doNothing } from "../../functions/do-nothing.js"
+import { socket } from "../config/initialize-socket-io.js"
 
-export default function ButtonCancelTrap({ index }: { index: number }) {
-  //	const handleClick = () => socket.emit("cancelTrap", index);
+export default function ButtonCancelTrap({ trap }: { trap: string }) {
+  const handleClick = () => socket.emit("cancelTrap", trap)
 
   return (
-    <IconButton onClick={() => doNothing(index)}>
+    <IconButton onClick={handleClick}>
       <CancelIcon />
     </IconButton>
   )
