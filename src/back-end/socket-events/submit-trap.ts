@@ -18,6 +18,7 @@ export function submitTrap(server: ServerManager) {
       io.in(roomName).emit("roomStateUpdate", roomState)
     } else {
       if (!someSlotAvailable(roomState, sessionId)) socket.emit("alert", "trapLimitExceeded")
+      else if (trapAlreadySubmitted(roomState, sessionId, word)) socket.emit("alert", "trapAlreadySubmitted")
     }
   })
 }
@@ -26,11 +27,22 @@ function clientIsAllowed(roomState: RoomState, sessionId: string, word: string) 
   const isTrappingPhase = roomState.roundPhase === "trapping"
   const trapIsValid = checkSubmitedWordValidity(word)
 
-  return isTrappingPhase && trapIsValid && someSlotAvailable(roomState, sessionId)
+  return (
+    isTrappingPhase &&
+    trapIsValid &&
+    someSlotAvailable(roomState, sessionId) &&
+    !trapAlreadySubmitted(roomState, sessionId, word)
+  )
 }
 
 function someSlotAvailable(roomState: RoomState, sessionId: string) {
   const clientTeam = getClientTeam(roomState, sessionId)
 
   return roomState.trapSlotsAvailable(clientTeam)
+}
+
+function trapAlreadySubmitted(roomState: RoomState, sessionId: string, word: string) {
+  const team = getClientTeam(roomState, sessionId)
+
+  return roomState.checkTrapExistence(word, team)
 }

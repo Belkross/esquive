@@ -9,6 +9,7 @@ import { applyRoundOutcome } from "./methods/apply-round-outcome.js"
 import { cancelTrap } from "./methods/cancel-trap.js"
 import { changeRole } from "./methods/change-role.js"
 import { checkIfEndOfMatch } from "./methods/check-if-end-of-match.js"
+import { checkTrapExistence } from "./methods/check-trap-existence.js"
 import { configureNextRoundPhase } from "./methods/configure-next-round-phase.js"
 import { deletePlayer } from "./methods/delete-player.js"
 import { drawSecretWord } from "./methods/draw-secret-word.js"
@@ -57,7 +58,7 @@ export class RoomState {
   trappingDuration = this.isProductionEnvironment ? 180 : 10
   guessingDuration = this.isProductionEnvironment ? 120 : 8
   guessAttemptsProvided = this.isProductionEnvironment ? 5 : 8
-  trapSlotsProvided = this.isProductionEnvironment ? 4 : 1
+  trapSlotsProvided = this.isProductionEnvironment ? 4 : 8
   startingTeam: Team = "two"
   isJudgingTrap = false
   secretWordsDeck: string[]
@@ -83,6 +84,7 @@ export class RoomState {
   cancelTrap = cancelTrap
   changeRole = changeRole
   checkIfEndOfMatch = checkIfEndOfMatch
+  checkTrapExistence = checkTrapExistence
   configureNextRoundPhase = configureNextRoundPhase
   deletePlayer = deletePlayer
   drawSecretWord = drawSecretWord

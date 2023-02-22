@@ -19,11 +19,11 @@ export function cancelTrap(server: ServerManager) {
   })
 }
 
-function isAllowed(roomState: RoomState, sessionId: string, trapValue: string) {
+function isAllowed(roomState: RoomState, sessionId: string, word: string) {
   const clientTeam = getClientTeam(roomState, sessionId)
 
   const duringTrappingPhase = roomState.roundPhase === "trapping"
-  const trapExist = Object.values(roomState.teams[clientTeam].traps).some((trap) => trap?.value === trapValue)
+  const trapExist = roomState.checkTrapExistence(word, clientTeam)
 
   return duringTrappingPhase && trapExist
 }

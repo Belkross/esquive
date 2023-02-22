@@ -7,6 +7,7 @@ export type AlertId =
   | "null"
   | "serverDown"
   | "sessionNotFound"
+  | "trapAlreadySubmitted"
   | "trapLimitExceeded"
 
 export type AlertSeverity = "info" | "success" | "warning" | "error"
@@ -49,7 +50,11 @@ export const alerts: Record<AlertId, AlertData> = {
     message: "Votre équipe a atteint le nombre maximum de piège.",
   },
   guessAlreadySubmitted: {
-    severity: "info", 
-    message: "Le mot a déjà été proposé."
-  }
+    severity: "info",
+    message: "Le mot a déjà été proposé.",
+  },
+  trapAlreadySubmitted: {
+    severity: "info",
+    message: "Le piège a déjà été proposé",
+  },
 }
