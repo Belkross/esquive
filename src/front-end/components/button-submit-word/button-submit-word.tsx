@@ -1,9 +1,9 @@
 import { ButtonResponsive } from "../button-responsive.js"
 import EditIcon from "@mui/icons-material/Edit"
-import ModalSubmitWord from "./modal-submit-word.js"
 import { AppState } from "../../../types/main.js"
 import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
 import { getClientTeam } from "../../../functions/get-client-team.js"
+import { ModalSubmitWord } from "./modal-submit-word.js"
 
 type Props = {
   appState: AppState
@@ -16,11 +16,7 @@ export function ButtonSubmitWord({ appState }: Props) {
   return (
     <>
       <ButtonResponsive icon={<EditIcon />} label="Mot" onClick={modal.display} whileDisabled={whileDisabled} />
-      <ModalSubmitWord
-        appState={appState}
-        displayed={modal.displayed}
-        close={modal.remove}
-      />
+      <ModalSubmitWord appState={appState} displayed={modal.displayed} close={modal.remove} />
     </>
   )
 }

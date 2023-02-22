@@ -1,5 +1,5 @@
 import { Dialog, DialogTitle, DialogContent, TextField, Button, SxProps } from "@mui/material"
-import { KeyboardEvent } from "react"
+import { KeyboardEvent, useRef } from "react"
 import { checkSubmitedWordValidity } from "../../../functions/check-submited-word-validity.js"
 import { getClientTeam } from "../../../functions/get-client-team.js"
 import { AppState, FlowlessFunction } from "../../../types/main.js"
@@ -13,8 +13,9 @@ type Props = {
   displayed: boolean
   close: FlowlessFunction
 }
-export default function ModalSubmitWord({ appState, displayed, close }: Props) {
+export function ModalSubmitWord({ appState, displayed, close }: Props) {
   const { input, onInputChange, clearInput } = useValidTextInputWithError("", checkSubmitedWordValidity)
+  const inputRef = useRef<HTMLInputElement>(null)
   const { roomState, sessionId } = appState
   const roundPhase = roomState.roundPhase
   const roundAdvancement = roomState.roundAdvancement
@@ -45,10 +46,12 @@ export default function ModalSubmitWord({ appState, displayed, close }: Props) {
     }
   }
 
+  const handleAnimationEnd = () => inputRef.current?.focus()
+
   useAutoCloseWhenTimerEnd(roundPhase, close, clearInput)
 
   return (
-    <Dialog open={displayed} onClose={close}>
+    <Dialog open={displayed} onClose={close} onAnimationEnd={handleAnimationEnd}>
       <DialogTitle>Choisissez un pseudo</DialogTitle>
       <DialogContent sx={style_dialogContent}>
         <TextField
@@ -61,6 +64,7 @@ export default function ModalSubmitWord({ appState, displayed, close }: Props) {
           disabled={!displayed}
           sx={style_textField}
           error={input.error}
+          inputRef={inputRef}
         />
         <BadgeGuessRemaining appState={appState}>
           <Button onClick={handleSubmit} disabled={!input.validity} sx={style_buttonSubmit(input.error)}>
