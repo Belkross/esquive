@@ -33,15 +33,18 @@ export function ModalSubmitWord({ appState, displayed, close }: Props) {
     if (isTrappingPhase) socket.emit("submitTrap", input.value)
     else if (isClientGuessingPhase) socket.emit("submitGuess", input.value)
     clearInput()
+    close()
   }
 
   const handleKeyDown = (event: KeyboardEvent) => {
     const clientPressEnter = event.keyCode === 13
     const clientPressBackspace = event.keyCode === 8
-
+    
     if (clientPressBackspace) return
-    else if (clientPressEnter) handleSubmit()
-    else {
+    else if (clientPressEnter) {
+      event.preventDefault() //otherwise the input clear but don’t close
+      handleSubmit()
+    } else {
       //TODO: typing activity feature
     }
   }
