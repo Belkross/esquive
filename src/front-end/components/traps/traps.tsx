@@ -39,5 +39,5 @@ export function Traps({ appState }: Props) {
 
 const style_container = {
   gap: 1,
-  px: 2,
+  px: 1,
 }
