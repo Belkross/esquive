@@ -1,5 +1,5 @@
 import { AppState } from "../../../types/main.js"
-import { getClientTeam } from "../../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { ButtonThumb } from "../button-thumb.js"
 import { socket } from "../../config/initialize-socket-io.js"
 
@@ -21,14 +21,14 @@ export function ButtonVoteSecretWord({ voteType, appState }: Props) {
 
 function getClientVote(appState: AppState) {
   const { roomState, sessionId } = appState
-  const clientTeam = getClientTeam(roomState, sessionId)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
 
   return roomState.teams[clientTeam].secretWord.opinions[sessionId]
 }
 
 function getVotersUsername(appState: AppState, voteType: boolean) {
   const { roomState, sessionId } = appState
-  const clientTeam = getClientTeam(roomState, sessionId)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
 
   const opinionEntries = Object.entries(roomState.teams[clientTeam].secretWord.opinions)
   const correspondingEntries = opinionEntries.filter((opinion) => {

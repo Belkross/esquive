@@ -2,7 +2,7 @@ import GuesserIcon from "@mui/icons-material/PersonSearch"
 import TalkerIcon from "@mui/icons-material/RecordVoiceOver"
 import { AppState } from "../../../types/main.js"
 import { Team, Role } from "../../../types/room-state.js"
-import { getClientTeam } from "../../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { ButtonChangeRoleTitle } from "./title-button-change-role.js"
 import { TeammatesList } from "./teammate-list.js"
 import { Stack, IconButton } from "@mui/material"
@@ -38,7 +38,7 @@ function getWhileDisabled(appState: AppState, team: Team) {
   const duringPreRound = roundPhase === "pre round"
   const duringTrapping = roundPhase === "trapping"
 
-  const clientTeam = getClientTeam(roomState, sessionId)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
   const notOpponentTeamButton = clientTeam === team
 
   const whileActivated = duringPreRound || (duringTrapping && notOpponentTeamButton)

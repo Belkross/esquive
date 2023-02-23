@@ -1,4 +1,4 @@
-import { getClientTeam } from "../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../functions/get-player-team.js"
 import { getSocketRoom } from "../../functions/get-socket-room.js"
 import { sessionNotFound } from "../../functions/session-not-found.js"
 import { ServerManager } from "../../types/server.js"
@@ -20,7 +20,7 @@ export function activateTrap(server: ServerManager) {
 }
 
 function actionAllowed(roomState: RoomState, sessionId: string, trap: string) {
-  const clientTeam = getClientTeam(roomState, sessionId)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
   const opponentTeam = roomState.getOpponentTeam(clientTeam)
 
   const trapTypeCorrect = typeof trap === "string"

@@ -1,5 +1,5 @@
 import { Typography, ListItem, ListItemText, List } from "@mui/material"
-import { getClientTeam } from "../../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { AppState } from "../../../types/main.js"
 import { ButtonActivateTrap } from "../button-activate-trap.js"
 import ButtonCancelTrap from "../button-cancel-trap.js"
@@ -11,11 +11,11 @@ type Props = {
 
 export function Traps({ appState }: Props) {
   const { roomState, sessionId } = appState
-  const team = getClientTeam(roomState, sessionId)
+  const team = getPlayerTeam(roomState, sessionId)
   const traps = roomState.teams[team].traps
 
   const list_traps = Object.values(traps).map((trap, index) => {
-    if(trap === undefined) return
+    if (trap === undefined) return
 
     const duringTrappingPhase = roomState.roundPhase === "trapping"
 

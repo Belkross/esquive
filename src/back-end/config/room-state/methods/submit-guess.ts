@@ -1,12 +1,12 @@
 import { formatStringWithBasicLetters } from "../../../../functions/format-string-with-basic-letters.js"
-import { getClientTeam } from "../../../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../../../functions/get-player-team.js"
 import { ServerManager } from "../../../../types/server.js"
 import { RoomState } from "../room-state.js"
 
 export function submitGuess(this: RoomState, server: ServerManager, guess: string) {
   const { sessionId } = server
   const clientUsername = this.players[sessionId].username
-  const clientTeam = getClientTeam(this, sessionId)
+  const clientTeam = getPlayerTeam(this, sessionId)
   const opponentTeam = this.getOpponentTeam(clientTeam)
   const secretWord = this.teams[opponentTeam].secretWord.value
 

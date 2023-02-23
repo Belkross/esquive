@@ -1,7 +1,7 @@
 import { Dialog, DialogTitle, DialogContent, TextField, Button, SxProps } from "@mui/material"
 import { KeyboardEvent, useRef } from "react"
 import { checkSubmitedWordValidity } from "../../../functions/check-submited-word-validity.js"
-import { getClientTeam } from "../../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { AppState, FlowlessFunction } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { useValidTextInputWithError } from "../../custom-hooks/use-valid-text-input-with-error.js"
@@ -22,7 +22,7 @@ export function ModalSubmitWord({ appState, displayed, close }: Props) {
 
   const handleSubmit = () => {
     const inputIsNotValid = input.validity === false
-    const clientGuessingPhase = `guessing ${getClientTeam(roomState, sessionId)}`
+    const clientGuessingPhase = `guessing ${getPlayerTeam(roomState, sessionId)}`
 
     const isTrappingPhase = roundPhase === "trapping" && roundAdvancement === 2
     const isClientGuessingPhase =
@@ -39,7 +39,7 @@ export function ModalSubmitWord({ appState, displayed, close }: Props) {
   const handleKeyDown = (event: KeyboardEvent) => {
     const clientPressEnter = event.keyCode === 13
     const clientPressBackspace = event.keyCode === 8
-    
+
     if (clientPressBackspace) return
     else if (clientPressEnter) {
       event.preventDefault() //otherwise the input clear but don’t close

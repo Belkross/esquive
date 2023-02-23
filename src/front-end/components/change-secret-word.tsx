@@ -1,5 +1,5 @@
 import { Stack, SxProps, Typography } from "@mui/material"
-import { getClientTeam } from "../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../functions/get-player-team.js"
 import { AppState } from "../../types/main.js"
 import { ButtonChangeSecretWord } from "./button-change-secret-word/button-change-secret-word.js"
 import { ButtonGroupVoteSecretWord } from "./button-change-secret-word/button-group-vote-secret-word.js"
@@ -10,7 +10,7 @@ type Props = {
 
 export function ChangeSecretWord({ appState }: Props) {
   const { roomState, sessionId } = appState
-  const team = getClientTeam(roomState, sessionId)
+  const team = getPlayerTeam(roomState, sessionId)
   const secretWord = roomState.teams[team].secretWord.value
   const duringTrappingPhase = roomState.roundPhase === "trapping"
 
@@ -22,7 +22,7 @@ export function ChangeSecretWord({ appState }: Props) {
           <ButtonGroupVoteSecretWord appState={appState} />
         </Stack>
       )}
-      
+
       <Typography>mot à piéger: {secretWord}</Typography>
     </Stack>
   )

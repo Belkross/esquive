@@ -1,6 +1,6 @@
 import { checkSubmitedWordValidity } from "../../functions/check-submited-word-validity.js"
 import { formatStringWithBasicLetters } from "../../functions/format-string-with-basic-letters.js"
-import { getClientTeam } from "../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../functions/get-player-team.js"
 import { getSocketRoom } from "../../functions/get-socket-room.js"
 import { sessionNotFound } from "../../functions/session-not-found.js"
 import { ServerManager } from "../../types/server.js"
@@ -16,7 +16,7 @@ export function submitGuess(server: ServerManager) {
     const guessAlreadySubmitted = checkIfGuessAlreadySubmitted(roomState, sessionId, word)
 
     if (isAllowed(roomState, sessionId, word) && !guessAlreadySubmitted) {
-      roomState.submitGuess(server, word);
+      roomState.submitGuess(server, word)
       io.in(roomName).emit("roomStateUpdate", roomState)
     } else {
       if (guessAlreadySubmitted) socket.emit("alert", "guessAlreadySubmitted")
@@ -25,7 +25,7 @@ export function submitGuess(server: ServerManager) {
 }
 
 function isAllowed(roomState: RoomState, sessionId: string, word: string) {
-  const clientTeam = getClientTeam(roomState, sessionId)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
   const clientIsGuesser = roomState.players[sessionId].role === "guesser"
   const duringHisGuessingPhase = roomState.roundPhase === `guessing ${clientTeam}`
   const isNotJudgingTrap = !roomState.isJudgingTrap
@@ -35,6 +35,6 @@ function isAllowed(roomState: RoomState, sessionId: string, word: string) {
 }
 
 function checkIfGuessAlreadySubmitted(roomState: RoomState, sessionId: string, word: string) {
-  const clientTeam = getClientTeam(roomState, sessionId)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
   return roomState.teams[clientTeam].guessAttempts.includes(formatStringWithBasicLetters(word))
 }

@@ -2,7 +2,7 @@ import { ButtonResponsive } from "../button-responsive.js"
 import EditIcon from "@mui/icons-material/Edit"
 import { AppState } from "../../../types/main.js"
 import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
-import { getClientTeam } from "../../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { ModalSubmitWord } from "./modal-submit-word.js"
 
 type Props = {
@@ -23,7 +23,7 @@ export function ButtonSubmitWord({ appState }: Props) {
 
 function getWhileDisabled(appState: AppState) {
   const { roomState, sessionId } = appState
-  const clientTeam = getClientTeam(roomState, sessionId)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
 
   const isTrappingPhase = roomState.roundPhase === "trapping"
   const isClientTurnToGuess = roomState.roundPhase === `guessing ${clientTeam}`

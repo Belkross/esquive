@@ -1,7 +1,7 @@
 import { Badge, IconButton } from "@mui/material"
 import ChangeIcon from "@mui/icons-material/Replay.js"
 import { AppState } from "../../../types/main.js"
-import { getClientTeam } from "../../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 import { socket } from "../../config/initialize-socket-io.js"
 
@@ -31,7 +31,7 @@ export function ButtonChangeSecretWord({ appState }: Props) {
 }
 
 function getChangeRemaining(roomState: RoomState, sessionId: string) {
-  const clientTeam = getClientTeam(roomState, sessionId)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
   return roomState.teams[clientTeam].secretWordChangeRemaining
 }
 

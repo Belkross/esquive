@@ -1,4 +1,4 @@
-import { getClientTeam } from "../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../functions/get-player-team.js"
 import { getSocketRoom } from "../../functions/get-socket-room.js"
 import { sessionNotFound } from "../../functions/session-not-found.js"
 import { ServerManager } from "../../types/server.js"
@@ -20,7 +20,7 @@ export function reportForbiddenClue(server: ServerManager) {
 }
 
 function actionAllowed(roomState: RoomState, sessionid: string) {
-  const clientTeam = getClientTeam(roomState, sessionid)
+  const clientTeam = getPlayerTeam(roomState, sessionid)
   const opponentTeam = roomState.getOpponentTeam(clientTeam)
   const duringOpponentGuessingPhase = roomState.roundPhase === `guessing ${opponentTeam}`
   const isNotJudgingTrap = !roomState.isJudgingTrap

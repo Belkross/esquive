@@ -1,6 +1,6 @@
 import { Stack, IconButton, Typography } from "@mui/material"
 import { RoomState } from "../../back-end/config/room-state/room-state.js"
-import { getClientTeam } from "../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../functions/get-player-team.js"
 import { AppState } from "../../types/main.js"
 import ErrorIcon from "@mui/icons-material/Error"
 import { socket } from "../config/initialize-socket-io.js"
@@ -27,7 +27,7 @@ function handleClick() {
 }
 
 function getWhileDisabled(roomState: RoomState, sessionId: string) {
-  const opponentTeam = getClientTeam(roomState, sessionId) === "one" ? "two" : "one"
+  const opponentTeam = getPlayerTeam(roomState, sessionId) === "one" ? "two" : "one"
   const duringOpponentGuessingPhase = roomState.roundPhase === `guessing ${opponentTeam}`
 
   const notJudgingTrap = roomState.isJudgingTrap === false

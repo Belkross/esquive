@@ -1,7 +1,7 @@
 import ActivateIcon from "@mui/icons-material/Error"
 import { IconButton } from "@mui/material"
 import { AppState } from "../../types/main.js"
-import { getClientTeam } from "../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../functions/get-player-team.js"
 import { socket } from "../config/initialize-socket-io.js"
 
 type Props = {
@@ -23,7 +23,7 @@ export function ButtonActivateTrap({ trap, appState }: Props) {
 
 function getWhileDisabled(appState: AppState) {
   const { roomState, sessionId } = appState
-  const opponentTeam = getClientTeam(roomState, sessionId) === "one" ? "two" : "one"
+  const opponentTeam = getPlayerTeam(roomState, sessionId) === "one" ? "two" : "one"
   const currentRoundPhase = roomState.roundPhase
   const DuringOpponentGuessingPhase = currentRoundPhase === `guessing ${opponentTeam}`
 

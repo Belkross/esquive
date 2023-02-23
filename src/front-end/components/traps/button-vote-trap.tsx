@@ -1,4 +1,4 @@
-import { getClientTeam } from "../../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { AppState } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { ButtonThumb } from "../button-thumb.js"
@@ -23,13 +23,13 @@ export function ButtonVoteTrap({ voteType, trap, appState }: Props) {
 
 function getClientVote(appState: AppState, trap: string) {
   const { roomState, sessionId } = appState
-  const clientTeam = getClientTeam(roomState, sessionId)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
   return roomState.teams[clientTeam].traps[trap].opinions[sessionId]
 }
 
 function getVotersUsername(appState: AppState, voteType: boolean, trap: string) {
   const { roomState, sessionId } = appState
-  const clientTeam = getClientTeam(roomState, sessionId)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
 
   const opinionEntries = Object.entries(roomState.teams[clientTeam].traps[trap].opinions)
   const correspondingEntries = opinionEntries.filter((opinion) => {
@@ -39,6 +39,6 @@ function getVotersUsername(appState: AppState, voteType: boolean, trap: string) 
   const sessions = correspondingEntries.map((entrie) => {
     return entrie[0]
   })
-  
+
   return sessions.map((sessionId) => roomState.players[sessionId].username)
 }

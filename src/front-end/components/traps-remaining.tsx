@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material"
-import { getClientTeam } from "../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../functions/get-player-team.js"
 import { AppState } from "../../types/main.js"
 
 type Props = {
@@ -8,7 +8,7 @@ type Props = {
 
 export function TrapsRemaining({ appState }: Props) {
   const { roomState, sessionId } = appState
-  const clientTeam = getClientTeam(roomState, sessionId)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
   const currentTrapsNumber = Object.keys(roomState.teams[clientTeam].traps).length
   const trapSlotLimit = roomState.trapSlotsProvided
   const text = `${currentTrapsNumber} / ${trapSlotLimit} pièges`

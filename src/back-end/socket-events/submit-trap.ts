@@ -1,5 +1,5 @@
 import { checkSubmitedWordValidity } from "../../functions/check-submited-word-validity.js"
-import { getClientTeam } from "../../functions/get-client-team.js"
+import { getPlayerTeam } from "../../functions/get-player-team.js"
 import { getSocketRoom } from "../../functions/get-socket-room.js"
 import { sessionNotFound } from "../../functions/session-not-found.js"
 import { ServerManager } from "../../types/server.js"
@@ -36,13 +36,13 @@ function clientIsAllowed(roomState: RoomState, sessionId: string, word: string) 
 }
 
 function someSlotAvailable(roomState: RoomState, sessionId: string) {
-  const clientTeam = getClientTeam(roomState, sessionId)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
 
   return roomState.trapSlotsUsed(clientTeam) < roomState.trapSlotsProvided
 }
 
 function trapAlreadySubmitted(roomState: RoomState, sessionId: string, word: string) {
-  const team = getClientTeam(roomState, sessionId)
+  const team = getPlayerTeam(roomState, sessionId)
 
   return roomState.checkTrapExistence(word, team)
 }
