@@ -16,7 +16,9 @@ import { deletePlayer } from "./methods/delete-player.js"
 import { drawSecretWord } from "./methods/draw-secret-word.js"
 import { getActivePlayerNumber } from "./methods/get-active-player-number.js"
 import { getOpponentTeam } from "./methods/get-opponent-team.js"
+import { getPlayingTeam } from "./methods/get-playing-team.js"
 import { initializeSecretWordsDeck } from "./methods/initialize-secret-word-deck.js"
+import { judgeTrap } from "./methods/judge-trap.js"
 import { makeSureTeamsHaveOrator } from "./methods/make-sure-teams-have-orator.js"
 import { progressToNextRoundPhase } from "./methods/progress-to-next-round-phase.js"
 import { reportForbiddenClue } from "./methods/report-forbidden-clue.js"
@@ -93,7 +95,9 @@ export class RoomState {
   drawSecretWord = drawSecretWord
   getActivePlayerNumber = getActivePlayerNumber
   getOpponentTeam = getOpponentTeam
+  getPlayingTeam = getPlayingTeam
   initializeSecretWordsDeck = initializeSecretWordsDeck
+  judgeTrap = judgeTrap
   makeSureTeamsHaveOrator = makeSureTeamsHaveOrator
   progressToNextRoundPhase = progressToNextRoundPhase
   reportForbiddenClue = reportForbiddenClue

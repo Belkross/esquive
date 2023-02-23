@@ -18,11 +18,12 @@ import { submitTrapOpinion } from "./socket-events/submit-trap-opinion.js"
 import { submitSecretWordOpinion } from "./socket-events/submit-secret-word-opinion.js"
 import { changeSecretWord } from "./socket-events/change-secret-word.js"
 import { reportForbiddenClue } from "./socket-events/report-forbidden-clue.js"
+import { judgeTrap } from "./socket-events/judge-trap.js"
 
 const port = process.env.PORT || 1000
 const app = express()
 const httpServer = createServer(app)
-const io = createIo(httpServer)
+export const io = createIo(httpServer)
 const sessions = new SessionStorage()
 const rooms = new RoomStorage()
 
@@ -59,6 +60,7 @@ io.on("connection", (socket) => {
   cancelTrap(server)
   changeRole(server)
   changeSecretWord(server)
+  judgeTrap(server)
   nextRoundPhase(server)
   reportForbiddenClue(server)
   submitGuess(server)
