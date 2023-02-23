@@ -11,7 +11,7 @@ export function changeSecretWord(server: ServerManager) {
     if (sessionNotFound(server)) return
 
     const { roomName, roomState } = getSocketRoom(server)
-    console.log("is allowed:", isAllowed(roomState, sessionId))
+
     if (isAllowed(roomState, sessionId)) {
       roomState.changeSecretWord(sessionId)
       io.in(roomName).emit("roomStateUpdate", roomState)

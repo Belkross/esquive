@@ -13,7 +13,6 @@ export function reportForbiddenClue(server: ServerManager) {
     const { roomName, roomState } = getSocketRoom(server)
 
     if (actionAllowed(roomState, sessionId)) {
-      console.log("isAllowed")
       roomState.reportForbiddenClue(sessionId)
       io.in(roomName).emit("roomStateUpdate", roomState)
     }
