@@ -1,9 +1,12 @@
-import { Team, Trap } from "../../../types/room-state.js"
+import { Team } from "../../../types/room-state.js"
+
+type Opinions = { [sessionId: string]: boolean | undefined }
+export type Trap = { value: string; author: string; opinions: Opinions }
 
 export class TeamData {
   readonly color: "indigo" | "rouge"
   readonly opponent: Team
-  readonly traps: {[trapIndex: string]: Trap} = {}
+  readonly traps: { [trapIndex: string]: Trap } = {}
   readonly guessAttempts: string[] = []
   score = 0
   secretWord = ""
@@ -11,15 +14,8 @@ export class TeamData {
   guessAttemptsRemaining = 0
   hasSucceededGuess: boolean | undefined = undefined
 
-  constructor(team: Team, trapSlotLimit: number) {
+  constructor(team: Team) {
     this.color = team === "one" ? "indigo" : "rouge"
     this.opponent = team === "one" ? "two" : "one"
-    this.initializeTrapOpinions(trapSlotLimit)
-  }
-
-  initializeTrapOpinions(trapSlotLimit: number) {
-    for (let trapIndex = 0; trapIndex < trapSlotLimit; ++trapIndex) {
-      this.traps[trapIndex.toString()] = undefined
-    }
   }
 }

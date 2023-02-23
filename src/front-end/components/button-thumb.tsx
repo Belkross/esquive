@@ -1,16 +1,16 @@
 import ThumbUpIcon from "@mui/icons-material/ThumbUp"
 import ThumbDownIcon from "@mui/icons-material/ThumbDown"
 import { Tooltip, Badge, IconButton } from "@mui/material"
-import { doNothing } from "../../functions/do-nothing.js"
 
 type Props = {
   isThumbUp: boolean
   clientVote: boolean | undefined
   votersUsername: string[]
   small?: boolean
+  handleClick: (vote: boolean) => void
 }
 
-export function ButtonThumb({ isThumbUp, clientVote, votersUsername, small }: Props) {
+export function ButtonThumb({ isThumbUp, clientVote, votersUsername, small, handleClick }: Props) {
   const votersUsernameString = votersUsername.join(", ")
   const badgeColor = isThumbUp ? "success" : "error"
   const icon = isThumbUp ? <ThumbUpIcon /> : <ThumbDownIcon />
@@ -18,7 +18,7 @@ export function ButtonThumb({ isThumbUp, clientVote, votersUsername, small }: Pr
   return (
     <Tooltip title={votersUsernameString}>
       <Badge color={badgeColor} badgeContent={votersUsername.length}>
-        <IconButton sx={style_button(isThumbUp, clientVote, small)} onClick={doNothing}>
+        <IconButton sx={style_button(isThumbUp, clientVote, small)} onClick={() => handleClick(isThumbUp)}>
           {icon}
         </IconButton>
       </Badge>

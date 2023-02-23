@@ -1,38 +1,44 @@
 import { getClientTeam } from "../../../functions/get-client-team.js"
 import { AppState } from "../../../types/main.js"
+import { socket } from "../../config/initialize-socket-io.js"
 import { ButtonThumb } from "../button-thumb.js"
 
 type Props = {
   appState: AppState
-  trapIndex: number
+  trap: string
   voteType: boolean
 }
 
-export function ButtonVoteTrap({ voteType, trapIndex, appState }: Props) {
-  const { roomState, sessionId } = appState
-
+export function ButtonVoteTrap({ voteType, trap, appState }: Props) {
   const componentProps = {
     isThumbUp: voteType,
-    clientVote: roomState.players[sessionId].trapOpinions[trapIndex],
-    votersUsername: getVotersUsername(appState, voteType, trapIndex),
-    small: true
-    //onClick: (boolean) => () => socket.emit("submitTrapOpinion", trapIndex, boolean),
+    clientVote: getClientVote(appState, trap),
+    votersUsername: getVotersUsername(appState, voteType, trap),
+    small: true,
+    handleClick: (boolean: boolean) => socket.emit("submitTrapOpinion", trap, boolean),
   }
 
   return <ButtonThumb {...componentProps} />
 }
 
-function getVotersUsername(appState: AppState, voteType: boolean, trapIndex: number) {
+function getClientVote(appState: AppState, trap: string) {
   const { roomState, sessionId } = appState
   const clientTeam = getClientTeam(roomState, sessionId)
-  const allPlayers = Object.values(roomState.players)
+  return roomState.teams[clientTeam].traps[trap].opinions[sessionId]
+}
 
-  const clientTeammatesWhoPressedTheButton = allPlayers.filter((player) => {
-    const isClientMate = player.team === clientTeam
-    const pressedTheButton = player.trapOpinions[trapIndex] === voteType
+function getVotersUsername(appState: AppState, voteType: boolean, trap: string) {
+  const { roomState, sessionId } = appState
+  const clientTeam = getClientTeam(roomState, sessionId)
 
-    return isClientMate && pressedTheButton
+  const opinionEntries = Object.entries(roomState.teams[clientTeam].traps[trap].opinions)
+  const correspondingEntries = opinionEntries.filter((opinion) => {
+    const opinionValue = opinion[1]
+    return opinionValue === voteType
   })
-
-  return clientTeammatesWhoPressedTheButton.map((player) => player.username)
+  const sessions = correspondingEntries.map((entrie) => {
+    return entrie[0]
+  })
+  
+  return sessions.map((sessionId) => roomState.players[sessionId].username)
 }

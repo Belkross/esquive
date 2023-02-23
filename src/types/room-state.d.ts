@@ -1,6 +1,6 @@
 export type Team = "one" | "two"
 export type Role = "guesser" | "orator"
-export type Trap = { value: string; author: string } | undefined
+
 export type RoundPhase =
   | "pre round"
   | "trapping"

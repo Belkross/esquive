@@ -4,14 +4,14 @@ import { ButtonVoteTrap } from "./button-vote-trap.js"
 
 type Props = {
   appState: AppState
-  index: number
+trap: string
 }
 
-export function ButtonsVoteTrap({ index, appState }: Props) {
+export function ButtonsVoteTrap({ trap, appState }: Props) {
   return (
     <Stack sx={style_buttonsThumb}>
-      <ButtonVoteTrap voteType={true} trapIndex={index} appState={appState} />
-      <ButtonVoteTrap voteType={false} trapIndex={index} appState={appState} />
+      <ButtonVoteTrap voteType={true} trap={trap} appState={appState} />
+      <ButtonVoteTrap voteType={false} trap={trap} appState={appState} />
     </Stack>
   )
 }

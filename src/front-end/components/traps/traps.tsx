@@ -29,7 +29,7 @@ export function Traps({ appState }: Props) {
         {!duringTrappingPhase && <ButtonActivateTrap appState={appState} index={index} />}
 
         <ListItemText primary={trapValue} secondary={trapAuthor} />
-        {duringTrappingPhase && <ButtonsVoteTrap index={index} appState={appState} />}
+        {duringTrappingPhase && <ButtonsVoteTrap trap={trap.value} appState={appState} />}
       </ListItem>
     )
   })

@@ -19,6 +19,7 @@ export type ClientToServerEvents = {
   nextRoundPhase: FlowlessFunction
   submitGuess: (word: string) => void
   submitTrap: (word: string) => void
+  submitTrapOpinion: (word: string, opinion: boolean) => void
 }
 
 export type Io = Server<ClientToServerEvents, ServerToClientEvents>

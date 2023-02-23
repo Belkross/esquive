@@ -30,9 +30,10 @@ import { setTimer } from "./methods/set-timer.js"
 import { startTimer } from "./methods/start-timer.js"
 import { stopTimer } from "./methods/stop-timer.js"
 import { submitGuess } from "./methods/submit-guess.js"
+import { submitTrapOpinion } from "./methods/submit-trap-opinion.js"
 import { submitTrap } from "./methods/submit-trap.js"
 import { switchStartingTeam } from "./methods/switch-starting-team.js"
-import { trapSlotsAvailable } from "./methods/trap-slots-available.js"
+import { trapSlotsUsed } from "./methods/trap-slots-used.js"
 import { PlayerData } from "./player-data.js"
 import { TeamData } from "./team-data.js"
 
@@ -68,7 +69,7 @@ export class RoomState {
 
   constructor(roomName: string, secretWordList: string) {
     this.roomName = roomName
-    this.teams = { one: new TeamData("one", this.trapSlotsProvided), two: new TeamData("two", this.trapSlotsProvided) }
+    this.teams = { one: new TeamData("one"), two: new TeamData("two") }
     this.historic.push(`Bienvenue dans le salon ${this.roomName}.`, "La phase de piège va commencer.")
     this.secretWordsDeck = this.initializeSecretWordsDeck(secretWordList)
     this.timer = this.trappingDuration
@@ -106,6 +107,7 @@ export class RoomState {
   stopTimer = stopTimer
   submitGuess = submitGuess
   submitTrap = submitTrap
+  submitTrapOpinion = submitTrapOpinion
   switchStartingTeam = switchStartingTeam
-  trapSlotsAvailable = trapSlotsAvailable
+  trapSlotsUsed = trapSlotsUsed
 }
