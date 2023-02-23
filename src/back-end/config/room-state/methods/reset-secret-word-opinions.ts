@@ -12,7 +12,7 @@ function resetAllPlayersOpinion(this: RoomState) {
   }
 }
 
-function resetTeamOpinion(this: RoomState, team: Team) {
+fuction resetTeamOpinion(this: RoomState, team: Team) {
   for (const player in this.players) {
     if (this.players[player].team === team) this.players[player].secretWordOpinion = undefined
   }

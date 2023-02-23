@@ -11,7 +11,6 @@ export function configureNextRoundPhase(this: RoomState, username?: string) {
       this.setTimer(this.trappingDuration)
       this.resetGuessAttemptsRemaining()
       this.resetGuessAttempts()
-      this.resetSecretWordOpinions("bothTeam")
       this.applyRoundOutcome()
       this.switchStartingTeam()
 

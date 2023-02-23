@@ -11,7 +11,7 @@ export function announceEventualGuessgFailure(this: RoomState, playingTeam: Team
     const playingTeamColor = this.teams[playingTeam].color
 
     const opponentTeam = this.getOpponentTeam(playingTeam)
-    const secretWord = this.teams[opponentTeam].secretWord.toUpperCase()
+    const secretWord = this.teams[opponentTeam].secretWord.value.toUpperCase()
 
     const sentence = `L’auditoire ${playingTeamColor} n’a pas réussi à deviner le mot ${secretWord}.`
     this.addToHistoric(sentence)

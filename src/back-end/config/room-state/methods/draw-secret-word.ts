@@ -6,7 +6,7 @@ export function drawSecretWord(this: RoomState, team: Team) {
   const noMoreToDraw = this.secretWordsDeckDrawIndex >= this.secretWordsDeck.length
   if (noMoreToDraw) reuseDeck.call(this)
 
-  this.teams[team].secretWord = this.secretWordsDeck[this.secretWordsDeckDrawIndex]
+  this.teams[team].secretWord = { value: this.secretWordsDeck[this.secretWordsDeckDrawIndex], opinions: {} }
   ++this.secretWordsDeckDrawIndex
 }
 

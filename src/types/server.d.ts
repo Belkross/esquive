@@ -19,6 +19,7 @@ export type ClientToServerEvents = {
   nextRoundPhase: FlowlessFunction
   submitGuess: (word: string) => void
   submitTrap: (word: string) => void
+  submitSecretWordOpinion: (opinion: boolean) => void
   submitTrapOpinion: (word: string, opinion: boolean) => void
 }
 

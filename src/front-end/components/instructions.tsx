@@ -22,8 +22,8 @@ function pickInstruction(roomState: RoomState, sessionId: string) {
   const role = roomState.players[sessionId].role
 
   /* eslint-disable sonarjs/no-duplicate-string */
-  const teamOneSecretWord = roomState.teams.one.secretWord
-  const teamTwoSecretWord = roomState.teams.two.secretWord
+  const teamOneSecretWord = roomState.teams.one.secretWord.value
+  const teamTwoSecretWord = roomState.teams.two.secretWord.value
   const instructions = {
     "pre round": {
       one: {

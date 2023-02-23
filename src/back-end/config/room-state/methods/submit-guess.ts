@@ -8,7 +8,7 @@ export function submitGuess(this: RoomState, server: ServerManager, guess: strin
   const clientUsername = this.players[sessionId].username
   const clientTeam = getClientTeam(this, sessionId)
   const opponentTeam = this.getOpponentTeam(clientTeam)
-  const secretWord = this.teams[opponentTeam].secretWord
+  const secretWord = this.teams[opponentTeam].secretWord.value
 
   const formattedSecretWord = formatStringWithBasicLetters(secretWord)
   const formattedGuess = formatStringWithBasicLetters(guess)

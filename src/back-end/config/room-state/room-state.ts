@@ -21,7 +21,6 @@ import { progressToNextRoundPhase } from "./methods/progress-to-next-round-phase
 import { resetGuessAttemptsRemaining } from "./methods/reset-guess-attempts-remaining.js"
 import { resetGuessAttempts } from "./methods/reset-guess-attempts.js"
 import { resetScores } from "./methods/reset-scores.js"
-import { resetSecretWordOpinions } from "./methods/reset-secret-word-opinions.js"
 import { resetSecretWordChangeRemaining } from "./methods/reset-secret-word-remaining.js"
 import { resetTeamOutcomes } from "./methods/reset-team-outcomes.js"
 import { resetTraps } from "./methods/reset-traps.js"
@@ -29,6 +28,7 @@ import { setTimer } from "./methods/set-timer.js"
 import { startTimer } from "./methods/start-timer.js"
 import { stopTimer } from "./methods/stop-timer.js"
 import { submitGuess } from "./methods/submit-guess.js"
+import { submitSecretWordOpinion } from "./methods/submit-secret-word-opinion.js"
 import { submitTrapOpinion } from "./methods/submit-trap-opinion.js"
 import { submitTrap } from "./methods/submit-trap.js"
 import { switchStartingTeam } from "./methods/switch-starting-team.js"
@@ -97,13 +97,13 @@ export class RoomState {
   resetGuessAttemptsRemaining = resetGuessAttemptsRemaining
   resetScores = resetScores
   resetSecretWordChangeRemaining = resetSecretWordChangeRemaining
-  resetSecretWordOpinions = resetSecretWordOpinions
   resetTeamOutcomes = resetTeamOutcomes
   resetTraps = resetTraps
   setTimer = setTimer
   startTimer = startTimer
   stopTimer = stopTimer
   submitGuess = submitGuess
+  submitSecretWordOpinion = submitSecretWordOpinion
   submitTrap = submitTrap
   submitTrapOpinion = submitTrapOpinion
   switchStartingTeam = switchStartingTeam

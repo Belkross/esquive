@@ -11,7 +11,7 @@ type Props = {
 export function ChangeSecretWord({ appState }: Props) {
   const { roomState, sessionId } = appState
   const team = getClientTeam(roomState, sessionId)
-  const secretWord = roomState.teams[team].secretWord
+  const secretWord = roomState.teams[team].secretWord.value
   const duringTrappingPhase = roomState.roundPhase === "trapping"
 
   return (
