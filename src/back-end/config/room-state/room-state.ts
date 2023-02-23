@@ -8,6 +8,7 @@ import { announceTimerStart } from "./methods/announce-timer-start.js"
 import { applyRoundOutcome } from "./methods/apply-round-outcome.js"
 import { cancelTrap } from "./methods/cancel-trap.js"
 import { changeRole } from "./methods/change-role.js"
+import { changeSecretWord } from "./methods/change-secret-word.js"
 import { checkIfEndOfMatch } from "./methods/check-if-end-of-match.js"
 import { checkTrapExistence } from "./methods/check-trap-existence.js"
 import { configureNextRoundPhase } from "./methods/configure-next-round-phase.js"
@@ -83,6 +84,7 @@ export class RoomState {
   announceTimerStart = announceTimerStart
   cancelTrap = cancelTrap
   changeRole = changeRole
+  changeSecretWord = changeSecretWord
   checkIfEndOfMatch = checkIfEndOfMatch
   checkTrapExistence = checkTrapExistence
   configureNextRoundPhase = configureNextRoundPhase

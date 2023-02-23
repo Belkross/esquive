@@ -16,6 +16,7 @@ export type ServerToClientEvents = {
 export type ClientToServerEvents = {
   cancelTrap: (word: string) => void
   changeRole: (team: Team, role: Role) => void
+  changeSecretWord: () => void
   nextRoundPhase: FlowlessFunction
   submitGuess: (word: string) => void
   submitTrap: (word: string) => void
