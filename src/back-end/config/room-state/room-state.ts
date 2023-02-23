@@ -19,6 +19,7 @@ import { getOpponentTeam } from "./methods/get-opponent-team.js"
 import { initializeSecretWordsDeck } from "./methods/initialize-secret-word-deck.js"
 import { makeSureTeamsHaveOrator } from "./methods/make-sure-teams-have-orator.js"
 import { progressToNextRoundPhase } from "./methods/progress-to-next-round-phase.js"
+import { reportForbiddenClue } from "./methods/report-forbidden-clue.js"
 import { resetGuessAttemptsRemaining } from "./methods/reset-guess-attempts-remaining.js"
 import { resetGuessAttempts } from "./methods/reset-guess-attempts.js"
 import { resetScores } from "./methods/reset-scores.js"
@@ -95,6 +96,7 @@ export class RoomState {
   initializeSecretWordsDeck = initializeSecretWordsDeck
   makeSureTeamsHaveOrator = makeSureTeamsHaveOrator
   progressToNextRoundPhase = progressToNextRoundPhase
+  reportForbiddenClue = reportForbiddenClue
   resetGuessAttempts = resetGuessAttempts
   resetGuessAttemptsRemaining = resetGuessAttemptsRemaining
   resetScores = resetScores

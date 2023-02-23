@@ -18,6 +18,7 @@ export type ClientToServerEvents = {
   changeRole: (team: Team, role: Role) => void
   changeSecretWord: () => void
   nextRoundPhase: FlowlessFunction
+  reportForbiddenClue: () => void
   submitGuess: (word: string) => void
   submitTrap: (word: string) => void
   submitSecretWordOpinion: (opinion: boolean) => void

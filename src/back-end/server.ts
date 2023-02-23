@@ -17,6 +17,7 @@ import { cancelTrap } from "./socket-events/cancel-trap.js"
 import { submitTrapOpinion } from "./socket-events/submit-trap-opinion.js"
 import { submitSecretWordOpinion } from "./socket-events/submit-secret-word-opinion.js"
 import { changeSecretWord } from "./socket-events/change-secret-word.js"
+import { reportForbiddenClue } from "./socket-events/report-forbidden-clue.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -59,6 +60,7 @@ io.on("connection", (socket) => {
   changeRole(server)
   changeSecretWord(server)
   nextRoundPhase(server)
+  reportForbiddenClue(server)
   submitGuess(server)
   submitSecretWordOpinion(server)
   submitTrap(server)
