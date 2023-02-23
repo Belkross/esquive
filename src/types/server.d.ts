@@ -14,16 +14,17 @@ export type ServerToClientEvents = {
 }
 
 export type ClientToServerEvents = {
-  cancelTrap: (word: string) => void
+  activateTrap: (trap: string) => void
+  cancelTrap: (trap: string) => void
   changeRole: (team: Team, role: Role) => void
   changeSecretWord: () => void
   judgeTrap: (judgement: boolean) => void
   nextRoundPhase: FlowlessFunction
   reportForbiddenClue: () => void
-  submitGuess: (word: string) => void
-  submitTrap: (word: string) => void
+  submitGuess: (guess: string) => void
+  submitTrap: (trap: string) => void
   submitSecretWordOpinion: (opinion: boolean) => void
-  submitTrapOpinion: (word: string, opinion: boolean) => void
+  submitTrapOpinion: (trap: string, opinion: boolean) => void
 }
 
 export type Io = Server<ClientToServerEvents, ServerToClientEvents>

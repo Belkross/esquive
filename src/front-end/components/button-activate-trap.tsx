@@ -1,21 +1,21 @@
-import { doNothing } from "../../functions/do-nothing.js"
 import ActivateIcon from "@mui/icons-material/Error"
 import { IconButton } from "@mui/material"
 import { AppState } from "../../types/main.js"
 import { getClientTeam } from "../../functions/get-client-team.js"
+import { socket } from "../config/initialize-socket-io.js"
 
 type Props = {
-  index: number
+  trap: string
   appState: AppState
 }
 
-export function ButtonActivateTrap({ index, appState }: Props) {
+export function ButtonActivateTrap({ trap, appState }: Props) {
   const whileDisabled = getWhileDisabled(appState)
 
-  //const handleClick = () => socket.emit("activateTrap", index);
+  const handleClick = () => socket.emit("activateTrap", trap)
 
   return (
-    <IconButton disabled={whileDisabled} onClick={() => doNothing(index)}>
+    <IconButton disabled={whileDisabled} onClick={handleClick}>
       <ActivateIcon />
     </IconButton>
   )

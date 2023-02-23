@@ -1,4 +1,5 @@
 import { Team, RoundPhase } from "../../../types/room-state.js"
+import { activateTrap } from "./methods/activate-trap.js"
 import { addPlayer } from "./methods/add-player.js"
 import { addToHistoric } from "./methods/add-to-historic.js"
 import { announceEventualGuessgFailure } from "./methods/announce-eventual-guess-failure.js"
@@ -78,6 +79,7 @@ export class RoomState {
     this.timer = this.trappingDuration
   }
 
+  activateTrap = activateTrap
   addPlayer = addPlayer
   addToHistoric = addToHistoric
   applyRoundOutcome = applyRoundOutcome

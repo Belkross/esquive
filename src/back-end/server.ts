@@ -19,6 +19,7 @@ import { submitSecretWordOpinion } from "./socket-events/submit-secret-word-opin
 import { changeSecretWord } from "./socket-events/change-secret-word.js"
 import { reportForbiddenClue } from "./socket-events/report-forbidden-clue.js"
 import { judgeTrap } from "./socket-events/judge-trap.js"
+import { activateTrap } from "./socket-events/activate-trap.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -57,6 +58,7 @@ io.on("connection", (socket) => {
   const server: ServerManager = { socket, io, sessions, rooms, sessionId: socket.handshake.auth.sessionId }
   connection(server)
 
+  activateTrap(server)
   cancelTrap(server)
   changeRole(server)
   changeSecretWord(server)
