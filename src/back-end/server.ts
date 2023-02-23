@@ -20,6 +20,7 @@ import { changeSecretWord } from "./socket-events/change-secret-word.js"
 import { reportForbiddenClue } from "./socket-events/report-forbidden-clue.js"
 import { judgeTrap } from "./socket-events/judge-trap.js"
 import { activateTrap } from "./socket-events/activate-trap.js"
+import { shuffleTeams } from "./socket-events/shuffle-teams.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -62,14 +63,15 @@ io.on("connection", (socket) => {
   cancelTrap(server)
   changeRole(server)
   changeSecretWord(server)
+  disconnect(server)
   judgeTrap(server)
   nextRoundPhase(server)
   reportForbiddenClue(server)
+  shuffleTeams(server)
   submitGuess(server)
   submitSecretWordOpinion(server)
   submitTrap(server)
   submitTrapOpinion(server)
-  disconnect(server)
 })
 
 httpServer.listen(port, () => {

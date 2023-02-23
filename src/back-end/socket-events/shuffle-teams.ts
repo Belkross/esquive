@@ -1,0 +1,26 @@
+import { getSocketRoom } from "../../functions/get-socket-room.js"
+import { sessionNotFound } from "../../functions/session-not-found.js"
+import { ServerManager } from "../../types/server.js"
+import { RoomState } from "../config/room-state/room-state.js"
+
+export function shuffleTeams(server: ServerManager) {
+  const { socket, io, sessionId } = server
+
+  socket.on("shuffleTeams", () => {
+    if (sessionNotFound(server)) return
+
+    const { roomName, roomState } = getSocketRoom(server)
+
+    if (actionAllowed(roomState, sessionId)) {
+      roomState.shuffleTeams(sessionId)
+      io.in(roomName).emit("roomStateUpdate", roomState)
+    }
+  })
+}
+
+function actionAllowed(roomState: RoomState, sessionId: string) {
+  const clientIsAdmin = roomState.players[sessionId].isAdmin
+  const duringPreRoundPhase = roomState.roundPhase === "pre round"
+
+  return clientIsAdmin && duringPreRoundPhase
+}

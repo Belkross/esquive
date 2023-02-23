@@ -30,6 +30,7 @@ import { resetSecretWordChangeRemaining } from "./methods/reset-secret-word-rema
 import { resetTeamOutcomes } from "./methods/reset-team-outcomes.js"
 import { resetTraps } from "./methods/reset-traps.js"
 import { setTimer } from "./methods/set-timer.js"
+import { shuffleTeams } from "./methods/shuffle-teams.js"
 import { startTimer } from "./methods/start-timer.js"
 import { stopTimer } from "./methods/stop-timer.js"
 import { submitGuess } from "./methods/submit-guess.js"
@@ -110,6 +111,7 @@ export class RoomState {
   resetTeamOutcomes = resetTeamOutcomes
   resetTraps = resetTraps
   setTimer = setTimer
+  shuffleTeams = shuffleTeams
   startTimer = startTimer
   stopTimer = stopTimer
   submitGuess = submitGuess

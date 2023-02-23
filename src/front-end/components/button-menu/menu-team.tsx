@@ -1,4 +1,5 @@
 import { AppState } from "../../../types/main.js"
+import { ButtonShuffleTeams } from "../button-shuffle-teams.js"
 import { Teams } from "../teams.js"
 
 type Props = {
@@ -8,6 +9,7 @@ export function MenuTeam({ appState }: Props) {
   return (
     <>
       <Teams appState={appState} />
+      <ButtonShuffleTeams appState={appState} />
     </>
   )
 }

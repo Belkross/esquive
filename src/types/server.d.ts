@@ -17,14 +17,15 @@ export type ClientToServerEvents = {
   activateTrap: (trap: string) => void
   cancelTrap: (trap: string) => void
   changeRole: (team: Team, role: Role) => void
-  changeSecretWord: () => void
+  changeSecretWord: FlowlessFunction
   judgeTrap: (judgement: boolean) => void
   nextRoundPhase: FlowlessFunction
-  reportForbiddenClue: () => void
+  reportForbiddenClue: FlowlessFunction
   submitGuess: (guess: string) => void
   submitTrap: (trap: string) => void
   submitSecretWordOpinion: (opinion: boolean) => void
   submitTrapOpinion: (trap: string, opinion: boolean) => void
+  shuffleTeams: FlowlessFunction
 }
 
 export type Io = Server<ClientToServerEvents, ServerToClientEvents>
