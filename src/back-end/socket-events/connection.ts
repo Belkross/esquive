@@ -1,7 +1,6 @@
-import secretWordList from "../../../config/secret-word-list.js"
-import { ServerManager } from "../../../types/server.js"
-import { logClientEvents } from "./log-client-events.js"
-import { updateJoiningPlayerData } from "./update-joining-player-data.js"
+import secretWordList from "../../config/secret-word-list.js"
+import { ServerManager } from "../../types/server.js"
+import { RoomState } from "../config/room-state/room-state.js"
 
 export function connection(server: ServerManager) {
   const { io, socket, sessions, rooms, sessionId } = server
@@ -22,4 +21,17 @@ export function connection(server: ServerManager) {
 
   socket.join(roomName)
   socket.emit("joinRoom", sessionId, roomState)
+}
+
+function updateJoiningPlayerData(roomState: RoomState, sessionId: string, username: string) {
+  const isNewPlayer = roomState.players[sessionId] === undefined
+
+  if (isNewPlayer) roomState.addPlayer(sessionId, username)
+  else roomState.players[sessionId].connected = true
+}
+
+function logClientEvents(server: ServerManager, username: string) {
+  server.socket.onAny((eventName, ...args) => {
+    console.log(`${username}: ${eventName}`, args)
+  })
 }
