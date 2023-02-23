@@ -10,7 +10,7 @@ export class PlayerData {
   isTyping = false
   secretWordOpinion: boolean | undefined = undefined
 
-  constructor(username: string, sessionId: string) {
+  constructor(sessionId: string, username: string) {
     this.sessionId = sessionId
     this.username = username
   }
