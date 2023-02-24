@@ -55,6 +55,7 @@ const style_drawer: SxProps = {
   height: "100%",
   padding: 2,
   paddingBottom: 12, //to make sure content don’t hide behind app bar
+  backgroundColor: "background.default"
 }
 
 const style_tabContent: SxProps = {
