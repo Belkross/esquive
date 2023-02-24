@@ -8,15 +8,14 @@ type Props = {
 
 export function ButtonChangeRoleTitle({ role, team }: Props) {
   const content = role === "guesser" ? "AUDITEUR" : "ORATEUR"
-  const color = team === "one" ? "teamOne.main" : "teamTwo.main"
 
   return (
-    <Typography variant="h3" sx={style_title(color)}>
+    <Typography variant="h3" sx={style_title(team)}>
       {content}
     </Typography>
   )
 }
 
-const style_title = (color: string) => ({
-  color,
+const style_title = (team: Team) => ({
+  color: `team.${team}`,
 })

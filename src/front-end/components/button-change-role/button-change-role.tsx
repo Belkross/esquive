@@ -53,7 +53,7 @@ const style_container = {
 }
 
 const style_iconButton = (team: Team) => {
-  const color = team === "one" ? "teamOne.main" : "teamTwo.main"
+  const color = `team.${team}`
   return {
     backgroundColor: color,
     borderColor: color,

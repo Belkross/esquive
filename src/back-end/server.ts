@@ -21,6 +21,7 @@ import { reportForbiddenClue } from "./socket-events/report-forbidden-clue.js"
 import { judgeTrap } from "./socket-events/judge-trap.js"
 import { activateTrap } from "./socket-events/activate-trap.js"
 import { shuffleTeams } from "./socket-events/shuffle-teams.js"
+import { promoteAdmin } from "./socket-events/promote-admin.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -66,6 +67,7 @@ io.on("connection", (socket) => {
   disconnect(server)
   judgeTrap(server)
   nextRoundPhase(server)
+  promoteAdmin(server)
   reportForbiddenClue(server)
   shuffleTeams(server)
   submitGuess(server)

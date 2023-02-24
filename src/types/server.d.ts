@@ -20,6 +20,7 @@ export type ClientToServerEvents = {
   changeSecretWord: FlowlessFunction
   judgeTrap: (judgement: boolean) => void
   nextRoundPhase: FlowlessFunction
+  promoteAdmin: (promotedSessionId: string) => void
   reportForbiddenClue: FlowlessFunction
   submitGuess: (guess: string) => void
   submitTrap: (trap: string) => void

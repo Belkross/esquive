@@ -1,5 +1,6 @@
 import Typography from "@mui/material/Typography"
-import { Team, RoomState } from "../../../back-end/config/room-state/room-state.js"
+import { RoomState } from "../../../back-end/config/room-state/room-state.js"
+import { Team } from "../../../types/room-state.js"
 
 type Props = {
   team: Team
@@ -17,5 +18,5 @@ export function Points({ team, roomState }: Props) {
 }
 
 const style_score = (team: Team) => ({
-  color: team === "one" ? "teamOne.main" : "teamTwo.main",
+  color: `team.${team}`,
 })

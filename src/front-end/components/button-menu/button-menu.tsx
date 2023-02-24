@@ -18,7 +18,7 @@ export function ButtonMenu({ appState, setAppState }: InterfaceGameProps) {
   let tabContent
   switch (selectedTab) {
     case "main":
-      tabContent = <MenuMain setAppState={setAppState} />
+      tabContent = <MenuMain setAppState={setAppState} appState={appState}/>
       break
     case "team":
       tabContent = <MenuTeam appState={appState} />
