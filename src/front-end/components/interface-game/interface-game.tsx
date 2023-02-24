@@ -21,12 +21,12 @@ export type InterfaceGameProps = {
 export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
   const clientIsAdmin = appState.roomState.players[appState.sessionId].isAdmin
 
-  useSubscribeCloseDuplicatedSessions(appState, setAppState)
+  useSubscribeCloseDuplicatedSessions(appState)
   useSubscribeRoomStateUpdate(setAppState)
 
   return (
     <>
-      <ApplicationBar appState={appState} setAppState={setAppState} />
+      <ApplicationBar appState={appState} />
       <Stack sx={style_partOne}>
         <Score roomState={appState.roomState} />
         {clientIsAdmin && <AdminButtons appState={appState} />}

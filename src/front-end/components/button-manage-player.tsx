@@ -4,7 +4,6 @@ import AdminIcon from "@mui/icons-material/MilitaryTech"
 import { useTemporaryElement } from "../custom-hooks/use-temporary-element.js"
 import { useRef } from "react"
 import { socket } from "../config/initialize-socket-io.js"
-import { doNothing } from "../../functions/do-nothing.js"
 
 type Props = {
   player: PlayerData
@@ -18,14 +17,24 @@ export function ButtonManagePlayer({ player }: Props) {
     socket.emit("promoteAdmin", player.sessionId)
   }
 
+  const handleClick_kickPlayer = () => {
+    menu.remove()
+    socket.emit("kickPlayer", player.sessionId)
+  }
+
   return (
     <>
-      <Button sx={style_buttonPlayer(player)} startIcon={player.isAdmin ? <AdminIcon /> : null} onClick={menu.display} ref={anchorElement}>
+      <Button
+        sx={style_buttonPlayer(player)}
+        startIcon={player.isAdmin ? <AdminIcon /> : null}
+        onClick={menu.display}
+        ref={anchorElement}
+      >
         {player.username}
       </Button>
       <Menu anchorEl={anchorElement.current} open={menu.displayed} onClose={menu.remove}>
-        {!player.isAdmin && <MenuItem onClick={handleClick_promoteAdmin} sx={style_menuItem}>Faire devenir hôte</MenuItem>}
-        <MenuItem onClick={doNothing} sx={style_menuItem}>Expulser le joueur</MenuItem>
+        {!player.isAdmin && <MenuItem onClick={handleClick_promoteAdmin}>Faire devenir hôte</MenuItem>}
+        <MenuItem onClick={handleClick_kickPlayer}>Expulser le joueur</MenuItem>
       </Menu>
     </>
   )
@@ -41,8 +50,4 @@ const style_buttonPlayer = (player: PlayerData): SxProps => {
     backgroundColor: color,
     borderColor: color,
   }
-}
-
-const style_menuItem: SxProps = {
-  //
 }

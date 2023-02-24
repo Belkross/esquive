@@ -9,6 +9,7 @@ import { InterfaceLogging } from "./components/interface-logging/interface-loggi
 import { InterfaceShared } from "./components/interface-shared.js"
 import { initializeSocketIo } from "./config/initialize-socket-io.js"
 import storageKeys from "./config/storage-keys.js"
+import { useSubscribeIntentionalDisconnection } from "./custom-hooks/use-subscribe-intentional-disconnection.js"
 
 initializeSocketIo()
 const initialAppState: AppState = {
@@ -22,6 +23,8 @@ const initialAppState: AppState = {
 export default function App() {
   const [appState, setAppState] = useState(initialAppState)
   const memoizedSetAppState = useMemo(() => setAppState, [])
+
+  useSubscribeIntentionalDisconnection(memoizedSetAppState)
 
   let appInterface
   switch (appState.status) {

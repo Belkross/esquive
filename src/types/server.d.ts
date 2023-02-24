@@ -19,6 +19,7 @@ export type ClientToServerEvents = {
   changeRole: (team: Team, role: Role) => void
   changeSecretWord: FlowlessFunction
   judgeTrap: (judgement: boolean) => void
+  kickPlayer: (kickedSessionId: string) => void
   nextRoundPhase: FlowlessFunction
   promoteAdmin: (promotedSessionId: string) => void
   reportForbiddenClue: FlowlessFunction

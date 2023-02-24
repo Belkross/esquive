@@ -9,6 +9,7 @@ export type AlertId =
   | "sessionNotFound"
   | "trapAlreadySubmitted"
   | "trapLimitExceeded"
+  | "wrongMomentForKick"
 
 export type AlertSeverity = "info" | "success" | "warning" | "error"
 export type AlertData = {
@@ -56,5 +57,9 @@ export const alerts: Record<AlertId, AlertData> = {
   trapAlreadySubmitted: {
     severity: "info",
     message: "Le piège a déjà été proposé",
+  },
+  wrongMomentForKick: {
+    severity: "warning",
+    message: "Attendez la fin de la manche pour expulser un joueur.",
   },
 }

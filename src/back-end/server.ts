@@ -22,6 +22,7 @@ import { judgeTrap } from "./socket-events/judge-trap.js"
 import { activateTrap } from "./socket-events/activate-trap.js"
 import { shuffleTeams } from "./socket-events/shuffle-teams.js"
 import { promoteAdmin } from "./socket-events/promote-admin.js"
+import { kickPlayer } from "./socket-events/kick-player.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -38,7 +39,6 @@ io.use((socket, next) => {
   const sessionId = ""
   const username = "DevBelkross"
   const room = "DevRoom"
-
   const noLoginInformation = username === undefined && room === undefined
 
   if (noLoginInformation) {
@@ -50,7 +50,7 @@ io.use((socket, next) => {
     }
     //TODO: vérifier que la room n’est pas pleine
     const newSessionId = randomUUID()
-    socket.handshake.auth.sessionId = newSessionId
+    socket.handshake.auth.sessionId = newSessionId //this line is not semantically correct as handshakes are supposed to represent the data the client provided to get connected. I think I should use socket.data
     sessions.add(newSessionId, username, room)
     return next()
   }
@@ -66,6 +66,7 @@ io.on("connection", (socket) => {
   changeSecretWord(server)
   disconnect(server)
   judgeTrap(server)
+  kickPlayer(server)
   nextRoundPhase(server)
   promoteAdmin(server)
   reportForbiddenClue(server)
