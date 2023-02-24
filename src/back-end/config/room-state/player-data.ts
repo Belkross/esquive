@@ -8,7 +8,6 @@ export class PlayerData {
   connected = true
   isAdmin = false
   isTyping = false
-  secretWordOpinion: boolean | undefined = undefined
 
   constructor(sessionId: string, username: string) {
     this.sessionId = sessionId
