@@ -3,6 +3,7 @@ import { SwitchThemeMode } from "../switch-theme-mode.js"
 import { ButtonLeaveRoom } from "../button-leave-room.js"
 import { ButtonDiscord } from "../button-discord.js"
 import { RoomSettings } from "../room-settings.js"
+import { SwitchSoundActivation } from "../switch-sound-activation.js"
 
 type Props = {
   appState: AppState
@@ -12,6 +13,7 @@ export function MenuMain({ appState }: Props) {
     <>
       <ButtonDiscord />
       <SwitchThemeMode />
+      <SwitchSoundActivation />
       <ButtonLeaveRoom />
       <RoomSettings appState={appState} />
     </>

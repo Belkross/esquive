@@ -10,7 +10,7 @@ const initialThemeMode = getInitialThemeMode(storageKeys.themeMode, defaultTheme
 const ThemeModeContext = createContext<ThemeMode>(defaultThemeMode)
 export const useThemeMode = () => useContext(ThemeModeContext)
 
-const ToggleThemeModeContext = createContext(() => doNothing())
+const ToggleThemeModeContext = createContext(doNothing)
 export const useToggleThemeMode = () => useContext(ToggleThemeModeContext)
 
 type Props = {
