@@ -46,7 +46,6 @@ export class RoomState {
   private readonly isProductionEnvironment = process.env.NODE_ENV === "production"
   private readonly guessAttemptLimit = 10
   private readonly winConditionLimit = 20
-  private readonly playersLimit = 10
   private readonly timerLimit = 360 //seconds
 
   readonly roomName: string
@@ -57,6 +56,7 @@ export class RoomState {
   readonly historicLengthLimit = 50
   readonly secretWordChangeLimit = 3
   readonly trapSlotLimit = 12
+  readonly playersLimit = 10
 
   roundPhase: RoundPhase = "pre round"
   roundAdvancement = 1

@@ -38,6 +38,9 @@ function chooseClientFeedback(errorMessage: string): AlertId | null {
     case "sessionId already used":
       return "sessionIdAlreadyUsed"
 
+      case "room is full": 
+      return "roomIsFull"
+
     default:
       return "criticalError"
   }

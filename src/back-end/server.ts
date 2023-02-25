@@ -27,7 +27,7 @@ const app = express()
 const httpServer = createServer(app)
 export const io = createIo(httpServer)
 export const sessions = new SessionStorage()
-const rooms = new RoomStorage()
+export const rooms = new RoomStorage()
 
 app.get("/", (request, response) => response.send("Server is active"))
 
