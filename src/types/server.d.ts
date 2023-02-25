@@ -8,7 +8,6 @@ import { FlowlessFunction } from "./main.js"
 
 export type ServerToClientEvents = {
   alert: (alertId: AlertId) => void
-  closeDuplicatedSessions: (sessionId: string) => void
   joinRoom: (sessionId: string, roomState: RoomState) => void
   roomStateUpdate: (state: RoomState) => void
 }

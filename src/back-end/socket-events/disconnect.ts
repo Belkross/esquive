@@ -24,7 +24,6 @@ export function disconnect(server: ServerManager) {
       roomState.players[sessionId].connected = false
     }
 
-    io.in(roomName).emit("closeDuplicatedSessions", sessionId)
     io.in(roomName).emit("roomStateUpdate", roomState)
   })
 }

@@ -7,7 +7,6 @@ export type AlertId =
   | "null"
   | "serverDown"
   | "sessionIdAlreadyUsed"
-  | "sessionNotFound"
   | "trapAlreadySubmitted"
   | "trapLimitExceeded"
   | "wrongMomentForKick"
@@ -43,10 +42,6 @@ export const alerts: Record<AlertId, AlertData> = {
     severity: "error",
     message: "Erreur critique. Merci de signaler le problème en expliquant le contexte.",
   },
-  sessionNotFound: {
-    severity: "warning",
-    message: "Vous avez été déconnecté du salon. Veuillez rafraîchir la page.",
-  },
   trapLimitExceeded: {
     severity: "info",
     message: "Votre équipe a atteint le nombre maximum de piège.",
@@ -65,6 +60,6 @@ export const alerts: Record<AlertId, AlertData> = {
   },
   sessionIdAlreadyUsed: {
     severity: "warning",
-    message: "Tentative de connexion d’une session dupliquée refusée."
-  }
+    message: "Tentative de connexion d’une session dupliquée refusée.",
+  },
 }

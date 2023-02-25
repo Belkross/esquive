@@ -1,5 +1,4 @@
 import { getSocketRoom } from "../../functions/get-socket-room.js"
-import { sessionNotFound } from "../../functions/session-not-found.js"
 import { ServerManager } from "../../types/server.js"
 import { RoomState } from "../config/room-state/room-state.js"
 
@@ -7,8 +6,6 @@ export function kickPlayer(server: ServerManager) {
   const { io, socket, sessions, sessionId } = server
 
   socket.on("kickPlayer", async (kickedSessionId) => {
-    if (sessionNotFound(server)) return
-
     const { roomName, roomState } = getSocketRoom(server)
 
     if (checkIfAllowed(roomState, sessionId)) {

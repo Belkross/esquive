@@ -1,6 +1,5 @@
 import { getPlayerTeam } from "../../functions/get-player-team.js"
 import { getSocketRoom } from "../../functions/get-socket-room.js"
-import { sessionNotFound } from "../../functions/session-not-found.js"
 import { ServerManager } from "../../types/server.js"
 import { RoomState } from "../config/room-state/room-state.js"
 
@@ -8,8 +7,6 @@ export function changeSecretWord(server: ServerManager) {
   const { io, socket, sessionId } = server
 
   socket.on("changeSecretWord", () => {
-    if (sessionNotFound(server)) return
-
     const { roomName, roomState } = getSocketRoom(server)
 
     if (isAllowed(roomState, sessionId)) {
