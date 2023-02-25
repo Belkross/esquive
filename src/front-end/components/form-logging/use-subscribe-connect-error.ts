@@ -35,6 +35,9 @@ function chooseClientFeedback(errorMessage: string): AlertId | null {
     case "invalid login informations":
       return "invalidLoginInformations"
 
+    case "sessionId already used":
+      return "sessionIdAlreadyUsed"
+
     default:
       return "criticalError"
   }

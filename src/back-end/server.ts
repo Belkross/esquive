@@ -1,8 +1,5 @@
 import express from "express"
-import { randomUUID } from "node:crypto"
 import { createServer } from "node:http"
-import { checkRoomValidity } from "../functions/check-room-validity.js"
-import { checkUsernameValidity } from "../functions/check-username-validity.js"
 import { createIo } from "./config/create-io.js"
 import { connection } from "./socket-events/connection.js"
 import { disconnect } from "./socket-events/disconnect.js"
@@ -23,38 +20,18 @@ import { activateTrap } from "./socket-events/activate-trap.js"
 import { shuffleTeams } from "./socket-events/shuffle-teams.js"
 import { promoteAdmin } from "./socket-events/promote-admin.js"
 import { kickPlayer } from "./socket-events/kick-player.js"
+import { treatAuthenticationData } from "./middlewares/treat-authentication-data.js"
 
 const port = process.env.PORT || 1000
 const app = express()
 const httpServer = createServer(app)
 export const io = createIo(httpServer)
-const sessions = new SessionStorage()
+export const sessions = new SessionStorage()
 const rooms = new RoomStorage()
 
 app.get("/", (request, response) => response.send("Server is active"))
 
-io.use((socket, next) => {
-  //const { sessionId, username, room } = socket.handshake.auth
-  //to skip the login when developing
-  const sessionId = ""
-  const username = "DevBelkross"
-  const room = "DevRoom"
-  const noLoginInformation = username === undefined && room === undefined
-
-  if (noLoginInformation) {
-    const sessionExist = sessions.get(sessionId)
-    return sessionId && sessionExist ? next() : next(new Error("no session found"))
-  } else {
-    if (!checkUsernameValidity(username) || !checkRoomValidity(room)) {
-      return next(new Error("invalid login informations"))
-    }
-    //TODO: vérifier que la room n’est pas pleine
-    const newSessionId = randomUUID()
-    socket.handshake.auth.sessionId = newSessionId //this line is not semantically correct as handshakes are supposed to represent the data the client provided to get connected. I think I should use socket.data
-    sessions.add(newSessionId, username, room)
-    return next()
-  }
-})
+io.use(treatAuthenticationData)
 
 io.on("connection", (socket) => {
   const server: ServerManager = { socket, io, sessions, rooms, sessionId: socket.handshake.auth.sessionId }
@@ -80,3 +57,4 @@ io.on("connection", (socket) => {
 httpServer.listen(port, () => {
   console.log(`server connected to port : ${port}`)
 })
+

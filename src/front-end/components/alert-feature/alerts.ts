@@ -6,6 +6,7 @@ export type AlertId =
   | "invalidUsername"
   | "null"
   | "serverDown"
+  | "sessionIdAlreadyUsed"
   | "sessionNotFound"
   | "trapAlreadySubmitted"
   | "trapLimitExceeded"
@@ -62,4 +63,8 @@ export const alerts: Record<AlertId, AlertData> = {
     severity: "warning",
     message: "Attendez la fin de la manche pour expulser un joueur.",
   },
+  sessionIdAlreadyUsed: {
+    severity: "warning",
+    message: "Tentative de connexion d’une session dupliquée refusée."
+  }
 }
