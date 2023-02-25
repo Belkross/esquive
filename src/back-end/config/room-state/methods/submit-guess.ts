@@ -20,16 +20,16 @@ export function submitGuess(this: RoomState, server: ServerManager, guess: strin
   if (guessIsRight) {
     this.addToHistoric(`${clientUsername} a réussi à deviner le mot ${secretWord.toUpperCase()}.`)
     this.teams[clientTeam].hasSucceededGuess = true
-    this.stopTimer()
+    this.timerIsRunning = false
     this.configureNextRoundPhase()
   } else {
     this.addToHistoric(`${clientUsername} a proposé le mot ${guess.toUpperCase()}.`)
     this.teams[clientTeam].guessAttempts.push(formattedGuess)
 
     if (noGuessRemaining.call(this, clientTeam)) {
-      this.teams[clientTeam].guessAttempts.length = 0 // to avoid the client to play the submit guess sound  
+      this.teams[clientTeam].guessAttempts.length = 0 // to avoid the client to play the submit guess sound
       this.teams[clientTeam].hasSucceededGuess = false
-      this.stopTimer()
+      this.timerIsRunning = false
       this.configureNextRoundPhase()
     }
   }

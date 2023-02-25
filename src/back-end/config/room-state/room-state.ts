@@ -32,7 +32,6 @@ import { resetTraps } from "./methods/reset-traps.js"
 import { setTimer } from "./methods/set-timer.js"
 import { shuffleTeams } from "./methods/shuffle-teams.js"
 import { startTimer } from "./methods/start-timer.js"
-import { stopTimer } from "./methods/stop-timer.js"
 import { submitGuess } from "./methods/submit-guess.js"
 import { submitSecretWordOpinion } from "./methods/submit-secret-word-opinion.js"
 import { submitTrapOpinion } from "./methods/submit-trap-opinion.js"
@@ -113,7 +112,7 @@ export class RoomState {
   setTimer = setTimer
   shuffleTeams = shuffleTeams
   startTimer = startTimer
-  stopTimer = stopTimer
+
   submitGuess = submitGuess
   submitSecretWordOpinion = submitSecretWordOpinion
   submitTrap = submitTrap

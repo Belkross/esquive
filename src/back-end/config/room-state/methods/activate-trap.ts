@@ -7,7 +7,7 @@ export function activateTrap(this: RoomState, sessionId: string, trap: string) {
   const clientTeam = getPlayerTeam(this, sessionId)
   const trapAuthor = this.teams[clientTeam].traps[trap].author
 
-  this.stopTimer()
+  this.timerIsRunning = false
   this.addToHistoric(`${playerWhoActivates} active un piège. ${trapAuthor} avait piégé le mot ${trap.toUpperCase()}.`)
   this.isJudgingTrap = true
 }
