@@ -1,8 +1,8 @@
 import { RoomState } from "./room-state/room-state.js"
 
 export class RoomStorage {
-  private readonly storage: { [roomName: string]: RoomState } = {}
-  readonly roomLimit = 20
+  readonly storage: { [roomName: string]: RoomState } = {}
+  readonly roomLimit = 30
 
   add(roomName: string, secretWordList: string) {
     this.storage[roomName] = new RoomState(roomName, secretWordList)

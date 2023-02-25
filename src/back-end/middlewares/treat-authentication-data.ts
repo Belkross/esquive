@@ -21,6 +21,7 @@ export async function treatAuthenticationData(socket: SocketArg, next: Next) {
     return sessionFound(sessions, sessionId) ? next() : next(new Error("no session found"))
   } else {
     if (loginDataInvalid(username, room)) return next(new Error("invalid login informations"))
+    if (noMoreRoomSlot(rooms, room)) return next(new Error("no more room slot"))
     if (roomIsFull(rooms, room)) return next(new Error("room is full"))
 
     const newSessionId = randomUUID()
@@ -30,21 +31,33 @@ export async function treatAuthenticationData(socket: SocketArg, next: Next) {
   }
 }
 
-function roomIsFull(rooms: RoomStorage, roomName: string) {
+function noMoreRoomSlot(rooms: RoomStorage, roomName: string) {
   const room = rooms.get(roomName)
   const isRoomCreation = room === undefined
-  
   if (isRoomCreation) {
-    return false
+    const currentRoomSlotUsed = Object.keys(rooms.storage).length
+    return currentRoomSlotUsed >= rooms.roomLimit
   } else {
-    const currentPlayerNumber = Object.keys(room).length
-    return currentPlayerNumber >= room.playersLimit
+    return false
   }
 }
 
 async function sessionIdNotUnique(sessionId: string) {
   const sockets = await io.fetchSockets()
   return sockets.some((connectedSocket) => connectedSocket.handshake.auth.sessionId === sessionId)
+}
+
+function roomIsFull(rooms: RoomStorage, roomName: string) {
+  const room = rooms.get(roomName)
+  const isRoomCreation = room === undefined
+
+  if (isRoomCreation) {
+    return false
+  } else {
+    const currentPlayerNumber = Object.keys(room.players).length
+    console.log(currentPlayerNumber, room.playersLimit)
+    return currentPlayerNumber >= room.playersLimit
+  }
 }
 
 function noLoginDataProvided(username: string, room: string) {
