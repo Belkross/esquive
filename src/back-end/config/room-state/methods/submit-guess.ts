@@ -1,5 +1,6 @@
 import { formatStringWithBasicLetters } from "../../../../functions/format-string-with-basic-letters.js"
 import { getPlayerTeam } from "../../../../functions/get-player-team.js"
+import { Team } from "../../../../types/room-state.js"
 import { ServerManager } from "../../../../types/server.js"
 import { RoomState } from "../room-state.js"
 
@@ -25,11 +26,15 @@ export function submitGuess(this: RoomState, server: ServerManager, guess: strin
     this.addToHistoric(`${clientUsername} a proposé le mot ${guess.toUpperCase()}.`)
     this.teams[clientTeam].guessAttempts.push(formattedGuess)
 
-    const noGuessRemaining = this.teams[clientTeam].guessAttemptsRemaining <= 0
-    if (noGuessRemaining) {
+    if (noGuessRemaining.call(this, clientTeam)) {
+      this.teams[clientTeam].guessAttempts.length = 0 // to avoid the client to play the submit guess sound  
       this.teams[clientTeam].hasSucceededGuess = false
       this.stopTimer()
       this.configureNextRoundPhase()
     }
   }
+}
+
+function noGuessRemaining(this: RoomState, clientTeam: Team) {
+  return this.teams[clientTeam].guessAttemptsRemaining <= 0
 }

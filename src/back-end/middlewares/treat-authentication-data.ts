@@ -13,7 +13,11 @@ type Next = (err?: ExtendedError | undefined) => void
 type SocketArg = Socket<ClientToServerEvents, ServerToClientEvents, DefaultEventsMap>
 
 export async function treatAuthenticationData(socket: SocketArg, next: Next) {
-  const { sessionId, username, room } = socket.handshake.auth
+  //const { sessionId, username, room } = socket.handshake.auth //production
+
+  const sessionId = "" //development
+  const username = "DevBelkross"
+  const room = "DevRoom"
 
   if (await sessionIdNotUnique(sessionId)) return next(new Error("sessionId already used"))
 
@@ -55,7 +59,6 @@ function roomIsFull(rooms: RoomStorage, roomName: string) {
     return false
   } else {
     const currentPlayerNumber = Object.keys(room.players).length
-    console.log(currentPlayerNumber, room.playersLimit)
     return currentPlayerNumber >= room.playersLimit
   }
 }
@@ -71,8 +74,3 @@ function loginDataInvalid(username: string, room: string) {
 function sessionFound(sessions: SessionStorage, sessionId: string) {
   return sessions.get(sessionId)
 }
-
-//to skip the login when developing
-/* const sessionId = ""
-  const username = "DevBelkross"
-  const room = "" // "DevRoom" */

@@ -9,7 +9,6 @@ export function configureNextRoundPhase(this: RoomState, username?: string) {
     case 1: {
       this.announceEventualGuessFailure(this.getOpponentTeam(this.startingTeam))
       this.setTimer(this.trappingDuration)
-      this.resetGuessAttemptsRemaining()
       this.resetGuessAttempts()
       this.applyRoundOutcome()
       this.switchStartingTeam()
@@ -18,13 +17,14 @@ export function configureNextRoundPhase(this: RoomState, username?: string) {
       this.announceNextPhase()
       break
     }
-
+    
     //phase : trapping
     case 2: {
       //in phase 2 to let users see round outcome
       if (this.checkIfEndOfMatch()) this.resetScores()
       this.resetTeamOutcomes() 
-
+      
+      this.resetGuessAttemptsRemaining()
       this.resetSecretWordChangeRemaining()
       this.resetTraps()
       this.drawSecretWord("one")

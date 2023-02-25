@@ -3,7 +3,7 @@ import { RoomState } from "../room-state.js"
 
 export async function startTimer(this: RoomState, io: Io) {
   this.timerIsRunning = true
-
+  io.in(this.roomName).emit("roomStateUpdate", this) //to allow the client to play a sound
   await oneSecond()
 
   while (this.timerIsRunning && this.timer > 0) {
@@ -12,6 +12,7 @@ export async function startTimer(this: RoomState, io: Io) {
     await oneSecond()
   }
   if (this.timer === 0) {
+    this.stopTimer()
     this.configureNextRoundPhase()
     io.in(this.roomName).emit("roomStateUpdate", this)
   }
