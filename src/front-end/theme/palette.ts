@@ -11,6 +11,7 @@ const darkModePalette = {
   text: {
     primary: smoothWhiteText,
     opposite: smoothBlackText,
+    rule: orange[400] as string,
   },
   background: {
     default: "#0a1929",
@@ -24,6 +25,7 @@ const lightModePalette: typeof darkModePalette = {
   text: {
     primary: smoothBlackText,
     opposite: smoothWhiteText,
+    rule: red[900],
   },
 }
 
