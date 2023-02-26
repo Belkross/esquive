@@ -20,7 +20,7 @@ export function Traps({ appState }: Props) {
     const duringTrappingPhase = roomState.roundPhase === "trapping"
 
     const trapID = index + 1
-    const trapValue = `${trapID} - ${trap.value}`
+    const trapValue = `${trapID}\u00A0-\u00A0${trap.value}`
     const trapAuthor = <Typography variant="caption">{trap.author}</Typography>
 
     return (
@@ -39,6 +39,6 @@ export function Traps({ appState }: Props) {
 
 const style_container: SxProps = {
   gap: 1,
-  px: 1,
+  px: 1.5,
   overflow: "hidden",
 }

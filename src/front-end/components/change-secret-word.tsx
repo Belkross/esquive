@@ -16,23 +16,24 @@ export function ChangeSecretWord({ appState }: Props) {
 
   return (
     <Stack sx={style_container}>
+      <Typography variant="h3">Mot à piéger : {secretWord}</Typography>
+
       {duringTrappingPhase && (
         <Stack sx={style_buttons}>
           <ButtonChangeSecretWord appState={appState} />
           <ButtonGroupVoteSecretWord appState={appState} />
         </Stack>
       )}
-
-      <Typography>mot à piéger: {secretWord}</Typography>
     </Stack>
   )
 }
 
 const style_container: SxProps = {
   flexDirection: "column",
-  gap: { xs: 1, sm: 2 },
+  gap: { xs: 2, sm: 2 },
   px: 1,
   alignItems: "center",
+  marginBottom: 5,
 }
 
 const style_buttons: SxProps = {

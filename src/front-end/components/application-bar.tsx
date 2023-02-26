@@ -36,6 +36,7 @@ const style_container: SxProps = {
   boxShadow: 7,
   width: "100%",
   zIndex: 1,
+  gap: 1,
 }
 
 const style_stackButtons = {

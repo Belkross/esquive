@@ -18,6 +18,4 @@ export function TrapsRemaining({ appState }: Props) {
 
 const style_container = {
   textAlign: "center",
-  marginBottom: 1,
-  marginTop: 1,
 }

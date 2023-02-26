@@ -50,7 +50,7 @@ const style_partOne: SxProps = {
 const style_partTwo: SxProps = {
   width: "100%",
   paddingBottom: 2,
-  paddingTop: 1,
+  paddingTop: 3,
   backgroundColor: "background.paper",
   minHeight: "300px",
   borderWidth: shape.borderWidth,
