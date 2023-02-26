@@ -1,4 +1,4 @@
-import { Typography, ListItem, ListItemText, List } from "@mui/material"
+import { Typography, ListItem, ListItemText, List, SxProps } from "@mui/material"
 import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { AppState } from "../../../types/main.js"
 import { ButtonActivateTrap } from "../button-activate-trap.js"
@@ -37,7 +37,8 @@ export function Traps({ appState }: Props) {
   return <List>{list_traps}</List>
 }
 
-const style_container = {
+const style_container: SxProps = {
   gap: 1,
   px: 1,
+  overflow: "hidden",
 }

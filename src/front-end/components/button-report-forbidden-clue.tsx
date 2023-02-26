@@ -10,30 +10,32 @@ type Props = {
 }
 
 export function ButtonReportForbiddenClue({ appState }: Props) {
-  const whileDisabled = getWhileDisabled(appState.roomState, appState.sessionId)
+  const { roomState, sessionId } = appState
+  const whileDisplayed = getWhileDisplayed(roomState, sessionId)
+  const whileDisabled = getWhileDisabled(roomState, sessionId)
 
-  return (
+  return whileDisplayed ? (
     <Stack sx={style_container}>
       <IconButton aria-label="Indice d’orateur incorrect" disabled={whileDisabled} onClick={handleClick}>
         <ErrorIcon />
       </IconButton>
       <Typography>Indice d’orateur interdit</Typography>
     </Stack>
-  )
+  ) : null
 }
 
 function handleClick() {
   socket.emit("reportForbiddenClue")
 }
 
-function getWhileDisabled(roomState: RoomState, sessionId: string) {
+function getWhileDisplayed(roomState: RoomState, sessionId: string) {
   const opponentTeam = getPlayerTeam(roomState, sessionId) === "one" ? "two" : "one"
-  const duringOpponentGuessingPhase = roomState.roundPhase === `guessing ${opponentTeam}`
+  return roomState.roundPhase === `guessing ${opponentTeam}`
+}
 
+function getWhileDisabled(roomState: RoomState, sessionId: string) {
   const notJudgingTrap = roomState.isJudgingTrap === false
-
-  const whileActivated = duringOpponentGuessingPhase && notJudgingTrap
-
+  const whileActivated = getWhileDisplayed(roomState, sessionId) && notJudgingTrap
   return !whileActivated
 }
 

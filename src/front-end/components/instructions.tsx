@@ -13,7 +13,8 @@ export function Instructions({ appState }: Props) {
 }
 
 const style_typography: SxProps = {
-  my: 1,
+  my: 2,
+  mx: 1
 }
 
 function pickInstruction(roomState: RoomState, sessionId: string) {

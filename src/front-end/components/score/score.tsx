@@ -28,7 +28,7 @@ export function Score({ roomState }: Props) {
 
 const style_container: SxProps = {
   flexFlow: "row wrap",
-  gap: 1,
+  gap: 0,
   justifyContent: "center",
   alignItems: "center",
   mb: { xs: 1, lg: 7 },
@@ -38,6 +38,7 @@ const style_score: SxProps = {
   flexFlow: "row nowrap",
   alignItems: "center",
   gap: 1,
+  marginRight: 1,
 }
 
 const style_divider: SxProps = {

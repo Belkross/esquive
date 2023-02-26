@@ -1,6 +1,7 @@
 import { Stack, SxProps } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../../types/main.js"
+import shape from "../../theme/shape.js"
 import { AdminButtons } from "../admin-buttons.js"
 import { ApplicationBar } from "../application-bar.js"
 import { ButtonReportForbiddenClue } from "../button-report-forbidden-clue.js"
@@ -10,7 +11,6 @@ import { Instructions } from "../instructions.js"
 import { Score } from "../score/score.js"
 import { TrapsRemaining } from "../traps-remaining.js"
 import { Traps } from "../traps/traps.js"
-
 import { useSubscribeRoomStateUpdate } from "./use-subscribe-room-state-update.js"
 
 export type InterfaceGameProps = {
@@ -43,13 +43,17 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
 }
 
 const style_partOne: SxProps = {
-  marginBottom: 4,
+  marginBottom: 2,
+  width: "100%",
 }
 
 const style_partTwo: SxProps = {
   width: "100%",
-  borderLeft: { sm: "none" },
-  height: "100%",
   paddingBottom: 2,
   paddingTop: 1,
+  backgroundColor: "background.paper",
+  minHeight: "300px",
+  borderWidth: shape.borderWidth,
+  borderStyle: "solid",
+  borderColor: "background.borderPaper",
 }

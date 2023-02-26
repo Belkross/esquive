@@ -31,7 +31,7 @@ const style_container: SxProps = {
   position: "fixed",
   bottom: "0cm",
   backgroundColor: "background.navBar",
-  px: 3,
+  px: 2,
   py: 1.5,
   boxShadow: 7,
   width: "100%",

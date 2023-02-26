@@ -1,4 +1,4 @@
-import { blue, green, indigo, orange, red } from "@mui/material/colors"
+import { blue, green, grey, indigo, orange, red } from "@mui/material/colors"
 
 const smoothWhiteText = "rgba(255, 255, 255, .85)"
 const smoothBlackText = "rgba(0, 0, 0, .85)"
@@ -15,8 +15,10 @@ const darkModePalette = {
   },
   background: {
     default: "#0a1929",
-    paper: "#132f4c",
+    paper: "#102c49",
+    borderPaper: "#244d77",
     navBar: "#001e3c",
+    historic: grey[900],
   },
 }
 
