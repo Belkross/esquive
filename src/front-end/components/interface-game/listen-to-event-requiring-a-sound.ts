@@ -1,5 +1,5 @@
 import { RoomState } from "../../../back-end/config/room-state/room-state.js"
-import { SoundBox } from "../../tracks/sound-box.js"
+import { SoundBox } from "./sound-box.js"
 
 const sounds = new SoundBox()
 
