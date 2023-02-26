@@ -24,8 +24,8 @@ export function ApplicationBar({ appState }: Props) {
 
 const style_container: SxProps = {
   display: "flex",
-  flexDirection: "row nowrap",
-  justifyContent: "space-between",
+  flexFlow: "row wrap",
+  justifyContent: { xs: "center", sm: "space-between" },
   alignItems: "center",
   marginBottom: { xs: 0, md: 3 },
   position: "fixed",
@@ -35,8 +35,8 @@ const style_container: SxProps = {
   py: 1.5,
   boxShadow: 7,
   width: "100%",
-  zIndex: 1,
-  gap: 1,
+  zIndex: 2,
+  gap: 1.5,
 }
 
 const style_stackButtons = {

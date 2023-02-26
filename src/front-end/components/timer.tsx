@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material"
+import { SxProps, Typography } from "@mui/material"
 import { RoomState } from "../../back-end/config/room-state/room-state.js"
 import { formatDurationForTimer } from "../../functions/format-duration-for-timer.js"
 import { AppState } from "../../types/main.js"
@@ -31,7 +31,7 @@ function deduceTimerState(roomState: RoomState, duration: number): TimerState {
   else return "inactive"
 }
 
-const style_typography = (state: TimerState) => {
+const style_typography = (state: TimerState): SxProps => {
   let color
   switch (state) {
     case "inactive":
