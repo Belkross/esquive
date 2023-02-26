@@ -2,19 +2,15 @@ import { Typography, Stack, SxProps } from "@mui/material"
 import { grey } from "@mui/material/colors"
 import { AppState } from "../../types/main.js"
 import shape from "../theme/shape.js"
-const MAX_MESSAGES_DISPLAYED = 10
 
 type Props = {
   appState: AppState
 }
 
 export function GameHistoric({ appState }: Props) {
-  const roomState = appState.roomState
-  const historic = roomState.historic
-  const numberOfDisplayedMessages = historic.length >= MAX_MESSAGES_DISPLAYED ? MAX_MESSAGES_DISPLAYED : historic.length
-  const slicedHistoric = historic.slice(historic.length - numberOfDisplayedMessages, historic.length)
+  const { historic } = appState.roomState
 
-  const list_historic = slicedHistoric.map((message, index) => {
+  const list_historic = historic.map((message, index) => {
     return <Typography key={index} sx={style_typography}>{`-${message}`}</Typography>
   })
 
@@ -30,8 +26,9 @@ const style_container: SxProps = {
   borderWidth: shape.borderWidth,
   borderStyle: "solid",
   borderColor: grey[800],
+  overflow: "scroll",
 }
 
 const style_typography: SxProps = {
-  fontFamily: "monospace"
+  fontFamily: "monospace",
 }

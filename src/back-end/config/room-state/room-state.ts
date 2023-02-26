@@ -56,7 +56,7 @@ export class RoomState {
   readonly teams: Record<Team, TeamData>
   readonly historic: string[] = []
   readonly highestRoundAdvancement = 6
-  readonly historicLengthLimit = 50
+  readonly historicLengthLimit = 400
   readonly secretWordChangeLimit = 3
   readonly playersLimit = 10
   readonly trapSlotLimit = TRAP_SLOT_LIMIT
