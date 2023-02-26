@@ -1,9 +1,9 @@
-import timerStart from "./timer-start.wav"
-import submitGuess from "./submit-guess.wav"
-import success from "./success.wav"
-import failure from "./failure.wav"
-import activateTrap from "./activate-trap.wav"
-import chatMessage from "./chat-message.mp3"
+import timerStart from "../../../assets/tracks/timer-start.wav"
+import submitGuess from "../../../assets/tracks/submit-guess.wav"
+import success from "../../../assets/tracks/success.wav"
+import failure from "../../../assets/tracks/failure.wav"
+import activateTrap from "../../../assets/tracks/activate-trap.wav"
+import chatMessage from "../../../assets/tracks/chat-message.mp3"
 
 type Track = "timer-start" | "submit-guess" | "success" | "failure" | "activate-trap" | "chat-message"
 
