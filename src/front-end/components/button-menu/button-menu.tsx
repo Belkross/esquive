@@ -30,7 +30,7 @@ export function ButtonMenu({ appState }: Props) {
       tabContent = <MenuRules />
       break
     case "settings":
-      tabContent = <MenuSettings appState={appState} />
+      tabContent = <MenuSettings appState={appState} closeMenu={drawer.remove} />
       break
   }
 

@@ -4,17 +4,18 @@ import { checkGuessAttemptsValidity } from "../../../functions/check-guess-attem
 import { checkTimerDurationValidity } from "../../../functions/check-timer-duration-validity.js"
 import { checkTrapSlotsValidity } from "../../../functions/check-trap-slots-validity.js"
 import { checkWinConditionValidity } from "../../../functions/check-win-condition-validity.js"
-import { AppState } from "../../../types/main.js"
+import { AppState, FlowlessFunction } from "../../../types/main.js"
 import { RoundSettings, RoundSettingsStructure } from "../../../types/room-state.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { useValidNumberInput } from "../../custom-hooks/use-valid-number-input.js"
 
 type Props = {
   appState: AppState
+  closeMenu: FlowlessFunction
 }
 
 // prettier-ignore
-export function MenuSettings({ appState }: Props) {
+export function MenuSettings({ appState, closeMenu }: Props) {
   const { roomState, sessionId } = appState
   
   const [trapLimit, onTrapLimitChange] = useValidNumberInput(roomState.trapSlotsProvided, checkTrapSlotsValidity)
@@ -39,6 +40,7 @@ export function MenuSettings({ appState }: Props) {
     })
 
     socket.emit("changeRoundSettings", newSettings)
+    closeMenu()
   }
 
   return (
