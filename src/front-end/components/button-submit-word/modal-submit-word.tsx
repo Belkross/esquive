@@ -55,11 +55,10 @@ export function ModalSubmitWord({ appState, displayed, close }: Props) {
 
   return (
     <Dialog open={displayed} onClose={close} onAnimationEnd={handleAnimationEnd}>
-      <DialogTitle>Choisissez un pseudo</DialogTitle>
+      <DialogTitle>Proposer un mot</DialogTitle>
       <DialogContent sx={style_dialogContent}>
         <TextField
           variant="filled"
-          label="Écrire un mot"
           value={input.value}
           onChange={onInputChange}
           onKeyDown={handleKeyDown}
