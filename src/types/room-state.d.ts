@@ -9,3 +9,10 @@ export type RoundPhase =
   | "pre guessing two"
   | "guessing two"
 
+export type RoundSettingsStructure<Type> = {  trapSlotProvided: Type
+  guessAttemptProvided: Type
+  winCondition: Type
+  trappingDuration: Type
+  guessingDuration: Type}
+
+export type RoundSettings = RoundSettingsStructure<number>

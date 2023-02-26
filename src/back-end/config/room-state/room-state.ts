@@ -17,6 +17,12 @@ import { deletePlayer } from "./methods/delete-player.js"
 import { drawSecretWord } from "./methods/draw-secret-word.js"
 import { getActivePlayerNumber } from "./methods/get-active-player-number.js"
 import { getOpponentTeam } from "./methods/get-opponent-team.js"
+import {
+  GUESS_ATTEMPT_LIMIT,
+  TIMER_LIMIT,
+  TRAP_SLOT_LIMIT,
+  WIN_CONDITION_LIMIT,
+} from "../../../config/app-constants.js"
 import { getPlayingTeam } from "./methods/get-playing-team.js"
 import { initializeSecretWordsDeck } from "./methods/initialize-secret-word-deck.js"
 import { judgeTrap } from "./methods/judge-trap.js"
@@ -40,12 +46,10 @@ import { switchStartingTeam } from "./methods/switch-starting-team.js"
 import { trapSlotsUsed } from "./methods/trap-slots-used.js"
 import { PlayerData } from "./player-data.js"
 import { TeamData } from "./team-data.js"
+import { changeRoundSettings } from "./methods/change-round-settings.js"
 
 export class RoomState {
   private readonly isProductionEnvironment = process.env.NODE_ENV === "production"
-  private readonly guessAttemptLimit = 10
-  private readonly winConditionLimit = 20
-  private readonly timerLimit = 360 //seconds
 
   readonly roomName: string
   readonly players: { [sessionId: string]: PlayerData } = {}
@@ -54,16 +58,19 @@ export class RoomState {
   readonly highestRoundAdvancement = 6
   readonly historicLengthLimit = 50
   readonly secretWordChangeLimit = 3
-  readonly trapSlotLimit = 12
   readonly playersLimit = 10
+  readonly trapSlotLimit = TRAP_SLOT_LIMIT
+  readonly guessAttemptLimit = GUESS_ATTEMPT_LIMIT
+  readonly winConditionLimit = WIN_CONDITION_LIMIT
+  readonly timerLimit = TIMER_LIMIT
 
   roundPhase: RoundPhase = "pre round"
   roundAdvancement = 1
   winCondition = 2
-  trappingDuration = this.isProductionEnvironment ? 180 : 2
-  guessingDuration = this.isProductionEnvironment ? 120 : 200
-  guessAttemptsProvided = this.isProductionEnvironment ? 5 : 3
-  trapSlotsProvided = this.isProductionEnvironment ? 4 : 3
+  trappingDuration = this.isProductionEnvironment ? 180 : 8
+  guessingDuration = this.isProductionEnvironment ? 120 : 10
+  guessAttemptsProvided = this.isProductionEnvironment ? 5 : 2
+  trapSlotsProvided = this.isProductionEnvironment ? 4 : 10
   startingTeam: Team = "two"
   isJudgingTrap = false
   secretWordsDeck: string[]
@@ -89,6 +96,7 @@ export class RoomState {
   announceTimerStart = announceTimerStart
   cancelTrap = cancelTrap
   changeRole = changeRole
+  changeRoundSettings = changeRoundSettings
   changeSecretWord = changeSecretWord
   checkIfEndOfMatch = checkIfEndOfMatch
   checkTrapExistence = checkTrapExistence
@@ -112,7 +120,6 @@ export class RoomState {
   setTimer = setTimer
   shuffleTeams = shuffleTeams
   startTimer = startTimer
-
   submitGuess = submitGuess
   submitSecretWordOpinion = submitSecretWordOpinion
   submitTrap = submitTrap

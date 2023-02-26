@@ -1,0 +1,21 @@
+import { RoundSettings } from "../../../../types/room-state.js";
+import { RoomState } from "../room-state.js";
+
+export function changeRoundSettings(this: RoomState, settings: RoundSettings) {
+  const {trapSlotProvided, guessAttemptProvided, trappingDuration, guessingDuration, winCondition} = settings
+
+  this.trapSlotsProvided = trapSlotProvided
+	
+	this.guessAttemptsProvided = guessAttemptProvided
+
+	this.guessingDuration = guessingDuration
+  
+	this.trappingDuration = trappingDuration
+	this.setTimer(trappingDuration)
+
+  const winConditionHasChanged = this.winCondition !== winCondition;
+	if (winConditionHasChanged) {
+		this.winCondition = winCondition
+		this.resetScores();
+	}
+}

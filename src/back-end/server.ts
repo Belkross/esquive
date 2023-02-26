@@ -21,6 +21,7 @@ import { shuffleTeams } from "./socket-events/shuffle-teams.js"
 import { promoteAdmin } from "./socket-events/promote-admin.js"
 import { kickPlayer } from "./socket-events/kick-player.js"
 import { treatAuthenticationData } from "./middlewares/treat-authentication-data.js"
+import { changeRoundSettings } from "./socket-events/change-round-settings.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -40,6 +41,7 @@ io.on("connection", (socket) => {
   activateTrap(server)
   cancelTrap(server)
   changeRole(server)
+  changeRoundSettings(server)
   changeSecretWord(server)
   disconnect(server)
   judgeTrap(server)

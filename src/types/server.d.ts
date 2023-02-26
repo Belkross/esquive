@@ -5,6 +5,7 @@ import { RoomStorage } from "../back-end/config/room-storage.js"
 import { SessionStorage } from "../back-end/config/session-storage.js"
 import { AlertId } from "../front-end/components/alert-feature/alerts"
 import { FlowlessFunction } from "./main.js"
+import { RoundSettings } from "./room-state.js"
 
 export type ServerToClientEvents = {
   alert: (alertId: AlertId) => void
@@ -16,6 +17,7 @@ export type ClientToServerEvents = {
   activateTrap: (trap: string) => void
   cancelTrap: (trap: string) => void
   changeRole: (team: Team, role: Role) => void
+  changeRoundSettings: (settings: RoundSettings) => void
   changeSecretWord: FlowlessFunction
   judgeTrap: (judgement: boolean) => void
   kickPlayer: (kickedSessionId: string) => void
