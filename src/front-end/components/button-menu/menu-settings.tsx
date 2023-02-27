@@ -1,4 +1,4 @@
-import { TextField, Button } from "@mui/material"
+import { TextField, Button, SxProps } from "@mui/material"
 import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 import { checkGuessAttemptsValidity } from "../../../functions/check-guess-attempts-validity.js"
 import { checkTimerDurationValidity } from "../../../functions/check-timer-duration-validity.js"
@@ -8,6 +8,8 @@ import { AppState, FlowlessFunction } from "../../../types/main.js"
 import { RoundSettings, RoundSettingsStructure } from "../../../types/room-state.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { useValidNumberInput } from "../../custom-hooks/use-valid-number-input.js"
+import shape from "../../theme/shape.js"
+import { MenuElementContainer } from "./menu-element-container.js"
 
 type Props = {
   appState: AppState
@@ -45,46 +47,61 @@ export function MenuSettings({ appState, closeMenu }: Props) {
 
   return (
     <>
+      <MenuElementContainer sx={style_textField}>
+        <TextField
+          label={`Nombre de piège (${roomState.trapSlotLimit} max)`}
+          value={trapLimit.value}
+          onChange={onTrapLimitChange}
+          error={!trapLimit.validity}
+          disabled={whileDisabled}
+        />
+      </MenuElementContainer>
 
-      <TextField
-        label={`Nombre de piège (${roomState.trapSlotLimit} max)`}
-        value={trapLimit.value}
-        onChange={onTrapLimitChange}
-        error={!trapLimit.validity}
-        disabled={whileDisabled}
-      />
-      <TextField
-        label={`Nombre de proposition (${roomState.guessAttemptLimit} max)`}
-        value={guessLimit.value}
-        onChange={onGuessLimitChange}
-        error={!guessLimit.validity}
-        disabled={whileDisabled}
-      />
-      <TextField
-        label={`Condition de victoire (${roomState.winConditionLimit} max)`}
-        value={winCondition.value}
-        onChange={onWinConditionChange}
-        error={!winCondition.validity}
-        disabled={whileDisabled}
-      />
-      <TextField
-        label={`Durée phase piège (${roomState.timerLimit}s max)`}
-        value={trappingDuration.value}
-        onChange={onTrappingDurationChange}
-        error={!trappingDuration.validity}
-        disabled={whileDisabled}
-      />
-      <TextField
-        label={`Durée phase oration (${roomState.timerLimit}s max)`}
-        value={guessingDuration.value}
-        onChange={onGuessingDurationChange}
-        error={!guessingDuration.validity}
-        disabled={whileDisabled}
-      />
+      <MenuElementContainer sx={style_textField}>
+        <TextField
+          label={`Nombre de proposition (${roomState.guessAttemptLimit} max)`}
+          value={guessLimit.value}
+          onChange={onGuessLimitChange}
+          error={!guessLimit.validity}
+          disabled={whileDisabled}
+        />
+      </MenuElementContainer>
 
-      <Button onClick={handleSubmit} disabled={!whileSubmittable}>
-        Valider
-      </Button>
+      <MenuElementContainer sx={style_textField}>
+        <TextField
+          label={`Condition de victoire (${roomState.winConditionLimit} max)`}
+          value={winCondition.value}
+          onChange={onWinConditionChange}
+          error={!winCondition.validity}
+          disabled={whileDisabled}
+        />
+      </MenuElementContainer>
+
+      <MenuElementContainer sx={style_textField}>
+        <TextField
+          label={`Durée phase piège (${roomState.timerLimit}s max)`}
+          value={trappingDuration.value}
+          onChange={onTrappingDurationChange}
+          error={!trappingDuration.validity}
+          disabled={whileDisabled}
+        />
+      </MenuElementContainer>
+
+      <MenuElementContainer sx={style_textField}>
+        <TextField
+          label={`Durée phase oration (${roomState.timerLimit}s max)`}
+          value={guessingDuration.value}
+          onChange={onGuessingDurationChange}
+          error={!guessingDuration.validity}
+          disabled={whileDisabled}
+        />
+      </MenuElementContainer>
+
+      <MenuElementContainer sx={style_button}>
+        <Button onClick={handleSubmit} disabled={!whileSubmittable}>
+          Valider
+        </Button>
+      </MenuElementContainer>
     </>
   )
 }
@@ -108,4 +125,15 @@ function formatNewSettings(settings: RoundSettingsStructure<string>): RoundSetti
     trappingDuration: Number.parseInt(trappingDuration, 10),
     guessingDuration: Number.parseInt(guessingDuration, 10),
   }
+}
+
+const style_button: SxProps = {
+  height: "100%",
+  paddingBottom: shape.appBarHeight,
+  textAlign: "center",
+}
+
+const style_textField: SxProps = {
+  textAlign: "center",
+  py: 3
 }
