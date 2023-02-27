@@ -18,11 +18,11 @@ export function MenuMain({ appState }: Props) {
         <LinkDiscord />
       </MenuElementContainer>
 
-      <MenuElementContainer>
+      <MenuElementContainer sx={style_switch}>
         <SwitchThemeMode />
       </MenuElementContainer>
 
-      <MenuElementContainer>
+      <MenuElementContainer sx={style_switch}>
         <SwitchSoundActivation />
       </MenuElementContainer>
 
@@ -40,6 +40,7 @@ export function MenuMain({ appState }: Props) {
 const style_discord: SxProps = {
   display: "flex",
   flexFlow: "row nowrap",
+  justifyContent: "center",
   alignItems: "center",
   gap: 2,
 }
@@ -53,8 +54,11 @@ const style_room: SxProps = {
 }
 
 const style_leave: SxProps = {
-  textAlign: "center",
   height: "100%",
   paddingTop: 4,
   paddingBottom: shape.appBarHeight,
+}
+
+const style_switch: SxProps = {
+  textAlign: "left",
 }

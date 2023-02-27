@@ -18,4 +18,5 @@ const style_elementContainer: SxProps = {
   borderBottomWidth: shape.borderWidth,
   borderBottomColor: "background.borderPaper",
   padding: 2,
+  textAlign: "center",
 }

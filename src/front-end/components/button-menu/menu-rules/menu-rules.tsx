@@ -7,20 +7,26 @@ import { Title } from "./title.js"
 
 export function MenuRules() {
   return (
-    <MenuElementContainer sx={style_container}>
-      <Title text={rules.gameDescription.title.toUpperCase()} />
-      <Typography>{rules.gameDescription.description}</Typography>
+    <>
+      <MenuElementContainer>
+        <Typography variant="h2">Règles du jeu</Typography>
+      </MenuElementContainer>
 
-      <Title text={rules.trapperCode.title.toUpperCase()} />
-      <ArticleList articles={rules.trapperCode.articles} />
+      <MenuElementContainer sx={style_container}>
+        <Title text={rules.gameDescription.title.toUpperCase()} />
+        <Typography>{rules.gameDescription.description}</Typography>
 
-      <Title text={rules.guesserCode.title.toUpperCase()} />
-      <ArticleList articles={rules.guesserCode.articles} />
+        <Title text={rules.trapperCode.title.toUpperCase()} />
+        <ArticleList articles={rules.trapperCode.articles} />
 
-      <Title text={rules.talkerCode.title.toUpperCase()} />
-      <Typography>{rules.talkerCode.introduction}</Typography>
-      <ArticleList articles={rules.talkerCode.articles} />
-    </MenuElementContainer>
+        <Title text={rules.guesserCode.title.toUpperCase()} />
+        <ArticleList articles={rules.guesserCode.articles} />
+
+        <Title text={rules.talkerCode.title.toUpperCase()} />
+        <Typography>{rules.talkerCode.introduction}</Typography>
+        <ArticleList articles={rules.talkerCode.articles} />
+      </MenuElementContainer>
+    </>
   )
 }
 
@@ -30,4 +36,5 @@ const style_container: SxProps = {
   gap: 2,
   paddingBottom: shape.appBarHeight,
   backgroundColor: "background.default",
+  textAlign: "left",
 }

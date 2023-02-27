@@ -1,4 +1,4 @@
-import { TextField, Button, SxProps } from "@mui/material"
+import { TextField, Button, SxProps, Typography } from "@mui/material"
 import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 import { checkGuessAttemptsValidity } from "../../../functions/check-guess-attempts-validity.js"
 import { checkTimerDurationValidity } from "../../../functions/check-timer-duration-validity.js"
@@ -47,6 +47,10 @@ export function MenuSettings({ appState, closeMenu }: Props) {
 
   return (
     <>
+      <MenuElementContainer>
+        <Typography variant="h2">Règlages partie</Typography>
+      </MenuElementContainer>
+
       <MenuElementContainer sx={style_textField}>
         <TextField
           label={`Nombre de piège (${roomState.trapSlotLimit} max)`}
@@ -135,5 +139,5 @@ const style_button: SxProps = {
 
 const style_textField: SxProps = {
   textAlign: "center",
-  py: 3
+  py: 3,
 }
