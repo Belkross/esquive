@@ -10,7 +10,7 @@ type Props = {
 }
 
 export function ButtonResponsive({ icon, label, onClick, whileDisabled }: Props) {
-  const screenIsLargeEnough = useMediaQuery(useTheme().breakpoints.up("sm"))
+  const screenIsLargeEnough = useMediaQuery(useTheme().breakpoints.up("md"))
 
   return screenIsLargeEnough ? (
     <Button startIcon={icon} onClick={onClick} disabled={whileDisabled}>
