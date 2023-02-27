@@ -1,6 +1,6 @@
 import { ButtonChangeRole } from "./button-change-role/button-change-role.js"
 import { AppState } from "../../types/main.js"
-import { Stack } from "@mui/material"
+import { Stack, SxProps } from "@mui/material"
 
 type Props = {
   appState: AppState
@@ -21,14 +21,14 @@ export function Teams({ appState }: Props) {
   )
 }
 
-const style_container = {
+const style_container: SxProps = {
   flexDirection: "column",
   justifyContent: "center",
-  alignItems: "center",
+  alignItems: "start",
   gap: 5,
 }
 
-const style_teamContainer = {
+const style_teamContainer: SxProps = {
   flexDirection: "column",
   alignItems: "start",
   gap: 2,

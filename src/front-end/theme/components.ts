@@ -47,6 +47,7 @@ export function createMuiComponents(theme: Theme): ThemeOptions {
             padding: "12px 12px",
             color: theme.palette.text.primary,
             width: "max-content",
+            height: "max-content",
             "&:disabled": {
               backgroundColor: theme.palette.action.disabledBackground,
               borderColor: theme.palette.action.disabled,

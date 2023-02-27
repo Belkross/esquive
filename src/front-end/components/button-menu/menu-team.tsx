@@ -10,25 +10,20 @@ type Props = {
 }
 export function MenuTeam({ appState }: Props) {
   return (
-    <>
-      <MenuElementContainer sx={style_teams}>
-        <Teams appState={appState} />
-      </MenuElementContainer>
-
-      <MenuElementContainer sx={style_buttonShuffle}>
-        <ButtonShuffleTeams appState={appState} />
-      </MenuElementContainer>
-    </>
+    <MenuElementContainer sx={style_teams}>
+      <Teams appState={appState} />
+      <ButtonShuffleTeams appState={appState} />
+    </MenuElementContainer>
   )
 }
 
 const style_teams: SxProps = {
   py: 4,
-}
-
-const style_buttonShuffle: SxProps = {
   height: "100%",
-  textAlign: "center",
-  paddingTop: 4,
   paddingBottom: shape.appBarHeight,
+  display: "flex",
+  flexFlow: "column nowrap",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: 6,
 }
