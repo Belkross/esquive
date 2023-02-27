@@ -6,6 +6,7 @@ import { SwitchSoundActivation } from "../switch-sound-activation.js"
 import { Stack, SxProps } from "@mui/material"
 import { LinkDiscord } from "../link-discord.js"
 import { MenuElementContainer } from "./menu-element-container.js"
+import shape from "../../theme/shape.js"
 
 type Props = {
   appState: AppState
@@ -63,5 +64,5 @@ const style_leave: SxProps = {
   textAlign: "center",
   height: "100%",
   paddingTop: 4,
-  paddingBottom: 15,
+  paddingBottom: shape.appBarHeight,
 }
