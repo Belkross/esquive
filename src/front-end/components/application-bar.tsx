@@ -1,6 +1,6 @@
 import { Box, Stack, SxProps } from "@mui/material"
 import { AppState } from "../../types/main.js"
-import { ButtonChat } from "./button-chat.js"
+import { ButtonChat } from "./button-chat/button-chat.js"
 import { ButtonMenu } from "./button-menu/button-menu.js"
 import { ButtonSubmitWord } from "./button-submit-word/button-submit-word.js"
 import { Timer } from "./timer.js"
@@ -15,7 +15,7 @@ export function ApplicationBar({ appState }: Props) {
       <Timer appState={appState} />
       <Stack sx={style_stackButtons}>
         <ButtonSubmitWord appState={appState} />
-        <ButtonChat roomState={appState.roomState} />
+        <ButtonChat appState={appState} />
         <ButtonMenu appState={appState} />
       </Stack>
     </Box>

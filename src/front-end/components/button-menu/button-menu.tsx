@@ -32,6 +32,7 @@ export function ButtonMenu({ appState }: Props) {
     case "settings":
       tabContent = <MenuSettings appState={appState} closeMenu={drawer.remove} />
       break
+    //no default
   }
 
   return (
@@ -56,8 +57,4 @@ const style_drawer: SxProps = {
   justifyContent: "space-between",
   width: "100%",
   height: "100%",
-  backgroundColor: "background.default",
 }
-
-
-

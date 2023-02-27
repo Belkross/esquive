@@ -11,6 +11,7 @@ import shape from "../../theme/shape.js"
 type Props = {
   appState: AppState
 }
+
 export function MenuMain({ appState }: Props) {
   return (
     <>
