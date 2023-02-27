@@ -45,6 +45,7 @@ export function MenuSettings({ appState, closeMenu }: Props) {
 
   return (
     <>
+
       <TextField
         label={`Nombre de piège (${roomState.trapSlotLimit} max)`}
         value={trapLimit.value}

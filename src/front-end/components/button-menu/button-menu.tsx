@@ -56,7 +56,6 @@ const style_drawer: SxProps = {
   justifyContent: "space-between",
   width: "100%",
   height: "100%",
-  //paddingBottom: 39, //to make sure content don’t hide behind app bar
   backgroundColor: "background.default",
 }
 

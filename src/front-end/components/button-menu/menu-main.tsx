@@ -3,7 +3,7 @@ import { SwitchThemeMode } from "../switch-theme-mode.js"
 import { ButtonLeaveRoom } from "../button-leave-room.js"
 import { RoomSettings } from "../room-settings.js"
 import { SwitchSoundActivation } from "../switch-sound-activation.js"
-import { Stack, SxProps } from "@mui/material"
+import { SxProps } from "@mui/material"
 import { LinkDiscord } from "../link-discord.js"
 import { MenuElementContainer } from "./menu-element-container.js"
 import shape from "../../theme/shape.js"
@@ -13,7 +13,7 @@ type Props = {
 }
 export function MenuMain({ appState }: Props) {
   return (
-    <Stack sx={style_container}>
+    <>
       <MenuElementContainer sx={style_discord}>
         <LinkDiscord />
       </MenuElementContainer>
@@ -33,16 +33,8 @@ export function MenuMain({ appState }: Props) {
       <MenuElementContainer sx={style_leave}>
         <ButtonLeaveRoom />
       </MenuElementContainer>
-    </Stack>
+    </>
   )
-}
-
-const style_container: SxProps = {
-  display: "flex",
-  flexFlow: "column nowrap",
-  alignItems: "center",
-  gap: 0,
-  height: "100%",
 }
 
 const style_discord: SxProps = {
