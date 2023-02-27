@@ -1,16 +1,13 @@
-import { Button, SvgIcon, SxProps, Typography } from "@mui/material"
+import { Link, SvgIcon, SxProps } from "@mui/material"
 
-export function ButtonDiscord() {
+export function LinkDiscord() {
   return (
-    <Button
-      sx={style_button}
-      href="https://discord.gg/s7d6vDKjbB"
-      target="_blank"
-      rel="noreferrer" //explanation at Mui’s <Links /> doc
-    >
+    <>
       <DiscordIcon />
-      <Typography>Discord Esquive</Typography>
-    </Button>
+      <Link href="https://discord.gg/s7d6vDKjbB" target="_blank" rel="noreferrer" sx={style_link}>
+        Rejoindre le Discord Esquive
+      </Link>
+    </>
   )
 }
 
@@ -34,8 +31,11 @@ function DiscordIcon() {
   )
 }
 
-const style_button: SxProps = {
+const style_link: SxProps = {
   gap: 1,
-  backgroundColor: "background.paper",
-  borderColor: "background.paper",
+  textDecoration: "none",
+  color: "text.primary",
+  ":hover": {
+    textDecoration: "underline",
+  },
 }

@@ -1,6 +1,7 @@
 import { Box, Stack, SxProps, Typography } from "@mui/material"
 import { PlayerData } from "../../back-end/config/room-state/player-data.js"
 import { AppState } from "../../types/main.js"
+import shape from "../theme/shape.js"
 import { ButtonManagePlayer } from "./button-manage-player.js"
 
 type Props = { appState: AppState }
@@ -21,22 +22,10 @@ export function RoomSettings({ appState }: Props) {
 
   return (
     <>
-      <Stack sx={style_players}>
-        <Typography>Salon: {roomState.roomName}</Typography>
-        <Box sx={style_buttons}>{PlayersButtons}</Box>
-      </Stack>
+      <Typography sx={style_title}>Salon: {roomState.roomName}</Typography>
+      <Box sx={style_buttons}>{PlayersButtons}</Box>
     </>
   )
-}
-
-const style_players: SxProps = {
-  display: "flex",
-  flexFlow: "column nowrap",
-  gap: 1,
-  alignItems: "center",
-  padding: 2,
-  width: "100%",
-  backgroundColor: "background.paper",
 }
 
 const style_buttons: SxProps = {
@@ -57,4 +46,8 @@ const style_typographyPlayer = (player: PlayerData): SxProps => {
     borderColor: color,
     borderRadius: "3px",
   }
+}
+
+const style_title: SxProps = {
+  marginBottom: 1,
 }

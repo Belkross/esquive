@@ -1,4 +1,4 @@
-import { Drawer, Stack, SxProps } from "@mui/material"
+import { Drawer, SxProps } from "@mui/material"
 import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
 import { ButtonResponsive } from "../button-responsive.js"
 import MenuIcon from "@mui/icons-material/Menu"
@@ -44,7 +44,7 @@ export function ButtonMenu({ appState }: Props) {
         onClose={drawer.remove}
         PaperProps={{ sx: style_drawer }}
       >
-        <Stack sx={style_tabContent}>{tabContent}</Stack>
+        <>{tabContent}</>
         <TabGroupMenu setSelectedTab={setSelectedTab} close={drawer.remove} />
       </Drawer>
     </>
@@ -56,14 +56,9 @@ const style_drawer: SxProps = {
   justifyContent: "space-between",
   width: "100%",
   height: "100%",
-  padding: 2,
-  paddingBottom: 12, //to make sure content don’t hide behind app bar
+  //paddingBottom: 39, //to make sure content don’t hide behind app bar
   backgroundColor: "background.default",
 }
 
-const style_tabContent: SxProps = {
-  display: "flex",
-  flexFlow: "column nowrap",
-  alignItems: "center",
-  gap: 2,
-}
+
+

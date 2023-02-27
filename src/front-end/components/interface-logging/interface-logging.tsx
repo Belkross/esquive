@@ -1,8 +1,8 @@
 import { Stack, Typography } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../../types/main"
-import { ButtonDiscord } from "../button-discord.js"
 import { FormLogging } from "../form-logging/form-logging.js"
+import { LinkDiscord } from "../link-discord.js"
 
 export type InterfaceLoggingProps = {
   appState: AppState
@@ -16,7 +16,7 @@ export function InterfaceLogging({ appState, setAppState }: InterfaceLoggingProp
         Esquive
       </Typography>
       <FormLogging appState={appState} setAppState={setAppState} />
-      <ButtonDiscord />
+      <LinkDiscord />
     </Stack>
   )
 }
