@@ -1,5 +1,6 @@
 import { Container, SxProps } from "@mui/material"
 import { ReactElement } from "react"
+import shape from "../theme/shape.js"
 
 type Props = {
   children: ReactElement
@@ -17,8 +18,7 @@ const style_container: SxProps = {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  maxWidth: "20cm",
-  paddingBottom: { xs: 12, md: 10 }, //to make sure content don’t hide behind app bar
-  paddingTop: 2,
+  paddingBottom: shape.appBarHeight,
+  paddingTop: { xs: 2, lg: 0 },
   px: { xs: 1.3, sm: 2 },
 }
