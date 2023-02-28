@@ -47,6 +47,8 @@ import { trapSlotsUsed } from "./methods/trap-slots-used.js"
 import { PlayerData } from "./player-data.js"
 import { TeamData } from "./team-data.js"
 import { changeRoundSettings } from "./methods/change-round-settings.js"
+import { ChatMessage } from "../../../functions/chat-message.js"
+import { addChatMessage } from "./methods/add-chat-message.js"
 
 export class RoomState {
   private readonly isProductionEnvironment = process.env.NODE_ENV === "production"
@@ -57,12 +59,15 @@ export class RoomState {
   readonly historic: string[] = []
   readonly highestRoundAdvancement = 6
   readonly historicLengthLimit = 400
+  readonly chatMessagesLengthLimit = 600
   readonly secretWordChangeLimit = 3
   readonly playersLimit = 10
   readonly trapSlotLimit = TRAP_SLOT_LIMIT
   readonly guessAttemptLimit = GUESS_ATTEMPT_LIMIT
   readonly winConditionLimit = WIN_CONDITION_LIMIT
   readonly timerLimit = TIMER_LIMIT
+  readonly generalMessages: ChatMessage[] = []
+  readonly oratorMessages: ChatMessage[] = []
 
   roundPhase: RoundPhase = "pre round"
   roundAdvancement = 1
@@ -87,6 +92,7 @@ export class RoomState {
   }
 
   activateTrap = activateTrap
+  addChatMessage = addChatMessage
   addPlayer = addPlayer
   addToHistoric = addToHistoric
   applyRoundOutcome = applyRoundOutcome

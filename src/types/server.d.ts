@@ -4,7 +4,7 @@ import { RoomState } from "../back-end/config/room-state/room-state.js"
 import { RoomStorage } from "../back-end/config/room-storage.js"
 import { SessionStorage } from "../back-end/config/session-storage.js"
 import { AlertId } from "../front-end/components/alert-feature/alerts"
-import { FlowlessFunction } from "./main.js"
+import { ChatTabId, FlowlessFunction } from "./main.js"
 import { RoundSettings } from "./room-state.js"
 
 export type ServerToClientEvents = {
@@ -24,6 +24,7 @@ export type ClientToServerEvents = {
   nextRoundPhase: FlowlessFunction
   promoteAdmin: (promotedSessionId: string) => void
   reportForbiddenClue: FlowlessFunction
+  submitChatMessage: (channel: ChatTabId, message: string) => void
   submitGuess: (guess: string) => void
   submitTrap: (trap: string) => void
   submitSecretWordOpinion: (opinion: boolean) => void

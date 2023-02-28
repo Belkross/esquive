@@ -5,8 +5,7 @@ import { useState } from "react"
 import { AppState, ChatTabId } from "../../../types/main.js"
 import { Drawer, SxProps } from "@mui/material"
 import { TabGroupChat } from "./tab-group-chat.js"
-import ChatGeneral from "./chat-general.js"
-import ChatOrator from "./chat-orator.js"
+import { ChatGeneral } from "./chat-general.js"
 
 type Props = {
   appState: AppState
@@ -15,14 +14,15 @@ type Props = {
 export function ButtonChat({ appState }: Props) {
   const drawer = useTemporaryElement(false)
   const [selectedTab, setSelectedTab] = useState<ChatTabId>("general")
+  const { roomState } = appState
 
   let tabContent
   switch (selectedTab) {
     case "general":
-      tabContent = <ChatGeneral appState={appState} />
+      tabContent = <ChatGeneral channel="general" messages={roomState.generalMessages} />
       break
     case "orator":
-      tabContent = <ChatOrator appState={appState} />
+      tabContent = <ChatGeneral channel="orator" messages={roomState.oratorMessages} />
       break
     //no default
   }
@@ -45,8 +45,6 @@ export function ButtonChat({ appState }: Props) {
 }
 
 const style_drawer: SxProps = {
-  flexFlow: "column nowrap",
-  justifyContent: "space-between",
   width: "100%",
   height: "100%",
 }

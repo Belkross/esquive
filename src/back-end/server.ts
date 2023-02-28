@@ -22,6 +22,7 @@ import { promoteAdmin } from "./socket-events/promote-admin.js"
 import { kickPlayer } from "./socket-events/kick-player.js"
 import { treatAuthenticationData } from "./middlewares/treat-authentication-data.js"
 import { changeRoundSettings } from "./socket-events/change-round-settings.js"
+import { submitChatMessage } from "./socket-events/submit-chat-message.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -50,6 +51,7 @@ io.on("connection", (socket) => {
   promoteAdmin(server)
   reportForbiddenClue(server)
   shuffleTeams(server)
+  submitChatMessage(server)
   submitGuess(server)
   submitSecretWordOpinion(server)
   submitTrap(server)

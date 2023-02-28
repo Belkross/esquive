@@ -53,8 +53,6 @@ export function ButtonMenu({ appState }: Props) {
 }
 
 const style_drawer: SxProps = {
-  flexFlow: "column nowrap",
-  justifyContent: "space-between",
   width: "100%",
   height: "100%",
 }
