@@ -26,7 +26,7 @@ const initialInputState = {
   characterRemaining: CHAT_MESSAGE_MAX_LENGTH,
 }
 
-export function ChatGeneral({ messages, channel }: Props) {
+export function ChatChannel({ messages, channel }: Props) {
   const [input, setInput] = useState<ChatInputState>(initialInputState)
   const ulElement = useRef<HTMLUListElement>(null)
 

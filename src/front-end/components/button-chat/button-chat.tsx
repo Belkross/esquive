@@ -5,7 +5,7 @@ import { useState } from "react"
 import { AppState, ChatChannel } from "../../../types/main.js"
 import { Drawer, SxProps } from "@mui/material"
 import { TabGroupChat } from "./tab-group-chat.js"
-import { ChatGeneral } from "./chat-general.js"
+import { ChatChannel as Chat } from "./chat-channel.js"
 
 type Props = {
   appState: AppState
@@ -19,10 +19,10 @@ export function ButtonChat({ appState }: Props) {
   let tabContent
   switch (selectedTab) {
     case "general":
-      tabContent = <ChatGeneral channel="general" messages={roomState.generalMessages} />
+      tabContent = <Chat channel="general" messages={roomState.generalMessages} />
       break
     case "orator":
-      tabContent = <ChatGeneral channel="orator" messages={roomState.oratorMessages} />
+      tabContent = <Chat channel="orator" messages={roomState.oratorMessages} />
       break
     //no default
   }
