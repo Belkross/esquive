@@ -2,7 +2,7 @@ import { List, Stack, TextField, Button, SxProps } from "@mui/material"
 import { ChangeEvent, KeyboardEvent, useRef, useState } from "react"
 import { CHAT_MESSAGE_MAX_LENGTH } from "../../../config/app-constants.js"
 import { ChatMessage } from "../../../functions/chat-message.js"
-import { ChatTabId } from "../../../types/main.js"
+import { ChatChannel } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import shape from "../../theme/shape.js"
 import handleChatInputChange from "./handle-chat-input-change.js"
@@ -17,7 +17,7 @@ export type ChatInputState = {
 
 type Props = {
   messages: ChatMessage[]
-  channel: ChatTabId
+  channel: ChatChannel
 }
 
 const initialInputState = {

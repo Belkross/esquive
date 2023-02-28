@@ -1,5 +1,5 @@
 import { Stack, IconButton, SxProps } from "@mui/material"
-import { ChatTabId, FlowlessFunction, setState } from "../../../types/main.js"
+import { ChatChannel, FlowlessFunction, setState } from "../../../types/main.js"
 import CloseIcon from "@mui/icons-material/Clear"
 import { ReactElement } from "react"
 import RoomIcon from "@mui/icons-material/Home"
@@ -7,12 +7,12 @@ import TeamIcon from "@mui/icons-material/Groups"
 import { ButtonResponsive } from "../button-responsive.js"
 
 type Props = {
-  setSelectedTab: setState<ChatTabId>
+  setSelectedTab: setState<ChatChannel>
   close: FlowlessFunction
 }
 
 type TabData = {
-  id: ChatTabId
+  id: ChatChannel
   label: string
   icon: ReactElement
 }
@@ -24,7 +24,7 @@ const tabs: TabData[] = [
 ]
 
 export function TabGroupChat({ setSelectedTab, close }: Props) {
-  const handleClick = (id: ChatTabId) => setSelectedTab(id)
+  const handleClick = (id: ChatChannel) => setSelectedTab(id)
 
   const list_tab = tabs.map((tab) => {
     return <ButtonResponsive key={tab.id} label={tab.label} icon={tab.icon} onClick={() => handleClick(tab.id)} />

@@ -1,8 +1,8 @@
 import { ChatMessage } from "../../../../functions/chat-message.js"
-import { ChatTabId } from "../../../../types/main.js"
+import { ChatChannel } from "../../../../types/main.js"
 import { RoomState } from "../room-state.js"
 
-export function addChatMessage(this: RoomState, channel: ChatTabId, message: string, sessionId: string) {
+export function addChatMessage(this: RoomState, channel: ChatChannel, message: string, sessionId: string) {
   const author = this.players[sessionId].username
   const chatMessage = new ChatMessage(author, message)
 

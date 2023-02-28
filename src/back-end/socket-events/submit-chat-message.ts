@@ -1,6 +1,6 @@
 import checkChatMessageValidity from "../../functions/check-chat-message-validity.js"
 import { getSocketRoom } from "../../functions/get-socket-room.js"
-import { ChatTabId } from "../../types/main.js"
+import { ChatChannel } from "../../types/main.js"
 import { ServerManager } from "../../types/server.js"
 
 export function submitChatMessage(server: ServerManager) {
@@ -19,7 +19,7 @@ export function submitChatMessage(server: ServerManager) {
 function actionAllowed(channel: string, message: unknown) {
   const messageIsValid = checkChatMessageValidity(message)
 
-  const channelObject: Record<ChatTabId, undefined> = { general: undefined, orator: undefined }
+  const channelObject: Record<ChatChannel, undefined> = { general: undefined, orator: undefined }
   const channelPossibilities = Object.keys(channelObject)
   const channelIsValid = channelPossibilities.includes(channel)
 

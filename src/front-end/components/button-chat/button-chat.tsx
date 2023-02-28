@@ -2,7 +2,7 @@ import { ButtonResponsive } from "../button-responsive.js"
 import ChatIcon from "@mui/icons-material/Chat"
 import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
 import { useState } from "react"
-import { AppState, ChatTabId } from "../../../types/main.js"
+import { AppState, ChatChannel } from "../../../types/main.js"
 import { Drawer, SxProps } from "@mui/material"
 import { TabGroupChat } from "./tab-group-chat.js"
 import { ChatGeneral } from "./chat-general.js"
@@ -13,7 +13,7 @@ type Props = {
 
 export function ButtonChat({ appState }: Props) {
   const drawer = useTemporaryElement(false)
-  const [selectedTab, setSelectedTab] = useState<ChatTabId>("general")
+  const [selectedTab, setSelectedTab] = useState<ChatChannel>("general")
   const { roomState } = appState
 
   let tabContent
