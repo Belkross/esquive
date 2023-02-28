@@ -10,7 +10,7 @@ export default function MessageList({ messages }: Props) {
     const chatEntrie = (
       <>
         <Typography component="span" sx={style_authorTypo}>{`${message.author}`}</Typography>
-        <Typography component="span">{`: ${message.content}`}</Typography>
+        <Typography component="span">{`:\u00A0${message.content}`}</Typography>
       </>
     )
 
