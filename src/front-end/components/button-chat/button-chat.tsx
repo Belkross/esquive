@@ -19,10 +19,10 @@ export function ButtonChat({ appState }: Props) {
   let tabContent
   switch (selectedTab) {
     case "general":
-      tabContent = <Chat channel="general" messages={roomState.generalMessages} />
+      tabContent = <Chat channel="general" messages={roomState.generalMessages} appState={appState} />
       break
     case "orator":
-      tabContent = <Chat channel="orator" messages={roomState.oratorMessages} />
+      tabContent = <Chat channel="orator" messages={roomState.oratorMessages} appState={appState} />
       break
     //no default
   }
