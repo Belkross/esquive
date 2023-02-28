@@ -67,7 +67,6 @@ export function ChatChannel({ messages, channel, appState }: Props) {
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           placeholder="Envoyer un message"
-          autoFocus
           multiline
           fullWidth
           helperText={`Caractères restants: ${input.characterRemaining}`}
