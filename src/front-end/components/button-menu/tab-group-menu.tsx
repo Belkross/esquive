@@ -56,6 +56,7 @@ const style_tabs: SxProps = {
   px: 3,
   py: 1.5,
   boxShadow: 7,
+  zIndex: 1,
 }
 
 const style_buttonClose: SxProps = {
