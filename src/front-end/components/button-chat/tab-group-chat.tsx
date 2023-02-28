@@ -1,14 +1,17 @@
-import { Stack, IconButton, SxProps } from "@mui/material"
-import { ChatChannel, FlowlessFunction, setState } from "../../../types/main.js"
+import { IconButton, SxProps, Stack } from "@mui/material"
+import { AppState, ChatChannel, FlowlessFunction, setState } from "../../../types/main.js"
 import CloseIcon from "@mui/icons-material/Clear"
 import { ReactElement } from "react"
-import RoomIcon from "@mui/icons-material/Home"
+import TalkerIcon from "@mui/icons-material/RecordVoiceOver"
 import TeamIcon from "@mui/icons-material/Groups"
 import { ButtonResponsive } from "../button-responsive.js"
+import { Timer } from "../timer.js"
+import { ButtonSubmitWord } from "../button-submit-word/button-submit-word.js"
 
 type Props = {
   setSelectedTab: setState<ChatChannel>
   close: FlowlessFunction
+  appState: AppState
 }
 
 type TabData = {
@@ -18,12 +21,11 @@ type TabData = {
 }
 
 const tabs: TabData[] = [
-  { id: "general", label: "Salon", icon: <RoomIcon /> },
-  { id: "orator", label: "Équipe", icon: <TeamIcon /> },
-  
+  { id: "general", label: "Général", icon: <TeamIcon /> },
+  { id: "orator", label: "Orateur", icon: <TalkerIcon /> },
 ]
 
-export function TabGroupChat({ setSelectedTab, close }: Props) {
+export function TabGroupChat({ setSelectedTab, close, appState }: Props) {
   const handleClick = (id: ChatChannel) => setSelectedTab(id)
 
   const list_tab = tabs.map((tab) => {
@@ -32,10 +34,14 @@ export function TabGroupChat({ setSelectedTab, close }: Props) {
 
   return (
     <Stack component="nav" sx={style_tabs}>
-      {list_tab}
-      <IconButton aria-label="Fermer" onClick={close} sx={style_buttonClose}>
-        <CloseIcon />
-      </IconButton>
+      <Timer appState={appState} />
+      <Stack sx={style_stackButtons}>
+        <ButtonSubmitWord appState={appState} />
+        {list_tab}
+        <IconButton aria-label="Fermer" onClick={close} sx={style_buttonClose}>
+          <CloseIcon />
+        </IconButton>
+      </Stack>
     </Stack>
   )
 }
@@ -43,16 +49,21 @@ export function TabGroupChat({ setSelectedTab, close }: Props) {
 const style_tabs: SxProps = {
   position: "fixed",
   width: "100%",
-  flexFlow: "row nowrap",
+  flexFlow: "row wrap",
   gap: { xs: 1, sm: 2 },
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: { xs: "center", sm: "space-between" },
   bottom: "0",
   left: "0",
   backgroundColor: "background.navBar",
   px: 3,
   py: 1.5,
   boxShadow: 7,
+}
+
+const style_stackButtons = {
+  flexDirection: "row",
+  gap: 1.2,
 }
 
 const style_buttonClose: SxProps = {
