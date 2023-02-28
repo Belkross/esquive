@@ -9,6 +9,13 @@ export function listenToEventRequiringASound(prevRoomState: RoomState, roomState
   playSoundOnRoundFail(prevRoomState, roomState)
   playSoundOnRoundSucceed(prevRoomState, roomState)
   playSoundOnGuessSubmit(prevRoomState, roomState)
+  playSoundOnChatMessage(prevRoomState, roomState)
+}
+
+function playSoundOnChatMessage(prevRoomState: RoomState, roomState: RoomState) {
+  const newGeneralMessage = prevRoomState.generalMessages.at(-1)?.date !== roomState.generalMessages.at(-1)?.date
+  const newOratorMessage = prevRoomState.oratorMessages.at(-1)?.date !== roomState.oratorMessages.at(-1)?.date
+  if (newGeneralMessage || newOratorMessage) sounds.play("chat-message")
 }
 
 function playSoundOnTimerStart(prevRoomState: RoomState, roomState: RoomState) {
