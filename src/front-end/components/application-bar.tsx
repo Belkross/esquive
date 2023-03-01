@@ -1,5 +1,6 @@
 import { Box, Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
 import { AppState } from "../../types/main.js"
+import shape from "../theme/shape.js"
 import { ButtonChat } from "./button-chat/button-chat.js"
 import { ButtonMenu } from "./button-menu/button-menu.js"
 import { ButtonSubmitWord } from "./button-submit-word/button-submit-word.js"
@@ -25,20 +26,27 @@ export function ApplicationBar({ appState }: Props) {
 }
 
 const style_container: SxProps = {
+  position: { xs: "fixed", lg: "static" },
+  bottom: 0,
+
   display: "flex",
   flexFlow: "row wrap",
   justifyContent: { xs: "center", sm: "space-between", lg: "space-around" },
   alignItems: "center",
-  marginBottom: { lg: 3 },
-  position: { xs: "fixed", lg: "static" },
-  bottom: 0,
-  backgroundColor: "background.navBar",
-  px: 2,
-  py: 1.5,
-  boxShadow: 7,
-  width: "100vw",
-  zIndex: 2,
   gap: 1.5,
+
+  width: "100vw",
+  height: shape.appBarHeight,
+  backgroundColor: "background.navBar",
+  marginBottom: { lg: 3 },
+  px: 2,
+  boxShadow: 16,
+  zIndex: 2,
+
+  borderColor: "background.border",
+  borderWidth: shape.borderWidth,
+  borderTopStyle: { xs: shape.borderStyle, lg: "none" },
+  borderBottomStyle: { xs: "none", lg: "solid" },
 }
 
 const style_stackButtons = {

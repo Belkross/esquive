@@ -16,7 +16,7 @@ const darkModePalette = {
   background: {
     default: "#0a1929",
     paper: "#0c2744",
-    borderPaper: "#244d77",
+    border: "#244d77",
     navBar: "#001e3c",
     historic: grey[900],
   },

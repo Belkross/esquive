@@ -1,4 +1,4 @@
-import { SxProps, Typography } from "@mui/material"
+import { Stack, SxProps, Typography } from "@mui/material"
 import shape from "../../theme/shape.js"
 
 type Props = {
@@ -6,16 +6,18 @@ type Props = {
 }
 export function TitleMenu({ children }: Props) {
   return (
-    <Typography variant="h2" sx={style_typography}>
-      {children}
-    </Typography>
+    <Stack sx={style_container}>
+      <Typography variant="h2">{children}</Typography>
+    </Stack>
   )
 }
 
-const style_typography: SxProps = {
-  padding: 2,
-  borderBottomStyle: "solid",
+const style_container: SxProps = {
+  alignItems: "center",
+  justifyContent: "center",
+  borderBottomStyle: shape.borderStyle,
   borderBottomWidth: shape.borderWidth,
-  borderBottomColor: "background.borderPaper",
-  textAlign: "center",
+  borderBottomColor: "background.border",
+  height: shape.appBarHeight,
+  flexShrink: 0,
 }

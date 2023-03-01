@@ -57,5 +57,5 @@ const style_drawer: SxProps = {
   width: "100%",
   maxWidth: shape.drawerMaxWidth,
   height: "100vh",
-  overflow: "hidden"
+  overflow: "hidden",
 }

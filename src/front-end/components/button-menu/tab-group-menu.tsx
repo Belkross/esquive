@@ -7,6 +7,7 @@ import TeamIcon from "@mui/icons-material/Groups"
 import RuleIcon from "@mui/icons-material/HelpCenter"
 import SettingsIcon from "@mui/icons-material/Settings"
 import { ButtonResponsive } from "../button-responsive.js"
+import shape from "../../theme/shape.js"
 
 type Props = {
   setSelectedTab: setState<MenuTabId>
@@ -50,9 +51,12 @@ const style_tabs: SxProps = {
   justifyContent: "center",
   backgroundColor: "background.navBar",
   px: 3,
-  py: 1.5,
-  boxShadow: 7,
-  zIndex: 1,
+  zIndex: 2,
+  height: shape.appBarHeight,
+  borderTopColor: "background.border",
+  borderTopWidth: shape.borderWidth,
+  borderTopStyle: shape.borderStyle,
+  flexShrink: 0,
 }
 
 const style_buttonClose: SxProps = {

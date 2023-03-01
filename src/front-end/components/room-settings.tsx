@@ -1,7 +1,6 @@
-import { Box, Stack, SxProps, Typography } from "@mui/material"
+import { Box, SxProps, Typography } from "@mui/material"
 import { PlayerData } from "../../back-end/config/room-state/player-data.js"
 import { AppState } from "../../types/main.js"
-import shape from "../theme/shape.js"
 import { ButtonManagePlayer } from "./button-manage-player.js"
 
 type Props = { appState: AppState }

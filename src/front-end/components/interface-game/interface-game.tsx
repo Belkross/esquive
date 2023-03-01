@@ -73,8 +73,8 @@ const style_boardPart: SxProps = {
   maxHeight: "640px", //8 traps + vote secret word height
   backgroundColor: "background.paper",
   borderWidth: shape.borderWidth,
-  borderStyle: "solid",
-  borderColor: "background.borderPaper",
+  borderStyle: shape.borderStyle,
+  borderColor: "background.border",
   borderRadius: shape.borderRadius,
 }
 

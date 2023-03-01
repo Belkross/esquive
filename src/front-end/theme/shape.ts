@@ -1,6 +1,7 @@
 export default {
-  borderRadius: 3,
+  borderRadius: 2.5,
   borderWidth: "3px",
-  appBarHeight: 11,
+  borderStyle: "solid",
+  appBarHeight: { xs: "65px", md: "75px" },
   drawerMaxWidth: "700px",
 }
