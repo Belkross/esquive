@@ -18,15 +18,16 @@ export function GameHistoric({ appState }: Props) {
 }
 
 const style_container: SxProps = {
-  my: 1,
   backgroundColor: "background.historic",
-  height: "300px",
+  borderRadius: shape.borderRadius,
+  height: "100%",
   padding: 1,
-  boxShadow: 3,
-  borderWidth: shape.borderWidth,
+  boxShadow: 2,
+  borderWidth: 1,
   borderStyle: "solid",
   borderColor: grey[800],
   overflow: "scroll",
+  gap: 0.6,
 }
 
 const style_typography: SxProps = {

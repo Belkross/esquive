@@ -24,7 +24,7 @@ export function Traps({ appState }: Props) {
     const trapAuthor = <Typography variant="caption">{trap.author}</Typography>
 
     return (
-      <ListItem key={index} sx={style_container}>
+      <ListItem key={index} sx={style_listItem}>
         {duringTrappingPhase && <ButtonCancelTrap trap={trap.value} />}
         {!duringTrappingPhase && <ButtonActivateTrap appState={appState} trap={trap.value} />}
 
@@ -34,11 +34,17 @@ export function Traps({ appState }: Props) {
     )
   })
 
-  return <List>{list_traps}</List>
+  return <List sx={style_container}>{list_traps}</List>
 }
 
 const style_container: SxProps = {
+  display: "flex",
+  flexFlow: "column nowrap",
+  gap: 0.2,
+}
+
+const style_listItem: SxProps = {
   gap: 1,
-  px: 1.5,
   overflow: "hidden",
+  padding: 0,
 }

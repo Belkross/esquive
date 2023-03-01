@@ -15,10 +15,11 @@ export function InterfaceShared({ children }: Props) {
 }
 
 const style_container: SxProps = {
+  maxWidth: { xs: "1500px" },
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   paddingBottom: shape.appBarHeight,
   paddingTop: { xs: 2, lg: 0 },
-  px: { xs: 1.3, sm: 2 },
+  px: { xs: 1.3, sm: 2, md: 3, lg: 4 },
 }
