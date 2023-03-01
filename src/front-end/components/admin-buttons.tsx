@@ -18,6 +18,6 @@ export function AdminButtons({ appState }: Props) {
 
 const style_container = {
   flexDirection: "row",
-  gap: { xs: 1, sm: 2 },
+  gap: { xs: 1 },
   alignSelf: "center",
 }

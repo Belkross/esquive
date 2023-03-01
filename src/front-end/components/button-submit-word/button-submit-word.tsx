@@ -15,7 +15,7 @@ export function ButtonSubmitWord({ appState }: Props) {
 
   return (
     <>
-      <ButtonResponsive icon={<EditIcon />} label="Mot" onClick={modal.display} whileDisabled={whileDisabled} />
+      <ButtonResponsive icon={<EditIcon />} label="Soumettre un mot" onClick={modal.display} whileDisabled={whileDisabled} />
       <ModalSubmitWord appState={appState} displayed={modal.displayed} close={modal.remove} />
     </>
   )

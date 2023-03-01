@@ -5,6 +5,7 @@ import shape from "../../theme/shape.js"
 import { AdminButtons } from "../admin-buttons.js"
 import { ApplicationBar } from "../application-bar.js"
 import { ButtonReportForbiddenClue } from "../button-report-forbidden-clue.js"
+import { ButtonSubmitWord } from "../button-submit-word/button-submit-word.js"
 import { ChangeSecretWord } from "../change-secret-word.js"
 import { GameHistoric } from "../game-historic/game-historic.js"
 import { Instructions } from "../instructions.js"
@@ -20,7 +21,6 @@ export type InterfaceGameProps = {
 }
 
 export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
-  const clientIsAdmin = appState.roomState.players[appState.sessionId].isAdmin
   const breakpoint_xl = useMediaQuery(useTheme().breakpoints.up("xl"))
 
   useSubscribeRoomStateUpdate(setAppState)
@@ -31,7 +31,10 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
       <Score roomState={appState.roomState} />
       <Box sx={style_board}>
         <Stack sx={style_partOne}>
-          {clientIsAdmin && <AdminButtons appState={appState} />}
+          <Stack sx={style_buttons}>
+            <ButtonSubmitWord appState={appState} />
+            <AdminButtons appState={appState} />
+          </Stack>
           <Instructions appState={appState} />
           <GameHistoric appState={appState} />
         </Stack>
@@ -45,6 +48,12 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
       </Box>
     </>
   )
+}
+
+const style_buttons: SxProps = {
+  flexFlow: "row nowrap",
+  justifyContent: "space-between",
+  alignItems: "center",
 }
 
 const style_board: SxProps = {

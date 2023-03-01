@@ -1,4 +1,4 @@
-import { Box, Stack, SxProps } from "@mui/material"
+import { Box, Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
 import { AppState } from "../../types/main.js"
 import { ButtonChat } from "./button-chat/button-chat.js"
 import { ButtonMenu } from "./button-menu/button-menu.js"
@@ -10,11 +10,13 @@ type Props = {
 }
 
 export function ApplicationBar({ appState }: Props) {
+  const smallScreen = useMediaQuery(useTheme().breakpoints.down("lg"))
+
   return (
     <Box component="nav" sx={style_container}>
       <Timer appState={appState} />
       <Stack sx={style_stackButtons}>
-        <ButtonSubmitWord appState={appState} />
+        {smallScreen && <ButtonSubmitWord appState={appState} />}
         <ButtonChat appState={appState} />
         <ButtonMenu appState={appState} />
       </Stack>
