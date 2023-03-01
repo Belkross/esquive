@@ -5,7 +5,8 @@ import { useState } from "react"
 import { AppState, ChatChannel } from "../../../types/main.js"
 import { Drawer, SxProps } from "@mui/material"
 import { TabGroupChat } from "./tab-group-chat.js"
-import { ChatChannel as Chat } from "./chat-channel.js"
+import { Chat } from "./chat.js"
+import shape from "../../theme/shape.js"
 
 type Props = {
   appState: AppState
@@ -32,14 +33,13 @@ export function ButtonChat({ appState }: Props) {
       <ButtonResponsive icon={<ChatIcon />} label="Chat" onClick={drawer.display} />
       <Drawer
         variant="temporary"
-        anchor="right"
+        anchor="left"
         open={drawer.displayed}
         onClose={drawer.remove}
         PaperProps={{ sx: style_drawer }}
       >
-
         <>{tabContent}</>
-        <TabGroupChat setSelectedTab={setSelectedTab} close={drawer.remove} appState={appState}/>
+        <TabGroupChat setSelectedTab={setSelectedTab} close={drawer.remove} appState={appState} />
       </Drawer>
     </>
   )
@@ -47,5 +47,6 @@ export function ButtonChat({ appState }: Props) {
 
 const style_drawer: SxProps = {
   width: "100%",
+  maxWidth: shape.drawerMaxWidth,
   height: "100%",
 }

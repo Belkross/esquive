@@ -5,7 +5,6 @@ import { ChatMessage } from "../../../functions/chat-message.js"
 import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { AppState, ChatChannel } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
-import shape from "../../theme/shape.js"
 import { TitleMenu } from "../button-menu/title-menu.js"
 import handleChatInputChange from "./handle-chat-input-change.js"
 import MessageList from "./message-list.js"
@@ -29,7 +28,7 @@ const initialInputState = {
   characterRemaining: CHAT_MESSAGE_MAX_LENGTH,
 }
 
-export function ChatChannel({ messages, channel, appState }: Props) {
+export function Chat({ messages, channel, appState }: Props) {
   const [input, setInput] = useState<ChatInputState>(initialInputState)
   const ulElement = useRef<HTMLUListElement>(null)
   const whileSubmittable = getWhileSubmittable(appState, input, channel)
@@ -53,7 +52,7 @@ export function ChatChannel({ messages, channel, appState }: Props) {
 
   return (
     <>
-      <TitleMenu>{channel === "general" ? "Chat Général" : "Chat Orateur"}</TitleMenu>
+      <TitleMenu>{channel === "general" ? "Chat général" : "Chat orateur"}</TitleMenu>
 
       <List ref={ulElement} dense sx={style_messageList}>
         <MessageList messages={messages} />
@@ -68,7 +67,6 @@ export function ChatChannel({ messages, channel, appState }: Props) {
           multiline
           fullWidth
           helperText={`Caractères restants: ${input.characterRemaining}`}
-          maxRows={4}
           disabled={!whileTextFieldActive}
         />
         <Button onClick={handleSubmit} disabled={!whileSubmittable}>
@@ -110,12 +108,12 @@ const style_messageList: SxProps = {
   overflowY: "scroll",
   overflowWrap: "break-word",
   height: "100%",
+  padding: { xs: 1, sm: 2 },
 }
 
 const style_stackInputs: SxProps = {
   flexDirection: "column",
   alignItems: { xs: "center", sm: "end" },
   padding: 2,
-  paddingBottom: shape.appBarHeight,
   gap: 2,
 }

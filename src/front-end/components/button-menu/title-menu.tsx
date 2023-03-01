@@ -20,4 +20,5 @@ const style_container: SxProps = {
   borderBottomColor: "background.border",
   height: shape.appBarHeight,
   flexShrink: 0,
+  backgroundColor: "background.navBar"
 }

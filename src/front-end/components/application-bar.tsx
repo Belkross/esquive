@@ -36,10 +36,11 @@ const style_container: SxProps = {
   gap: 1.5,
 
   width: "100vw",
-  height: shape.appBarHeight,
+  minHeight: shape.appBarHeight,
   backgroundColor: "background.navBar",
   marginBottom: { lg: 3 },
   px: 2,
+  py: 1.5,
   boxShadow: 16,
   zIndex: 2,
 

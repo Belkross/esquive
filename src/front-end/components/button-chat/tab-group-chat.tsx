@@ -7,6 +7,7 @@ import TeamIcon from "@mui/icons-material/Groups"
 import { ButtonResponsive } from "../button-responsive.js"
 import { Timer } from "../timer.js"
 import { ButtonSubmitWord } from "../button-submit-word/button-submit-word.js"
+import { style_tabs } from "../button-menu/tab-group-menu.js"
 
 type Props = {
   setSelectedTab: setState<ChatChannel>
@@ -44,21 +45,6 @@ export function TabGroupChat({ setSelectedTab, close, appState }: Props) {
       </Stack>
     </Stack>
   )
-}
-
-const style_tabs: SxProps = {
-  position: "fixed",
-  width: "100%",
-  flexFlow: "row wrap",
-  gap: { xs: 1, sm: 2 },
-  alignItems: "center",
-  justifyContent: { xs: "center", sm: "space-between" },
-  bottom: "0",
-  left: "0",
-  backgroundColor: "background.navBar",
-  px: 3,
-  py: 1.5,
-  boxShadow: 7,
 }
 
 const style_stackButtons = {

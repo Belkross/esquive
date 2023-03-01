@@ -2,7 +2,7 @@ import { ChangeEvent } from "react"
 import { CHAT_MESSAGE_MAX_LENGTH } from "../../../config/app-constants.js"
 import checkChatMessageValidity from "../../../functions/check-chat-message-validity.js"
 import { setState } from "../../../types/main.js"
-import { ChatInputState } from "./chat-channel.js"
+import { ChatInputState } from "./chat.js"
 
 export default function handleChatInputChange(
   event: ChangeEvent<HTMLTextAreaElement>,

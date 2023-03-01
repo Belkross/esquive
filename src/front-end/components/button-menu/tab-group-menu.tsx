@@ -44,19 +44,23 @@ export function TabGroupMenu({ setSelectedTab, close }: Props) {
   )
 }
 
-const style_tabs: SxProps = {
-  flexFlow: "row nowrap",
-  gap: { xs: 1, sm: 2 },
-  alignItems: "center",
+export const style_tabs: SxProps = {
+  flexFlow: "row wrap",
   justifyContent: "center",
+  alignItems: "center",
+  gap: { xs: 1, sm: 2 },
+  flexShrink: 0,
+
+  minHeight: shape.appBarHeight,
   backgroundColor: "background.navBar",
   px: 3,
+  py: 1.5,
   zIndex: 2,
-  height: shape.appBarHeight,
+  boxShadow: 7,
+
   borderTopColor: "background.border",
   borderTopWidth: shape.borderWidth,
   borderTopStyle: shape.borderStyle,
-  flexShrink: 0,
 }
 
 const style_buttonClose: SxProps = {
