@@ -9,7 +9,7 @@ export function useChatAutoScrollDown(messages: ChatMessage[], ulElement: RefObj
   }, [messages, ulElement])
 }
 
-const NO_SCROLL_WINDOW = 50
+const NO_SCROLL_WINDOW = 150
 function checkIfNeedToScrollDown(ulElement: HTMLUListElement) {
   const scrollBarPosition = ulElement.scrollTop
   const scrollBarSize = ulElement.clientHeight
