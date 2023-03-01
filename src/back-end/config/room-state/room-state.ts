@@ -75,7 +75,7 @@ export class RoomState {
   trappingDuration = this.isProductionEnvironment ? 180 : 34
   guessingDuration = this.isProductionEnvironment ? 120 : 10
   guessAttemptsProvided = this.isProductionEnvironment ? 5 : 2
-  trapSlotsProvided = this.isProductionEnvironment ? 4 : 10
+  trapSlotsProvided = this.isProductionEnvironment ? 4 : 8
   startingTeam: Team = "two"
   isJudgingTrap = false
   secretWordsDeck: string[]

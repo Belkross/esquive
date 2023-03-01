@@ -61,7 +61,7 @@ const style_boardPart: SxProps = {
   py: { xs: 3 },
   minHeight: { xs: "450px", sm: "500px" },
   maxWidth: "450px",
-  maxHeight: "760px", //10 traps + vote secret word height
+  maxHeight: "640px", //8 traps + vote secret word height
   backgroundColor: "background.paper",
   borderWidth: shape.borderWidth,
   borderStyle: "solid",

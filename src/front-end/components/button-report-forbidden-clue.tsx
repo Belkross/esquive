@@ -42,7 +42,6 @@ function getWhileDisabled(roomState: RoomState, sessionId: string) {
 const style_container = {
   flexDirection: "row",
   alignItems: "center",
-  paddingTop: 2,
   gap: 1,
   marginBottom: 2,
 }
