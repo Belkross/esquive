@@ -6,7 +6,7 @@ import { AdminButtons } from "../admin-buttons.js"
 import { ApplicationBar } from "../application-bar.js"
 import { ButtonReportForbiddenClue } from "../button-report-forbidden-clue.js"
 import { ChangeSecretWord } from "../change-secret-word.js"
-import { GameHistoric } from "../game-historic.js"
+import { GameHistoric } from "../game-historic/game-historic.js"
 import { Instructions } from "../instructions.js"
 import { Score } from "../score/score.js"
 import { Teams } from "../teams.js"
@@ -58,9 +58,10 @@ const style_boardPart: SxProps = {
   marginBottom: 2,
   boxShadow: 12,
   px: { xs: 1.5, sm: 2, md: 3 },
-  py: { xs: 4 },
-  minHeight: { xs: "400px", sm: "500px" },
+  py: { xs: 3 },
+  minHeight: { xs: "450px", sm: "500px" },
   maxWidth: "450px",
+  maxHeight: "760px", //10 traps + vote secret word height
   backgroundColor: "background.paper",
   borderWidth: shape.borderWidth,
   borderStyle: "solid",
@@ -73,7 +74,7 @@ const style_partOne: SxProps = {
   display: "flex",
   flexFlow: "column nowrap",
   alignItems: "stretch",
-  gap: { xs: 3, sm: 3, md: 4 },
+  gap: { xs: 3, md: 4 },
   gridColumn: { xs: "1/13", lg: "1/7", xl: "1/6" },
 }
 
