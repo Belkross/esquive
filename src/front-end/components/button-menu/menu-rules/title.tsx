@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material"
+import { SxProps, Typography } from "@mui/material"
 
 type Props = {
   text: string
@@ -12,6 +12,7 @@ export function Title({ text }: Props) {
   )
 }
 
-const style_title = {
+const style_title: SxProps = {
   color: "info.main",
+  alignSelf: "start",
 }

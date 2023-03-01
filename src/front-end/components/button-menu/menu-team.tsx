@@ -1,9 +1,8 @@
-import { SxProps, Typography } from "@mui/material"
 import { AppState } from "../../../types/main.js"
-import shape from "../../theme/shape.js"
 import { ButtonShuffleTeams } from "../button-shuffle-teams.js"
 import { Teams } from "../teams.js"
-import { MenuElementContainer } from "./menu-element-container.js"
+import { ScrollableContainer } from "./scrollable-container.js"
+import { TitleMenu } from "./title-menu.js"
 
 type Props = {
   appState: AppState
@@ -11,25 +10,12 @@ type Props = {
 export function MenuTeam({ appState }: Props) {
   return (
     <>
-      <MenuElementContainer>
-        <Typography variant="h2">Équipes et rôles</Typography>
-      </MenuElementContainer>
+      <TitleMenu>Équipes et rôles</TitleMenu>
 
-      <MenuElementContainer sx={style_teams}>
+      <ScrollableContainer>
         <Teams appState={appState} />
         <ButtonShuffleTeams appState={appState} />
-      </MenuElementContainer>
+      </ScrollableContainer>
     </>
   )
-}
-
-const style_teams: SxProps = {
-  py: 4,
-  height: "100%",
-  paddingBottom: shape.appBarHeight,
-  paddingTop: 6,
-  display: "flex",
-  flexFlow: "column nowrap",
-  alignItems: "center",
-  gap: 6,
 }

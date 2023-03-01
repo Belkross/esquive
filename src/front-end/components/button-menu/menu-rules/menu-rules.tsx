@@ -1,6 +1,6 @@
-import { SxProps, Typography } from "@mui/material"
-import shape from "../../../theme/shape.js"
-import { MenuElementContainer } from "../menu-element-container.js"
+import { Typography } from "@mui/material"
+import { ScrollableContainer } from "../scrollable-container.js"
+import { TitleMenu } from "../title-menu.js"
 import { ArticleList } from "./article-list.js"
 import rules from "./rules.js"
 import { Title } from "./title.js"
@@ -8,11 +8,9 @@ import { Title } from "./title.js"
 export function MenuRules() {
   return (
     <>
-      <MenuElementContainer>
-        <Typography variant="h2">Règles du jeu</Typography>
-      </MenuElementContainer>
+      <TitleMenu>Règles du jeu</TitleMenu>
 
-      <MenuElementContainer sx={style_container}>
+      <ScrollableContainer>
         <Title text={rules.gameDescription.title.toUpperCase()} />
         <Typography>{rules.gameDescription.description}</Typography>
 
@@ -25,16 +23,7 @@ export function MenuRules() {
         <Title text={rules.talkerCode.title.toUpperCase()} />
         <Typography>{rules.talkerCode.introduction}</Typography>
         <ArticleList articles={rules.talkerCode.articles} />
-      </MenuElementContainer>
+      </ScrollableContainer>
     </>
   )
-}
-
-const style_container: SxProps = {
-  display: "flex",
-  flexFlow: "column nowrap",
-  gap: 2,
-  paddingBottom: shape.appBarHeight,
-  backgroundColor: "background.default",
-  textAlign: "left",
 }

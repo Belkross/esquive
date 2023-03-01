@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material"
+import { Box, SxProps, Typography } from "@mui/material"
 
 type Article = {
   title: string
@@ -15,7 +15,7 @@ export function ArticleList({ articles }: Props) {
     const articleTitleString = `Article ${articleId} - ${article.title}`
 
     return (
-      <Box key={index}>
+      <Box key={index} sx={style_container}>
         <Typography sx={style_title}>{articleTitleString}</Typography>
         <Typography>{article.description}</Typography>
       </Box>
@@ -23,6 +23,10 @@ export function ArticleList({ articles }: Props) {
   })
 
   return <>{articleList}</>
+}
+
+const style_container: SxProps = {
+  alignSelf: "start",
 }
 
 const style_title = { color: "text.rule" }

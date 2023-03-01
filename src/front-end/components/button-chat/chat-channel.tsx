@@ -1,4 +1,4 @@
-import { List, Stack, TextField, Button, SxProps, Typography } from "@mui/material"
+import { List, Stack, TextField, Button, SxProps } from "@mui/material"
 import { ChangeEvent, KeyboardEvent, useRef, useState } from "react"
 import { CHAT_MESSAGE_MAX_LENGTH } from "../../../config/app-constants.js"
 import { ChatMessage } from "../../../functions/chat-message.js"
@@ -6,7 +6,7 @@ import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { AppState, ChatChannel } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import shape from "../../theme/shape.js"
-import { MenuElementContainer } from "../button-menu/menu-element-container.js"
+import { TitleMenu } from "../button-menu/title-menu.js"
 import handleChatInputChange from "./handle-chat-input-change.js"
 import MessageList from "./message-list.js"
 import { useChatAutoScrollDown } from "./use-chat-auto-scroll-down.js"
@@ -53,9 +53,7 @@ export function ChatChannel({ messages, channel, appState }: Props) {
 
   return (
     <>
-      <MenuElementContainer>
-        <Typography variant="h2">{channel === "general" ? "Chat Général" : "Chat Orateur"}</Typography>
-      </MenuElementContainer>
+      <TitleMenu>{channel === "general" ? "Chat Général" : "Chat Orateur"}</TitleMenu>
 
       <List ref={ulElement} dense sx={style_messageList}>
         <MessageList messages={messages} />

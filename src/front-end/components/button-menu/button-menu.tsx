@@ -9,6 +9,7 @@ import { MenuRules } from "./menu-rules/menu-rules.js"
 import { MenuSettings } from "./menu-settings.js"
 import { TabGroupMenu } from "./tab-group-menu.js"
 import { AppState, MenuTabId } from "../../../types/main.js"
+import shape from "../../theme/shape.js"
 
 type Props = {
   appState: AppState
@@ -54,5 +55,7 @@ export function ButtonMenu({ appState }: Props) {
 
 const style_drawer: SxProps = {
   width: "100%",
-  height: "100%",
+  maxWidth: shape.drawerMaxWidth,
+  height: "100vh",
+  overflow: "hidden"
 }

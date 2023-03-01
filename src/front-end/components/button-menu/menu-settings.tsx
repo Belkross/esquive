@@ -1,4 +1,4 @@
-import { TextField, Button, SxProps, Typography } from "@mui/material"
+import { TextField, Button } from "@mui/material"
 import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 import { checkGuessAttemptsValidity } from "../../../functions/check-guess-attempts-validity.js"
 import { checkTimerDurationValidity } from "../../../functions/check-timer-duration-validity.js"
@@ -8,8 +8,8 @@ import { AppState, FlowlessFunction } from "../../../types/main.js"
 import { RoundSettings, RoundSettingsStructure } from "../../../types/room-state.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { useValidNumberInput } from "../../custom-hooks/use-valid-number-input.js"
-import shape from "../../theme/shape.js"
-import { MenuElementContainer } from "./menu-element-container.js"
+import { ScrollableContainer } from "./scrollable-container.js"
+import { TitleMenu } from "./title-menu.js"
 
 type Props = {
   appState: AppState
@@ -47,11 +47,9 @@ export function MenuSettings({ appState, closeMenu }: Props) {
 
   return (
     <>
-      <MenuElementContainer>
-        <Typography variant="h2">Règlages partie</Typography>
-      </MenuElementContainer>
+      <TitleMenu>Règlages partie</TitleMenu>
 
-      <MenuElementContainer sx={style_textField}>
+      <ScrollableContainer >
         <TextField
           label={`Nombre de piège (${roomState.trapSlotLimit} max)`}
           value={trapLimit.value}
@@ -59,9 +57,6 @@ export function MenuSettings({ appState, closeMenu }: Props) {
           error={!trapLimit.validity}
           disabled={whileDisabled}
         />
-      </MenuElementContainer>
-
-      <MenuElementContainer sx={style_textField}>
         <TextField
           label={`Nombre de proposition (${roomState.guessAttemptLimit} max)`}
           value={guessLimit.value}
@@ -69,9 +64,6 @@ export function MenuSettings({ appState, closeMenu }: Props) {
           error={!guessLimit.validity}
           disabled={whileDisabled}
         />
-      </MenuElementContainer>
-
-      <MenuElementContainer sx={style_textField}>
         <TextField
           label={`Condition de victoire (${roomState.winConditionLimit} max)`}
           value={winCondition.value}
@@ -79,9 +71,6 @@ export function MenuSettings({ appState, closeMenu }: Props) {
           error={!winCondition.validity}
           disabled={whileDisabled}
         />
-      </MenuElementContainer>
-
-      <MenuElementContainer sx={style_textField}>
         <TextField
           label={`Durée phase piège (${roomState.timerLimit}s max)`}
           value={trappingDuration.value}
@@ -89,9 +78,6 @@ export function MenuSettings({ appState, closeMenu }: Props) {
           error={!trappingDuration.validity}
           disabled={whileDisabled}
         />
-      </MenuElementContainer>
-
-      <MenuElementContainer sx={style_textField}>
         <TextField
           label={`Durée phase oration (${roomState.timerLimit}s max)`}
           value={guessingDuration.value}
@@ -99,13 +85,10 @@ export function MenuSettings({ appState, closeMenu }: Props) {
           error={!guessingDuration.validity}
           disabled={whileDisabled}
         />
-      </MenuElementContainer>
-
-      <MenuElementContainer sx={style_button}>
         <Button onClick={handleSubmit} disabled={!whileSubmittable}>
           Valider
         </Button>
-      </MenuElementContainer>
+      </ScrollableContainer>
     </>
   )
 }
@@ -129,15 +112,4 @@ function formatNewSettings(settings: RoundSettingsStructure<string>): RoundSetti
     trappingDuration: Number.parseInt(trappingDuration, 10),
     guessingDuration: Number.parseInt(guessingDuration, 10),
   }
-}
-
-const style_button: SxProps = {
-  height: "100%",
-  paddingBottom: shape.appBarHeight,
-  textAlign: "center",
-}
-
-const style_textField: SxProps = {
-  textAlign: "center",
-  py: 3,
 }

@@ -44,14 +44,10 @@ export function TabGroupMenu({ setSelectedTab, close }: Props) {
 }
 
 const style_tabs: SxProps = {
-  position: "fixed",
-  width: "100%",
   flexFlow: "row nowrap",
   gap: { xs: 1, sm: 2 },
   alignItems: "center",
   justifyContent: "center",
-  bottom: "0",
-  left: "0",
   backgroundColor: "background.navBar",
   px: 3,
   py: 1.5,
