@@ -57,7 +57,8 @@ const style_boardPart: SxProps = {
   width: "100%",
   marginBottom: 2,
   boxShadow: 12,
-  padding: { xs: 1.5, sm: 2, md: 3 },
+  px: { xs: 1.5, sm: 2, md: 3 },
+  py: { xs: 4 },
   minHeight: { xs: "400px", sm: "500px" },
   maxWidth: "450px",
   backgroundColor: "background.paper",
@@ -72,7 +73,7 @@ const style_partOne: SxProps = {
   display: "flex",
   flexFlow: "column nowrap",
   alignItems: "stretch",
-  gap: { xs: 2, sm: 3, md: 4 },
+  gap: { xs: 3, sm: 3, md: 4 },
   gridColumn: { xs: "1/13", lg: "1/7", xl: "1/6" },
 }
 

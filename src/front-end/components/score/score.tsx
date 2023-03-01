@@ -31,7 +31,7 @@ const style_container: SxProps = {
   gap: 0,
   justifyContent: "center",
   alignItems: "center",
-  mb: { xs: 1, lg: 7 },
+  mb: { xs: 3, lg: 7 },
 }
 
 const style_score: SxProps = {
