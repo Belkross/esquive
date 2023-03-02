@@ -1,4 +1,4 @@
-import secretWordList from "../../config/secret-word-list.js"
+import secretWordList from "../../assets/secret-word-list.js"
 import { ServerManager } from "../../types/server.js"
 import { RoomState } from "../config/room-state/room-state.js"
 
