@@ -1,5 +1,5 @@
 import { Typography, ListItem, ListItemText, SxProps } from "@mui/material"
-import { ChatMessage } from "../../../functions/chat-message.js"
+import { ChatMessage } from "../../../back-end/config/room-state/methods/add-chat-message.js"
 
 type Props = {
   messages: ChatMessage[]

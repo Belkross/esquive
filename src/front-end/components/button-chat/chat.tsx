@@ -1,7 +1,7 @@
 import { List, Stack, TextField, Button, SxProps } from "@mui/material"
 import { ChangeEvent, KeyboardEvent, useRef, useState } from "react"
+import { ChatMessage } from "../../../back-end/config/room-state/methods/add-chat-message.js"
 import { RoomState } from "../../../back-end/config/room-state/room-state.js"
-import { ChatMessage } from "../../../functions/chat-message.js"
 import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { AppState, ChatChannel } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"

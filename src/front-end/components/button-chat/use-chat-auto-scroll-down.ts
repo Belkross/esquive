@@ -1,5 +1,5 @@
 import { RefObject, useEffect } from "react"
-import { ChatMessage } from "../../../functions/chat-message.js"
+import { ChatMessage } from "../../../back-end/config/room-state/methods/add-chat-message.js"
 
 export function useChatAutoScrollDown(messages: ChatMessage[], ulElement: RefObject<HTMLUListElement>) {
   useEffect(() => {

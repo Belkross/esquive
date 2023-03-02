@@ -41,8 +41,7 @@ import { trapSlotsUsed } from "./methods/trap-slots-used.js"
 import { PlayerData } from "./player-data.js"
 import { TeamData } from "./team-data.js"
 import { changeRoundSettings } from "./methods/change-round-settings.js"
-import { ChatMessage } from "../../../functions/chat-message.js"
-import { addChatMessage } from "./methods/add-chat-message.js"
+import { addChatMessage, ChatMessage } from "./methods/add-chat-message.js"
 
 export class RoomState {
   static readonly TIMER_LIMIT = 360 //seconds
