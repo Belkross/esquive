@@ -1,11 +1,9 @@
-import GuesserIcon from "@mui/icons-material/PersonSearch"
-import TalkerIcon from "@mui/icons-material/RecordVoiceOver"
 import { AppState } from "../../../types/main.js"
 import { Team, Role } from "../../../types/room-state.js"
 import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { ButtonChangeRoleTitle } from "./title-button-change-role.js"
 import { TeammatesList } from "./teammate-list.js"
-import { Stack, IconButton } from "@mui/material"
+import { Stack, Button } from "@mui/material"
 import { socket } from "../../config/initialize-socket-io.js"
 
 type Props = {
@@ -21,9 +19,9 @@ export function ButtonChangeRole({ team, role, appState }: Props) {
 
   return (
     <Stack sx={style_container}>
-      <IconButton aria-label="Changer Role" sx={style_iconButton(team)} onClick={handleClick} disabled={whileDisabled}>
-        {role === "guesser" ? <GuesserIcon /> : <TalkerIcon />}
-      </IconButton>
+      <Button sx={style_button(team)} onClick={handleClick} disabled={whileDisabled}>
+        Rejoindre
+      </Button>
       <Stack>
         <ButtonChangeRoleTitle role={role} team={team} />
         <TeammatesList team={team} role={role} appState={appState} />
@@ -52,10 +50,12 @@ const style_container = {
   gap: 2,
 }
 
-const style_iconButton = (team: Team) => {
+const style_button = (team: Team) => {
   const color = `team.${team}`
+
   return {
     backgroundColor: color,
     borderColor: color,
+    padding: 1,
   }
 }
