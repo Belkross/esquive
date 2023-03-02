@@ -2,8 +2,9 @@ import { Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../../types/main.js"
 import shape from "../../theme/shape.js"
-import { AdminButtons } from "../admin-buttons.js"
 import { ApplicationBar } from "../application-bar.js"
+import { ButtonsJudgeTrap } from "../button-judge-trap.js"
+import { ButtonPlayNextPhase } from "../button-play-next-phase.js"
 import { ButtonReportForbiddenClue } from "../button-report-forbidden-clue.js"
 import { ButtonSubmitWord } from "../button-submit-word/button-submit-word.js"
 import { ChangeSecretWord } from "../change-secret-word.js"
@@ -34,10 +35,11 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
         <Stack sx={style_borderedPartOne}>
           <Stack sx={style_buttons}>
             <ButtonSubmitWord appState={appState} />
-            <AdminButtons appState={appState} />
+            <ButtonPlayNextPhase appState={appState} />
           </Stack>
           <Instructions appState={appState} />
           <GameHistoric appState={appState} />
+          <ButtonsJudgeTrap appState={appState} />
         </Stack>
 
         <Stack sx={style_borderedPartTwo}>
@@ -73,9 +75,9 @@ const style_board: SxProps = {
 const style_borderedBoardPart: SxProps = {
   width: "100%",
   maxWidth: "500px",
-  minHeight: { xs: "450px", sm: "500px" },
+  minHeight: { xs: "450px", lg: "640px" },
   maxHeight: "640px", //8 traps + vote secret word height
-  gridRow: "3/13",
+  gridRow: "2/13",
   alignSelf: { xs: "center", lg: "start" },
 
   marginBottom: 2,

@@ -32,7 +32,7 @@ const style_container: SxProps = {
   justifyContent: "center",
   alignItems: "center",
   gridColumn: "1/12",
-  gridRow: "1/3",
+  gridRow: "1/2",
 }
 
 const style_score: SxProps = {

@@ -1,22 +1,18 @@
-import { IconButton } from "@mui/material"
 import PlayArrowIcon from "@mui/icons-material/PlayArrow"
 import { AppState } from "../../types/main.js"
 import { socket } from "../config/initialize-socket-io.js"
+import { ButtonResponsive } from "./button-responsive.js"
 
 type Props = {
   appState: AppState
 }
 
-const handle_click = () => socket.emit("nextRoundPhase")
+const handleClick = () => socket.emit("nextRoundPhase")
 
 export function ButtonPlayNextPhase({ appState }: Props) {
   const whileDisabled = getWhileDisabled(appState)
 
-  return (
-    <IconButton onClick={handle_click} disabled={whileDisabled}>
-      <PlayArrowIcon />
-    </IconButton>
-  )
+  return <ButtonResponsive icon={<PlayArrowIcon />} label="Jouer" onClick={handleClick} whileDisabled={whileDisabled} />
 }
 
 function getWhileDisabled(appState: AppState) {
