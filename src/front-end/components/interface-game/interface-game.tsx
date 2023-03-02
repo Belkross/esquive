@@ -1,4 +1,4 @@
-import { Box, Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
+import { Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../../types/main.js"
 import shape from "../../theme/shape.js"
@@ -28,9 +28,10 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
   return (
     <>
       <ApplicationBar appState={appState} />
-      <Score roomState={appState.roomState} />
-      <Box sx={style_board}>
-        <Stack sx={style_partOne}>
+      <Stack sx={style_board}>
+        <Score roomState={appState.roomState} />
+
+        <Stack sx={style_borderedPartOne}>
           <Stack sx={style_buttons}>
             <ButtonSubmitWord appState={appState} />
             <AdminButtons appState={appState} />
@@ -38,39 +39,51 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
           <Instructions appState={appState} />
           <GameHistoric appState={appState} />
         </Stack>
-        <Stack sx={style_partTwo}>
+
+        <Stack sx={style_borderedPartTwo}>
           <ChangeSecretWord appState={appState} />
           <ButtonReportForbiddenClue appState={appState} />
           <TrapsRemaining appState={appState} />
           <Traps appState={appState} />
         </Stack>
+
         {breakpoint_xl && <Teams appState={appState} />}
-      </Box>
+      </Stack>
     </>
   )
 }
 
-const style_buttons: SxProps = {
-  flexFlow: "row nowrap",
-  justifyContent: "space-between",
-  alignItems: "center",
-}
-
 const style_board: SxProps = {
-  display: { xs: "block", lg: "grid" },
+  display: { xs: "flex", lg: "grid" },
   gridTemplateColumns: "repeat(12, 1fr)",
+  gridTemplateRows: "repeat(12, 1fr)",
+  alignItems: "center",
+  gap: { xs: 3, sm: 4, lg: "none" },
+  rowGap: 3,
   columnGap: 4,
+  justifyItems: "center",
+
+  overflowY: "scroll",
+  width: "100%",
+  height: "100%",
+
+  padding: { xs: 2, sm: 3, md: 4 },
 }
 
-const style_boardPart: SxProps = {
+const style_borderedBoardPart: SxProps = {
   width: "100%",
+  maxWidth: "500px",
+  minHeight: { xs: "450px", sm: "500px" },
+  maxHeight: "640px", //8 traps + vote secret word height
+  gridRow: "3/13",
+  alignSelf: { xs: "center", lg: "start" },
+
   marginBottom: 2,
-  boxShadow: 12,
+  margin: 0,
   px: { xs: 1.5, sm: 2, md: 3 },
   py: { xs: 3 },
-  minHeight: { xs: "450px", sm: "500px" },
-  maxWidth: "450px",
-  maxHeight: "640px", //8 traps + vote secret word height
+
+  boxShadow: 12,
   backgroundColor: "background.paper",
   borderWidth: shape.borderWidth,
   borderStyle: shape.borderStyle,
@@ -78,16 +91,24 @@ const style_boardPart: SxProps = {
   borderRadius: shape.borderRadius,
 }
 
-const style_partOne: SxProps = {
-  ...style_boardPart,
+const style_borderedPartOne: SxProps = {
+  ...style_borderedBoardPart,
   display: "flex",
   flexFlow: "column nowrap",
   alignItems: "stretch",
   gap: { xs: 3, md: 4 },
   gridColumn: { xs: "1/13", lg: "1/7", xl: "1/6" },
+  justifySelf: "end",
 }
 
-const style_partTwo: SxProps = {
-  ...style_boardPart,
-  gridColumn: { xs: "1/13", lg: "7/13", xl: "6/11" },
+const style_borderedPartTwo: SxProps = {
+  ...style_borderedBoardPart,
+  gridColumn: { xs: "1/13", lg: "7/13", xl: "6/11", xxl: "6/10" },
+  justifySelf: "start",
+}
+
+const style_buttons: SxProps = {
+  flexFlow: "row nowrap",
+  justifyContent: "space-between",
+  alignItems: "center",
 }

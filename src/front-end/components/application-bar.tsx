@@ -26,9 +26,6 @@ export function ApplicationBar({ appState }: Props) {
 }
 
 const style_container: SxProps = {
-  position: { xs: "fixed", lg: "static" },
-  bottom: 0,
-
   display: "flex",
   flexFlow: "row wrap",
   justifyContent: { xs: "center", sm: "space-between", lg: "space-around" },
@@ -38,7 +35,6 @@ const style_container: SxProps = {
   width: "100vw",
   minHeight: shape.appBarHeight,
   backgroundColor: "background.navBar",
-  marginBottom: { lg: 3 },
   px: 2,
   py: 1.5,
   boxShadow: 16,

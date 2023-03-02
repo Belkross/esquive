@@ -26,7 +26,11 @@ const style_container: SxProps = {
   justifyContent: "center",
   alignItems: "start",
   gap: 5,
-  gridColumn: { xl: "11/13" },
+  
+  gridColumn: { xl: "11/13", xxl: "10/13" },
+  gridRow: "3/13",
+  justifySelf: "start",
+  alignSelf: "center",
 }
 
 const style_teamContainer: SxProps = {

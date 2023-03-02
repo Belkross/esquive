@@ -31,7 +31,8 @@ const style_container: SxProps = {
   gap: 0,
   justifyContent: "center",
   alignItems: "center",
-  mb: { xs: 3, lg: 7 },
+  gridColumn: "1/12",
+  gridRow: "1/3",
 }
 
 const style_score: SxProps = {

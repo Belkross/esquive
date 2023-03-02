@@ -4,5 +4,5 @@ export default {
   md: 600,
   lg: 900,
   xl: 1200,
-  xxl: 1300,
+  xxl: 1500,
 }
