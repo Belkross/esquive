@@ -13,15 +13,18 @@ type Props = {
 }
 
 export function ButtonChangeRole({ team, role, appState }: Props) {
-  const whileDisabled = getWhileDisabled(appState, team)
+  const whileActivated = getWhileActivated(appState, team)
+  const whileDisplayed = getWhileDisplayed(appState)
 
   const handleClick = () => socket.emit("changeRole", team, role)
 
   return (
     <Stack sx={style_container}>
-      <Button sx={style_button(team)} onClick={handleClick} disabled={whileDisabled}>
-        Rejoindre
-      </Button>
+      {whileDisplayed && (
+        <Button sx={style_button(team)} onClick={handleClick} disabled={!whileActivated}>
+          Rejoindre
+        </Button>
+      )}
       <Stack>
         <ButtonChangeRoleTitle role={role} team={team} />
         <TeammatesList team={team} role={role} appState={appState} />
@@ -30,7 +33,7 @@ export function ButtonChangeRole({ team, role, appState }: Props) {
   )
 }
 
-function getWhileDisabled(appState: AppState, team: Team) {
+function getWhileActivated(appState: AppState, team: Team) {
   const { roomState, sessionId } = appState
   const roundPhase = roomState.roundPhase
   const duringPreRound = roundPhase === "pre round"
@@ -39,9 +42,15 @@ function getWhileDisabled(appState: AppState, team: Team) {
   const clientTeam = getPlayerTeam(roomState, sessionId)
   const notOpponentTeamButton = clientTeam === team
 
-  const whileActivated = duringPreRound || (duringTrapping && notOpponentTeamButton)
+  return duringPreRound || (duringTrapping && notOpponentTeamButton)
+}
 
-  return !whileActivated
+function getWhileDisplayed(appState: AppState) {
+  const roundPhase = appState.roomState.roundPhase
+  const duringPreRound = roundPhase === "pre round"
+  const duringTrapping = roundPhase === "trapping"
+
+  return duringPreRound || duringTrapping
 }
 
 const style_container = {
