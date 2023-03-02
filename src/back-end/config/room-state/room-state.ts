@@ -87,9 +87,16 @@ export class RoomState {
   constructor(roomName: string, secretWordList: string) {
     this.roomName = roomName
     this.teams = { one: new TeamData("one"), two: new TeamData("two") }
-    this.historic.push(`Bienvenue dans le salon ${this.roomName}.`, "La phase de piège va commencer.")
     this.secretWordsDeck = this.initializeSecretWordsDeck(secretWordList)
     this.timer = this.trappingDuration
+    this.historic.push(`Bienvenue dans le salon ${this.roomName}.`, "La phase de piège va commencer.")
+    this.generalMessages.push(new ChatMessage("Esquive", "Bienvenue sur le chat général."))
+    this.oratorMessages.push(
+      new ChatMessage(
+        "Esquive",
+        "Bienvenue sur le chat réservé aux orateurs. Les orateurs ne peuvent y écrire que lorsqu’ils doivent faire deviner un mot à leur équipe."
+      )
+    )
   }
 
   activateTrap = activateTrap
