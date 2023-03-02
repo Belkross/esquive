@@ -1,5 +1,5 @@
 import { ChangeEvent } from "react"
-import { CHAT_MESSAGE_MAX_LENGTH } from "../../../config/app-constants.js"
+import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 import checkChatMessageValidity from "../../../functions/check-chat-message-validity.js"
 import { setState } from "../../../types/main.js"
 import { ChatInputState } from "./chat.js"
@@ -16,7 +16,7 @@ export default function handleChatInputChange(
   setInput({
     value: inputValue,
     validity: checkChatMessageValidity(inputValue),
-    characterRemaining: CHAT_MESSAGE_MAX_LENGTH - inputValue.length,
+    characterRemaining: RoomState.CHAT_MESSAGE_MAX_LENGTH - inputValue.length,
   })
 }
 

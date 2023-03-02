@@ -10,8 +10,8 @@ export function TrapsRemaining({ appState }: Props) {
   const { roomState, sessionId } = appState
   const clientTeam = getPlayerTeam(roomState, sessionId)
   const currentTrapsNumber = Object.keys(roomState.teams[clientTeam].traps).length
-  const trapSlotLimit = roomState.trapSlotsProvided
-  const text = `${currentTrapsNumber} / ${trapSlotLimit} pièges`
+  const { trapSlotsProvided } = roomState
+  const text = `${currentTrapsNumber} / ${trapSlotsProvided} pièges`
 
   return <Typography sx={style_container}>{text}</Typography>
 }

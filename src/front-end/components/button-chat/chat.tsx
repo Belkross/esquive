@@ -1,6 +1,6 @@
 import { List, Stack, TextField, Button, SxProps } from "@mui/material"
 import { ChangeEvent, KeyboardEvent, useRef, useState } from "react"
-import { CHAT_MESSAGE_MAX_LENGTH } from "../../../config/app-constants.js"
+import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 import { ChatMessage } from "../../../functions/chat-message.js"
 import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { AppState, ChatChannel } from "../../../types/main.js"
@@ -25,7 +25,7 @@ type Props = {
 const initialInputState = {
   value: "",
   validity: false,
-  characterRemaining: CHAT_MESSAGE_MAX_LENGTH,
+  characterRemaining: RoomState.CHAT_MESSAGE_MAX_LENGTH,
 }
 
 export function Chat({ messages, channel, appState }: Props) {

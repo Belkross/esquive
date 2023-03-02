@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useEffect } from "react"
-import { FAKE_LOADING_DURATION } from "../../../config/app-constants.js"
 import { AppState, FlowlessFunction } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { useAlertFeature } from "../alert-feature/alert-feature.js"
 import { AlertId } from "../alert-feature/alerts.js"
+import { FAKE_LOADING_DURATION } from "../interface-connecting/interface-connecting-server.js"
 
 export function useSubscribeConnectError(setAppState: Dispatch<SetStateAction<AppState>>) {
   const displayNewAlert = useAlertFeature()

@@ -51,35 +51,35 @@ export function MenuSettings({ appState, closeMenu }: Props) {
 
       <ScrollableContainer >
         <TextField
-          label={`Nombre de piège (${roomState.trapSlotLimit} max)`}
+          label={`Nombre de piège (${RoomState.TRAP_SLOT_LIMIT} max)`}
           value={trapLimit.value}
           onChange={onTrapLimitChange}
           error={!trapLimit.validity}
           disabled={whileDisabled}
         />
         <TextField
-          label={`Nombre de proposition (${roomState.guessAttemptLimit} max)`}
+          label={`Nombre de proposition (${RoomState.GUESS_ATTEMPT_LIMIT} max)`}
           value={guessLimit.value}
           onChange={onGuessLimitChange}
           error={!guessLimit.validity}
           disabled={whileDisabled}
         />
         <TextField
-          label={`Condition de victoire (${roomState.winConditionLimit} max)`}
+          label={`Condition de victoire (${RoomState.WIN_CONDITION_LIMIT} max)`}
           value={winCondition.value}
           onChange={onWinConditionChange}
           error={!winCondition.validity}
           disabled={whileDisabled}
         />
         <TextField
-          label={`Durée phase piège (${roomState.timerLimit}s max)`}
+          label={`Durée phase piège (${RoomState.TIMER_LIMIT}s max)`}
           value={trappingDuration.value}
           onChange={onTrappingDurationChange}
           error={!trappingDuration.validity}
           disabled={whileDisabled}
         />
         <TextField
-          label={`Durée phase oration (${roomState.timerLimit}s max)`}
+          label={`Durée phase oration (${RoomState.TIMER_LIMIT}s max)`}
           value={guessingDuration.value}
           onChange={onGuessingDurationChange}
           error={!guessingDuration.validity}

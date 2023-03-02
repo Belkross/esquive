@@ -17,12 +17,6 @@ import { deletePlayer } from "./methods/delete-player.js"
 import { drawSecretWord } from "./methods/draw-secret-word.js"
 import { getActivePlayerNumber } from "./methods/get-active-player-number.js"
 import { getOpponentTeam } from "./methods/get-opponent-team.js"
-import {
-  GUESS_ATTEMPT_LIMIT,
-  TIMER_LIMIT,
-  TRAP_SLOT_LIMIT,
-  WIN_CONDITION_LIMIT,
-} from "../../../config/app-constants.js"
 import { getPlayingTeam } from "./methods/get-playing-team.js"
 import { initializeSecretWordsDeck } from "./methods/initialize-secret-word-deck.js"
 import { judgeTrap } from "./methods/judge-trap.js"
@@ -51,6 +45,18 @@ import { ChatMessage } from "../../../functions/chat-message.js"
 import { addChatMessage } from "./methods/add-chat-message.js"
 
 export class RoomState {
+  static readonly TIMER_LIMIT = 360 //seconds
+  static readonly TRAP_SLOT_LIMIT = 8
+  static readonly WIN_CONDITION_LIMIT = 20
+  static readonly GUESS_ATTEMPT_LIMIT = 10
+  static readonly CHAT_MESSAGE_MAX_LENGTH = 150
+  static readonly WORD_SUBMITION_MIN_LENGTH = 1
+  static readonly WORD_SUBMITION_MAX_LENGTH = 30
+  static readonly ROOMNAME_MIN_LENGTH = 3
+  static readonly ROOMNAME_MAX_LENGTH = 12
+  static readonly USERNAME_MIN_LENGTH = 3
+  static readonly USERNAME_MAX_LENGTH = 12
+
   private readonly isProductionEnvironment = process.env.NODE_ENV === "production"
 
   readonly roomName: string
@@ -62,10 +68,6 @@ export class RoomState {
   readonly chatMessagesLengthLimit = 600
   readonly secretWordChangeLimit = 3
   readonly playersLimit = 10
-  readonly trapSlotLimit = TRAP_SLOT_LIMIT
-  readonly guessAttemptLimit = GUESS_ATTEMPT_LIMIT
-  readonly winConditionLimit = WIN_CONDITION_LIMIT
-  readonly timerLimit = TIMER_LIMIT
   readonly generalMessages: ChatMessage[] = []
   readonly oratorMessages: ChatMessage[] = []
 
