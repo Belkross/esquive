@@ -73,10 +73,11 @@ const style_board: SxProps = {
 }
 
 const style_borderedBoardPart: SxProps = {
-  width: "100%",
   maxWidth: "500px",
-  minHeight: { xs: "450px", lg: "640px" },
-  maxHeight: "640px", //8 traps + vote secret word height
+  width: "100%",
+  maxHeight: shape.trapSectionMaxHeight,
+  height: "100%",
+
   gridRow: "2/13",
   alignSelf: { xs: "center", lg: "start" },
 
@@ -101,6 +102,7 @@ const style_borderedPartOne: SxProps = {
   gap: { xs: 3, md: 4 },
   gridColumn: { xs: "1/13", lg: "1/7", xl: "1/6" },
   justifySelf: "end",
+  minHeight: { xs: "450px", lg: shape.trapSectionMaxHeight },
 }
 
 const style_borderedPartTwo: SxProps = {
@@ -108,6 +110,7 @@ const style_borderedPartTwo: SxProps = {
   gridColumn: { xs: "1/13", lg: "7/13", xl: "6/11", xxl: "6/10" },
   justifySelf: "start",
   overflow: "hidden",
+  minHeight: shape.trapSectionMaxHeight,
 }
 
 const style_buttons: SxProps = {
