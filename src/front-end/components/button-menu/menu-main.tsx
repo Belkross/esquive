@@ -1,12 +1,12 @@
 import { AppState } from "../../../types/main.js"
 import { ButtonLeaveRoom } from "../button-leave-room.js"
-import { RoomSettings } from "../room-settings.js"
 import { SwitchSoundActivation } from "../switch-sound-activation.js"
 import { SxProps, Stack } from "@mui/material"
 import { LinkDiscord } from "../link-discord.js"
 import shape from "../../theme/shape.js"
 import { TitleMenu } from "./title-menu.js"
 import { ScrollableContainer } from "./scrollable-container.js"
+import { RoomManager } from "../room-manager.js"
 
 type Props = {
   appState: AppState
@@ -31,7 +31,7 @@ export function MenuMain({ appState }: Props) {
         </Stack>
 
         <Stack sx={style_room}>
-          <RoomSettings appState={appState} />
+          <RoomManager appState={appState} />
         </Stack>
 
         <ButtonLeaveRoom />

@@ -4,7 +4,7 @@ import { AppState } from "../../types/main.js"
 import { ButtonManagePlayer } from "./button-manage-player.js"
 
 type Props = { appState: AppState }
-export function RoomSettings({ appState }: Props) {
+export function RoomManager({ appState }: Props) {
   const { roomState, sessionId } = appState
   const clientIsAdmin = roomState.players[sessionId].isAdmin
 
