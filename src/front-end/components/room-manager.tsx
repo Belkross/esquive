@@ -1,6 +1,7 @@
 import { Box, SxProps, Typography } from "@mui/material"
 import { PlayerData } from "../../back-end/config/room-state/player-data.js"
 import { AppState } from "../../types/main.js"
+import shape from "../theme/shape.js"
 import { ButtonManagePlayer } from "./button-manage-player.js"
 
 type Props = { appState: AppState }
@@ -14,7 +15,7 @@ export function RoomManager({ appState }: Props) {
       <ButtonManagePlayer key={player.sessionId} player={player} />
     ) : (
       <Typography key={player.sessionId} sx={style_typographyPlayer(player)}>
-        {player.username}
+        {player.isAdmin ? "*" + player.username : player.username}
       </Typography>
     )
   })
@@ -23,6 +24,7 @@ export function RoomManager({ appState }: Props) {
     <>
       <Typography sx={style_title}>Salon: {roomState.roomName}</Typography>
       <Box sx={style_buttons}>{PlayersButtons}</Box>
+      <Typography mt={4}>* hôte de salon</Typography>
     </>
   )
 }
@@ -34,16 +36,14 @@ const style_buttons: SxProps = {
 }
 
 const style_typographyPlayer = (player: PlayerData): SxProps => {
-  const color = player.isAdmin ? "admin.main" : "primary.main"
-
   return {
     textDecorationLine: player.connected ? "none" : "line-through",
     padding: 0.5,
 
     borderStyle: "solid",
     borderWidth: "1px",
-    borderColor: color,
-    borderRadius: "3px",
+    borderColor: "text.primary",
+    borderRadius: shape.borderRadius,
   }
 }
 

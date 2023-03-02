@@ -1,6 +1,5 @@
 import { Button, Menu, MenuItem, SxProps } from "@mui/material"
 import { PlayerData } from "../../back-end/config/room-state/player-data.js"
-import AdminIcon from "@mui/icons-material/MilitaryTech"
 import { useTemporaryElement } from "../custom-hooks/use-temporary-element.js"
 import { useRef } from "react"
 import { socket } from "../config/initialize-socket-io.js"
@@ -24,13 +23,8 @@ export function ButtonManagePlayer({ player }: Props) {
 
   return (
     <>
-      <Button
-        sx={style_buttonPlayer(player)}
-        startIcon={player.isAdmin ? <AdminIcon /> : null}
-        onClick={menu.display}
-        ref={anchorElement}
-      >
-        {player.username}
+      <Button sx={style_buttonPlayer(player)} onClick={menu.display} ref={anchorElement}>
+        {player.isAdmin ? "*" + player.username : player.username}
       </Button>
       <Menu anchorEl={anchorElement.current} open={menu.displayed} onClose={menu.remove}>
         {!player.isAdmin && <MenuItem onClick={handleClick_promoteAdmin}>Faire devenir hôte</MenuItem>}
@@ -41,13 +35,8 @@ export function ButtonManagePlayer({ player }: Props) {
 }
 
 const style_buttonPlayer = (player: PlayerData): SxProps => {
-  const color = player.isAdmin ? "admin.main" : "primary.main"
-
   return {
     textDecorationLine: player.connected ? "none" : "line-through",
     padding: 0.5,
-
-    backgroundColor: color,
-    borderColor: color,
   }
 }
