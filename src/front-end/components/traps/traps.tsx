@@ -45,6 +45,5 @@ const style_container: SxProps = {
 
 const style_listItem: SxProps = {
   gap: 1,
-  overflow: "hidden",
   padding: 0,
 }

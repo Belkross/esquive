@@ -105,6 +105,7 @@ const style_borderedPartTwo: SxProps = {
   ...style_borderedBoardPart,
   gridColumn: { xs: "1/13", lg: "7/13", xl: "6/11", xxl: "6/10" },
   justifySelf: "start",
+  overflow: "hidden",
 }
 
 const style_buttons: SxProps = {
