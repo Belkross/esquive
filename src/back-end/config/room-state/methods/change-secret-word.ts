@@ -6,4 +6,8 @@ export function changeSecretWord(this: RoomState, sessionId: string) {
 
   --this.teams[clientTeam].secretWordChangeRemaining
   this.drawSecretWord(clientTeam)
+
+  for (const trapKey in this.teams[clientTeam].traps) {
+    delete this.teams[clientTeam].traps[trapKey]
+  }
 }
