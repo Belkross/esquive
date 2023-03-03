@@ -8,13 +8,19 @@ type Props = {
   onClick: FlowlessFunction
   whileDisabled?: boolean
   sx?: SxProps
+  selected?: boolean
 }
 
-export function ButtonResponsive({ icon, label, onClick, whileDisabled, sx }: Props) {
+export function ButtonResponsive({ icon, label, onClick, whileDisabled, sx, selected }: Props) {
   const screenIsLargeEnough = useMediaQuery(useTheme().breakpoints.up("md"))
 
   return screenIsLargeEnough ? (
-    <Button startIcon={icon} onClick={onClick} disabled={whileDisabled} sx={{ ...sx }}>
+    <Button
+      startIcon={icon}
+      onClick={onClick}
+      disabled={whileDisabled}
+      sx={{ ...sx, backgroundColor: selected ? "primary.dark" : "primary.main" }}
+    >
       {label}
     </Button>
   ) : (

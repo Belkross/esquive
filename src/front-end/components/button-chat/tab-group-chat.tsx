@@ -10,6 +10,7 @@ import { ButtonSubmitWord } from "../button-submit-word/button-submit-word.js"
 import { style_tabs } from "../button-menu/tab-group-menu.js"
 
 type Props = {
+  selectedTab: ChatChannel
   setSelectedTab: setState<ChatChannel>
   close: FlowlessFunction
   appState: AppState
@@ -26,11 +27,19 @@ const tabs: TabData[] = [
   { id: "orator", label: "Orateur", icon: <TalkerIcon /> },
 ]
 
-export function TabGroupChat({ setSelectedTab, close, appState }: Props) {
+export function TabGroupChat({ selectedTab, setSelectedTab, close, appState }: Props) {
   const handleClick = (id: ChatChannel) => setSelectedTab(id)
 
   const list_tab = tabs.map((tab) => {
-    return <ButtonResponsive key={tab.id} label={tab.label} icon={tab.icon} onClick={() => handleClick(tab.id)} />
+    return (
+      <ButtonResponsive
+        key={tab.id}
+        label={tab.label}
+        icon={tab.icon}
+        onClick={() => handleClick(tab.id)}
+        selected={selectedTab === tab.id}
+      />
+    )
   })
 
   return (

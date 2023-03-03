@@ -10,6 +10,7 @@ import { ButtonResponsive } from "../button-responsive.js"
 import shape from "../../theme/shape.js"
 
 type Props = {
+  selectedTab: MenuTabId
   setSelectedTab: setState<MenuTabId>
   close: FlowlessFunction
 }
@@ -27,11 +28,19 @@ const tabs: TabData[] = [
   { id: "settings", label: "Réglages", icon: <SettingsIcon /> },
 ]
 
-export function TabGroupMenu({ setSelectedTab, close }: Props) {
+export function TabGroupMenu({ selectedTab, setSelectedTab, close }: Props) {
   const handleClick = (id: MenuTabId) => setSelectedTab(id)
 
   const list_tab = tabs.map((tab) => {
-    return <ButtonResponsive key={tab.id} label={tab.label} icon={tab.icon} onClick={() => handleClick(tab.id)} />
+    return (
+      <ButtonResponsive
+        key={tab.id}
+        label={tab.label}
+        icon={tab.icon}
+        onClick={() => handleClick(tab.id)}
+        selected={selectedTab === tab.id}
+      />
+    )
   })
 
   return (

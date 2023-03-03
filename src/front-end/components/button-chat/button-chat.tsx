@@ -39,7 +39,12 @@ export function ButtonChat({ appState }: Props) {
         PaperProps={{ sx: style_drawer }}
       >
         <>{tabContent}</>
-        <TabGroupChat setSelectedTab={setSelectedTab} close={drawer.remove} appState={appState} />
+        <TabGroupChat
+          selectedTab={selectedTab}
+          setSelectedTab={setSelectedTab}
+          close={drawer.remove}
+          appState={appState}
+        />
       </Drawer>
     </>
   )

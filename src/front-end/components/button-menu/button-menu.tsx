@@ -47,7 +47,7 @@ export function ButtonMenu({ appState }: Props) {
         PaperProps={{ sx: style_drawer }}
       >
         <>{tabContent}</>
-        <TabGroupMenu setSelectedTab={setSelectedTab} close={drawer.remove} />
+        <TabGroupMenu selectedTab={selectedTab} setSelectedTab={setSelectedTab} close={drawer.remove} />
       </Drawer>
     </>
   )
