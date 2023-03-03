@@ -12,6 +12,7 @@ export function disconnect(server: ServerManager) {
     const clientManuallyDisconnect = reason === "client namespace disconnect"
 
     if (nobodyStillPlaying) {
+      roomState.timerIsRunning = false 
       sessions.delete(sessionId)
       rooms.delete(roomName)
       return
