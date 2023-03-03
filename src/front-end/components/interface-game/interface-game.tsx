@@ -59,7 +59,7 @@ const style_board: SxProps = {
   display: { xs: "flex", lg: "grid" },
   gridTemplateColumns: "repeat(12, 1fr)",
   gridTemplateRows: "repeat(12, 1fr)",
-  alignItems: "center",
+  alignItems: { xs: "center", lg: "start" },
   gap: { xs: 3, sm: 4, lg: "none" },
   rowGap: 3,
   columnGap: 4,

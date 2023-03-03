@@ -30,7 +30,6 @@ const style_container: SxProps = {
   gridColumn: { xl: "11/13", xxl: "10/13" },
   gridRow: "3/13",
   justifySelf: "start",
-  alignSelf: "start",
 }
 
 const style_teamContainer: SxProps = {
