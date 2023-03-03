@@ -1,23 +1,23 @@
 import { Stack, SxProps, Typography } from "@mui/material"
-import { RoomState } from "../../../back-end/config/room-state/room-state.js"
+import { AppState } from "../../../types/main.js"
 import { Points } from "./points.js"
 import { RoundAdvancementVisual } from "./round-advancement-visual.js"
 
 type Props = {
-  roomState: RoomState
+  appState: AppState
 }
 
-export function Score({ roomState }: Props) {
-  const winCondition = roomState.winCondition
+export function Score({ appState }: Props) {
+  const winCondition = appState.roomState.winCondition
 
   return (
     <Stack sx={style_container}>
       <Stack sx={style_score}>
-        <RoundAdvancementVisual team="one" roomState={roomState} />
-        <Points team="one" roomState={roomState} />
+        <RoundAdvancementVisual team="one" appState={appState} />
+        <Points team="one" appState={appState} />
         <Typography sx={style_divider}>-</Typography>
-        <Points team="two" roomState={roomState} />
-        <RoundAdvancementVisual team="two" roomState={roomState} />
+        <Points team="two" appState={appState} />
+        <RoundAdvancementVisual team="two" appState={appState} />
       </Stack>
       <Typography>
         Partie en {winCondition} {winCondition > 1 ? "points" : "point"}
@@ -27,9 +27,7 @@ export function Score({ roomState }: Props) {
 }
 
 const style_container: SxProps = {
-  flexFlow: "row wrap",
-  gap: 0,
-  justifyContent: "center",
+  flexFlow: "column nowrap",
   alignItems: "center",
   gridColumn: "1/12",
   gridRow: "1/2",

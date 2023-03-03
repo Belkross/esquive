@@ -14,6 +14,7 @@ export class TeamData {
   secretWordChangeRemaining = 0
   guessAttemptsRemaining = 0
   hasSucceededGuess: boolean | undefined = undefined
+  trapped = false
 
   constructor(team: Team) {
     this.color = team === "one" ? "indigo" : "rouge"

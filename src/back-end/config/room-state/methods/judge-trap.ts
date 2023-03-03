@@ -8,6 +8,7 @@ export function judgeTrap(this: RoomState, server: ServerManager, judgement: boo
   if (judgement === true) {
     const playingTeam = this.getPlayingTeam()
     this.teams[playingTeam].hasSucceededGuess = false
+    this.teams[playingTeam].trapped = true
     this.addToHistoric(`${clientUsername} a validé.`)
     this.configureNextRoundPhase()
   } else {

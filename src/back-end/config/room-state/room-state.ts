@@ -73,9 +73,9 @@ export class RoomState {
   roundPhase: RoundPhase = "pre round"
   roundAdvancement = 1
   winCondition = 2
-  trappingDuration = this.isProductionEnvironment ? 180 : 34
+  trappingDuration = this.isProductionEnvironment ? 180 : 2
   guessingDuration = this.isProductionEnvironment ? 120 : 10
-  guessAttemptsProvided = this.isProductionEnvironment ? 5 : 2
+  guessAttemptsProvided = this.isProductionEnvironment ? 4 : 5
   trapSlotsProvided = this.isProductionEnvironment ? 4 : 8
   startingTeam: Team = "two"
   isJudgingTrap = false
@@ -89,6 +89,7 @@ export class RoomState {
     this.teams = { one: new TeamData("one"), two: new TeamData("two") }
     this.secretWordsDeck = this.initializeSecretWordsDeck(secretWordList)
     this.timer = this.trappingDuration
+    this.resetGuessAttemptsRemaining()
     this.historic.push(`Bienvenue dans le salon ${this.roomName}.`, "La phase de piège va commencer.")
     this.generalMessages.push(new ChatMessage("Esquive", "Bienvenue sur le chat général."))
     this.oratorMessages.push(

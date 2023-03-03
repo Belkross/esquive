@@ -2,7 +2,7 @@ import { Stack, IconButton, Typography } from "@mui/material"
 import { RoomState } from "../../back-end/config/room-state/room-state.js"
 import { getPlayerTeam } from "../../functions/get-player-team.js"
 import { AppState } from "../../types/main.js"
-import ErrorIcon from "@mui/icons-material/Error"
+import ActivateIcon from "@mui/icons-material/Error"
 import { socket } from "../config/initialize-socket-io.js"
 
 type Props = {
@@ -17,7 +17,7 @@ export function ButtonReportForbiddenClue({ appState }: Props) {
   return whileDisplayed ? (
     <Stack sx={style_container}>
       <IconButton aria-label="Indice d’orateur incorrect" disabled={whileDisabled} onClick={handleClick}>
-        <ErrorIcon />
+        <ActivateIcon />
       </IconButton>
       <Typography>Indice d’orateur interdit</Typography>
     </Stack>

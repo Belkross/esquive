@@ -30,7 +30,7 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
     <>
       <ApplicationBar appState={appState} />
       <Stack sx={style_board}>
-        <Score roomState={appState.roomState} />
+        <Score appState={appState} />
 
         <Stack sx={style_borderedPartOne}>
           <Stack sx={style_buttons}>
@@ -69,7 +69,7 @@ const style_board: SxProps = {
   width: "100%",
   height: "100%",
 
-  padding: { xs: 2, sm: 3, md: 4 },
+  padding: { xs: 2, sm: 3 },
 }
 
 const style_borderedBoardPart: SxProps = {
