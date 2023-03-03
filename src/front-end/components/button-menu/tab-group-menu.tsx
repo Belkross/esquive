@@ -1,6 +1,5 @@
-import { Stack, IconButton, SxProps } from "@mui/material"
+import { Stack, SxProps } from "@mui/material"
 import { FlowlessFunction, MenuTabId, setState } from "../../../types/main.js"
-import CloseIcon from "@mui/icons-material/Clear"
 import { ReactElement } from "react"
 import RoomIcon from "@mui/icons-material/Home"
 import TeamIcon from "@mui/icons-material/Groups"
@@ -8,6 +7,7 @@ import RuleIcon from "@mui/icons-material/HelpCenter"
 import SettingsIcon from "@mui/icons-material/Settings"
 import { ButtonResponsive } from "../button-responsive.js"
 import shape from "../../theme/shape.js"
+import ButtonCloseElement from "../button-close-element.js"
 
 type Props = {
   selectedTab: MenuTabId
@@ -46,9 +46,7 @@ export function TabGroupMenu({ selectedTab, setSelectedTab, close }: Props) {
   return (
     <Stack component="nav" sx={style_tabs}>
       {list_tab}
-      <IconButton aria-label="Fermer" onClick={close} sx={style_buttonClose}>
-        <CloseIcon />
-      </IconButton>
+      <ButtonCloseElement onClick={close} />
     </Stack>
   )
 }
@@ -70,9 +68,4 @@ export const style_tabs: SxProps = {
   borderTopColor: "background.border",
   borderTopWidth: shape.borderWidth,
   borderTopStyle: shape.borderStyle,
-}
-
-const style_buttonClose: SxProps = {
-  backgroundColor: "error.main",
-  borderColor: "error.main",
 }

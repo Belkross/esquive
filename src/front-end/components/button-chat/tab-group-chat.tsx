@@ -1,6 +1,5 @@
-import { IconButton, SxProps, Stack } from "@mui/material"
+import { Stack } from "@mui/material"
 import { AppState, ChatChannel, FlowlessFunction, setState } from "../../../types/main.js"
-import CloseIcon from "@mui/icons-material/Clear"
 import { ReactElement } from "react"
 import TalkerIcon from "@mui/icons-material/RecordVoiceOver"
 import TeamIcon from "@mui/icons-material/Groups"
@@ -8,6 +7,7 @@ import { ButtonResponsive } from "../button-responsive.js"
 import { Timer } from "../timer.js"
 import { ButtonSubmitWord } from "../button-submit-word/button-submit-word.js"
 import { style_tabs } from "../button-menu/tab-group-menu.js"
+import ButtonCloseElement from "../button-close-element.js"
 
 type Props = {
   selectedTab: ChatChannel
@@ -48,9 +48,7 @@ export function TabGroupChat({ selectedTab, setSelectedTab, close, appState }: P
       <Stack sx={style_stackButtons}>
         <ButtonSubmitWord appState={appState} />
         {list_tab}
-        <IconButton aria-label="Fermer" onClick={close} sx={style_buttonClose}>
-          <CloseIcon />
-        </IconButton>
+        <ButtonCloseElement onClick={close} />
       </Stack>
     </Stack>
   )
@@ -59,9 +57,4 @@ export function TabGroupChat({ selectedTab, setSelectedTab, close, appState }: P
 const style_stackButtons = {
   flexDirection: "row",
   gap: 1.2,
-}
-
-const style_buttonClose: SxProps = {
-  backgroundColor: "error.main",
-  borderColor: "error.main",
 }

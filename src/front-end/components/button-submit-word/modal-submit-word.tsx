@@ -1,12 +1,14 @@
-import { Dialog, DialogTitle, DialogContent, TextField, Button, SxProps } from "@mui/material"
+import { Dialog, DialogContent, TextField, Button, SxProps, Typography, useMediaQuery, useTheme } from "@mui/material"
 import { KeyboardEvent, useRef } from "react"
 import { checkSubmitedWordValidity } from "../../../functions/check-submited-word-validity.js"
 import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { AppState, FlowlessFunction } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { useValidTextInputWithError } from "../../custom-hooks/use-valid-text-input-with-error.js"
-import { BadgeGuessRemaining } from "./badge-guess-remaining.js"
+import shape from "../../theme/shape.js"
+import { Score } from "../score/score.js"
 import { useAutoCloseWhenTimerEnd } from "./use-auto-close-when-timer-end.js"
+import ButtonCloseElement from "../button-close-element.js"
 
 type Props = {
   appState: AppState
@@ -16,9 +18,11 @@ type Props = {
 export function ModalSubmitWord({ appState, displayed, close }: Props) {
   const { input, onInputChange, clearInput } = useValidTextInputWithError("", checkSubmitedWordValidity)
   const inputRef = useRef<HTMLInputElement>(null)
+
   const { roomState, sessionId } = appState
   const roundPhase = roomState.roundPhase
   const roundAdvancement = roomState.roundAdvancement
+  const smallScreen = useMediaQuery(useTheme().breakpoints.down("md"))
 
   const handleSubmit = () => {
     const inputIsNotValid = input.validity === false
@@ -54,9 +58,19 @@ export function ModalSubmitWord({ appState, displayed, close }: Props) {
   useAutoCloseWhenTimerEnd(roundPhase, close, clearInput)
 
   return (
-    <Dialog open={displayed} onClose={close} onAnimationEnd={handleAnimationEnd}>
-      <DialogTitle>Proposer un mot</DialogTitle>
+    <Dialog
+      open={displayed}
+      onClose={close}
+      onAnimationEnd={handleAnimationEnd}
+      PaperProps={{ sx: style_container }}
+      fullScreen={smallScreen}
+    >
+      <ButtonCloseElement onClick={close} sx={{ alignSelf: "end" }} />
+
+      <Score appState={appState} />
+
       <DialogContent sx={style_dialogContent}>
+        <Typography variant="h3">Proposer un mot</Typography>
         <TextField
           variant="filled"
           value={input.value}
@@ -68,14 +82,23 @@ export function ModalSubmitWord({ appState, displayed, close }: Props) {
           error={input.error}
           inputRef={inputRef}
         />
-        <BadgeGuessRemaining appState={appState}>
-          <Button onClick={handleSubmit} disabled={!input.validity} sx={style_buttonSubmit(input.error)}>
-            Valider
-          </Button>
-        </BadgeGuessRemaining>
+
+        <Button onClick={handleSubmit} disabled={!input.validity} sx={style_buttonSubmit(input.error)}>
+          Valider
+        </Button>
       </DialogContent>
     </Dialog>
   )
+}
+
+const style_container: SxProps = {
+  gap: 3,
+
+  padding: { xs: 2, sm: 3 },
+  backgroundImage: "none",
+  borderWidth: shape.borderWidth,
+  borderStyle: shape.borderStyle,
+  borderColor: "background.border",
 }
 
 const style_buttonSubmit = (error: boolean): SxProps => {
@@ -85,11 +108,11 @@ const style_buttonSubmit = (error: boolean): SxProps => {
   return error ? errorStyle : null
 }
 
-const style_textField = {
+const style_textField: SxProps = {
   width: { xs: "220px", sm: "260px" },
 }
 
-const style_dialogContent = {
+const style_dialogContent: SxProps = {
   display: "flex",
   flexDirection: "column",
   gap: 2,
