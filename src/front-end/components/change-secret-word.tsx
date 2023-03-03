@@ -35,6 +35,7 @@ const style_container: SxProps = {
   py: 1,
   alignItems: "center",
   marginBottom: 2,
+  paddingBottom: 3,
   borderColor: "background.border",
   borderWidth: shape.borderWidth,
   borderBottomStyle: shape.borderStyle,
@@ -46,5 +47,4 @@ const style_buttons: SxProps = {
   alignItems: { xs: "center", sm: "center" },
   justifyContent: "center",
   gap: 3,
-  marginBottom: 1,
 }
