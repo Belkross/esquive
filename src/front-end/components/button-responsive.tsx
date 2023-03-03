@@ -19,7 +19,7 @@ export function ButtonResponsive({ icon, label, onClick, whileDisabled, sx, sele
       startIcon={icon}
       onClick={onClick}
       disabled={whileDisabled}
-      sx={{ ...sx, backgroundColor: selected ? "primary.dark" : "primary.main" }}
+      sx={{ backgroundColor: selected ? "primary.dark" : "primary.main", ...sx }}
     >
       {label}
     </Button>
