@@ -47,7 +47,7 @@ export class RoomState {
   static readonly TIMER_LIMIT = 360 //seconds
   static readonly TRAP_SLOT_LIMIT = 8
   static readonly WIN_CONDITION_LIMIT = 20
-  static readonly GUESS_ATTEMPT_LIMIT = 10
+  static readonly GUESS_ATTEMPT_LIMIT = 5
   static readonly CHAT_MESSAGE_MAX_LENGTH = 150
   static readonly WORD_SUBMITION_MIN_LENGTH = 1
   static readonly WORD_SUBMITION_MAX_LENGTH = 30
