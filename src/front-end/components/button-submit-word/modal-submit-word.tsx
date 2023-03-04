@@ -57,6 +57,7 @@ export function ModalSubmitWord({ appState, displayed, close }: Props) {
       onAnimationEnd={handleAnimationEnd}
       PaperProps={{ sx: style_container }}
       fullScreen={smallScreen}
+      transitionDuration={{ enter: 200, exit: 0 }}
     >
       <ButtonCloseElement onClick={close} sx={{ alignSelf: "end" }} />
 
