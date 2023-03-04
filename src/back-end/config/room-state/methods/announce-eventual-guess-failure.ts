@@ -1,5 +1,6 @@
 import { Team } from "../../../../types/room-state.js"
 import { RoomState } from "../room-state.js"
+import { ChatMessage } from "./add-chat-message.js"
 
 export function announceEventualGuessgFailure(this: RoomState, playingTeam: Team) {
   const timerEnded = this.timer === 0
@@ -13,5 +14,6 @@ export function announceEventualGuessgFailure(this: RoomState, playingTeam: Team
 
     const sentence = `Il fallait deviner le mot ${secretWord}.`
     this.addToHistoric(sentence)
+    this.oratorMessages.push(new ChatMessage("Esquive", sentence))
   }
 }

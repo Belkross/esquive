@@ -3,6 +3,7 @@ import { getPlayerTeam } from "../../../../functions/get-player-team.js"
 import { Team } from "../../../../types/room-state.js"
 import { ServerManager } from "../../../../types/server.js"
 import { RoomState } from "../room-state.js"
+import { ChatMessage } from "./add-chat-message.js"
 
 export function submitGuess(this: RoomState, server: ServerManager, guess: string) {
   const { sessionId } = server
@@ -18,12 +19,16 @@ export function submitGuess(this: RoomState, server: ServerManager, guess: strin
   --this.teams[clientTeam].guessAttemptsRemaining
 
   if (guessIsRight) {
-    this.addToHistoric(`${clientUsername} a deviné le mot ${secretWord.toUpperCase()} !`)
+    const sentence = `${clientUsername} a deviné le mot ${secretWord.toUpperCase()} !`
+    this.addToHistoric(sentence)
+    this.oratorMessages.push(new ChatMessage("Esquive", sentence))
     this.teams[clientTeam].hasSucceededGuess = true
     this.timerIsRunning = false
     this.configureNextRoundPhase()
   } else {
-    this.addToHistoric(`${clientUsername} propose le mot ${guess.toUpperCase()}.`)
+    const sentence = `${clientUsername} propose le mot ${guess.toUpperCase()}.`
+    this.addToHistoric(sentence)
+    this.oratorMessages.push(new ChatMessage("Esquive", sentence))
     this.teams[clientTeam].guessAttempts.push(formattedGuess)
 
     if (noGuessRemaining.call(this, clientTeam)) {
