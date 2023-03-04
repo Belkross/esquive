@@ -1,5 +1,14 @@
-import { Dialog, DialogContent, TextField, Button, SxProps, Typography, useMediaQuery, useTheme } from "@mui/material"
-import { KeyboardEvent, useRef } from "react"
+import {
+  Dialog,
+  DialogContent,
+  TextField,
+  Button,
+  SxProps,
+  Typography,
+  useMediaQuery,
+  useTheme, Grow
+} from "@mui/material"
+import { forwardRef, KeyboardEvent, ReactElement, Ref, useRef } from "react"
 import { checkSubmitedWordValidity } from "../../../functions/check-submited-word-validity.js"
 import { getPlayerTeam } from "../../../functions/get-player-team.js"
 import { AppState, FlowlessFunction } from "../../../types/main.js"
@@ -10,6 +19,7 @@ import { Score } from "../score/score.js"
 import { useAutoCloseWhenTimerEnd } from "./use-auto-close-when-timer-end.js"
 import ButtonCloseElement from "../button-close-element.js"
 import { getWhileModalAllowed } from "../interface-game/get-while-modal-allowed.js"
+import { TransitionProps } from "@mui/material/transitions"
 
 type Props = {
   appState: AppState
@@ -57,7 +67,8 @@ export function ModalSubmitWord({ appState, displayed, close }: Props) {
       onAnimationEnd={handleAnimationEnd}
       PaperProps={{ sx: style_container }}
       fullScreen={smallScreen}
-      transitionDuration={{ enter: 200, exit: 0 }}
+      transitionDuration={{ enter: 300, exit: 0 }}
+      TransitionComponent={Transition}
     >
       <ButtonCloseElement onClick={close} sx={{ alignSelf: "end" }} />
 
@@ -88,6 +99,15 @@ export function ModalSubmitWord({ appState, displayed, close }: Props) {
     </Dialog>
   )
 }
+
+const Transition = forwardRef(function Transition(
+  props: TransitionProps & {
+    children: ReactElement
+  },
+  ref: Ref<unknown>
+) {
+  return <Grow ref={ref} {...props} />
+})
 
 function emitEventToServer(appState: AppState, inputValue: string) {
   const { roomState, sessionId } = appState
