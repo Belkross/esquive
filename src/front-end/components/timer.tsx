@@ -49,11 +49,14 @@ const style_typography = (state: TimerState): SxProps => {
 
   return {
     color,
-    fontSize: "30px",
+    fontSize: { xs: "28px", md: "31px" },
     fontWeight: "600",
-    backgroundColor: "background.paper",
     px: 1,
     borderRadius: `${shape.borderRadius}px`,
     boxShadow: 2,
+    borderStyle: shape.borderStyle,
+    borderWidth: "2px",
+    borderColor: "background.border",
+    boxSizing: "border-box",
   }
 }
