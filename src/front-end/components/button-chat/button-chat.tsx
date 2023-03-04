@@ -5,8 +5,9 @@ import { useState } from "react"
 import { AppState, ChatChannel, FlowlessFunction } from "../../../types/main.js"
 import { Drawer, SxProps } from "@mui/material"
 import { TabGroupChat } from "./tab-group-chat.js"
-import { Chat } from "./chat.js"
 import shape from "../../theme/shape.js"
+import { ChatGeneral } from "./chat-general.js"
+import { ChatOrator } from "./chat-orator.js"
 
 type Props = {
   appState: AppState
@@ -16,15 +17,14 @@ type Props = {
 export function ButtonChat({ appState, openSubmitWordModal }: Props) {
   const drawer = useTemporaryElement(false)
   const [selectedTab, setSelectedTab] = useState<ChatChannel>("general")
-  const { roomState } = appState
 
   let tabContent
   switch (selectedTab) {
     case "general":
-      tabContent = <Chat channel="general" messages={roomState.generalMessages} appState={appState} />
+      tabContent = <ChatGeneral appState={appState} />
       break
     case "orator":
-      tabContent = <Chat channel="orator" messages={roomState.oratorMessages} appState={appState} />
+      tabContent = <ChatOrator appState={appState} />
       break
     //no default
   }
