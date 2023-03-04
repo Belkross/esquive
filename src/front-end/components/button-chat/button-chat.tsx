@@ -2,7 +2,7 @@ import { ButtonResponsive } from "../button-responsive.js"
 import ChatIcon from "@mui/icons-material/Chat"
 import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
 import { useState } from "react"
-import { AppState, ChatChannel } from "../../../types/main.js"
+import { AppState, ChatChannel, FlowlessFunction } from "../../../types/main.js"
 import { Drawer, SxProps } from "@mui/material"
 import { TabGroupChat } from "./tab-group-chat.js"
 import { Chat } from "./chat.js"
@@ -10,9 +10,10 @@ import shape from "../../theme/shape.js"
 
 type Props = {
   appState: AppState
+  openSubmitWordModal: FlowlessFunction
 }
 
-export function ButtonChat({ appState }: Props) {
+export function ButtonChat({ appState, openSubmitWordModal }: Props) {
   const drawer = useTemporaryElement(false)
   const [selectedTab, setSelectedTab] = useState<ChatChannel>("general")
   const { roomState } = appState
@@ -44,6 +45,7 @@ export function ButtonChat({ appState }: Props) {
           setSelectedTab={setSelectedTab}
           close={drawer.remove}
           appState={appState}
+          openSubmitWordModal={openSubmitWordModal}
         />
       </Drawer>
     </>

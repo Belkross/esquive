@@ -1,12 +1,15 @@
 import { Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../../types/main.js"
+import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
 import shape from "../../theme/shape.js"
 import { ApplicationBar } from "../application-bar.js"
 import { ButtonsJudgeTrap } from "../button-judge-trap.js"
 import { ButtonPlayNextPhase } from "../button-play-next-phase.js"
 import { ButtonReportForbiddenClue } from "../button-report-forbidden-clue.js"
 import { ButtonSubmitWord } from "../button-submit-word/button-submit-word.js"
+import { ModalSubmitWord } from "../button-submit-word/modal-submit-word.js"
+import { useModalShortCut } from "../button-submit-word/use-modal-shortcut.js"
 import { ChangeSecretWord } from "../change-secret-word.js"
 import { GameHistoric } from "../game-historic/game-historic.js"
 import { Instructions } from "../instructions.js"
@@ -14,6 +17,7 @@ import { Score } from "../score/score.js"
 import { Teams } from "../teams.js"
 import { TrapsRemaining } from "../traps-remaining.js"
 import { Traps } from "../traps/traps.js"
+import { getWhileModalAllowed } from "./get-while-modal-allowed.js"
 import { useSubscribeRoomStateUpdate } from "./use-subscribe-room-state-update.js"
 
 export type InterfaceGameProps = {
@@ -22,19 +26,22 @@ export type InterfaceGameProps = {
 }
 
 export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
+  const { displayed, display, remove } = useTemporaryElement(false)
   const breakpoint_xl = useMediaQuery(useTheme().breakpoints.up("xl"))
+  const whileModalAllowed = getWhileModalAllowed(appState)
 
   useSubscribeRoomStateUpdate(setAppState)
+  useModalShortCut(whileModalAllowed, displayed, display)
 
   return (
     <>
-      <ApplicationBar appState={appState} />
+      <ApplicationBar appState={appState} openSubmitWordModal={display} />
       <Stack sx={style_board}>
         <Score appState={appState} />
 
         <Stack sx={style_borderedPartOne}>
           <Stack sx={style_buttons}>
-            <ButtonSubmitWord appState={appState} />
+            <ButtonSubmitWord appState={appState} openModal={display} />
             <ButtonPlayNextPhase appState={appState} />
           </Stack>
           <Instructions appState={appState} />
@@ -51,6 +58,7 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
 
         {breakpoint_xl && <Teams appState={appState} />}
       </Stack>
+      <ModalSubmitWord appState={appState} displayed={displayed} close={remove} />
     </>
   )
 }

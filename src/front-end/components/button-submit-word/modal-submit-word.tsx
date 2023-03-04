@@ -48,8 +48,6 @@ export function ModalSubmitWord({ appState, displayed, close }: Props) {
     else if (clientPressEnter) {
       event.preventDefault() //otherwise the input clear but don’t close
       handleSubmit()
-    } else {
-      //TODO: typing activity feature
     }
   }
 

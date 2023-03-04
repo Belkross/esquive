@@ -1,5 +1,5 @@
 import { Box, Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
-import { AppState } from "../../types/main.js"
+import { AppState, FlowlessFunction } from "../../types/main.js"
 import shape from "../theme/shape.js"
 import { ButtonChat } from "./button-chat/button-chat.js"
 import { ButtonMenu } from "./button-menu/button-menu.js"
@@ -8,17 +8,18 @@ import { Timer } from "./timer.js"
 
 type Props = {
   appState: AppState
+  openSubmitWordModal: FlowlessFunction
 }
 
-export function ApplicationBar({ appState }: Props) {
+export function ApplicationBar({ appState , openSubmitWordModal}: Props) {
   const smallScreen = useMediaQuery(useTheme().breakpoints.down("lg"))
 
   return (
     <Box component="nav" sx={style_container}>
       <Timer appState={appState} />
       <Stack sx={style_stackButtons}>
-        {smallScreen && <ButtonSubmitWord appState={appState} />}
-        <ButtonChat appState={appState} />
+        {smallScreen && <ButtonSubmitWord appState={appState} openModal={openSubmitWordModal}/>}
+        <ButtonChat appState={appState} openSubmitWordModal={openSubmitWordModal}/>
         <ButtonMenu appState={appState} />
       </Stack>
     </Box>

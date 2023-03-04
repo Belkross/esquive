@@ -14,6 +14,7 @@ type Props = {
   setSelectedTab: setState<ChatChannel>
   close: FlowlessFunction
   appState: AppState
+  openSubmitWordModal: FlowlessFunction
 }
 
 type TabData = {
@@ -27,7 +28,7 @@ const tabs: TabData[] = [
   { id: "orator", label: "Orateur", icon: <TalkerIcon /> },
 ]
 
-export function TabGroupChat({ selectedTab, setSelectedTab, close, appState }: Props) {
+export function TabGroupChat({ selectedTab, setSelectedTab, close, appState, openSubmitWordModal }: Props) {
   const handleClick = (id: ChatChannel) => setSelectedTab(id)
 
   const list_tab = tabs.map((tab) => {
@@ -46,7 +47,7 @@ export function TabGroupChat({ selectedTab, setSelectedTab, close, appState }: P
     <Stack component="nav" sx={style_tabs}>
       <Timer appState={appState} />
       <Stack sx={style_stackButtons}>
-        <ButtonSubmitWord appState={appState} />
+        <ButtonSubmitWord appState={appState} openModal={openSubmitWordModal} />
         {list_tab}
         <ButtonCloseElement onClick={close} />
       </Stack>
