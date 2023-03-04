@@ -73,8 +73,8 @@ export class RoomState {
   roundPhase: RoundPhase = "pre round"
   roundAdvancement = 1
   winCondition = 2
-  trappingDuration = this.isProductionEnvironment ? 180 : 4
-  guessingDuration = this.isProductionEnvironment ? 120 : 300
+  trappingDuration = this.isProductionEnvironment ? 180 : 300
+  guessingDuration = this.isProductionEnvironment ? 120 : 15
   guessAttemptsProvided = this.isProductionEnvironment ? 4 : 5
   trapSlotsProvided = this.isProductionEnvironment ? 4 : 8
   startingTeam: Team = "two"

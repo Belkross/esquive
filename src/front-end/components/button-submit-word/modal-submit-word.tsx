@@ -9,6 +9,7 @@ import shape from "../../theme/shape.js"
 import { Score } from "../score/score.js"
 import { useAutoCloseWhenTimerEnd } from "./use-auto-close-when-timer-end.js"
 import ButtonCloseElement from "../button-close-element.js"
+import { getWhileModalAllowed } from "../interface-game/get-while-modal-allowed.js"
 
 type Props = {
   appState: AppState
@@ -19,41 +20,35 @@ export function ModalSubmitWord({ appState, displayed, close }: Props) {
   const { input, onInputChange, clearInput } = useValidTextInputWithError("", checkSubmitedWordValidity)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const { roomState, sessionId } = appState
-  const roundPhase = roomState.roundPhase
-  const roundAdvancement = roomState.roundAdvancement
+  const { roomState } = appState
   const smallScreen = useMediaQuery(useTheme().breakpoints.down("md"))
+  const submitionNotAllowed = !input.validity || !getWhileModalAllowed(appState)
 
-  const handleSubmit = () => {
-    const inputIsNotValid = input.validity === false
-    const clientGuessingPhase = `guessing ${getPlayerTeam(roomState, sessionId)}`
-
-    const isTrappingPhase = roundPhase === "trapping" && roundAdvancement === 2
-    const isClientGuessingPhase =
-      roundPhase === clientGuessingPhase && (roundAdvancement === 4 || roundAdvancement === 6)
-    const InvalidRoundPhase = !isTrappingPhase && !isClientGuessingPhase
-
-    if (inputIsNotValid || InvalidRoundPhase) return
-    if (isTrappingPhase) socket.emit("submitTrap", input.value)
-    else if (isClientGuessingPhase) socket.emit("submitGuess", input.value)
+  const handleSubmitionWithButton = () => {
+    if (submitionNotAllowed) return
+    emitEventToServer(appState, input.value)
     clearInput()
     close()
   }
 
   const handleKeyDown = (event: KeyboardEvent) => {
-    const clientPressEnter = event.keyCode === 13
-    const clientPressBackspace = event.keyCode === 8
+    const pressedEnter = event.key === "Enter"
+    const pressedBackspace = event.key === "Backspace"
 
-    if (clientPressBackspace) return
-    else if (clientPressEnter) {
-      event.preventDefault() //otherwise the input clear but don’t close
-      handleSubmit()
+    if (pressedBackspace || submitionNotAllowed) return
+    if (pressedEnter) {
+      if (!event.shiftKey) {
+        event.preventDefault() //allow the modal to close
+        close()
+      }
+      emitEventToServer(appState, input.value)
+      clearInput()
     }
   }
 
   const handleAnimationEnd = () => inputRef.current?.focus()
 
-  useAutoCloseWhenTimerEnd(roundPhase, close, clearInput)
+  useAutoCloseWhenTimerEnd(roomState.roundPhase, close, clearInput)
 
   return (
     <Dialog
@@ -75,18 +70,34 @@ export function ModalSubmitWord({ appState, displayed, close }: Props) {
           onChange={onInputChange}
           onKeyDown={handleKeyDown}
           autoComplete="off"
-          disabled={!displayed}
+          disabled={!getWhileModalAllowed(appState)}
           sx={style_textField}
           error={input.error}
           inputRef={inputRef}
         />
 
-        <Button onClick={handleSubmit} disabled={!input.validity} sx={style_buttonSubmit(input.error)}>
+        <Button onClick={handleSubmitionWithButton} disabled={!input.validity} sx={style_buttonSubmit(input.error)}>
           Valider
         </Button>
+
+        <Typography variant="caption" mt={2}>
+          Shift + Entrée pour soumettre plusieurs mots à la suite.
+        </Typography>
       </DialogContent>
     </Dialog>
   )
+}
+
+function emitEventToServer(appState: AppState, inputValue: string) {
+  const { roomState, sessionId } = appState
+  const { roundPhase, roundAdvancement } = roomState
+
+  const isTrappingPhase = roundPhase === "trapping" && roundAdvancement === 2
+  const clientGuessingPhase = `guessing ${getPlayerTeam(roomState, sessionId)}`
+  const isClientGuessingPhase = roundPhase === clientGuessingPhase && (roundAdvancement === 4 || roundAdvancement === 6)
+
+  if (isTrappingPhase) socket.emit("submitTrap", inputValue)
+  else if (isClientGuessingPhase) socket.emit("submitGuess", inputValue)
 }
 
 const style_container: SxProps = {
