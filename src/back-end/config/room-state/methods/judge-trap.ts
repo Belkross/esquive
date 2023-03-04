@@ -9,11 +9,11 @@ export function judgeTrap(this: RoomState, server: ServerManager, judgement: boo
     const playingTeam = this.getPlayingTeam()
     this.teams[playingTeam].hasSucceededGuess = false
     this.teams[playingTeam].trapped = true
-    this.addToHistoric(`${clientUsername} a validé.`)
+    this.addToHistoric(`${clientUsername} valide le piège.`)
     this.configureNextRoundPhase()
   } else {
     this.startTimer(io)
-    this.addToHistoric(`${clientUsername} a refusé.`)
+    this.addToHistoric(`${clientUsername} refuse le piège.`)
   }
 
   this.isJudgingTrap = false

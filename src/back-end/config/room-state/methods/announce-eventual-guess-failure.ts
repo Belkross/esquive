@@ -8,12 +8,10 @@ export function announceEventualGuessgFailure(this: RoomState, playingTeam: Team
   //failure can happen with the end of timer or with no guess that remains
   const playingTeamHasFailed = this.teams[playingTeam].hasSucceededGuess === false
   if (playingTeamHasFailed) {
-    const playingTeamColor = this.teams[playingTeam].color
-
     const opponentTeam = this.getOpponentTeam(playingTeam)
     const secretWord = this.teams[opponentTeam].secretWord.value.toUpperCase()
 
-    const sentence = `L’auditoire ${playingTeamColor} n’a pas réussi à deviner le mot ${secretWord}.`
+    const sentence = `Il fallait deviner le mot ${secretWord}.`
     this.addToHistoric(sentence)
   }
 }

@@ -41,5 +41,5 @@ const style_container: SxProps = {
 }
 
 const style_typography: SxProps = {
-  fontFamily: "monospace",
+  fontFamily: "Courier Prime , monospace",
 }

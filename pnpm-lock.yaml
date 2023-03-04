@@ -4,6 +4,7 @@ specifiers:
   '@emotion/react': ^11.10.5
   '@emotion/styled': ^11.10.5
   '@fontsource/bona-nova': ^4.5.10
+  '@fontsource/courier-prime': ^4.5.9
   '@fontsource/roboto': ^4.5.8
   '@mui/icons-material': ^5.11.0
   '@mui/material': ^5.11.7
@@ -34,6 +35,7 @@ dependencies:
   '@emotion/react': 11.10.5_3stiutgnnbnfnf3uowm5cip22i
   '@emotion/styled': 11.10.5_jrh5enlbqfbnumycmktdqgd6se
   '@fontsource/bona-nova': 4.5.10
+  '@fontsource/courier-prime': 4.5.9
   '@fontsource/roboto': 4.5.8
   '@mui/icons-material': 5.11.0_m3y2ykptchyoygtoroit6l3ehq
   '@mui/material': 5.11.7_rqh7qj4464ntrqrt6banhaqg4q
@@ -483,6 +485,10 @@ packages:
 
   /@fontsource/bona-nova/4.5.10:
     resolution: {integrity: sha512-X5uzuCl1hENinP6mxa1cGh4tw4WpRkoiP6YQcnSacSLazR2opT+De5M+7xqCd87qFVX8Lo0lz+2VbOCrqtul6w==}
+    dev: false
+
+  /@fontsource/courier-prime/4.5.9:
+    resolution: {integrity: sha512-jN5F/WvA7x1OuaOy2Hr2FzlA3EZizXPGTvjmR5YIb+Hc+SaDUT/ckJy8zbUc8sb6SsS6cIbG+lFDkZRYjJe91Q==}
     dev: false
 
   /@fontsource/roboto/4.5.8:

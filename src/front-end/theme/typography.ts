@@ -1,5 +1,6 @@
 import "@fontsource/roboto"
 import "@fontsource/bona-nova"
+import "@fontsource/courier-prime"
 
 const titleFont = "Bona Nova, serif"
 const mainFont = "Roboto, sans-serif"
