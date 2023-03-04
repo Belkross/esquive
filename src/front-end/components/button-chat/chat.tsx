@@ -32,7 +32,7 @@ export function Chat({ messages, channel, appState }: Props) {
   const [input, setInput] = useState<ChatInputState>(initialInputState)
   const ulElement = useRef<HTMLUListElement>(null)
   const whileSubmittable = getWhileSubmittable(appState, input, channel)
-  const whileTextFieldActive = getWhileTextFieldActive(appState, channel)
+  const whileCanWrite = getWhileTextFieldActive(appState, channel)
 
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => handleChatInputChange(event, input, setInput)
   const handleSubmit = () => {
@@ -58,21 +58,23 @@ export function Chat({ messages, channel, appState }: Props) {
         <MessageList messages={messages} />
       </List>
 
-      <Stack sx={style_stackInputs}>
-        <TextField
-          value={input.value}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-          placeholder="Envoyer un message"
-          multiline
-          fullWidth
-          helperText={`Caractères restants: ${input.characterRemaining}`}
-          disabled={!whileTextFieldActive}
-        />
-        <Button onClick={handleSubmit} disabled={!whileSubmittable}>
-          Envoyer
-        </Button>
-      </Stack>
+      {whileCanWrite && (
+        <Stack sx={style_stackInputs}>
+          <TextField
+            value={input.value}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+            placeholder="Envoyer un message"
+            multiline
+            fullWidth
+            helperText={`Caractères restants: ${input.characterRemaining}`}
+            disabled={!whileCanWrite}
+          />
+          <Button onClick={handleSubmit} disabled={!whileSubmittable}>
+            Envoyer
+          </Button>
+        </Stack>
+      )}
     </>
   )
 }
