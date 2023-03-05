@@ -13,7 +13,7 @@ type Props = {
 
 export function ButtonResponsive({ icon, label, onClick, whileDisabled, sx, selected }: Props) {
   const screenIsLargeEnough = useMediaQuery(useTheme().breakpoints.up("md"))
-  const backgroundColor = selected ? "primary.dark" : "primary.main"
+  const backgroundColor = selected ? "background.navBar" : "primary.main"
 
   return screenIsLargeEnough ? (
     <Button startIcon={icon} onClick={onClick} disabled={whileDisabled} sx={{ backgroundColor, ...sx }}>
