@@ -20,6 +20,7 @@ export function ButtonsJudgeTrap({ appState }: Props) {
         onClick={handleClick(true)}
         whileDisabled={whileDisabled}
         sx={style_buttonValidate}
+        breakpoint="sm"
       />
       <ButtonResponsive
         icon={<RefuseIcon />}
@@ -27,6 +28,7 @@ export function ButtonsJudgeTrap({ appState }: Props) {
         onClick={handleClick(false)}
         whileDisabled={whileDisabled}
         sx={style_buttonRefuse}
+        breakpoint="sm"
       />
     </Stack>
   )
@@ -52,16 +54,16 @@ function getWhileDisabled(appState: AppState) {
 
 const style_container: SxProps = {
   flexDirection: "row",
-  justifyContent: "end",
+  justifyContent: { xs: "center", lg: "end" },
   gap: 2,
 }
 
 const style_buttonValidate: SxProps = {
-  backgroundColor: "success.main",
-  borderColor: "success.main",
+  backgroundColor: "success.dark",
+  borderColor: "success.dark",
 }
 
 const style_buttonRefuse: SxProps = {
-  backgroundColor: "error.main",
-  borderColor: "error.main",
+  backgroundColor: "error.dark",
+  borderColor: "error.dark",
 }

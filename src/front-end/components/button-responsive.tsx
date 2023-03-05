@@ -1,4 +1,4 @@
-import { Button, IconButton, SxProps, useMediaQuery, useTheme } from "@mui/material"
+import { Breakpoint, Button, IconButton, SxProps, useMediaQuery, useTheme } from "@mui/material"
 import { ReactElement } from "react"
 import { FlowlessFunction } from "../../types/main.js"
 
@@ -9,10 +9,11 @@ type Props = {
   whileDisabled?: boolean
   sx?: SxProps
   selected?: boolean
+  breakpoint?: Breakpoint
 }
 
-export function ButtonResponsive({ icon, label, onClick, whileDisabled, sx, selected }: Props) {
-  const screenIsLargeEnough = useMediaQuery(useTheme().breakpoints.up("md"))
+export function ButtonResponsive({ icon, label, onClick, whileDisabled, sx, selected, breakpoint }: Props) {
+  const screenIsLargeEnough = useMediaQuery(useTheme().breakpoints.up(breakpoint || "md"))
   const backgroundColor = selected ? "background.navBar" : "primary.main"
 
   return screenIsLargeEnough ? (

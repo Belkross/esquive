@@ -12,7 +12,7 @@ const handleClick = () => socket.emit("nextRoundPhase")
 export function ButtonPlayNextPhase({ appState }: Props) {
   const whileDisabled = getWhileDisabled(appState)
 
-  return <ButtonResponsive icon={<PlayArrowIcon />} label="Jouer" onClick={handleClick} whileDisabled={whileDisabled} />
+  return <ButtonResponsive icon={<PlayArrowIcon />} label="Jouer" onClick={handleClick} whileDisabled={whileDisabled} breakpoint="xs"/>
 }
 
 function getWhileDisabled(appState: AppState) {
