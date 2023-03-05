@@ -50,15 +50,17 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
           <ButtonsJudgeTrap appState={appState} />
         </Stack>
 
-        <Stack sx={style_borderedPartTwo}>
-          <ChangeSecretWord appState={appState} />
-          <ButtonReportForbiddenClue appState={appState} />
-          <TrapsRemaining appState={appState} />
-          <Traps appState={appState} />
+        <Stack sx={style_secondPart}>
+          <Stack sx={style_borderedPartTwo}>
+            <ChangeSecretWord appState={appState} />
+            <ButtonReportForbiddenClue appState={appState} />
+            <TrapsRemaining appState={appState} />
+            <Traps appState={appState} />
+          </Stack>
+          {breakpoint_xl && <Teams appState={appState} />}
         </Stack>
-
-        {breakpoint_xl && <Teams appState={appState} />}
       </Stack>
+
       <ModalSubmitWord appState={appState} displayed={displayed} close={remove} />
     </>
   )
@@ -114,10 +116,17 @@ const style_borderedPartOne: SxProps = {
   minHeight: { xs: "450px", lg: shape.trapSectionMaxHeight },
 }
 
+const style_secondPart: SxProps = {
+  gridColumn: { xs: "1/13", lg: "7/13", xl: "6/13" },
+  justifySelf: "start",
+  flexFlow: "row nowrap",
+  justifyContent: { xs: "center", lg: "start" },
+  gap: 4,
+  width: "100%",
+}
+
 const style_borderedPartTwo: SxProps = {
   ...style_borderedBoardPart,
-  gridColumn: { xs: "1/13", lg: "7/13", xl: "6/11", xxl: "6/10" },
-  justifySelf: "start",
   overflow: "hidden",
   minHeight: shape.trapSectionMaxHeight,
 }
