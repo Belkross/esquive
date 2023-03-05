@@ -27,29 +27,33 @@ function pickInstruction(roomState: RoomState, sessionId: string) {
   const instructions = {
     "pre round": {
       one: {
-        guesser: "La manche va commencer, préparez-vous à chercher des pièges.",
-        orator: "La manche va commencer, préparez-vous à chercher des pièges.",
+        guesser:
+          "La manche va commencer. Vous devrez chercher les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner votre mot.",
+        orator:
+          "La manche va commencer. Vous devrez chercher les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner votre mot.",
       },
       two: {
-        guesser: "La manche va commencer, préparez-vous à chercher des pièges.",
-        orator: "La manche va commencer, préparez-vous à chercher des pièges.",
+        guesser:
+          "La manche va commencer. Vous devrez chercher les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner votre mot.",
+        orator:
+          "La manche va commencer. Vous devrez chercher les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner votre mot.",
       },
     },
     trapping: {
       one: {
-        guesser: `Vous devez piéger le mot ${teamOneSecretWord.toUpperCase()} ! Trouvez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse.`,
-        orator: `Vous devez piéger le mot ${teamOneSecretWord.toUpperCase()} ! Trouvez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse.`,
+        guesser: `Piégez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner votre mot.`,
+        orator: `Piégez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner votre mot.`,
       },
       two: {
-        guesser: `Vous devez piéger le mot ${teamTwoSecretWord.toUpperCase()} ! Trouvez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse.`,
-        orator: `Vous devez piéger le mot ${teamTwoSecretWord.toUpperCase()} ! Trouvez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse.`,
+        guesser: `Piégez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner votre mot.`,
+        orator: `Piégez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner votre mot.`,
       },
     },
     "pre guessing one": {
       one: {
-        guesser: "Préparez-vous à deviner le mot que va vous décrire votre orateur.",
+        guesser: "Votre orateur va tenter de vous faire deviner un mot.",
         orator:
-          "Préparez-vous à faire deviner un mot à votre auditoire. Attention ! Il faudra éviter les mots piégés par l’équipe adverse.",
+          "Vous allez devoir faire deviner un mot à votre auditoire. Attention ! Il faudra éviter les mots piégés par l’équipe adverse.",
       },
       two: {
         guesser: "L’orateur adverse va tenter de faire deviner à son auditoire le mot que vous avez piégé.",
@@ -58,14 +62,14 @@ function pickInstruction(roomState: RoomState, sessionId: string) {
     },
     "guessing one": {
       one: {
-        guesser: "Essayez de deviner le mot décrit par votre orateur !",
+        guesser: "Tentez de deviner le mot décrit par votre orateur !",
         orator: `Vous devez faire deviner à votre auditoire le mot ${teamTwoSecretWord.toUpperCase()} !`,
       },
       two: {
         guesser:
-          "Écoutez la performance de l’orateur adverse et arrêtez le si il prononce un des mots que vous avez piégé !",
+          "Surveillez la performance de l’orateur adverse et si il utilise un des mots que vous avez piégé, activez le piège !",
         orator:
-          "Écoutez la performance de l’orateur adverse et arrêtez le si il prononce un des mots que vous avez piégé !",
+          "Surveillez la performance de l’orateur adverse et si il utilise un des mots que vous avez piégé, activez le piège !",
       },
     },
     "pre guessing two": {
@@ -74,20 +78,20 @@ function pickInstruction(roomState: RoomState, sessionId: string) {
         orator: "L’orateur adverse va tenter de faire deviner à son auditoire le mot que vous avez piégé.",
       },
       two: {
-        guesser: "Préparez-vous à deviner le mot que va vous décrire votre orateur.",
+        guesser: "Votre orateur va tenter de vous faire deviner un mot.",
         orator:
-          "Préparez-vous à faire deviner un mot à votre auditoire. Attention ! Il faudra éviter les mots piégés par l’équipe adverse.",
+          "Vous allez devoir faire deviner un mot à votre auditoire. Attention ! Il faudra éviter les mots piégés par l’équipe adverse.",
       },
     },
     "guessing two": {
       one: {
         guesser:
-          "Écoutez la performance de l’orateur adverse et arrêtez le si il prononce un des mots que vous avez piégé !",
+          "Surveillez la performance de l’orateur adverse et si il utilise un des mots que vous avez piégé, activez le piège !",
         orator:
-          "Écoutez la performance de l’orateur adverse et arrêtez le si il prononce un des mots que vous avez piégé !",
+          "Surveillez la performance de l’orateur adverse et si il utilise un des mots que vous avez piégé, activez le piège !",
       },
       two: {
-        guesser: "Essayez de deviner le mot décrit par votre orateur !",
+        guesser: "Tentez de deviner le mot décrit par votre orateur !",
         orator: `Vous devez faire deviner à votre auditoire le mot ${teamOneSecretWord.toUpperCase()} !`,
       },
     },
