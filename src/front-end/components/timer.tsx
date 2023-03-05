@@ -56,7 +56,7 @@ const style_typography = (state: TimerState): SxProps => {
     boxShadow: 2,
     borderStyle: shape.borderStyle,
     borderWidth: "2px",
-    borderColor: "background.border",
+    borderColor: "primary.main",
     boxSizing: "border-box",
   }
 }
