@@ -41,7 +41,7 @@ const style_container: SxProps = {
   boxShadow: 16,
   zIndex: 2,
 
-  borderColor: "background.border",
+  borderColor: "primary.main",
   borderWidth: shape.borderWidth,
   borderTopStyle: { xs: shape.borderStyle, lg: "none" },
   borderBottomStyle: { xs: "none", lg: "solid" },
