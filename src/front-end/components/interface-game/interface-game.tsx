@@ -28,6 +28,7 @@ export type InterfaceGameProps = {
 export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
   const { displayed, display, remove } = useTemporaryElement(false)
   const breakpoint_xl = useMediaQuery(useTheme().breakpoints.up("xl"))
+  const whileAppBarTop = useMediaQuery(useTheme().breakpoints.up("lg"))
   const whileModalAllowed = getWhileModalAllowed(appState)
 
   useSubscribeRoomStateUpdate(setAppState)
@@ -41,7 +42,7 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
 
         <Stack sx={style_borderedPartOne}>
           <Stack sx={style_buttons}>
-            <ButtonSubmitWord appState={appState} openModal={display} />
+            {whileAppBarTop && <ButtonSubmitWord appState={appState} openModal={display} />}
             <ButtonPlayNextPhase appState={appState} />
           </Stack>
           <Instructions appState={appState} />
@@ -123,6 +124,6 @@ const style_borderedPartTwo: SxProps = {
 
 const style_buttons: SxProps = {
   flexFlow: "row nowrap",
-  justifyContent: "space-between",
+  justifyContent: { xs: "center", lg: "space-between" },
   alignItems: "center",
 }
