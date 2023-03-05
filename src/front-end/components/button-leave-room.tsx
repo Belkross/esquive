@@ -14,7 +14,7 @@ function handleClick() {
   socket.disconnect()
 }
 
-const buttonColor = "error.main"
+const buttonColor = "error.dark"
 
 const style_button: SxProps = {
   backgroundColor: buttonColor,
