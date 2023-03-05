@@ -8,6 +8,8 @@ import { Timer } from "../timer.js"
 import { ButtonSubmitWord } from "../button-submit-word/button-submit-word.js"
 import { style_tabs } from "../button-menu/tab-group-menu.js"
 import ButtonCloseElement from "../button-close-element.js"
+import { chatInitialInputState, ChatInputState } from "./button-chat.js"
+import { getWhileClientIsOratorAndPlaying } from "../../../functions/get-while-client-is-orator-and-playing.js"
 
 type Props = {
   selectedTab: ChatChannel
@@ -15,6 +17,7 @@ type Props = {
   close: FlowlessFunction
   appState: AppState
   openSubmitWordModal: FlowlessFunction
+  setInput: setState<ChatInputState>
 }
 
 type TabData = {
@@ -28,8 +31,13 @@ const tabs: TabData[] = [
   { id: "orator", label: "Orateur", icon: <TalkerIcon /> },
 ]
 
-export function TabGroupChat({ selectedTab, setSelectedTab, close, appState, openSubmitWordModal }: Props) {
-  const handleClick = (id: ChatChannel) => setSelectedTab(id)
+export function TabGroupChat({ selectedTab, setSelectedTab, close, appState, openSubmitWordModal, setInput }: Props) {
+  const handleClick = (id: ChatChannel) => {
+    setSelectedTab((prevId) => {
+      if (getWhileClientIsOratorAndPlaying(appState) && prevId !== id) setInput(chatInitialInputState)
+      return id
+    })
+  }
 
   const list_tab = tabs.map((tab) => {
     return (

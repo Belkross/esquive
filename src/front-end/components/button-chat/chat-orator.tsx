@@ -1,6 +1,6 @@
 import { List, Stack, TextField, Button } from "@mui/material"
 import { ChangeEvent, KeyboardEvent, useRef } from "react"
-import { getPlayerTeam } from "../../../functions/get-player-team.js"
+import { getWhileClientIsOratorAndPlaying } from "../../../functions/get-while-client-is-orator-and-playing.js"
 import { AppState, setState } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { TitleMenu } from "../button-menu/title-menu.js"
@@ -20,7 +20,7 @@ export function ChatOrator({ appState, input, setInput }: Props) {
   const ulElement = useRef<HTMLUListElement>(null)
   const messages = appState.roomState.oratorMessages
 
-  const whileInputsDisplayed = getWhileInputsDisplayed(appState)
+  const whileInputsDisplayed = getWhileClientIsOratorAndPlaying(appState)
   const whileInputsAvailable = whileInputsDisplayed && !appState.roomState.isJudgingTrap
   const whileSubmittable = whileInputsAvailable && input.validity
 
@@ -67,13 +67,4 @@ export function ChatOrator({ appState, input, setInput }: Props) {
       )}
     </>
   )
-}
-
-function getWhileInputsDisplayed(appState: AppState) {
-  const { roomState, sessionId } = appState
-  const clientIsOrator = roomState.players[sessionId].role === "orator"
-  const clientTeam = getPlayerTeam(roomState, sessionId)
-  const duringHisGuessingPhase = roomState.roundPhase === `guessing ${clientTeam}`
-
-  return clientIsOrator && duringHisGuessingPhase
 }

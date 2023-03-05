@@ -60,6 +60,7 @@ export function ButtonChat({ appState, openSubmitWordModal }: Props) {
           close={drawer.remove}
           appState={appState}
           openSubmitWordModal={openSubmitWordModal}
+          setInput={setInput}
         />
       </Drawer>
     </>
