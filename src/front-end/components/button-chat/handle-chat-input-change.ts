@@ -2,7 +2,7 @@ import { ChangeEvent } from "react"
 import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 import checkChatMessageValidity from "../../../functions/check-chat-message-validity.js"
 import { setState } from "../../../types/main.js"
-import { ChatInputState } from "./chat-general.js"
+import { ChatInputState } from "./button-chat.js"
 
 export default function handleChatInputChange(
   event: ChangeEvent<HTMLTextAreaElement>,

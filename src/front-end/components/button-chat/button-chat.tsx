@@ -8,6 +8,19 @@ import { TabGroupChat } from "./tab-group-chat.js"
 import shape from "../../theme/shape.js"
 import { ChatGeneral } from "./chat-general.js"
 import { ChatOrator } from "./chat-orator.js"
+import { RoomState } from "../../../back-end/config/room-state/room-state.js"
+
+export type ChatInputState = {
+  value: string
+  validity: boolean
+  characterRemaining: number
+}
+
+export const chatInitialInputState = {
+  value: "",
+  validity: false,
+  characterRemaining: RoomState.CHAT_MESSAGE_MAX_LENGTH,
+}
 
 type Props = {
   appState: AppState
@@ -15,16 +28,17 @@ type Props = {
 }
 
 export function ButtonChat({ appState, openSubmitWordModal }: Props) {
+  const [input, setInput] = useState<ChatInputState>(chatInitialInputState)
   const drawer = useTemporaryElement(false)
   const [selectedTab, setSelectedTab] = useState<ChatChannel>("general")
 
   let tabContent
   switch (selectedTab) {
     case "general":
-      tabContent = <ChatGeneral appState={appState} />
+      tabContent = <ChatGeneral appState={appState} input={input} setInput={setInput} />
       break
     case "orator":
-      tabContent = <ChatOrator appState={appState} />
+      tabContent = <ChatOrator appState={appState} input={input} setInput={setInput} />
       break
     //no default
   }

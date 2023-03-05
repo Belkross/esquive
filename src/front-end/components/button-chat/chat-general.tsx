@@ -1,31 +1,20 @@
 import { List, Stack, TextField, Button, SxProps } from "@mui/material"
-import { ChangeEvent, KeyboardEvent, useRef, useState } from "react"
-import { RoomState } from "../../../back-end/config/room-state/room-state.js"
-import { AppState } from "../../../types/main.js"
+import { ChangeEvent, KeyboardEvent, useRef } from "react"
+import { AppState, setState } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { TitleMenu } from "../button-menu/title-menu.js"
+import { chatInitialInputState, ChatInputState } from "./button-chat.js"
 import handleChatInputChange from "./handle-chat-input-change.js"
 import MessageList from "./message-list.js"
 import { useChatAutoScrollDown } from "./use-chat-auto-scroll-down.js"
 
-export type ChatInputState = {
-  value: string
-  validity: boolean
-  characterRemaining: number
-}
-
-type Props = {  
+type Props = {
   appState: AppState
+  input: ChatInputState
+  setInput: setState<ChatInputState>
 }
 
-export const chatInitialInputState = {
-  value: "",
-  validity: false,
-  characterRemaining: RoomState.CHAT_MESSAGE_MAX_LENGTH,
-}
-
-export function ChatGeneral({ appState }: Props) {
-  const [input, setInput] = useState<ChatInputState>(chatInitialInputState)
+export function ChatGeneral({ appState, input, setInput }: Props) {
   const ulElement = useRef<HTMLUListElement>(null)
   const messages = appState.roomState.generalMessages
 

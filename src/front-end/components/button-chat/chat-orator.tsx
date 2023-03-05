@@ -1,20 +1,22 @@
 import { List, Stack, TextField, Button } from "@mui/material"
-import { ChangeEvent, KeyboardEvent, useRef, useState } from "react"
+import { ChangeEvent, KeyboardEvent, useRef } from "react"
 import { getPlayerTeam } from "../../../functions/get-player-team.js"
-import { AppState } from "../../../types/main.js"
+import { AppState, setState } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { TitleMenu } from "../button-menu/title-menu.js"
-import { chatInitialInputState, ChatInputState, style_chatInputGroup, style_chatMessageList } from "./chat-general.js"
+import { ChatInputState, chatInitialInputState } from "./button-chat.js"
+import { style_chatInputGroup, style_chatMessageList } from "./chat-general.js"
 import handleChatInputChange from "./handle-chat-input-change.js"
 import MessageList from "./message-list.js"
 import { useChatAutoScrollDown } from "./use-chat-auto-scroll-down.js"
 
 type Props = {
   appState: AppState
+  input: ChatInputState
+  setInput: setState<ChatInputState>
 }
 
-export function ChatOrator({ appState }: Props) {
-  const [input, setInput] = useState<ChatInputState>(chatInitialInputState)
+export function ChatOrator({ appState, input, setInput }: Props) {
   const ulElement = useRef<HTMLUListElement>(null)
   const messages = appState.roomState.oratorMessages
 
