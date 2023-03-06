@@ -4,7 +4,7 @@ import { getWhileClientIsOratorAndPlaying } from "../../../functions/get-while-c
 import { AppState, setState } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { TitleMenu } from "../button-menu/title-menu.js"
-import { ChatInputState, chatInitialInputState } from "./button-chat.js"
+import { ChatInputState, chatInitialInputState } from "./button-chat-general.js"
 import { style_chatInputGroup, style_chatMessageList } from "./chat-general.js"
 import handleChatInputChange from "./handle-chat-input-change.js"
 import MessageList from "./message-list.js"

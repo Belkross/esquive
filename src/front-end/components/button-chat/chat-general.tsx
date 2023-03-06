@@ -1,9 +1,10 @@
 import { List, Stack, TextField, Button, SxProps } from "@mui/material"
 import { ChangeEvent, KeyboardEvent, useRef } from "react"
-import { AppState, setState } from "../../../types/main.js"
+import { AppState, FlowlessFunction, setState } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
+import ButtonCloseElement from "../button-close-element.js"
 import { TitleMenu } from "../button-menu/title-menu.js"
-import { chatInitialInputState, ChatInputState } from "./button-chat.js"
+import { ChatInputState, chatInitialInputState } from "./button-chat-general.js"
 import handleChatInputChange from "./handle-chat-input-change.js"
 import MessageList from "./message-list.js"
 import { useChatAutoScrollDown } from "./use-chat-auto-scroll-down.js"
@@ -12,9 +13,10 @@ type Props = {
   appState: AppState
   input: ChatInputState
   setInput: setState<ChatInputState>
+  closeDrawer: FlowlessFunction
 }
 
-export function ChatGeneral({ appState, input, setInput }: Props) {
+export function ChatGeneral({ appState, input, setInput, closeDrawer }: Props) {
   const ulElement = useRef<HTMLUListElement>(null)
   const messages = appState.roomState.generalMessages
 
@@ -52,9 +54,12 @@ export function ChatGeneral({ appState, input, setInput }: Props) {
           fullWidth
           helperText={`Caractères restants: ${input.characterRemaining}`}
         />
-        <Button onClick={handleSubmit} disabled={!input.validity}>
-          Envoyer
-        </Button>
+        <Stack sx={style_buttons}>
+          <ButtonCloseElement onClick={closeDrawer} />
+          <Button onClick={handleSubmit} disabled={!input.validity}>
+            Envoyer
+          </Button>
+        </Stack>
       </Stack>
     </>
   )
@@ -74,4 +79,11 @@ export const style_chatInputGroup: SxProps = {
   alignItems: { xs: "center", sm: "end" },
   padding: 2,
   gap: 2,
+}
+
+const style_buttons: SxProps = {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+  width: "100%",
 }
