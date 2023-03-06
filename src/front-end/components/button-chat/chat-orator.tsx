@@ -8,7 +8,7 @@ import { ChatInputState, chatInitialInputState } from "./button-chat-general.js"
 import { style_chatInputGroup, style_chatMessageList } from "./chat-general.js"
 import handleChatInputChange from "./handle-chat-input-change.js"
 import MessageList from "./message-list.js"
-import { useChatAutoScrollDown } from "./use-chat-auto-scroll-down.js"
+import { useChatAutoScroll } from "./use-chat-auto-scroll.js"
 
 type Props = {
   appState: AppState
@@ -38,7 +38,7 @@ export function ChatOrator({ appState, input, setInput }: Props) {
     }
   }
 
-  useChatAutoScrollDown(messages, ulElement)
+  useChatAutoScroll(messages, ulElement)
 
   return (
     <>
