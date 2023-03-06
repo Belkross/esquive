@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material"
+import { Stack, useMediaQuery, useTheme } from "@mui/material"
 import { AppState, FlowlessFunction } from "../../../types/main.js"
 import { Timer } from "../timer.js"
 import { ButtonSubmitWord } from "../button-submit-word/button-submit-word.js"
@@ -12,11 +12,13 @@ type Props = {
 }
 
 export function NavbarChatOrator({ closeDrawer, appState, openSubmitWordModal }: Props) {
+  const smallScreenLayout = useMediaQuery(useTheme().breakpoints.down("lg"))
+
   return (
     <Stack component="nav" sx={style_tabs}>
       <Timer appState={appState} />
       <ButtonSubmitWord appState={appState} openModal={openSubmitWordModal} />
-      <ButtonCloseElement onClick={closeDrawer} />
+      {smallScreenLayout && <ButtonCloseElement onClick={closeDrawer} />}
     </Stack>
   )
 }

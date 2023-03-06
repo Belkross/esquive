@@ -1,4 +1,4 @@
-import { List, Stack, TextField, Button, SxProps } from "@mui/material"
+import { List, Stack, TextField, Button, SxProps, useMediaQuery, useTheme } from "@mui/material"
 import { ChangeEvent, KeyboardEvent, useRef } from "react"
 import { AppState, FlowlessFunction, setState } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
@@ -19,6 +19,7 @@ type Props = {
 export function ChatGeneral({ appState, input, setInput, closeDrawer }: Props) {
   const ulElement = useRef<HTMLUListElement>(null)
   const messages = appState.roomState.generalMessages
+  const smallScreenLayout = useMediaQuery(useTheme().breakpoints.down("lg"))
 
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => handleChatInputChange(event, input, setInput)
   const handleSubmit = () => {
@@ -55,10 +56,10 @@ export function ChatGeneral({ appState, input, setInput, closeDrawer }: Props) {
           helperText={`Caractères restants: ${input.characterRemaining}`}
         />
         <Stack sx={style_buttons}>
-          <ButtonCloseElement onClick={closeDrawer} />
           <Button onClick={handleSubmit} disabled={!input.validity}>
             Envoyer
           </Button>
+          {smallScreenLayout && <ButtonCloseElement onClick={closeDrawer} />}
         </Stack>
       </Stack>
     </>
@@ -83,7 +84,7 @@ export const style_chatInputGroup: SxProps = {
 
 const style_buttons: SxProps = {
   flexDirection: "row",
-  justifyContent: "space-between",
+  justifyContent: { xs: "space-between", lg: "end" },
   alignItems: "center",
   width: "100%",
 }

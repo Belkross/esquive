@@ -1,4 +1,4 @@
-import { Stack, SxProps } from "@mui/material"
+import { Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
 import { FlowlessFunction, MenuTabId, setState } from "../../../types/main.js"
 import { ReactElement } from "react"
 import RoomIcon from "@mui/icons-material/Home"
@@ -29,6 +29,8 @@ const tabs: TabData[] = [
 ]
 
 export function TabGroupMenu({ selectedTab, setSelectedTab, close }: Props) {
+  const smallScreenLayout = useMediaQuery(useTheme().breakpoints.down("lg"))
+
   const handleClick = (id: MenuTabId) => setSelectedTab(id)
 
   const list_tab = tabs.map((tab) => {
@@ -46,7 +48,7 @@ export function TabGroupMenu({ selectedTab, setSelectedTab, close }: Props) {
   return (
     <Stack component="nav" sx={style_tabs}>
       {list_tab}
-      <ButtonCloseElement onClick={close} />
+      {smallScreenLayout && <ButtonCloseElement onClick={close} />}
     </Stack>
   )
 }
