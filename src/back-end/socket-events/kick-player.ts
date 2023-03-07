@@ -18,7 +18,7 @@ export function kickPlayer(server: ServerManager) {
 
       io.in(roomName).emit("roomStateUpdate", roomState)
     } else {
-      if (!checkIfDuringRoundBeginning) socket.emit("alert", "wrongMomentForKick")
+      if (!checkIfDuringRoundBeginning(roomState)) socket.emit("alert", "wrongMomentForKick")
     }
   })
 }
