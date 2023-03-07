@@ -42,6 +42,7 @@ import { PlayerData } from "./player-data.js"
 import { TeamData } from "./team-data.js"
 import { changeRoundSettings } from "./methods/change-round-settings.js"
 import { addChatMessage, ChatMessage } from "./methods/add-chat-message.js"
+import { ensureSomeAdminInRoom } from "./methods/ensure-some-admin-in-room.js"
 
 export class RoomState {
   static readonly TIMER_LIMIT = 360 //seconds
@@ -118,6 +119,7 @@ export class RoomState {
   configureNextRoundPhase = configureNextRoundPhase
   deletePlayer = deletePlayer
   drawSecretWord = drawSecretWord
+  ensureSomeAdminInRoom = ensureSomeAdminInRoom
   getActivePlayerNumber = getActivePlayerNumber
   getOpponentTeam = getOpponentTeam
   getPlayingTeam = getPlayingTeam
