@@ -19,7 +19,7 @@ export class SoundBox {
 
   constructor() {
     for (const sound in this.sounds) {
-      this.sounds[sound as Track].volume = 0.5
+      this.sounds[sound as Track].volume = 0.3
     }
   }
 
