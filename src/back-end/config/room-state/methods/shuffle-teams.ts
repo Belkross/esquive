@@ -10,12 +10,11 @@ export function shuffleTeams(this: RoomState, sessionId: string) {
   })
 
   const shuffledTeamValues = shuffleArray(teamValues)
-
   for (const sessionId in this.players) {
     this.players[sessionId].role = "guesser"
 
     const newTeam = shuffledTeamValues.shift()
-    if (newTeam) this.players[sessionId].team
+    if (newTeam) this.players[sessionId].team = newTeam
   }
 
   const clientUsername = this.players[sessionId].username
