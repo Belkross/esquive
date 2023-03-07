@@ -7,7 +7,8 @@ import { TitleMenu } from "../button-menu/title-menu.js"
 import { ChatInputState, chatInitialInputState } from "./button-chat-general.js"
 import { style_chatInputGroup, style_chatMessageList } from "./chat-general.js"
 import handleChatInputChange from "./handle-chat-input-change.js"
-import MessageList from "./message-list.js"
+import MessageListOrator from "./message-list-orator.js"
+import { typingActivity } from "./typing-activity.js"
 import { useChatAutoScroll } from "./use-chat-auto-scroll.js"
 
 type Props = {
@@ -18,10 +19,12 @@ type Props = {
 
 export function ChatOrator({ appState, input, setInput }: Props) {
   const ulElement = useRef<HTMLUListElement>(null)
-  const messages = appState.roomState.oratorMessages
+  const intervalIdRef = useRef<NodeJS.Timeout | null>(null)
+  const { roomState } = appState
+  const messages = roomState.oratorMessages
 
   const whileInputsDisplayed = getWhileClientIsOratorAndPlaying(appState)
-  const whileInputsAvailable = whileInputsDisplayed && !appState.roomState.isJudgingTrap
+  const whileInputsAvailable = whileInputsDisplayed && !roomState.isJudgingTrap
   const whileSubmittable = whileInputsAvailable && input.validity
 
   const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => handleChatInputChange(event, input, setInput)
@@ -32,9 +35,14 @@ export function ChatOrator({ appState, input, setInput }: Props) {
     }
   }
   const handleKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Backspace") return
     if (event.key === "Enter" && whileSubmittable) {
       event.preventDefault() //otherwise handleInputChange is triggered
       handleSubmit()
+    } else {
+      const clientWereNotTyping = intervalIdRef.current === null
+      if (clientWereNotTyping) typingActivity.start(intervalIdRef)
+      else typingActivity.reset(intervalIdRef)
     }
   }
 
@@ -45,7 +53,7 @@ export function ChatOrator({ appState, input, setInput }: Props) {
       <TitleMenu>Chat orateur</TitleMenu>
 
       <List ref={ulElement} dense sx={style_chatMessageList}>
-        <MessageList messages={messages} />
+        <MessageListOrator messages={messages} appState={appState} />
       </List>
 
       {whileInputsDisplayed && (

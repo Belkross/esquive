@@ -24,6 +24,7 @@ import { treatAuthenticationData } from "./middlewares/treat-authentication-data
 import { changeRoundSettings } from "./socket-events/change-round-settings.js"
 import { submitChatMessage } from "./socket-events/submit-chat-message.js"
 import { toggleRoomAccess } from "./socket-events/toggle-room-access.js"
+import { updateTypingActivity } from "./socket-events/update-typing-activity.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -58,6 +59,7 @@ io.on("connection", (socket) => {
   submitTrap(server)
   submitTrapOpinion(server)
   toggleRoomAccess(server)
+  updateTypingActivity(server)
 })
 
 httpServer.listen(port, () => {
