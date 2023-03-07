@@ -6,16 +6,16 @@ type Props = {
 }
 
 export default function MessageList({ messages }: Props) {
-  const list_message = messages.map((message) => {
+  const list_message = messages.map((message, index) => {
     const chatEntrie = (
       <>
-        <Typography component="span" sx={style_authorTypo}>{`${message.author}`}</Typography>
+        <Typography component="span" sx={style_authorTypo}>{`${message.author}, ${index}`}</Typography>
         <Typography component="span">{`:\u00A0${message.content}`}</Typography>
       </>
     )
 
     return (
-      <ListItem key={message.date.toString()} sx={style_container}>
+      <ListItem key={index} sx={style_container}>
         <ListItemText primary={chatEntrie} />
       </ListItem>
     )
