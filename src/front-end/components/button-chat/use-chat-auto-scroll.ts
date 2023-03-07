@@ -15,7 +15,6 @@ export function useChatAutoScroll(messages: ChatMessage[], ulElementRef: RefObje
   //auto-scroll everytime a new message is received and the scroll bar not to hight (meaning the user is reading ancient messages)
   useEffect(() => {
     if (newMessageReceived) {
-      console.log("effect")
       if (ulElementRef.current && checkIfNeedToScrollDown(ulElementRef.current)) {
         ulElementRef.current.scrollTop = ulElementRef.current.scrollHeight
       }
