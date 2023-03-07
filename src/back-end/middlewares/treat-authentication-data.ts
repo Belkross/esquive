@@ -27,6 +27,7 @@ export async function treatAuthenticationData(socket: SocketArg, next: Next) {
     if (loginDataInvalid(username, room)) return next(new Error("invalid login informations"))
     if (noMoreRoomSlot(rooms, room)) return next(new Error("no more room slot"))
     if (roomIsFull(rooms, room)) return next(new Error("room is full"))
+    if (roomIsClosed(rooms, room)) return next(new Error("room is closed"))
 
     const newSessionId = randomUUID()
     socket.handshake.auth.sessionId = newSessionId //this line is not semantically correct as handshakes are supposed to represent the data the client provided to get connected. I think I should use socket.data
@@ -53,14 +54,18 @@ async function sessionIdNotUnique(sessionId: string) {
 
 function roomIsFull(rooms: RoomStorage, roomName: string) {
   const room = rooms.get(roomName)
-  const isRoomCreation = room === undefined
 
-  if (isRoomCreation) {
-    return false
-  } else {
+  if (room) {
     const currentPlayerNumber = Object.keys(room.players).length
     return currentPlayerNumber >= room.playersLimit
+  } else {
+    return false
   }
+}
+
+function roomIsClosed(rooms: RoomStorage, roomName: string) {
+  const room = rooms.get(roomName)
+  return room ? !room.roomOpened : false
 }
 
 function noLoginDataProvided(username: string, room: string) {

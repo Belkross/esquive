@@ -7,6 +7,7 @@ import shape from "../../theme/shape.js"
 import { TitleMenu } from "./title-menu.js"
 import { ScrollableContainer } from "./scrollable-container.js"
 import { RoomManager } from "../room-manager.js"
+import { SwitchRoomAccess } from "../switch-room-access.js"
 
 type Props = {
   appState: AppState
@@ -28,6 +29,10 @@ export function MenuMain({ appState }: Props) {
 
         <Stack sx={style_menuElement}>
           <SwitchSoundActivation />
+        </Stack>
+
+        <Stack sx={style_menuElement}>
+          <SwitchRoomAccess appState={appState} />
         </Stack>
 
         <Stack sx={style_room}>

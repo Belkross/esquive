@@ -23,6 +23,7 @@ import { kickPlayer } from "./socket-events/kick-player.js"
 import { treatAuthenticationData } from "./middlewares/treat-authentication-data.js"
 import { changeRoundSettings } from "./socket-events/change-round-settings.js"
 import { submitChatMessage } from "./socket-events/submit-chat-message.js"
+import { toggleRoomAccess } from "./socket-events/toggle-room-access.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -56,6 +57,7 @@ io.on("connection", (socket) => {
   submitSecretWordOpinion(server)
   submitTrap(server)
   submitTrapOpinion(server)
+  toggleRoomAccess(server)
 })
 
 httpServer.listen(port, () => {

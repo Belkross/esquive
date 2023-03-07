@@ -7,6 +7,7 @@ export type AlertId =
   | "noMoreRoomSlot"
   | "null"
   | "roomIsFull"
+  | "roomIsClosed"
   | "serverDown"
   | "sessionIdAlreadyUsed"
   | "trapAlreadySubmitted"
@@ -63,6 +64,10 @@ export const alerts: Record<AlertId, AlertData> = {
   sessionIdAlreadyUsed: {
     severity: "warning",
     message: "Tentative de connexion d’une session dupliquée refusée.",
+  },
+  roomIsClosed: {
+    severity: "info",
+    message: "Le salon que vous tentez de rejoindre est fermé."
   },
   roomIsFull: {
     severity: "info",

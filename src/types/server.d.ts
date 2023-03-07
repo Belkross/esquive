@@ -30,6 +30,7 @@ export type ClientToServerEvents = {
   submitSecretWordOpinion: (opinion: boolean) => void
   submitTrapOpinion: (trap: string, opinion: boolean) => void
   shuffleTeams: FlowlessFunction
+  toggleRoomAccess: FlowlessFunction
 }
 
 export type Io = Server<ClientToServerEvents, ServerToClientEvents>

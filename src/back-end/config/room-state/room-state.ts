@@ -71,6 +71,7 @@ export class RoomState {
   readonly generalMessages: ChatMessage[] = []
   readonly oratorMessages: ChatMessage[] = []
 
+  roomOpened = true
   roundPhase: RoundPhase = "pre round"
   roundAdvancement = 1
   winCondition = 2
