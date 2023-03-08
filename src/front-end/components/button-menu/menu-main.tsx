@@ -23,10 +23,6 @@ export function MenuMain({ appState }: Props) {
           <LinkDiscord />
         </Stack>
 
-        {/* <Stack sx={style_switch}>
-          <SwitchThemeMode />
-        </Stack> */}
-
         <Stack sx={style_menuElement}>
           <SwitchSoundActivation />
         </Stack>
