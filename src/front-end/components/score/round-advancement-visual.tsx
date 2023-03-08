@@ -98,7 +98,7 @@ const style_iconFailure: SxProps = {
 
 const style_iconNeutral = (playing: boolean): SxProps => {
   return {
-    color: playing ? "info.main" : "text.disabled",
+    color: playing ? "primary.light" : "text.disabled",
     width: size,
     height: size,
   }
