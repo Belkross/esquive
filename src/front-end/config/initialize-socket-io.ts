@@ -24,6 +24,10 @@ export function initializeSocketIo() {
     auth: { sessionId: sessionStorage.getItem(storageKeys.sessionId) },
   })
 
+  if (environment === "development") logSocketEvents()
+}
+
+function logSocketEvents() {
   socket.onAny((eventName, ...args) => {
     console.log(eventName, args)
   })

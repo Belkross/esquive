@@ -1,12 +1,13 @@
 import secretWordList from "../../assets/secret-word-list.js"
 import { ServerManager } from "../../types/server.js"
 import { RoomState } from "../config/room-state/room-state.js"
+const environment = process.env.NODE_ENV
 
 export function connection(server: ServerManager) {
   const { io, socket, sessions, rooms, sessionId } = server
   const { username, roomName } = sessions.get(sessionId)
   const roomDoesNotExistYet = rooms.get(roomName) === undefined
-  logClientEvents(server, username)
+  if (environment === "development") logSocketEvents(server, username)
 
   let roomState
 
@@ -30,7 +31,7 @@ function updateJoiningPlayerData(roomState: RoomState, sessionId: string, userna
   else roomState.players[sessionId].connected = true
 }
 
-function logClientEvents(server: ServerManager, username: string) {
+function logSocketEvents(server: ServerManager, username: string) {
   server.socket.onAny((eventName, ...args) => {
     console.log(`${username}: ${eventName}`, args)
   })

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start:development-server": "nodemon --watch src -e js,ts,json --exec \"ts-node --esm src/back-end/server.ts\"",
+    "start:development-server": "cross-env NODE_ENV=development nodemon --watch src -e js,ts,json --exec \"ts-node --esm src/back-end/server.ts\"",
     "start:frontend": "vite",
     "start:production-server": "node ./compiled-ts/back-end/server.js",
     "build:frontend": "tsc && vite build",
@@ -33,6 +33,7 @@
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
     "@vitejs/plugin-react-swc": "^3.0.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.33.0",
     "eslint-plugin-array-func": "^3.1.8",
     "eslint-plugin-promise": "^6.1.1",
