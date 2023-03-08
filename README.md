@@ -1,8 +1,9 @@
 # Esquive
 
 Esquive is a team game where a player have to describe a word to his mates for them to guess it.
-The first problem is that the opponent team trapped a list of words and using one of them will make you fail.
-The second one is that the list of trapped words is kept secret. Enjoy ! 
+
+- The first problem is that the opponent team trapped a list of words and using one of them will make you fail.
+- The second one is that the list of trapped words is kept secret. Enjoy !
 
 Live version here: [esquive.belkross.com](https://ricochet.belkross.com/)
 
