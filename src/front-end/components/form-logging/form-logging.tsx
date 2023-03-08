@@ -5,6 +5,7 @@ import { checkRoomValidity } from "../../../functions/check-room-validity.js"
 import { checkUsernameValidity } from "../../../functions/check-username-validity.js"
 import { useValidTextInput } from "../../custom-hooks/use-valid-text-input.js"
 import { ButtonChangeUsername } from "./button-change-username.js"
+import shape from "../../theme/shape.js"
 
 export function FormLogging({ appState, setAppState }: InterfaceLoggingProps) {
   const [roomInput, onRoomInputChange] = useValidTextInput("", checkRoomValidity)
@@ -40,28 +41,28 @@ export function FormLogging({ appState, setAppState }: InterfaceLoggingProps) {
   )
 }
 
-const style_roomForm: SxProps = {
-  flexDirection: "row",
-  gap: 1,
-  justifyContent: "center",
-  alignItems: "center",
-  flexWrap: "wrap",
-}
-
 const style_container: SxProps = {
   display: "flex",
   flexFlow: "column nowrap",
   justifyContent: "center",
-  alignItems: "center",
   gap: 3,
   maxWidth: "500px",
   width: "80vw",
   backgroundImage: "none",
-  py: { thinest: 2, thin: 4, medium: 6 },
+  py: { xs: 2, sm: 4, md: 6 },
   px: 2,
-  mx: 2,
-  marginBottom: { xs: 4, md: 6 },
   padding: 3,
+
+  borderStyle: shape.borderStyle,
+  borderColor: "background.border",
+  borderWidth: shape.borderWidth,
+}
+
+const style_roomForm: SxProps = {
+  flexDirection: "row",
+  gap: 1,
+  alignItems: "center",
+  flexWrap: "wrap",
 }
 
 const style_TextField: SxProps = {

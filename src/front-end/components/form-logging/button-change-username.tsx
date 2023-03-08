@@ -16,10 +16,10 @@ export function ButtonChangeUsername({ appState, setAppState }: Props) {
   return (
     <>
       <Stack sx={style_container}>
+        <Typography>Pseudo : {appState.username}</Typography>
         <IconButton aria-label="pseudonyme" onClick={modal.display}>
           <EditIcon />
         </IconButton>
-        <Typography>Pseudo : {appState.username}</Typography>
       </Stack>
 
       <ModalChangeUsername displayed={modal.displayed} close={modal.remove} setAppState={setAppState} />

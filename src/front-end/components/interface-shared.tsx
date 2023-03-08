@@ -16,6 +16,7 @@ export function InterfaceShared({ children }: Props) {
 const style_container: SxProps = {
   display: "flex",
   flexDirection: { xs: "column-reverse", lg: "column" },
+  alignItems: "center",
 
   width: "100vw",
   height: "100vh",

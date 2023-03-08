@@ -1,8 +1,9 @@
-import { Stack, Typography } from "@mui/material"
+import { Stack, SxProps, Typography } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../../types/main"
+import shape from "../../theme/shape.js"
 import { FormLogging } from "../form-logging/form-logging.js"
-import { LinkDiscord } from "../link-discord.js"
+import Introduction from "../introduction/introduction.js"
 
 export type InterfaceLoggingProps = {
   appState: AppState
@@ -16,19 +17,19 @@ export function InterfaceLogging({ appState, setAppState }: InterfaceLoggingProp
         Esquive
       </Typography>
       <FormLogging appState={appState} setAppState={setAppState} />
-      <LinkDiscord />
+      <Introduction />
     </Stack>
   )
 }
 
-const style_container = {
-  gap: { thinest: 4, medium: 6 },
-  justifyContent: "center",
+const style_container: SxProps = {
+  gap: shape.spacingBase,
+  padding: shape.spacingBase,
   alignItems: "center",
-  marginTop: 3,
-  marginBottom: 3,
+  overflowY: "scroll",
+  width: "100%",
 }
 
-const style_title = {
-  marginBottom: { xs: 4, md: 6 },
+const style_title: SxProps = {
+  marginBottom: { xs: 4, md: 4 },
 }
