@@ -13,11 +13,7 @@ type Next = (err?: ExtendedError | undefined) => void
 type SocketArg = Socket<ClientToServerEvents, ServerToClientEvents, DefaultEventsMap>
 
 export async function treatAuthenticationData(socket: SocketArg, next: Next) {
-  //const { sessionId, username, room } = socket.handshake.auth //production
-
-  const sessionId = "" //development
-  const username = "MMMMMMMMMMMM"
-  const room = "DevRoom"
+  const { sessionId, username, room } = getAuthenticationData(socket)
 
   if (await sessionIdNotUnique(sessionId)) return next(new Error("sessionId already used"))
 
@@ -78,4 +74,16 @@ function loginDataInvalid(username: string, room: string) {
 
 function sessionFound(sessions: SessionStorage, sessionId: string) {
   return sessions.get(sessionId)
+}
+
+function getAuthenticationData(socket: SocketArg) {
+  const autoConnection = process.env.AUTO_CONNECTION
+  const environment = process.env.NODE_ENV
+
+  if (environment === "development" && autoConnection) {
+    return { sessionId: "", username: "DevUsername", room: "DevRoom" }
+  } else {
+    const { sessionId, username, room } = socket.handshake.auth
+    return { sessionId, username, room }
+  }
 }
