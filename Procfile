@@ -1,1 +1,1 @@
-web: pnpm install && tsc && ./compiled-ts/back-end/server.js
+web: node ./compiled-ts/back-end/server.js
