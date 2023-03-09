@@ -6,13 +6,11 @@ export let socket: SocketClient
 
 export function initializeSocketIo() {
   const environment = process.env.NODE_ENV
-  console.log("Server url:", process.env.SERVER_URL, "environment:", environment)
 
   let serverUrl
   switch (environment) {
     case "production":
-      serverUrl = process.env.SERVER_URL as string
-      console.log(serverUrl, "test")
+      serverUrl = "https://esquive.herokuapp.com"
       break
     case "development":
       serverUrl = "http://localhost:1000"
