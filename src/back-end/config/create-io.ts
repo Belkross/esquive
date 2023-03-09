@@ -10,6 +10,7 @@ export function createIo(httpServer: Server) {
         "http://localhost:5173",
         "http://localhost:4173",
         "https://esquive.vercel.app/",
+        "https://quiet-arithmetic-37e7ca.netlify.app",
       ],
     },
   })
