@@ -5,7 +5,12 @@ import { ClientToServerEvents, ServerToClientEvents } from "../../types/server"
 export function createIo(httpServer: Server) {
   return new SocketIoServer<ClientToServerEvents, ServerToClientEvents>(httpServer, {
     cors: {
-      origin: ["https://esquive.belkross.com", "http://localhost:5173", "http://localhost:4173"],
+      origin: [
+        "https://esquive.belkross.com",
+        "http://localhost:5173",
+        "http://localhost:4173",
+        "https://esquive.vercel.app",
+      ],
     },
   })
 }

@@ -11,7 +11,8 @@ export function initializeSocketIo() {
   let serverUrl
   switch (environment) {
     case "production":
-      serverUrl = process.env.SERVER_URL as string || "https://esquive.onrender.com"
+      serverUrl = (process.env.SERVER_URL as string) || "https://esquive.onrender.com"
+      console.log(serverUrl, "test")
       break
     case "development":
       serverUrl = "http://localhost:1000"
