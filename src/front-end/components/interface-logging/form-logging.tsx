@@ -31,7 +31,7 @@ export function FormLogging({ appState, setAppState }: InterfaceLoggingProps) {
 
   return (
     <Paper sx={style_container}>
-      <Typography variant="h3">Créer ou rejoindre un salon</Typography>
+      <Typography variant="h2">Créer ou rejoindre un salon</Typography>
       <TextField
         label="Pseudo"
         fullWidth
@@ -46,7 +46,9 @@ export function FormLogging({ appState, setAppState }: InterfaceLoggingProps) {
         onChange={onRoomInputChange}
         helperText={`${RoomState.ROOMNAME_MIN_LENGTH} à ${RoomState.ROOMNAME_MAX_LENGTH} lettres`}
       />
-      <Button onClick={handleSubmit} disabled={!roomInput.validity || !usernameInput.validity}>Valider</Button>
+      <Button onClick={handleSubmit} disabled={!roomInput.validity || !usernameInput.validity}>
+        Valider
+      </Button>
     </Paper>
   )
 }
@@ -56,12 +58,18 @@ const style_container: SxProps = {
   flexFlow: "column nowrap",
   alignItems: "center",
   gap: 3,
-  maxWidth: "450px",
+
+  gridRow: "3/11",
+  gridColumn: "1/6",
+  justifySelf: "end",
+  alignSelf: { lg: "start" },
+
+  maxWidth: { lg: "450px" },
   width: "100%",
   backgroundImage: "none",
+  padding: shape.spacingBase,
 
-  padding: { xs: 2.5, sm: 3 },
-
+  borderRadius: shape.borderRadius,
   borderStyle: shape.borderStyle,
   borderColor: "background.border",
   borderWidth: shape.borderWidth,

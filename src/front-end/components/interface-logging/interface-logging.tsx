@@ -1,9 +1,8 @@
 import { Stack, SxProps, Typography } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../../types/main"
-import shape from "../../theme/shape.js"
+import { Introduction } from "../introduction/introduction.js"
 import { FormLogging } from "./form-logging.js"
-import Introduction from "../introduction/introduction.js"
 
 export type InterfaceLoggingProps = {
   appState: AppState
@@ -23,13 +22,24 @@ export function InterfaceLogging({ appState, setAppState }: InterfaceLoggingProp
 }
 
 const style_container: SxProps = {
-  gap: shape.spacingBase,
-  padding: shape.spacingBase,
-  alignItems: "center",
+  display: { xs: "flex", lg: "grid" },
+  gridTemplateColumns: "repeat(12, 1fr)",
+  gridTemplateRows: "repeat(12, 1fr)",
+  alignItems: { xs: "center", lg: "center" },
+  gap: { xs: 3, sm: 4, lg: "none" },
+  rowGap: 3,
+  columnGap: 4,
+  justifyItems: "center",
+
   overflowY: "scroll",
   width: "100%",
+  height: "100%",
+
+  padding: { xs: 2, sm: 3, md: 8, lg: 4 },
 }
 
 const style_title: SxProps = {
   marginBottom: { xs: 2, md: 4 },
+  gridRow: "1/3",
+  gridColumn: "1/13",
 }
