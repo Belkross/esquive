@@ -1,1 +1,1 @@
-web: npm run build:production-server
+web: npm run heroku

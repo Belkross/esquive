@@ -10,7 +10,8 @@
     "start:production-server": "node ./compiled-ts/back-end/server.js",
     "build:frontend": "tsc && vite build",
     "build:production-server": "pnpm install && tsc",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "heroku": "tsc && node ./compiled-ts/back-end/server.js"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
