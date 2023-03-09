@@ -9,7 +9,7 @@ export function createIo(httpServer: Server) {
         "https://esquive.belkross.com",
         "http://localhost:5173",
         "http://localhost:4173",
-        "https://esquive.vercel.app",
+        "https://esquive.vercel.app/",
       ],
     },
   })
