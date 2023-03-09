@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../../types/main.js"
 import { CircularProgress, Stack, SxProps, Typography } from "@mui/material"
 import { useSubscribeSocketIoConnection } from "./use-subscribe-socket-io-connection.js"
-import { useSubscribeConnectError } from "../form-logging/use-subscribe-connect-error.js"
+import { useSubscribeConnectError } from "./use-subscribe-connect-error.js"
 
 export const FAKE_LOADING_DURATION = 500
 

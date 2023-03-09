@@ -2,7 +2,7 @@ import { Stack, SxProps, Typography } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../../types/main"
 import shape from "../../theme/shape.js"
-import { FormLogging } from "../form-logging/form-logging.js"
+import { FormLogging } from "./form-logging.js"
 import Introduction from "../introduction/introduction.js"
 
 export type InterfaceLoggingProps = {
@@ -31,5 +31,5 @@ const style_container: SxProps = {
 }
 
 const style_title: SxProps = {
-  marginBottom: { xs: 4, md: 4 },
+  marginBottom: { xs: 2, md: 4 },
 }

@@ -3,7 +3,7 @@ import { AppState, FlowlessFunction } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { useAlertFeature } from "../alert-feature/alert-feature.js"
 import { AlertId } from "../alert-feature/alerts.js"
-import { FAKE_LOADING_DURATION } from "../interface-connecting/interface-connecting-server.js"
+import { FAKE_LOADING_DURATION } from "./interface-connecting-server.js"
 
 export function useSubscribeConnectError(setAppState: Dispatch<SetStateAction<AppState>>) {
   const displayNewAlert = useAlertFeature()
@@ -38,8 +38,8 @@ function chooseClientFeedback(errorMessage: string): AlertId | null {
     case "sessionId already used":
       return "sessionIdAlreadyUsed"
 
-    case "room is closed": 
-      return "roomIsClosed"  
+    case "room is closed":
+      return "roomIsClosed"
 
     case "room is full":
       return "roomIsFull"
