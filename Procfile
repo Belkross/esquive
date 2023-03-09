@@ -1,1 +1,1 @@
-web: node ./compiled-ts/back-end/server.js
+web: npm run build:production-server
