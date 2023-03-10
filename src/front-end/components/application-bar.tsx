@@ -30,18 +30,23 @@ export function ApplicationBar({ appState, openSubmitWordModal }: Props) {
 
 const style_container: SxProps = {
   display: "flex",
-  flexFlow: "row wrap",
+  flexFlow: "row nowrap",
   justifyContent: { xs: "center", sm: "space-between", xl: "space-around" },
   alignItems: "center",
   gap: 1.5,
 
+  position: "fixed",
+  bottom: { xs: 0, lg: "inherit" },
+  top: { xs: "inherit", lg: 0 },
+
   width: "100vw",
-  minHeight: shape.appBarHeight,
+  height: `${shape.appBarHeight}px`,
   backgroundColor: "background.navBar",
   px: 2,
   py: 1.5,
   boxShadow: 16,
   zIndex: 2,
+  overflowX: "scroll",
 
   borderColor: "primary.main",
   borderWidth: shape.borderWidth,

@@ -1,4 +1,4 @@
-import { Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
+import { Box, Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
 import { AppState } from "../../../types/main.js"
 import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
@@ -37,7 +37,7 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
   return (
     <>
       <ApplicationBar appState={appState} openSubmitWordModal={display} />
-      <Stack sx={style_board}>
+      <Box sx={style_board}>
         <Score appState={appState} />
 
         <Stack sx={style_borderedPartOne}>
@@ -50,16 +50,15 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
           <ButtonsJudgeTrap appState={appState} />
         </Stack>
 
-        <Stack sx={style_secondPart}>
-          <Stack sx={style_borderedPartTwo}>
-            <ChangeSecretWord appState={appState} />
-            <ButtonReportForbiddenClue appState={appState} />
-            <TrapsRemaining appState={appState} />
-            <Traps appState={appState} />
-          </Stack>
-          {breakpoint_xl && <Teams appState={appState} />}
+        <Stack sx={style_borderedPartTwo}>
+          <ChangeSecretWord appState={appState} />
+          <ButtonReportForbiddenClue appState={appState} />
+          <TrapsRemaining appState={appState} />
+          <Traps appState={appState} />
         </Stack>
-      </Stack>
+
+        {breakpoint_xl && <Teams appState={appState} />}
+      </Box>
 
       <ModalSubmitWord appState={appState} displayed={displayed} close={remove} />
     </>
@@ -68,35 +67,35 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
 
 const style_board: SxProps = {
   display: { xs: "flex", lg: "grid" },
+  flexFlow: "column nowrap",
+  gap: { xs: 3, sm: 4, lg: "none" },
+
   gridTemplateColumns: "repeat(12, 1fr)",
   gridTemplateRows: "repeat(12, 1fr)",
   alignItems: { xs: "center", lg: "start" },
-  gap: { xs: 3, sm: 4, lg: "none" },
   rowGap: 3,
   columnGap: 4,
   justifyItems: "center",
 
-  overflowY: "scroll",
-  width: "100%",
-  height: "100%",
+  maxWidth: shape.appMaxWidth,
+  maxHeight: { xs: "none", lg: "950px" },
 
-  padding: { xs: 2, sm: 3 },
+  margin: "auto",
+  px: shape.spacingBase,
+  paddingBottom: { xs: `${shape.appBarHeight + 50}px`, lg: 8 },
+  paddingTop: { xs: 3, lg: `${shape.appBarHeight + 35}px` },
 }
 
 const style_borderedBoardPart: SxProps = {
   maxWidth: "500px",
   width: "100%",
   maxHeight: shape.trapSectionMaxHeight,
-  height: "100%",
 
-  gridRow: "2/13",
+  gridRow: "2/11",
   alignSelf: { xs: "center", lg: "start" },
 
-  marginBottom: 2,
-  margin: 0,
-  px: { xs: 1.5, sm: 2, md: 3 },
-  py: { xs: 3 },
-
+  
+  padding: shape.spacingBase,
   boxShadow: 12,
   backgroundColor: "background.paper",
   borderWidth: shape.borderWidth,
@@ -111,24 +110,17 @@ const style_borderedPartOne: SxProps = {
   flexFlow: "column nowrap",
   alignItems: "stretch",
   gap: { xs: 3, md: 4 },
-  gridColumn: { xs: "1/13", lg: "1/7", xl: "1/6" },
+
+  gridColumn: { lg: "1/7", xl: "1/6" },
   justifySelf: "end",
   minHeight: { xs: "450px", lg: shape.trapSectionMaxHeight },
 }
 
-const style_secondPart: SxProps = {
-  gridColumn: { xs: "1/13", lg: "7/13", xl: "6/13" },
-  justifySelf: "start",
-  flexFlow: "row nowrap",
-  justifyContent: { xs: "center", lg: "start" },
-  gap: 4,
-  width: "100%",
-}
-
 const style_borderedPartTwo: SxProps = {
   ...style_borderedBoardPart,
+  gridColumn: { lg: "7/13", xl: "6/10" },
+  minHeight: { xs: "200px", lg: shape.trapSectionMaxHeight },
   overflow: "hidden",
-  minHeight: shape.trapSectionMaxHeight,
 }
 
 const style_buttons: SxProps = {

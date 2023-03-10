@@ -29,7 +29,7 @@ export function Score({ appState }: Props) {
 const style_container: SxProps = {
   flexFlow: "column nowrap",
   alignItems: "center",
-  gridColumn: "1/12",
+  gridColumn: "1/13",
   gridRow: "1/2",
 }
 

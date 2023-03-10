@@ -6,7 +6,6 @@ import { GlobalFeatures } from "./components/global-features.js"
 import { InterfaceConnectingServer } from "./components/interface-connecting/interface-connecting-server.js"
 import { InterfaceGame } from "./components/interface-game/interface-game.js"
 import { InterfaceLogging } from "./components/interface-logging/interface-logging.js"
-import { InterfaceShared } from "./components/interface-shared.js"
 import { initializeSocketIo } from "./config/initialize-socket-io.js"
 import storageKeys from "./config/storage-keys.js"
 import { useSubscribeIntentionalDisconnection } from "./custom-hooks/use-subscribe-intentional-disconnection.js"
@@ -41,9 +40,5 @@ export default function App() {
       appInterface = <h1>Error</h1>
   }
 
-  return (
-    <GlobalFeatures>
-      <InterfaceShared>{appInterface}</InterfaceShared>
-    </GlobalFeatures>
-  )
+  return <GlobalFeatures>{appInterface}</GlobalFeatures>
 }
