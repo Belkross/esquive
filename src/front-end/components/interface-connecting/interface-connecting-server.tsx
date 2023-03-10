@@ -27,6 +27,7 @@ const style_container: SxProps = {
   alignItems: "center",
   gap: 4,
   marginTop: 3,
+  height: "100%",
 }
 
 const style_circularProgress = {
