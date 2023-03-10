@@ -13,6 +13,7 @@ export function createMuiComponents(theme: Theme): ThemeOptions {
         },
       },
       MuiIconButton: {
+        defaultProps: { disableFocusRipple: true },
         styleOverrides: {
           root: {
             borderRadius: theme.shape.borderRadius,
@@ -25,12 +26,16 @@ export function createMuiComponents(theme: Theme): ThemeOptions {
               backgroundColor: theme.palette.action.disabledBackground,
               borderColor: theme.palette.action.disabledBackground,
             },
+            "&:focus": {
+              backgroundColor: "inherit",
+            },
           },
         },
       },
       MuiButton: {
         defaultProps: {
           variant: "outlined",
+          disableFocusRipple: true,
         },
         variants: [
           {
@@ -51,6 +56,9 @@ export function createMuiComponents(theme: Theme): ThemeOptions {
             "&:disabled": {
               backgroundColor: theme.palette.action.disabledBackground,
               borderColor: theme.palette.action.disabled,
+            },
+            "&:focus": {
+              backgroundColor: "inherit",
             },
           },
         },
