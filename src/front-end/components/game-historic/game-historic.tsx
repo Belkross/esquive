@@ -42,4 +42,5 @@ const style_container: SxProps = {
 
 const style_typography: SxProps = {
   fontFamily: "Courier Prime , monospace",
+  fontSize: "0.85rem"
 }
