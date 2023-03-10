@@ -43,6 +43,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-sonarjs": "^0.18.0",
     "eslint-plugin-unicorn": "^45.0.2",
+    "nodemon": "^2.0.21",
     "ts-node": "^10.9.1",
     "vite": "^4.1.0"
   }
