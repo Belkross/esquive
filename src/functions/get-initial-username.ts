@@ -1,6 +1,6 @@
 import { checkUsernameValidity } from "./check-username-validity.js"
 
-const DEFAULT_USERNAME = "Joueur"
+const DEFAULT_USERNAME = ""
 
 export function getInitialUsername(localStorageKey: string) {
   const storedUsername = localStorage.getItem(localStorageKey)
