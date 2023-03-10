@@ -36,8 +36,10 @@ export function ButtonChatGeneral({ appState }: Props) {
 
   const { generalMessages } = appState.roomState
   const lastMessageDate = generalMessages[generalMessages.length - 1].date
+  const lastMessageAuthor = generalMessages[generalMessages.length - 1].author
   const newMessageReceived = lastMessageDate > badge.lastMessage
-  const hasToBeNotified = newMessageReceived && !drawer.displayed
+  const newMessageIsFromPlayer = lastMessageAuthor !== "Esquive"
+  const hasToBeNotified = newMessageReceived && !drawer.displayed && newMessageIsFromPlayer
   useEffect(() => {
     if (newMessageReceived)
       setBadge((prevBadge) => ({
