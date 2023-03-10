@@ -10,7 +10,7 @@ export function initializeSocketIo() {
   let serverUrl
   switch (environment) {
     case "production":
-      serverUrl = "https://esquive.herokuapp.com"
+      serverUrl = process.env.SERVER_URL as string
       break
     case "development":
       serverUrl = "http://localhost:1000"
