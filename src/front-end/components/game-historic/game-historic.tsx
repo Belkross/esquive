@@ -35,7 +35,7 @@ const style_container: SxProps = {
   borderWidth: 1,
   borderStyle: "solid",
   borderColor: grey[800],
-  gap: 0.6,
+  gap: 0.2,
   margin: 0,
   overflow: "hidden",
 }
