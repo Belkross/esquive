@@ -1,4 +1,4 @@
-import { Breakpoint, Button, IconButton, SxProps, useMediaQuery, useTheme } from "@mui/material"
+import { Breakpoint, Button, IconButton, SxProps, Tooltip, useMediaQuery, useTheme } from "@mui/material"
 import { ReactElement } from "react"
 import { FlowlessFunction } from "../../types/main.js"
 
@@ -10,19 +10,24 @@ type Props = {
   sx?: SxProps
   selected?: boolean
   breakpoint?: Breakpoint
+  tooltip?: string
 }
 
-export function ButtonResponsive({ icon, label, onClick, whileDisabled, sx, selected, breakpoint }: Props) {
+export function ButtonResponsive({ icon, label, onClick, whileDisabled, sx, selected, breakpoint, tooltip }: Props) {
   const screenIsLargeEnough = useMediaQuery(useTheme().breakpoints.up(breakpoint || "md"))
   const backgroundColor = selected ? "background.navBar" : "primary.main"
 
   return screenIsLargeEnough ? (
-    <Button startIcon={icon} onClick={onClick} disabled={whileDisabled} sx={{ backgroundColor, ...sx }}>
-      {label}
-    </Button>
+    <Tooltip title={tooltip}>
+      <Button startIcon={icon} onClick={onClick} disabled={whileDisabled} sx={{ backgroundColor, ...sx }}>
+        {label}
+      </Button>
+    </Tooltip>
   ) : (
-    <IconButton onClick={onClick} disabled={whileDisabled} aria-label={label} sx={{ backgroundColor, ...sx }}>
-      {icon}
-    </IconButton>
+    <Tooltip title={tooltip}>
+      <IconButton onClick={onClick} disabled={whileDisabled} aria-label={label} sx={{ backgroundColor, ...sx }}>
+        {icon}
+      </IconButton>
+    </Tooltip>
   )
 }
