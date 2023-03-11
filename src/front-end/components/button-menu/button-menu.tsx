@@ -56,6 +56,5 @@ export function ButtonMenu({ appState }: Props) {
 const style_drawer: SxProps = {
   width: "100%",
   maxWidth: shape.drawerMaxWidth,
-  height: "100vh",
-  overflow: "hidden",
+  height: "100%",
 }

@@ -46,7 +46,7 @@ const style_container: SxProps = {
   py: 1.5,
   boxShadow: 16,
   zIndex: 2,
-  overflowX: "scroll",
+  overflowX: { xs: "scroll", sm: "hidden" },
 
   borderColor: "primary.main",
   borderWidth: shape.borderWidth,
