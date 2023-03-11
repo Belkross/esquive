@@ -4,7 +4,8 @@ import { getWhileClientIsOratorAndPlaying } from "../../../functions/get-while-c
 import { AppState, setState } from "../../../types/main.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { TitleMenu } from "../button-menu/title-menu.js"
-import { ChatInputState, chatInitialInputState } from "./button-chat-general.js"
+import { ChatInputState } from "./button-chat-general.js"
+import { chatOratorInitialInputState } from "./button-chat-orator.js"
 import { style_chatInputGroup, style_chatMessageList } from "./chat-general.js"
 import handleChatInputChange from "./handle-chat-input-change.js"
 import MessageListOrator from "./message-list-orator.js"
@@ -27,11 +28,12 @@ export function ChatOrator({ appState, input, setInput }: Props) {
   const whileInputsAvailable = whileInputsDisplayed && !roomState.isJudgingTrap
   const whileSubmittable = whileInputsAvailable && input.validity
 
-  const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => handleChatInputChange(event, input, setInput)
+  const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) =>
+    handleChatInputChange(event, input, setInput, "orator")
   const handleSubmit = () => {
     if (whileSubmittable) {
       socket.emit("submitChatMessage", "orator", input.value)
-      setInput(chatInitialInputState)
+      setInput(chatOratorInitialInputState)
     }
   }
   const handleKeyDown = (event: KeyboardEvent) => {

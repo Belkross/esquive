@@ -21,7 +21,7 @@ export function ChatGeneral({ appState, input, setInput, closeDrawer }: Props) {
   const messages = appState.roomState.generalMessages
   const smallScreenLayout = useMediaQuery(useTheme().breakpoints.down("lg"))
 
-  const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => handleChatInputChange(event, input, setInput)
+  const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => handleChatInputChange(event, input, setInput, "general")
   const handleSubmit = () => {
     if (input.validity) {
       socket.emit("submitChatMessage", "general", input.value)

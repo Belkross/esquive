@@ -17,7 +17,7 @@ export type ChatInputState = {
 export const chatInitialInputState = {
   value: "",
   validity: false,
-  characterRemaining: RoomState.CHAT_MESSAGE_MAX_LENGTH,
+  characterRemaining: RoomState.GENERAL_MESSAGE_MAX_LENGTH,
 }
 
 type Props = {

@@ -16,8 +16,8 @@ export function submitChatMessage(server: ServerManager) {
   })
 }
 
-function actionAllowed(channel: string, message: unknown) {
-  const messageIsValid = checkChatMessageValidity(message)
+function actionAllowed(channel: ChatChannel, message: unknown) {
+  const messageIsValid = checkChatMessageValidity(message, channel)
 
   const channelObject: Record<ChatChannel, undefined> = { general: undefined, orator: undefined }
   const channelPossibilities = Object.keys(channelObject)

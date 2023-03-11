@@ -7,16 +7,23 @@ import { NavbarChatOrator } from "./navbar-chat-orator.js"
 import shape from "../../theme/shape.js"
 import { ChatOrator } from "./chat-orator.js"
 import OratorIcon from "@mui/icons-material/RecordVoiceOver"
-import { ChatInputState, chatInitialInputState } from "./button-chat-general.js"
+import { ChatInputState } from "./button-chat-general.js"
+import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 
 type Props = {
   appState: AppState
   openSubmitWordModal: FlowlessFunction
 }
 
+export const chatOratorInitialInputState = {
+  value: "",
+  validity: false,
+  characterRemaining: RoomState.ORATOR_MESSAGE_MAX_LENGTH,
+}
+
 export function ButtonChatOrator({ appState, openSubmitWordModal }: Props) {
   const [badge, setBadge] = useState({ notification: 0, lastMessage: Date.now() })
-  const [input, setInput] = useState<ChatInputState>(chatInitialInputState)
+  const [input, setInput] = useState<ChatInputState>(chatOratorInitialInputState)
   const drawer = useTemporaryElement(false)
 
   const handleClick = () => {
