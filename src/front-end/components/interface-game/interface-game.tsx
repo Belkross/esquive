@@ -89,12 +89,10 @@ const style_board: SxProps = {
 const style_borderedBoardPart: SxProps = {
   maxWidth: "500px",
   width: "100%",
-  maxHeight: shape.trapSectionMaxHeight,
 
   gridRow: "2/11",
   alignSelf: { xs: "center", lg: "start" },
 
-  
   padding: shape.spacingBase,
   boxShadow: 12,
   backgroundColor: "background.paper",
@@ -114,12 +112,14 @@ const style_borderedPartOne: SxProps = {
   gridColumn: { lg: "1/7", xl: "1/6" },
   justifySelf: "end",
   minHeight: { xs: "450px", lg: shape.trapSectionMaxHeight },
+  maxHeight: { xs: "500px", lg: shape.trapSectionMaxHeight },
 }
 
 const style_borderedPartTwo: SxProps = {
   ...style_borderedBoardPart,
   gridColumn: { lg: "7/13", xl: "6/10" },
   minHeight: { xs: "200px", lg: shape.trapSectionMaxHeight },
+  maxHeight: shape.trapSectionMaxHeight,
   overflow: "hidden",
 }
 
