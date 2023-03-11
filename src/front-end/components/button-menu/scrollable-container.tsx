@@ -17,5 +17,5 @@ const style_container: SxProps = {
 
   gap: { xs: 2, sm: 3, md: 4 },
   px: { xs: 2, sm: 2.5, md: 3 },
-  py: { xs: 4, sm: 5, md: 6 },
+  py: { xs: 4, sm: 5 },
 }

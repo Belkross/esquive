@@ -1,6 +1,6 @@
 import { AppState } from "../../types/main.js"
 import ShuffleIcon from "@mui/icons-material/Shuffle"
-import { Button } from "@mui/material"
+import { Button, SxProps } from "@mui/material"
 import { socket } from "../config/initialize-socket-io.js"
 
 type Props = {
@@ -11,7 +11,7 @@ export function ButtonShuffleTeams({ appState }: Props) {
   const whileDisabled = getWhileDisabled(appState)
 
   return (
-    <Button startIcon={<ShuffleIcon />} onClick={handleClick} disabled={whileDisabled}>
+    <Button startIcon={<ShuffleIcon />} onClick={handleClick} disabled={whileDisabled} sx={style_button}>
       Mélanger les équipes
     </Button>
   )
@@ -30,4 +30,8 @@ function getWhileDisabled(appState: AppState) {
   const whileActivated = clientIsAdmin && duringPreRoundPhase
 
   return !whileActivated
+}
+
+const style_button: SxProps = {
+  marginTop: 3,
 }
