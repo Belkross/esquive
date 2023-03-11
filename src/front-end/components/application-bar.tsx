@@ -44,7 +44,7 @@ const style_container: SxProps = {
   backgroundColor: "background.navBar",
   px: 2,
   py: 1.5,
-  boxShadow: 16,
+  boxShadow: shape.navbarShadow,
   zIndex: 2,
   overflowX: { xs: "scroll", sm: "hidden" },
 
@@ -56,5 +56,5 @@ const style_container: SxProps = {
 
 const style_stackButtons = {
   flexDirection: "row",
-  gap: 1.2,
+  gap: shape.spacingTabs,
 }

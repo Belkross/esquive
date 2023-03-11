@@ -47,27 +47,32 @@ export function TabGroupMenu({ selectedTab, setSelectedTab, close }: Props) {
 
   return (
     <Stack component="nav" sx={style_tabs}>
-      {list_tab}
+      <Stack sx={style_tabGroup}>{list_tab}</Stack>
       {smallScreenLayout && <ButtonCloseElement onClick={close} />}
     </Stack>
   )
 }
 
 export const style_tabs: SxProps = {
-  flexFlow: "row wrap",
-  justifyContent: "center",
+  flexFlow: "row nowrap",
+  justifyContent: { xs: "space-between", lg: "center" },
   alignItems: "center",
-  gap: { xs: 1, sm: 2 },
+  gap: shape.spacingTabs,
   flexShrink: 0,
 
   minHeight: shape.appBarHeight,
   backgroundColor: "background.navBar",
-  px: 3,
+  px: { xs: 1, sm: 2, md: 3 },
   py: 1.5,
   zIndex: 2,
-  boxShadow: 7,
+  boxShadow: shape.navbarShadow,
 
   borderTopColor: "background.border",
   borderTopWidth: shape.borderWidth,
   borderTopStyle: shape.borderStyle,
+}
+
+const style_tabGroup: SxProps = {
+  flexFlow: "row nowrap",
+  gap: shape.spacingTabs,
 }
