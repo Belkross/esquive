@@ -43,7 +43,7 @@ const style_typographyPlayer = (player: PlayerData): SxProps => {
     borderStyle: "solid",
     borderWidth: "1px",
     borderColor: "text.primary",
-    borderRadius: shape.borderRadius,
+    borderRadius: `${shape.borderRadius}px`,
   }
 }
 
