@@ -3,13 +3,16 @@ import { Button, Paper, SxProps, TextField, Typography } from "@mui/material"
 import { socket } from "../../config/initialize-socket-io"
 import { checkRoomValidity } from "../../../functions/check-room-validity.js"
 import { checkUsernameValidity } from "../../../functions/check-username-validity.js"
-import { useValidTextInput } from "../../custom-hooks/use-valid-text-input.js"
 import shape from "../../theme/shape.js"
 import { RoomState } from "../../../back-end/config/room-state/room-state.js"
+import { useValidTextInputWithError } from "../../custom-hooks/use-valid-text-input-with-error.js"
 
 export function FormLogging({ appState, setAppState }: InterfaceLoggingProps) {
-  const [usernameInput, onUsernameInputChange] = useValidTextInput(appState.username, checkUsernameValidity)
-  const [roomInput, onRoomInputChange] = useValidTextInput("", checkRoomValidity)
+  const { input: usernameInput, onInputChange: onUsernameInputChange } = useValidTextInputWithError(
+    appState.username,
+    checkUsernameValidity
+  )
+  const { input: roomInput, onInputChange: onRoomInputChange } = useValidTextInputWithError("", checkRoomValidity)
 
   const handleSubmit = () => {
     if (roomInput.validity && usernameInput.validity) {
@@ -38,6 +41,7 @@ export function FormLogging({ appState, setAppState }: InterfaceLoggingProps) {
         value={usernameInput.value}
         onChange={onUsernameInputChange}
         helperText={`${RoomState.USERNAME_MIN_LENGTH} à ${RoomState.USERNAME_MAX_LENGTH} lettres`}
+        error={usernameInput.error}
       />
       <TextField
         label="Salon"
@@ -45,6 +49,7 @@ export function FormLogging({ appState, setAppState }: InterfaceLoggingProps) {
         value={roomInput.value}
         onChange={onRoomInputChange}
         helperText={`${RoomState.ROOMNAME_MIN_LENGTH} à ${RoomState.ROOMNAME_MAX_LENGTH} lettres`}
+        error={roomInput.error}
       />
       <Button onClick={handleSubmit} disabled={!roomInput.validity || !usernameInput.validity}>
         Valider
