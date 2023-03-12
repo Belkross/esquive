@@ -13,7 +13,7 @@ export function ButtonSubmitWord({ appState, openModal }: Props) {
   const whileActivated = getWhileModalAllowed(appState)
 
   const smallScreen = useMediaQuery(useTheme().breakpoints.down("md"))
-  const tooltip = smallScreen ? "Soumettre un mot" : "Shift + Entrée"
+  const tooltip = smallScreen ? undefined : "Shift + Entrée"
 
   return (
     <ButtonResponsive
