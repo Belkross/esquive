@@ -12,7 +12,7 @@ type Props = {
 
 export function ButtonThumb({ isThumbUp, clientVote, votersUsername, small, handleClick }: Props) {
   const votersUsernameString = votersUsername.join(", ")
-  const badgeColor = isThumbUp ? "success" : "error"
+  const badgeColor = isThumbUp ? "success" : "warning"
   const icon = isThumbUp ? <ThumbUpIcon /> : <ThumbDownIcon />
 
   return (
@@ -28,7 +28,7 @@ export function ButtonThumb({ isThumbUp, clientVote, votersUsername, small, hand
 
 const style_button = (buttonVoteType: boolean, clientVote: boolean | undefined, small: boolean | undefined) => {
   const buttonType = buttonVoteType ? "thumbUp" : "thumbDown"
-  const buttonMainColor = buttonType === "thumbUp" ? "success.main" : "error.main"
+  const buttonMainColor = buttonType === "thumbUp" ? "success.dark" : "warning.main"
   const size = small ? "30px" : "inherit"
 
   const getIconColor = () => {
