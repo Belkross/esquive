@@ -4,7 +4,7 @@ type Session = {
 }
 
 export class SessionStorage {
-  private readonly storage: { [sessionId: string]: Session } = {}
+  readonly storage: { [sessionId: string]: Session } = {}
 
   add(sessionId: string, username: string, roomName: string) {
     this.storage[sessionId] = { username, roomName }

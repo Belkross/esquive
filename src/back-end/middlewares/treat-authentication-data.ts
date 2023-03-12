@@ -5,6 +5,7 @@ import { DefaultEventsMap } from "socket.io/dist/typed-events.js"
 import { checkRoomValidity } from "../../functions/check-room-validity.js"
 import { checkUsernameValidity } from "../../functions/check-username-validity.js"
 import { ClientToServerEvents, ServerToClientEvents } from "../../types/server.js"
+import { modelConnections } from "../config/database/models.js"
 import { RoomStorage } from "../config/room-storage.js"
 import { SessionStorage } from "../config/session-storage.js"
 import { io, rooms, sessions } from "../server.js"
@@ -28,8 +29,17 @@ export async function treatAuthenticationData(socket: SocketArg, next: Next) {
     const newSessionId = randomUUID()
     socket.handshake.auth.sessionId = newSessionId //this line is not semantically correct as handshakes are supposed to represent the data the client provided to get connected. I think I should use socket.data
     sessions.add(newSessionId, username, room)
+    registerConnection(socket)
     return next()
   }
+}
+
+function registerConnection(socket: SocketArg) {
+  modelConnections.create({
+    totalRoom: Object.keys(rooms.storage).length,
+    totalUser: Object.keys(sessions.storage).length - 1,
+    handshake: socket.handshake,
+  })
 }
 
 function noMoreRoomSlot(rooms: RoomStorage, roomName: string) {

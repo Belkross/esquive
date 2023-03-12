@@ -25,6 +25,7 @@ import { changeRoundSettings } from "./socket-events/change-round-settings.js"
 import { submitChatMessage } from "./socket-events/submit-chat-message.js"
 import { toggleRoomAccess } from "./socket-events/toggle-room-access.js"
 import { updateTypingActivity } from "./socket-events/update-typing-activity.js"
+import { connectToDatabase } from "./config/database/connect.js"
 
 const port = process.env.PORT || 1000
 const app = express()
@@ -32,6 +33,7 @@ const httpServer = createServer(app)
 export const io = createIo(httpServer)
 export const sessions = new SessionStorage()
 export const rooms = new RoomStorage()
+connectToDatabase()
 
 app.get("*", (request, response) => response.send("Server is running"))
 
