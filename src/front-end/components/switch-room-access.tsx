@@ -7,13 +7,14 @@ type Props = {
 }
 
 export function SwitchRoomAccess({ appState }: Props) {
-  const { roomOpened } = appState.roomState
+  const { roomOpened, players } = appState.roomState
+  const clientIsAdmin = players[appState.sessionId].isAdmin
 
   const label = roomOpened ? "Salon ouvert" : "Salon fermé"
 
   const SwitchVolume = <Switch color="info" checked={roomOpened} onChange={handleChange} />
 
-  return <FormControlLabel control={SwitchVolume} label={label} />
+  return <FormControlLabel control={SwitchVolume} label={label} disabled={!clientIsAdmin} />
 }
 
 function handleChange() {
