@@ -60,12 +60,13 @@ const style_container: SxProps = {
   gap: 3,
 
   gridRow: "3/11",
-  gridColumn: "1/6",
+  gridColumn: "1/7",
   justifySelf: "end",
   alignSelf: { lg: "start" },
 
   maxWidth: { lg: "450px" },
   width: "100%",
+  height: { lg: "100%" },
   backgroundImage: "none",
   padding: shape.spacingBase,
 

@@ -1,13 +1,13 @@
-import { Link, SvgIcon, SxProps } from "@mui/material"
+import { Link, Stack, SvgIcon, SxProps } from "@mui/material"
 
 export function LinkDiscord() {
   return (
-    <>
+    <Stack sx={style_container}>
       <DiscordIcon />
       <Link href="https://discord.gg/s7d6vDKjbB" target="_blank" rel="noreferrer" sx={style_link}>
         Rejoindre le Discord Esquive
       </Link>
-    </>
+    </Stack>
   )
 }
 
@@ -29,6 +29,13 @@ function DiscordIcon() {
       </svg>
     </SvgIcon>
   )
+}
+
+const style_container: SxProps = {
+  flexFlow: "row nowrap",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: 1.5,
 }
 
 const style_link: SxProps = {
