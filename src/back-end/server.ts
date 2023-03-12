@@ -33,7 +33,7 @@ export const io = createIo(httpServer)
 export const sessions = new SessionStorage()
 export const rooms = new RoomStorage()
 
-app.get("/", (request, response) => response.send("Server is active"))
+app.get("*", (request, response) => response.send("Server is running"))
 
 io.use(treatAuthenticationData)
 
