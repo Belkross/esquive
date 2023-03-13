@@ -5,7 +5,7 @@ export type Trap = { value: string; author: string; opinions: Opinions }
 type SecretWord = { value: string; opinions: Opinions }
 
 export class TeamData {
-  readonly color: "indigo" | "rouge"
+  readonly color: "bleue" | "rouge"
   readonly opponent: Team
   readonly traps: { [trapIndex: string]: Trap } = {}
   readonly guessAttempts: string[] = []
@@ -17,7 +17,7 @@ export class TeamData {
   trapped = false
 
   constructor(team: Team) {
-    this.color = team === "one" ? "indigo" : "rouge"
+    this.color = team === "one" ? "bleue" : "rouge"
     this.opponent = team === "one" ? "two" : "one"
   }
 }
