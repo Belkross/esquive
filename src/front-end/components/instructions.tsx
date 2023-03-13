@@ -1,4 +1,5 @@
-import { SxProps, Typography } from "@mui/material"
+import { Box, SxProps, Typography } from "@mui/material"
+import { getPlayingTeam } from "../../back-end/config/room-state/methods/get-playing-team.js"
 import { RoomState } from "../../back-end/config/room-state/room-state.js"
 import { AppState } from "../../types/main.js"
 
@@ -7,13 +8,48 @@ type Props = {
 }
 
 export function Instructions({ appState }: Props) {
-  const instruction = pickInstruction(appState.roomState, appState.sessionId)
+  const { roomState, sessionId } = appState
+  const instruction = pickInstruction(roomState, sessionId)
+  const phaseName = getPhaseName(roomState)
 
-  return <Typography sx={style_typography}>{instruction}</Typography>
+  return (
+    <Box sx={style_container}>
+      <Typography variant="h3" mb={1}>
+        {phaseName}
+      </Typography>
+      <Typography>{instruction}</Typography>
+    </Box>
+  )
 }
 
-const style_typography: SxProps = {
+const style_container: SxProps = {
   mx: { xs: 1, sm: 2 },
+}
+
+function getPhaseName(roomState: RoomState) {
+  const playingTeam = getPlayingTeam.call(roomState)
+  const playingTeamName = roomState.teams[playingTeam].color
+
+  let phaseName = ""
+
+  switch (roomState.roundAdvancement) {
+    case 1:
+      phaseName = "Début de manche"
+      break
+    case 2:
+      phaseName = "Phase piège"
+      break
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+      phaseName = `Tour de l’équipe ${playingTeamName}`
+      break
+    default:
+      phaseName = "Error"
+  }
+
+  return phaseName
 }
 
 function pickInstruction(roomState: RoomState, sessionId: string) {
@@ -41,12 +77,12 @@ function pickInstruction(roomState: RoomState, sessionId: string) {
     },
     trapping: {
       one: {
-        guesser: `Piégez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner votre mot.`,
-        orator: `Piégez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner votre mot.`,
+        guesser: `Piégez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner le mot ${teamOneSecretWord.toUpperCase()}.`,
+        orator: `Piégez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner le mot ${teamOneSecretWord.toUpperCase()}.`,
       },
       two: {
-        guesser: `Piégez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner votre mot.`,
-        orator: `Piégez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner votre mot.`,
+        guesser: `Piégez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner le mot ${teamTwoSecretWord.toUpperCase()}.`,
+        orator: `Piégez les mots qui ont le plus de chance d’être utilisés par l’orateur adverse pour faire deviner le mot ${teamTwoSecretWord.toUpperCase()}.`,
       },
     },
     "pre guessing one": {
