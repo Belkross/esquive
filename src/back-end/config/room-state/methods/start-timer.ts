@@ -8,13 +8,16 @@ export async function startTimer(this: RoomState, io: Io) {
 
   while (this.timerIsRunning && this.timer > 0) {
     --this.timer
+
+    if (this.timer === 0) {
+      this.timerIsRunning = false
+      this.configureNextRoundPhase()
+      io.in(this.roomName).emit("roomStateUpdate", this)
+      break
+    }
+    
     io.in(this.roomName).emit("roomStateUpdate", this)
     await oneSecond()
-  }
-  if (this.timer === 0) {
-    this.timerIsRunning = false
-    this.configureNextRoundPhase()
-    io.in(this.roomName).emit("roomStateUpdate", this)
   }
 }
 
