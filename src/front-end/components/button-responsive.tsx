@@ -18,7 +18,7 @@ export function ButtonResponsive({ icon, label, onClick, whileDisabled, sx, sele
   const backgroundColor = selected ? "background.navBar" : "primary.main"
 
   return screenIsLargeEnough ? (
-    <Tooltip title={tooltip}>
+    <Tooltip title={tooltip} disableFocusListener arrow>
       <Button startIcon={icon} onClick={onClick} disabled={whileDisabled} sx={{ backgroundColor, ...sx }}>
         {label}
       </Button>
