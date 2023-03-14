@@ -24,6 +24,7 @@
     "@types/node": "^18.11.19",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@socket.io/admin-ui": "0.5.1",
     "express": "^4.18.2",
     "mongoose": "^7.0.1",
     "react": "^18.2.0",

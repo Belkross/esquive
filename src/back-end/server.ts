@@ -26,14 +26,17 @@ import { submitChatMessage } from "./socket-events/submit-chat-message.js"
 import { toggleRoomAccess } from "./socket-events/toggle-room-access.js"
 import { updateTypingActivity } from "./socket-events/update-typing-activity.js"
 import { connectToDatabase } from "./config/database/connect.js"
+import { connectAdminUi } from "./config/connect-admin-ui.js"
 
 const port = process.env.PORT || 1000
 const app = express()
 const httpServer = createServer(app)
 export const io = createIo(httpServer)
+connectToDatabase()
+connectAdminUi(io)
+
 export const sessions = new SessionStorage()
 export const rooms = new RoomStorage()
-connectToDatabase()
 
 app.get("*", (request, response) => response.send("Server is running"))
 
