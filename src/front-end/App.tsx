@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react"
+import { useState } from "react"
 import { RoomState } from "../back-end/config/room-state/room-state.js"
 import { getInitialUsername } from "../functions/get-initial-username.js"
 import { AppState } from "../types/main.js"
@@ -21,20 +21,19 @@ const initialAppState: AppState = {
 
 export default function App() {
   const [appState, setAppState] = useState(initialAppState)
-  const memoizedSetAppState = useMemo(() => setAppState, [])
 
-  useSubscribeIntentionalDisconnection(memoizedSetAppState)
+  useSubscribeIntentionalDisconnection(setAppState)
 
   let appInterface
   switch (appState.status) {
     case "connectingToSocketIo":
-      appInterface = <InterfaceConnectingServer setAppState={memoizedSetAppState} />
+      appInterface = <InterfaceConnectingServer setAppState={setAppState} />
       break
     case "logging":
-      appInterface = <InterfaceLogging appState={appState} setAppState={memoizedSetAppState} />
+      appInterface = <InterfaceLogging appState={appState} setAppState={setAppState} />
       break
     case "logged":
-      appInterface = <InterfaceGame appState={appState} setAppState={memoizedSetAppState} />
+      appInterface = <InterfaceGame appState={appState} setAppState={setAppState} />
       break
     default:
       appInterface = <h1>Error</h1>
