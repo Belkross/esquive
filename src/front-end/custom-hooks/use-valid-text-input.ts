@@ -3,7 +3,10 @@ import { ChangeEvent, useState } from "react"
 type InputData = { value: string; validity: boolean }
 type InputChanger = (event: ChangeEvent<HTMLInputElement>) => void
 
-export function useValidTextInput(initialValue: string, validityChecker: (input: unknown) => boolean) {
+export function useValidTextInput(
+  initialValue: string,
+  validityChecker: (input: unknown) => boolean
+): [InputData, InputChanger] {
   const [input, setInput] = useState({ value: initialValue, validity: validityChecker(initialValue) })
 
   const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -15,5 +18,5 @@ export function useValidTextInput(initialValue: string, validityChecker: (input:
     })
   }
 
-  return [input, onInputChange] as [InputData, InputChanger]
+  return [input, onInputChange]
 }
