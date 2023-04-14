@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start:development-server": "cross-env NODE_ENV=development nodemon --watch src -e js,ts,json --exec \"ts-node --esm src/back-end/server.ts\"",
-    "start:development-server-autoConnection": "cross-env NODE_ENV=development AUTO_CONNECTION=true nodemon --watch src -e js,ts,json --exec \"ts-node --esm src/back-end/server.ts\"",
+    "start:development-server": "cross-env NODE_ENV=development nodemon --exec ts-node --esm src/back-end/server.ts",
+    "start:development-server-autoConnection": "cross-env NODE_ENV=development AUTO_CONNECTION=true nodemon --exec ts-node --esm src/back-end/server.ts",
     "start:frontend": "vite",
     "start:production-server": "node ./compiled-ts/back-end/server.js",
     "postinstall": "tsc",
