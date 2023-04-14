@@ -1,4 +1,4 @@
-import { AppState } from "../../types/main.js"
+import { AppState } from "../../types/types.js"
 import ShuffleIcon from "@mui/icons-material/Shuffle"
 import { Button, SxProps } from "@mui/material"
 import { socket } from "../config/initialize-socket-io.js"

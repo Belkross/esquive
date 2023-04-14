@@ -1,6 +1,6 @@
 import { List, Stack, TextField, Button, SxProps, useMediaQuery, useTheme } from "@mui/material"
 import { ChangeEvent, KeyboardEvent, useRef } from "react"
-import { AppState, FlowlessFunction, setState } from "../../../types/main.js"
+import { AppState, FlowlessFunction, setState } from "../../../types/types.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import ButtonCloseElement from "../button-close-element.js"
 import { TitleMenu } from "../button-menu/title-menu.js"
@@ -21,7 +21,8 @@ export function ChatGeneral({ appState, input, setInput, closeDrawer }: Props) {
   const messages = appState.roomState.generalMessages
   const smallScreenLayout = useMediaQuery(useTheme().breakpoints.down("lg"))
 
-  const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) => handleChatInputChange(event, input, setInput, "general")
+  const handleInputChange = (event: ChangeEvent<HTMLTextAreaElement>) =>
+    handleChatInputChange(event, input, setInput, "general")
   const handleSubmit = () => {
     if (input.validity) {
       socket.emit("submitChatMessage", "general", input.value)

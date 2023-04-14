@@ -4,7 +4,7 @@ import CircleIcon from "@mui/icons-material/Circle"
 import FailureIcon from "@mui/icons-material/Cancel"
 import { Team } from "../../../types/room-state.js"
 import { Stack, SxProps } from "@mui/material"
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 
 type Event = "slot" | "fail" | "trapped" | "success"

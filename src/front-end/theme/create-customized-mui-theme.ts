@@ -2,7 +2,7 @@ import shape from "./shape.js"
 import palette from "./palette.js"
 import typography from "./typography.js"
 import { createTheme, responsiveFontSizes } from "@mui/material"
-import { ThemeMode } from "../../types/main.js"
+import { ThemeMode } from "../../types/types.js"
 import { createMuiComponents } from "./components.js"
 import breakpoints from "./breakpoints.js"
 

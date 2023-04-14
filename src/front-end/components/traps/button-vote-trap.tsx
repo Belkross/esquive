@@ -1,5 +1,5 @@
 import { getPlayerTeam } from "../../../functions/get-player-team.js"
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { ButtonThumb } from "../button-thumb.js"
 

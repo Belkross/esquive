@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"
-import { AppState, FlowlessFunction, setState } from "../../../types/main.js"
+import { AppState, FlowlessFunction, setState } from "../../../types/types.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { SoundActivationContext } from "../provider-sound-activation.js"
 import { listenToEventRequiringASound } from "./listen-to-event-requiring-a-sound.js"

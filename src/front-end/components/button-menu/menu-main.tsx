@@ -1,4 +1,4 @@
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import { ButtonLeaveRoom } from "../button-leave-room.js"
 import { SwitchSoundActivation } from "../switch-sound-activation.js"
 import { SxProps, Stack } from "@mui/material"

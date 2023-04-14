@@ -1,4 +1,4 @@
-import { AppState } from "../types/main.js"
+import { AppState } from "../types/types.js"
 import { getPlayerTeam } from "./get-player-team.js"
 
 export function getWhileClientIsOratorAndPlaying(appState: AppState) {

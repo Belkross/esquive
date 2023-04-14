@@ -1,7 +1,7 @@
 import { Typography, Stack, SxProps } from "@mui/material"
 import { grey } from "@mui/material/colors"
 import { useRef } from "react"
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import shape from "../../theme/shape.js"
 import { useAutoScroll } from "./use-auto-scroll.js"
 
@@ -41,5 +41,5 @@ const style_container: SxProps = {
 
 const style_typography: SxProps = {
   fontFamily: "Courier Prime , monospace",
-  fontSize: "0.85rem"
+  fontSize: "0.85rem",
 }

@@ -1,4 +1,4 @@
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import { ButtonShuffleTeams } from "../button-shuffle-teams.js"
 import { Teams } from "../teams.js"
 import { ScrollableContainer } from "./scrollable-container.js"

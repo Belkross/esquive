@@ -1,4 +1,4 @@
-import { ChatChannel } from "../../../../types/main.js"
+import { ChatChannel } from "../../../../types/types.js"
 import { RoomState } from "../room-state.js"
 
 export class ChatMessage {
@@ -11,7 +11,6 @@ export class ChatMessage {
     this.date = Date.now()
   }
 }
-
 
 export function addChatMessage(this: RoomState, channel: ChatChannel, message: string, sessionId: string) {
   const author = this.players[sessionId].username

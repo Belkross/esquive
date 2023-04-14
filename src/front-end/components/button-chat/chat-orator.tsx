@@ -1,7 +1,7 @@
 import { List, Stack, TextField, Button } from "@mui/material"
 import { ChangeEvent, KeyboardEvent, useRef } from "react"
 import { getWhileClientIsOratorAndPlaying } from "../../../functions/get-while-client-is-orator-and-playing.js"
-import { AppState, setState } from "../../../types/main.js"
+import { AppState, setState } from "../../../types/types.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { TitleMenu } from "../button-menu/title-menu.js"
 import { ChatInputState } from "./button-chat-general.js"

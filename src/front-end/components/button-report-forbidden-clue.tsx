@@ -1,7 +1,7 @@
 import { Stack, IconButton, Typography } from "@mui/material"
 import { RoomState } from "../../back-end/config/room-state/room-state.js"
 import { getPlayerTeam } from "../../functions/get-player-team.js"
-import { AppState } from "../../types/main.js"
+import { AppState } from "../../types/types.js"
 import ActivateIcon from "@mui/icons-material/Error"
 import { socket } from "../config/initialize-socket-io.js"
 

@@ -1,6 +1,6 @@
 import ActivateIcon from "@mui/icons-material/Error"
 import { IconButton } from "@mui/material"
-import { AppState } from "../../types/main.js"
+import { AppState } from "../../types/types.js"
 import { getPlayerTeam } from "../../functions/get-player-team.js"
 import { socket } from "../config/initialize-socket-io.js"
 

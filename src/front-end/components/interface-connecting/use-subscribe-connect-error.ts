@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect } from "react"
-import { AppState, FlowlessFunction } from "../../../types/main.js"
+import { AppState, FlowlessFunction } from "../../../types/types.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { useAlertFeature } from "../alert-feature/alert-feature.js"
 import { AlertId } from "../alert-feature/alerts.js"

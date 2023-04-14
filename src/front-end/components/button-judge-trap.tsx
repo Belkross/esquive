@@ -1,7 +1,7 @@
 import ValidateIcon from "@mui/icons-material/Done"
 import RefuseIcon from "@mui/icons-material/Close"
 import { socket } from "../config/initialize-socket-io.js"
-import { AppState } from "../../types/main.js"
+import { AppState } from "../../types/types.js"
 import { ButtonResponsive } from "./button-responsive.js"
 import { Stack, SxProps } from "@mui/material"
 

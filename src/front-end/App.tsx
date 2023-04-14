@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { RoomState } from "../back-end/config/room-state/room-state.js"
 import { getInitialUsername } from "../functions/get-initial-username.js"
-import { AppState } from "../types/main.js"
+import { AppState } from "../types/types.js"
 import { GlobalFeatures } from "./components/global-features.js"
 import { InterfaceConnectingServer } from "./components/interface-connecting/interface-connecting-server.js"
 import { InterfaceGame } from "./components/interface-game/interface-game.js"

@@ -1,5 +1,5 @@
 import { ButtonChangeRole } from "./button-change-role/button-change-role.js"
-import { AppState } from "../../types/main.js"
+import { AppState } from "../../types/types.js"
 import { Stack, SxProps } from "@mui/material"
 
 type Props = {
@@ -30,7 +30,7 @@ const style_container: SxProps = {
   gridRow: "2/7",
   gridColumn: "10/13",
   alignSelf: "center",
-  justifySelf: "start"
+  justifySelf: "start",
 }
 
 const style_teamContainer: SxProps = {

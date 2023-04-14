@@ -6,12 +6,13 @@ import {
   SxProps,
   Typography,
   useMediaQuery,
-  useTheme, Grow
+  useTheme,
+  Grow,
 } from "@mui/material"
 import { forwardRef, KeyboardEvent, ReactElement, Ref, useRef } from "react"
 import { checkSubmitedWordValidity } from "../../../functions/check-submited-word-validity.js"
 import { getPlayerTeam } from "../../../functions/get-player-team.js"
-import { AppState, FlowlessFunction } from "../../../types/main.js"
+import { AppState, FlowlessFunction } from "../../../types/types.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import { useValidTextInputWithError } from "../../custom-hooks/use-valid-text-input-with-error.js"
 import shape from "../../theme/shape.js"

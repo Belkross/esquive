@@ -1,5 +1,5 @@
 import { Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
-import { AppState, FlowlessFunction } from "../../../types/main.js"
+import { AppState, FlowlessFunction } from "../../../types/types.js"
 import { Timer } from "../timer.js"
 import { ButtonSubmitWord } from "../button-submit-word/button-submit-word.js"
 import { style_tabs } from "../button-menu/tab-group-menu.js"

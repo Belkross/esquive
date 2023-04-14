@@ -1,6 +1,6 @@
 import { Breakpoint, Button, IconButton, SxProps, Tooltip, useMediaQuery, useTheme } from "@mui/material"
 import { ReactElement } from "react"
-import { FlowlessFunction } from "../../types/main.js"
+import { FlowlessFunction } from "../../types/types.js"
 
 type Props = {
   icon: ReactElement

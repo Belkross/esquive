@@ -1,5 +1,5 @@
 import { getPlayerTeam } from "../../../functions/get-player-team.js"
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 
 export function getWhileModalAllowed(appState: AppState) {
   const { roomState, sessionId } = appState

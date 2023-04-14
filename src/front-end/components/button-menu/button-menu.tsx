@@ -8,7 +8,7 @@ import { MenuTeam } from "./menu-team.js"
 import { MenuRules } from "./menu-rules/menu-rules.js"
 import { MenuSettings } from "./menu-settings.js"
 import { TabGroupMenu } from "./tab-group-menu.js"
-import { AppState, MenuTabId } from "../../../types/main.js"
+import { AppState, MenuTabId } from "../../../types/types.js"
 import shape from "../../theme/shape.js"
 
 type Props = {

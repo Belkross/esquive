@@ -1,5 +1,5 @@
 import { Box, Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
-import { AppState, FlowlessFunction } from "../../types/main.js"
+import { AppState, FlowlessFunction } from "../../types/types.js"
 import shape from "../theme/shape.js"
 import { ButtonChatGeneral } from "./button-chat/button-chat-general.js"
 import { ButtonChatOrator } from "./button-chat/button-chat-orator.js"

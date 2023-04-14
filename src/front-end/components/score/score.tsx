@@ -1,5 +1,5 @@
 import { Stack, SxProps, Typography } from "@mui/material"
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import { Points } from "./points.js"
 import { RoundAdvancementVisual } from "./round-advancement-visual.js"
 

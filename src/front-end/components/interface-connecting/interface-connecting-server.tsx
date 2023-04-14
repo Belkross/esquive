@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import { CircularProgress, Stack, SxProps, Typography } from "@mui/material"
 import { useSubscribeSocketIoConnection } from "./use-subscribe-socket-io-connection.js"
 import { useSubscribeConnectError } from "./use-subscribe-connect-error.js"

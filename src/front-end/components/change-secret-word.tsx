@@ -1,6 +1,6 @@
 import { Stack, SxProps, Typography } from "@mui/material"
 import { getPlayerTeam } from "../../functions/get-player-team.js"
-import { AppState } from "../../types/main.js"
+import { AppState } from "../../types/types.js"
 import shape from "../theme/shape.js"
 import { ButtonChangeSecretWord } from "./button-change-secret-word/button-change-secret-word.js"
 import { ButtonGroupVoteSecretWord } from "./button-change-secret-word/button-group-vote-secret-word.js"
@@ -18,7 +18,7 @@ export function ChangeSecretWord({ appState }: Props) {
   return (
     <Stack sx={style_container}>
       <Typography variant="h3">Mot à piéger : {secretWord}</Typography>
-      
+
       {duringTrappingPhase && (
         <Stack sx={style_buttons}>
           <ButtonChangeSecretWord appState={appState} />

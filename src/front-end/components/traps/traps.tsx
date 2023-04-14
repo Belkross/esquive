@@ -1,6 +1,6 @@
 import { Typography, ListItem, ListItemText, List, SxProps } from "@mui/material"
 import { getPlayerTeam } from "../../../functions/get-player-team.js"
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import { ButtonActivateTrap } from "../button-activate-trap.js"
 import ButtonCancelTrap from "../button-cancel-trap.js"
 import { ButtonsVoteTrap } from "./buttons-vote-trap.js"

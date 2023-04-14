@@ -1,7 +1,7 @@
 import { ChangeEvent } from "react"
 import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 import checkChatMessageValidity from "../../../functions/check-chat-message-validity.js"
-import { ChatChannel, setState } from "../../../types/main.js"
+import { ChatChannel, setState } from "../../../types/types.js"
 import { ChatInputState } from "./button-chat-general.js"
 
 export default function handleChatInputChange(
@@ -12,7 +12,8 @@ export default function handleChatInputChange(
 ) {
   if (checkIfInputShouldBeIgnored(event, input)) return
 
-  const characterLimit = channel === "general" ? RoomState.GENERAL_MESSAGE_MAX_LENGTH : RoomState.ORATOR_MESSAGE_MAX_LENGTH
+  const characterLimit =
+    channel === "general" ? RoomState.GENERAL_MESSAGE_MAX_LENGTH : RoomState.ORATOR_MESSAGE_MAX_LENGTH
   const inputValue = event.target.value
 
   setInput({

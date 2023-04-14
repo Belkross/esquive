@@ -4,7 +4,7 @@ import { RoomState } from "../back-end/config/room-state/room-state.js"
 import { RoomStorage } from "../back-end/config/room-storage.js"
 import { SessionStorage } from "../back-end/config/session-storage.js"
 import { AlertId } from "../front-end/components/alert-feature/alerts"
-import { ChatChannel, FlowlessFunction } from "./main.js"
+import { ChatChannel, FlowlessFunction } from "./types.js"
 import { RoundSettings } from "./room-state.js"
 
 export type ServerToClientEvents = {

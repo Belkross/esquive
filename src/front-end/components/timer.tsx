@@ -1,7 +1,7 @@
 import { SxProps, Typography } from "@mui/material"
 import { RoomState } from "../../back-end/config/room-state/room-state.js"
 import { formatDurationForTimer } from "../../functions/format-duration-for-timer.js"
-import { AppState } from "../../types/main.js"
+import { AppState } from "../../types/types.js"
 import shape from "../theme/shape.js"
 
 const SHORT_DURATION = 10

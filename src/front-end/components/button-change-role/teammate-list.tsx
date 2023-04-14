@@ -1,5 +1,5 @@
 import { ListItem, Typography, List, SxProps } from "@mui/material"
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import { Team, Role } from "../../../types/room-state.js"
 
 type Props = {
@@ -26,7 +26,7 @@ export function TeammatesList({ team, role, appState }: Props) {
 }
 
 const style_listItem: SxProps = {
-	padding: 0
+  padding: 0,
 }
 
 const style_connected: SxProps = {

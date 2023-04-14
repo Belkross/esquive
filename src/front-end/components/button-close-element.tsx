@@ -1,5 +1,5 @@
 import { IconButton, SxProps } from "@mui/material"
-import { FlowlessFunction } from "../../types/main.js"
+import { FlowlessFunction } from "../../types/types.js"
 import CloseIcon from "@mui/icons-material/Clear"
 
 type Props = {

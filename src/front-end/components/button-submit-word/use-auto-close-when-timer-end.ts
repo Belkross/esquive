@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { FlowlessFunction } from "../../../types/main.js"
+import { FlowlessFunction } from "../../../types/types.js"
 
 export function useAutoCloseWhenTimerEnd(
   roundPhase: string,

@@ -1,6 +1,6 @@
 import { Box, Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
 import shape from "../../theme/shape.js"
 import { ApplicationBar } from "../application-bar.js"

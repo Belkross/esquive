@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { RoomState } from "../../back-end/config/room-state/room-state.js"
-import { setState, AppState, FlowlessFunction } from "../../types/main.js"
+import { setState, AppState, FlowlessFunction } from "../../types/types.js"
 import { socket } from "../config/initialize-socket-io.js"
 
 export function useSubscribeIntentionalDisconnection(setAppState: setState<AppState>) {

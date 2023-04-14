@@ -1,6 +1,6 @@
 import { Typography } from "@mui/material"
 import { getPlayerTeam } from "../../functions/get-player-team.js"
-import { AppState } from "../../types/main.js"
+import { AppState } from "../../types/types.js"
 
 type Props = {
   appState: AppState

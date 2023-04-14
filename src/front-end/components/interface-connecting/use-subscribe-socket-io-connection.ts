@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect } from "react"
-import { AppState, FlowlessFunction } from "../../../types/main.js"
+import { AppState, FlowlessFunction } from "../../../types/types.js"
 import { socket } from "../../config/initialize-socket-io.js"
 import storageKeys from "../../config/storage-keys.js"
 import { FAKE_LOADING_DURATION } from "./interface-connecting-server.js"

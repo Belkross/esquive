@@ -1,7 +1,7 @@
 import { Box, SxProps, Typography } from "@mui/material"
 import { getPlayingTeam } from "../../back-end/config/room-state/methods/get-playing-team.js"
 import { RoomState } from "../../back-end/config/room-state/room-state.js"
-import { AppState } from "../../types/main.js"
+import { AppState } from "../../types/types.js"
 
 type Props = {
   appState: AppState

@@ -1,6 +1,6 @@
 import { ButtonResponsive } from "../button-responsive.js"
 import EditIcon from "@mui/icons-material/Edit"
-import { AppState, FlowlessFunction } from "../../../types/main.js"
+import { AppState, FlowlessFunction } from "../../../types/types.js"
 import { getWhileModalAllowed } from "../interface-game/get-while-modal-allowed.js"
 import { useMediaQuery, useTheme } from "@mui/material"
 

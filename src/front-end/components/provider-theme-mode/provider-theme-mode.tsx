@@ -1,6 +1,6 @@
 import { createContext, ReactElement, useContext, useState } from "react"
 import { doNothing } from "../../../functions/do-nothing.js"
-import { ThemeMode } from "../../../types/main"
+import { ThemeMode } from "../../../types/types.js"
 import storageKeys from "../../config/storage-keys"
 import { getInitialThemeMode } from "./get-initial-theme-mode.js"
 

@@ -1,6 +1,6 @@
 import checkChatMessageValidity from "../../functions/check-chat-message-validity.js"
 import { getSocketRoom } from "../../functions/get-socket-room.js"
-import { ChatChannel } from "../../types/main.js"
+import { ChatChannel } from "../../types/types.js"
 import { ServerManager } from "../../types/server.js"
 
 export function submitChatMessage(server: ServerManager) {

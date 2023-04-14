@@ -1,5 +1,5 @@
 import { Stack } from "@mui/material"
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import { ButtonVoteSecretWord } from "./button-vote-secret-word.js"
 
 type Props = {

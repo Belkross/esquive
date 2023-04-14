@@ -1,6 +1,6 @@
 import { Badge, Drawer, SxProps } from "@mui/material"
 import { useEffect, useState } from "react"
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
 import shape from "../../theme/shape.js"
 import { ButtonResponsive } from "../button-responsive.js"

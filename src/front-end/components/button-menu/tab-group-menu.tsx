@@ -1,5 +1,5 @@
 import { Stack, SxProps, useMediaQuery, useTheme } from "@mui/material"
-import { FlowlessFunction, MenuTabId, setState } from "../../../types/main.js"
+import { FlowlessFunction, MenuTabId, setState } from "../../../types/types.js"
 import { ReactElement } from "react"
 import RoomIcon from "@mui/icons-material/Home"
 import TeamIcon from "@mui/icons-material/Groups"

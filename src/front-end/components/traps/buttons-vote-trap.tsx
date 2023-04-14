@@ -1,10 +1,10 @@
 import { Stack } from "@mui/material"
-import { AppState } from "../../../types/main.js"
+import { AppState } from "../../../types/types.js"
 import { ButtonVoteTrap } from "./button-vote-trap.js"
 
 type Props = {
   appState: AppState
-trap: string
+  trap: string
 }
 
 export function ButtonsVoteTrap({ trap, appState }: Props) {

@@ -1,4 +1,4 @@
-import { ThemeMode } from "../../../types/main"
+import { ThemeMode } from "../../../types/types"
 
 export function getInitialThemeMode(localStorageKey: string, defaultThemeMode: ThemeMode): ThemeMode {
   const localStorageValue = localStorage.getItem(localStorageKey)

@@ -1,7 +1,7 @@
 import { ButtonResponsive } from "../button-responsive.js"
 import { useTemporaryElement } from "../../custom-hooks/use-temporary-element.js"
 import { useEffect, useState } from "react"
-import { AppState, FlowlessFunction } from "../../../types/main.js"
+import { AppState, FlowlessFunction } from "../../../types/types.js"
 import { Badge, Drawer, SxProps } from "@mui/material"
 import { NavbarChatOrator } from "./navbar-chat-orator.js"
 import shape from "../../theme/shape.js"

@@ -1,6 +1,6 @@
 import { Stack, SxProps, Typography } from "@mui/material"
 import { Dispatch, SetStateAction } from "react"
-import { AppState } from "../../../types/main"
+import { AppState } from "../../../types/types"
 import shape from "../../theme/shape.js"
 import { Introduction } from "../introduction/introduction.js"
 import { FormLogging } from "./form-logging.js"
