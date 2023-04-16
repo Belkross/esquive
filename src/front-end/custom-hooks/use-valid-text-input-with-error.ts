@@ -9,7 +9,7 @@ type Output = {
   clearInput: () => void
 }
 
-export function useValidTextInputWithError(initialValue: string, validityChecker: ValidityChecker) {
+export function useValidTextInputWithError(initialValue: string, validityChecker: ValidityChecker): Output {
   const [input, setInput] = useState({
     value: initialValue,
     validity: validityChecker(initialValue),
@@ -30,7 +30,7 @@ export function useValidTextInputWithError(initialValue: string, validityChecker
 
   const clearInput = useCallback(() => setInput({ value: "", validity: false, error: false }), [])
 
-  return { input, onInputChange, clearInput } as Output
+  return { input, onInputChange, clearInput }
 }
 
 function deduceIfError(inputValue: string, validityChecker: ValidityChecker) {
