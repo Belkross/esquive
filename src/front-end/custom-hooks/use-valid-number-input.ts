@@ -3,10 +3,8 @@ import { ChangeEvent, useState } from "react"
 type InputData = { value: string; validity: boolean }
 type InputChanger = (event: ChangeEvent<HTMLInputElement>) => void
 
-export function useValidNumberInput(
-  initialValue: number,
-  validityChecker: (input: unknown) => boolean
-): [InputData, InputChanger] {
+//prettier-ignore
+export function useValidNumberInput(initialValue: number, validityChecker: (input: unknown) => boolean): [InputData, InputChanger] {
   const [input, setInput] = useState({ value: initialValue.toString(), validity: validityChecker(initialValue) })
 
   const onInputChange = (event: ChangeEvent<HTMLInputElement>) => {
