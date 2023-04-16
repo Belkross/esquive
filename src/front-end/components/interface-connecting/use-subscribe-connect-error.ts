@@ -15,7 +15,7 @@ export function useSubscribeConnectError(setAppState: Dispatch<SetStateAction<Ap
       setTimeout(() => {
         setAppState((prevAppState) => ({ ...prevAppState, status: "logging" }))
 
-        const clientFeedback = chooseClientFeedback(error.message)
+        const clientFeedback = pickClientFeedback(error.message)
         if (clientFeedback) displayNewAlert(clientFeedback)
       }, FAKE_LOADING_DURATION)
     })
@@ -24,7 +24,7 @@ export function useSubscribeConnectError(setAppState: Dispatch<SetStateAction<Ap
   }, [setAppState, displayNewAlert])
 }
 
-function chooseClientFeedback(errorMessage: string): AlertId | null {
+function pickClientFeedback(errorMessage: string): AlertId | null {
   switch (errorMessage) {
     case "no session found":
       return null
