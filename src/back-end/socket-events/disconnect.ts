@@ -5,7 +5,7 @@ export function disconnect(server: ServerManager) {
   const { sessions, rooms, io, socket, sessionId } = server
 
   socket.on("disconnect", (reason) => {
-    if (sessions.get(sessionId) === undefined) return //session not found
+    if (sessions.get(sessionId) === undefined) return
 
     const { roomName, roomState } = getSocketRoom(server)
     const nobodyStillPlaying = roomState.getActivePlayerNumber() <= 1
@@ -30,4 +30,3 @@ export function disconnect(server: ServerManager) {
     io.in(roomName).emit("roomStateUpdate", roomState)
   })
 }
-
