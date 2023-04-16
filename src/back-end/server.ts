@@ -44,6 +44,7 @@ io.use(treatAuthenticationData)
 
 io.on("connection", (socket) => {
   const server: ServerManager = { socket, io, sessions, rooms, sessionId: socket.handshake.auth.sessionId }
+
   connection(server)
 
   activateTrap(server)
