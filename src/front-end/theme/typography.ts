@@ -43,5 +43,3 @@ export default {
     textTransform: "none" as const,
   },
 }
-
-// by default all fonts take color: palette.text.primary
