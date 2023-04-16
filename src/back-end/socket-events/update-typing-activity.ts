@@ -8,14 +8,14 @@ export function updateTypingActivity(server: ServerManager) {
   socket.on("updateTypingActivity", (status) => {
     const { roomName, roomState } = getSocketRoom(server)
 
-    if (actionAllowed(roomState, sessionId)) {
+    if (isAllowed(roomState, sessionId)) {
       roomState.players[sessionId].isTyping = status
       io.in(roomName).emit("roomStateUpdate", roomState)
     }
   })
 }
 
-function actionAllowed(roomState: RoomState, sessionId: string) {
+function isAllowed(roomState: RoomState, sessionId: string) {
   const clientIsOrator = roomState.players[sessionId].role === "orator"
   const clientTeam = roomState.players[sessionId].team
   const duringClientGuessingPhase = roomState.roundPhase === `guessing ${clientTeam}`

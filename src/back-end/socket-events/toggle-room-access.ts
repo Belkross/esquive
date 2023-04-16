@@ -8,13 +8,13 @@ export function toggleRoomAccess(server: ServerManager) {
   socket.on("toggleRoomAccess", () => {
     const { roomName, roomState } = getSocketRoom(server)
 
-    if (actionAllowed(roomState, sessionId)) {
+    if (isAllowed(roomState, sessionId)) {
       roomState.roomOpened = !roomState.roomOpened
       io.in(roomName).emit("roomStateUpdate", roomState)
     }
   })
 }
 
-function actionAllowed(roomState: RoomState, sessionId: string) {
+function isAllowed(roomState: RoomState, sessionId: string) {
   return roomState.players[sessionId].isAdmin
 }

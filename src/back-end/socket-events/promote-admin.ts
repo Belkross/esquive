@@ -8,14 +8,14 @@ export function promoteAdmin(server: ServerManager) {
   socket.on("promoteAdmin", (promotedSessionId) => {
     const { roomName, roomState } = getSocketRoom(server)
 
-    if (actionAllowed(roomState, sessionId, promotedSessionId)) {
+    if (isAllowed(roomState, sessionId, promotedSessionId)) {
       roomState.players[promotedSessionId].isAdmin = true
       io.in(roomName).emit("roomStateUpdate", roomState)
     }
   })
 }
 
-function actionAllowed(roomState: RoomState, sessionId: string, promotedSessionId: string) {
+function isAllowed(roomState: RoomState, sessionId: string, promotedSessionId: string) {
   const clientIsAdmin = roomState.players[sessionId].isAdmin
   const playerExist = promotedSessionId in roomState.players
 

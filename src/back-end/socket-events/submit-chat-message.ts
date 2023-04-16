@@ -9,14 +9,14 @@ export function submitChatMessage(server: ServerManager) {
   socket.on("submitChatMessage", (channel, message) => {
     const { roomName, roomState } = getSocketRoom(server)
 
-    if (actionAllowed(channel, message)) {
+    if (isAllowed(channel, message)) {
       roomState.addChatMessage(channel, message, sessionId)
       io.in(roomName).emit("roomStateUpdate", roomState)
     }
   })
 }
 
-function actionAllowed(channel: ChatChannel, message: unknown) {
+function isAllowed(channel: ChatChannel, message: unknown) {
   const messageIsValid = checkChatMessageValidity(message, channel)
 
   const channelObject: Record<ChatChannel, undefined> = { general: undefined, orator: undefined }

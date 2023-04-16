@@ -10,7 +10,7 @@ export function submitTrap(server: ServerManager) {
   socket.on("submitTrap", (word) => {
     const { roomName, roomState } = getSocketRoom(server)
 
-    if (clientIsAllowed(roomState, sessionId, word)) {
+    if (isAllowed(roomState, sessionId, word)) {
       roomState.submitTrap(sessionId, word)
       io.in(roomName).emit("roomStateUpdate", roomState)
     } else {
@@ -20,7 +20,7 @@ export function submitTrap(server: ServerManager) {
   })
 }
 
-function clientIsAllowed(roomState: RoomState, sessionId: string, word: string) {
+function isAllowed(roomState: RoomState, sessionId: string, word: string) {
   const isTrappingPhase = roomState.roundPhase === "trapping"
   const trapIsValid = checkSubmitedWordValidity(word)
 

@@ -9,14 +9,14 @@ export function reportForbiddenClue(server: ServerManager) {
   socket.on("reportForbiddenClue", () => {
     const { roomName, roomState } = getSocketRoom(server)
 
-    if (actionAllowed(roomState, sessionId)) {
+    if (isAllowed(roomState, sessionId)) {
       roomState.reportForbiddenClue(sessionId)
       io.in(roomName).emit("roomStateUpdate", roomState)
     }
   })
 }
 
-function actionAllowed(roomState: RoomState, sessionid: string) {
+function isAllowed(roomState: RoomState, sessionid: string) {
   const clientTeam = getPlayerTeam(roomState, sessionid)
   const opponentTeam = roomState.getOpponentTeam(clientTeam)
   const duringOpponentGuessingPhase = roomState.roundPhase === `guessing ${opponentTeam}`

@@ -9,14 +9,14 @@ export function activateTrap(server: ServerManager) {
   socket.on("activateTrap", (trap) => {
     const { roomName, roomState } = getSocketRoom(server)
 
-    if (actionAllowed(roomState, sessionId, trap)) {
+    if (isAllowed(roomState, sessionId, trap)) {
       roomState.activateTrap(sessionId, trap)
       io.in(roomName).emit("roomStateUpdate", roomState)
     }
   })
 }
 
-function actionAllowed(roomState: RoomState, sessionId: string, trap: string) {
+function isAllowed(roomState: RoomState, sessionId: string, trap: string) {
   const clientTeam = getPlayerTeam(roomState, sessionId)
   const opponentTeam = roomState.getOpponentTeam(clientTeam)
 

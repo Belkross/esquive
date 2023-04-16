@@ -8,14 +8,14 @@ export function shuffleTeams(server: ServerManager) {
   socket.on("shuffleTeams", () => {
     const { roomName, roomState } = getSocketRoom(server)
 
-    if (actionAllowed(roomState, sessionId)) {
+    if (isAllowed(roomState, sessionId)) {
       roomState.shuffleTeams(sessionId)
       io.in(roomName).emit("roomStateUpdate", roomState)
     }
   })
 }
 
-function actionAllowed(roomState: RoomState, sessionId: string) {
+function isAllowed(roomState: RoomState, sessionId: string) {
   const clientIsAdmin = roomState.players[sessionId].isAdmin
   const duringPreRoundPhase = roomState.roundPhase === "pre round"
 

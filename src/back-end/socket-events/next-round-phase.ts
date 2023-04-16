@@ -8,7 +8,7 @@ export function nextRoundPhase(server: ServerManager) {
   socket.on("nextRoundPhase", () => {
     const { roomName, roomState } = getSocketRoom(server)
 
-    if (actionAllowed(server, roomState)) {
+    if (isAllowed(server, roomState)) {
       const clientUsername = roomState.players[sessionId].username
       roomState.configureNextRoundPhase(clientUsername)
 
@@ -18,7 +18,7 @@ export function nextRoundPhase(server: ServerManager) {
   })
 }
 
-function actionAllowed(server: ServerManager, roomState: RoomState) {
+function isAllowed(server: ServerManager, roomState: RoomState) {
   const clientIsAdmin = roomState.players[server.sessionId].isAdmin
 
   const roundPhase = roomState.roundPhase

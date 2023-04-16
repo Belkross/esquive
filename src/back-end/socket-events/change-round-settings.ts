@@ -13,14 +13,14 @@ export function changeRoundSettings(server: ServerManager) {
   socket.on("changeRoundSettings", (settings) => {
     const { roomName, roomState } = getSocketRoom(server)
 
-    if (actionAllowed(roomState, sessionId, settings)) {
+    if (isAllowed(roomState, sessionId, settings)) {
       roomState.changeRoundSettings(settings)
       io.in(roomName).emit("roomStateUpdate", roomState)
     }
   })
 }
 
-function actionAllowed(roomState: RoomState, sessionId: string, settings: RoundSettings) {
+function isAllowed(roomState: RoomState, sessionId: string, settings: RoundSettings) {
   const { trapSlotProvided, trappingDuration, guessingDuration, guessAttemptProvided, winCondition } = settings
 
   const duringPreRoundPhase = roomState.roundPhase === "pre round" && roomState.roundAdvancement === 1

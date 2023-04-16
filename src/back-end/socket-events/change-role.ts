@@ -8,14 +8,14 @@ export function changeRole(server: ServerManager) {
   socket.on("changeRole", (team, role) => {
     const { roomName, roomState } = getSocketRoom(server)
 
-    if (actionAllowed(roomState)) {
+    if (isAllowed(roomState)) {
       roomState.changeRole({ sessionId, newTeam: team, newRole: role })
       io.in(roomName).emit("roomStateUpdate", roomState)
     }
   })
 }
 
-function actionAllowed(roomState: RoomState) {
+function isAllowed(roomState: RoomState) {
   const roundPhase = roomState.roundPhase
   return roundPhase === "pre round" || roundPhase === "trapping"
 }
