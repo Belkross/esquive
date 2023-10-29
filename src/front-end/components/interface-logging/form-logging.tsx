@@ -6,13 +6,17 @@ import { checkUsernameValidity } from "../../../functions/check-username-validit
 import shape from "../../theme/shape.js"
 import { RoomState } from "../../../back-end/config/room-state/room-state.js"
 import { useValidTextInputWithError } from "../../custom-hooks/use-valid-text-input-with-error.js"
+import { useValidCapitalizedTextInputWithError } from "../../custom-hooks/use-valid-capitalized-text-input-with-error"
 
 export function FormLogging({ appState, setAppState }: InterfaceLoggingProps) {
   const { input: usernameInput, onInputChange: onUsernameInputChange } = useValidTextInputWithError(
     appState.username,
     checkUsernameValidity
   )
-  const { input: roomInput, onInputChange: onRoomInputChange } = useValidTextInputWithError("", checkRoomValidity)
+  const { input: roomInput, onInputChange: onRoomInputChange } = useValidCapitalizedTextInputWithError(
+    "",
+    checkRoomValidity
+  )
 
   const handleSubmit = () => {
     if (roomInput.validity && usernameInput.validity) {
