@@ -5,6 +5,8 @@ const databaseName = process.env.APP_NAME || "esquive"
 const databaseAddress = process.env.DATABASE_ADDRESS || `mongodb://0.0.0.0:27017/${databaseName}`
 
 export function connectToDatabase(): void {
+  if (process.env.NODE_ENV !== "production") return
+
   mongoose.set("strictQuery", true)
   mongoose
     .connect(databaseAddress)

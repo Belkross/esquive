@@ -35,6 +35,8 @@ export async function treatAuthenticationData(socket: SocketArg, next: Next) {
 }
 
 function registerConnection(socket: SocketArg) {
+  if (process.env.NODE_ENV !== "production") return
+
   modelConnections.create({
     totalRoom: Object.keys(rooms.storage).length,
     totalUser: Object.keys(sessions.storage).length - 1,
