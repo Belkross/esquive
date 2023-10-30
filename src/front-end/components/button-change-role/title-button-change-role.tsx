@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material"
+import { SxProps, Typography } from "@mui/material"
 import { Team, Role } from "../../../types/room-state.js"
 
 type Props = {
@@ -16,6 +16,7 @@ export function ButtonChangeRoleTitle({ role, team }: Props) {
   )
 }
 
-const style_title = (team: Team) => ({
-  color: `team.${team}`,
+const style_title = (team: Team): SxProps => ({
+  color: `team.${team}Light`,
+  fontWeight: 900,
 })
