@@ -4,6 +4,7 @@ import { RoomState } from "../../back-end/config/room-state/room-state.js"
 import { AppState } from "../../types/types.js"
 import { getPlayerTeam } from "../../functions/get-player-team.js"
 import { getOpponentTeam } from "../../back-end/config/room-state/methods/get-opponent-team.js"
+import { RoundPhase } from "../../types/room-state.js"
 
 type Props = {
   appState: AppState
@@ -24,7 +25,7 @@ export function Instructions({ appState }: Props) {
 
   return (
     <Box sx={style_container}>
-      <Typography variant="h3" mb={1}>
+      <Typography variant="h3" mb={1} sx={style_phaseName(roomState.roundPhase)}>
         {phaseName}
       </Typography>
 
@@ -40,6 +41,32 @@ export function Instructions({ appState }: Props) {
 
 const style_container: SxProps = {
   mx: { xs: 1, sm: 2 },
+}
+
+const style_phaseName = (roundPhase: RoundPhase): SxProps => {
+  let color: string
+
+  switch (roundPhase) {
+    case "pre round":
+    case "trapping":
+      color = "text.primary"
+      break
+    case "pre guessing one":
+    case "guessing one":
+      color = "team.oneLight"
+      break
+    case "pre guessing two":
+    case "guessing two":
+      color = "team.twoLight"
+      break
+    default:
+      color = "text.primary"
+  }
+
+  return {
+    fontWeight: 900,
+    color,
+  }
 }
 
 const style_secretWord: SxProps = {
@@ -69,7 +96,7 @@ function getPhaseName(roomState: RoomState) {
     case 4:
     case 5:
     case 6:
-      phaseName = `Tour de l’équipe ${playingTeamName}`
+      phaseName = `Phase oration ${playingTeamName}`
       break
     default:
       phaseName = "Error"

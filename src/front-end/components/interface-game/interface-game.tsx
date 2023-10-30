@@ -19,6 +19,8 @@ import { TrapsRemaining } from "../traps-remaining.js"
 import { Traps } from "../traps/traps.js"
 import { getWhileModalAllowed } from "./get-while-modal-allowed.js"
 import { useSubscribeRoomStateUpdate } from "./use-subscribe-room-state-update.js"
+import { getPlayerTeam } from "../../../functions/get-player-team.js"
+import { Team } from "../../../types/room-state.js"
 
 export type InterfaceGameProps = {
   appState: AppState
@@ -26,10 +28,12 @@ export type InterfaceGameProps = {
 }
 
 export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
+  const { roomState, sessionId } = appState
   const { displayed, display, remove } = useTemporaryElement(false)
   const breakpoint_xl = useMediaQuery(useTheme().breakpoints.up("xl"))
   const whileAppBarTop = useMediaQuery(useTheme().breakpoints.up("lg"))
   const whileModalAllowed = getWhileModalAllowed(appState)
+  const clientTeam = getPlayerTeam(roomState, sessionId)
 
   useSubscribeRoomStateUpdate(setAppState)
   useModalShortCut(whileModalAllowed, displayed, display)
@@ -40,7 +44,7 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
       <Box sx={style_board}>
         <Score appState={appState} />
 
-        <Stack sx={style_borderedPartOne}>
+        <Stack sx={style_borderedPartOne(clientTeam)}>
           <Stack sx={style_buttons}>
             {whileAppBarTop && <ButtonSubmitWord appState={appState} openModal={display} />}
             <ButtonPlayNextPhase appState={appState} />
@@ -50,7 +54,7 @@ export function InterfaceGame({ appState, setAppState }: InterfaceGameProps) {
           <ButtonsJudgeTrap appState={appState} />
         </Stack>
 
-        <Stack sx={style_borderedPartTwo}>
+        <Stack sx={style_borderedPartTwo(clientTeam)}>
           <ChangeSecretWord appState={appState} />
           <ButtonReportForbiddenClue appState={appState} />
           <TrapsRemaining appState={appState} />
@@ -86,41 +90,47 @@ const style_board: SxProps = {
   paddingTop: { xs: 3, lg: `${shape.appBarHeight + 35}px` },
 }
 
-const style_borderedBoardPart: SxProps = {
-  maxWidth: "500px",
-  width: "100%",
+const style_borderedBoardPart = (clientTeam: Team): SxProps => {
+  return {
+    maxWidth: "500px",
+    width: "100%",
 
-  gridRow: "2/11",
-  alignSelf: { xs: "center", lg: "start" },
+    gridRow: "2/11",
+    alignSelf: { xs: "center", lg: "start" },
 
-  padding: shape.spacingBase,
-  boxShadow: 12,
-  backgroundColor: "background.paper",
-  borderWidth: shape.borderWidth,
-  borderStyle: shape.borderStyle,
-  borderColor: "background.border",
-  borderRadius: shape.borderRadius,
+    padding: shape.spacingBase,
+    boxShadow: 12,
+    backgroundColor: "background.paper",
+    borderWidth: "1px",
+    borderStyle: shape.borderStyle,
+    borderColor: clientTeam === "one" ? "team.oneLight" : "team.twoLight",
+    borderRadius: shape.borderRadius,
+  }
 }
 
-const style_borderedPartOne: SxProps = {
-  ...style_borderedBoardPart,
-  display: "flex",
-  flexFlow: "column nowrap",
-  alignItems: "stretch",
-  gap: { xs: 3, md: 4 },
+const style_borderedPartOne = (clientTeam: Team): SxProps => {
+  return {
+    ...style_borderedBoardPart(clientTeam),
+    display: "flex",
+    flexFlow: "column nowrap",
+    alignItems: "stretch",
+    gap: { xs: 3, md: 4 },
 
-  gridColumn: { lg: "1/7", xl: "1/6" },
-  justifySelf: "end",
-  minHeight: { xs: "450px", lg: shape.trapSectionMaxHeight },
-  maxHeight: { xs: "500px", lg: shape.trapSectionMaxHeight },
+    gridColumn: { lg: "1/7", xl: "1/6" },
+    justifySelf: "end",
+    minHeight: { xs: "450px", lg: shape.trapSectionMaxHeight },
+    maxHeight: { xs: "500px", lg: shape.trapSectionMaxHeight },
+  }
 }
 
-const style_borderedPartTwo: SxProps = {
-  ...style_borderedBoardPart,
-  gridColumn: { lg: "7/13", xl: "6/10" },
-  minHeight: { xs: "200px", lg: shape.trapSectionMaxHeight },
-  maxHeight: shape.trapSectionMaxHeight,
-  overflow: "hidden",
+const style_borderedPartTwo = (clientTeam: Team): SxProps => {
+  return {
+    ...style_borderedBoardPart(clientTeam),
+    gridColumn: { lg: "7/13", xl: "6/10" },
+    minHeight: { xs: "200px", lg: shape.trapSectionMaxHeight },
+    maxHeight: shape.trapSectionMaxHeight,
+    overflow: "hidden",
+  }
 }
 
 const style_buttons: SxProps = {

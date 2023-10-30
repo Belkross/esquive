@@ -5,7 +5,14 @@ const smoothBlackText = "rgba(0, 0, 0, .85)"
 
 const darkModePalette = {
   primary: { main: "#1056A5" },
-  team: { one: indigo[400], two: red[400] },
+  team: {
+    one: indigo[400],
+    oneLight: indigo[300],
+    oneDark: indigo[500],
+    two: red[400],
+    twoLight: red[300],
+    twoDark: red[500],
+  },
   warning: { main: orange[600] },
   text: {
     primary: smoothWhiteText,
