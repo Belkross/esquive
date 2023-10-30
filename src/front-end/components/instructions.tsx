@@ -2,6 +2,8 @@ import { Box, SxProps, Typography } from "@mui/material"
 import { getPlayingTeam } from "../../back-end/config/room-state/methods/get-playing-team.js"
 import { RoomState } from "../../back-end/config/room-state/room-state.js"
 import { AppState } from "../../types/types.js"
+import { getPlayerTeam } from "../../functions/get-player-team.js"
+import { getOpponentTeam } from "../../back-end/config/room-state/methods/get-opponent-team.js"
 
 type Props = {
   appState: AppState
@@ -12,18 +14,42 @@ export function Instructions({ appState }: Props) {
   const instruction = pickInstruction(roomState, sessionId)
   const phaseName = getPhaseName(roomState)
 
+  const clientTeam = getPlayerTeam(roomState, sessionId)
+  const opponentTeam = getOpponentTeam(clientTeam)
+  const opponentSecretWord = roomState.teams[opponentTeam].secretWord.value.toUpperCase()
+
+  const clientIsOrator = roomState.players[sessionId].role === "orator"
+  const isClientGuessingPhase = roomState.roundPhase === `guessing ${clientTeam}`
+  const whileOpponentSecretDisplayed = isClientGuessingPhase && clientIsOrator
+
   return (
     <Box sx={style_container}>
       <Typography variant="h3" mb={1}>
         {phaseName}
       </Typography>
-      <Typography>{instruction}</Typography>
+
+      <Typography component="span">{instruction}</Typography>
+      {whileOpponentSecretDisplayed && (
+        <Typography component="span" sx={style_secretWord}>
+          {opponentSecretWord}
+        </Typography>
+      )}
     </Box>
   )
 }
 
 const style_container: SxProps = {
   mx: { xs: 1, sm: 2 },
+}
+
+const style_secretWord: SxProps = {
+  color: "text.rule",
+  fontWeight: 900,
+  fontSize: 22,
+  textDecorationLine: "underline",
+  textDecorationStyle: "single",
+  textDecorationThickness: "3px",
+  textUnderlineOffset: "5px",
 }
 
 function getPhaseName(roomState: RoomState) {
@@ -99,7 +125,7 @@ function pickInstruction(roomState: RoomState, sessionId: string) {
     "guessing one": {
       one: {
         guesser: "Tentez de deviner le mot décrit par votre orateur !",
-        orator: `Vous devez faire deviner à votre auditoire le mot ${teamTwoSecretWord.toUpperCase()} !`,
+        orator: `Vous devez faire deviner à votre auditoire le mot `,
       },
       two: {
         guesser:
@@ -128,7 +154,7 @@ function pickInstruction(roomState: RoomState, sessionId: string) {
       },
       two: {
         guesser: "Tentez de deviner le mot décrit par votre orateur !",
-        orator: `Vous devez faire deviner à votre auditoire le mot ${teamOneSecretWord.toUpperCase()} !`,
+        orator: `Vous devez faire deviner à votre auditoire le mot `,
       },
     },
   }
