@@ -1,4 +1,5 @@
 import { ChangeEvent, useCallback, useState } from "react"
+import { replaceDiacriticals } from "../../functions/replace-diacriticals"
 
 type InputData = { value: string; validity: boolean; error: boolean }
 type InputChanger = (event: ChangeEvent<HTMLInputElement>) => void
@@ -18,7 +19,7 @@ export function useValidCapitalizedTextInputWithError(initialValue: string, vali
 
   const onInputChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
-      const value = event.target.value.toUpperCase()
+      const value = replaceDiacriticals(event.target.value).toUpperCase()
       setInput({
         value,
         validity: validityChecker(value),
