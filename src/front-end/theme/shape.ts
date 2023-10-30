@@ -2,7 +2,7 @@ export default {
   appMaxWidth: "1500px",
   elementMinWidth: "250px",
   drawerMaxWidth: "700px",
-  trapSectionMaxHeight: "640px", //8 traps + vote secret word height
+  trapSectionMaxHeight: "660px", //8 traps + vote secret word height
 
   appBarHeight: 75,
 
