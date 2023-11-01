@@ -51,7 +51,7 @@ export function ButtonChatGeneral({ appState }: Props) {
   return (
     <>
       <Badge badgeContent={badge.notification} color="warning">
-        <ButtonResponsive icon={<ChatIcon />} label="Général" onClick={handleClick} />
+        <ButtonResponsive icon={<ChatIcon />} label="Chat" onClick={handleClick} />
       </Badge>
       <Drawer
         variant="temporary"

@@ -21,7 +21,6 @@ export function ApplicationBar({ appState, openSubmitWordModal }: Props) {
       <Stack sx={style_stackButtons}>
         {smallScreen && <ButtonSubmitWord appState={appState} openModal={openSubmitWordModal} />}
         <ButtonChatGeneral appState={appState} />
-        <ButtonChatOrator appState={appState} openSubmitWordModal={openSubmitWordModal} />
         <ButtonMenu appState={appState} />
       </Stack>
     </Box>
