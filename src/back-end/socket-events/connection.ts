@@ -15,6 +15,7 @@ export function connection(server: ServerManager) {
     roomState = rooms.add(roomName, secretWordList)
     roomState.addPlayer(sessionId, username)
   } else {
+    console.log(`New connection of ${username} in existing room with sessionId ${sessionId}`)
     roomState = rooms.get(roomName)
     updateJoiningPlayerData(roomState, sessionId, username)
     io.to(roomName).emit("roomStateUpdate", roomState)
@@ -26,9 +27,19 @@ export function connection(server: ServerManager) {
 
 function updateJoiningPlayerData(roomState: RoomState, sessionId: string, username: string) {
   const isNewPlayer = roomState.players[sessionId] === undefined
+  console.log(
+    `Connection: player ${username} join existing room ${roomState.roomName}.`,
+    "Player state:",
+    roomState.players
+  )
 
-  if (isNewPlayer) roomState.addPlayer(sessionId, username)
-  else roomState.players[sessionId].connected = true
+  if (isNewPlayer) {
+    console.log("Connection: no player with such sessionId => player creation")
+    roomState.addPlayer(sessionId, username)
+  } else {
+    console.log("Connection: found a player with such sessionId => player connected = true")
+    roomState.players[sessionId].connected = true
+  }
 }
 
 function logSocketEvents(server: ServerManager, username: string) {

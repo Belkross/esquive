@@ -7,6 +7,8 @@ type Props = {
 }
 
 export function Teams({ appState }: Props) {
+  console.log("Players:", appState.roomState.players)
+
   return (
     <Stack sx={style_container}>
       <Stack sx={style_teamContainer}>

@@ -15,29 +15,45 @@ type SocketArg = Socket<ClientToServerEvents, ServerToClientEvents, DefaultEvent
 
 export async function treatAuthenticationData(socket: SocketArg, next: Next) {
   const { sessionId, username, room } = getAuthenticationData(socket)
+  console.log(`Middleware: username ${username}, room ${room}, sessionId ${sessionId}`)
 
-  if (await sessionIdNotUnique(sessionId)) return next(new Error("sessionId already used"))
+  //Vérifie la nouveauté du sessionId parmi toutes les socket connectées
+  if (await sessionIdNotUnique(sessionId)) {
+    console.log("Middleware: sessionId already used", sessionId)
+    return next(new Error("sessionId already used"))
+  }
 
   if (noLoginDataProvided(username, room)) {
-    return sessionFound(sessions, sessionId) ? next() : next(new Error("no session found"))
+    console.log(
+      `Middleware: no username and room provided. Trying to find an existing session of sessionId ${sessionId}`
+    )
+    if (sessionFound(sessions, sessionId)) {
+      console.log(`Middleware: found an existing session for ${sessionId}`)
+      return next()
+    } else {
+      console.log(`Middleware: no existing session for ${sessionId}`)
+      return next(new Error("no session found"))
+    }
   } else {
     if (loginDataInvalid(username, room)) return next(new Error("invalid login informations"))
     if (noMoreRoomSlot(rooms, room)) return next(new Error("no more room slot"))
     if (roomIsFull(rooms, room)) return next(new Error("room is full"))
     if (roomIsClosed(rooms, room)) return next(new Error("room is closed"))
 
+    console.log(`Middleware: Username and room provided: ${username}, ${room}. Going to connection.`)
+
     const newSessionId = randomUUID()
     socket.handshake.auth.sessionId = newSessionId //this line is not semantically correct as handshakes are supposed to represent the data the client provided to get connected. I think I should use socket.data
     sessions.add(newSessionId, username, room)
-    registerConnection(socket)
+    await registerConnection(socket)
     return next()
   }
 }
 
-function registerConnection(socket: SocketArg) {
+async function registerConnection(socket: SocketArg) {
   if (process.env.NODE_ENV !== "production") return
 
-  modelConnections.create({
+  await modelConnections.create({
     totalRoom: Object.keys(rooms.storage).length,
     totalUser: Object.keys(sessions.storage).length - 1,
     handshake: socket.handshake,
