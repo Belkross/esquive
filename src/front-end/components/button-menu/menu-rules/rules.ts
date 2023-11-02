@@ -2,16 +2,16 @@ export default {
   gameDescription: {
     title: "Description d’une manche",
     description:
-      "Voici comment se déroule une manche: dans chaque équipe, un orateur doit faire deviner un mot à l’oral à ses coéquipiers. Lorsque l’orateur fait son discours, il y a une liste de mots qui sont piégés. Si l’orateur prononce un de ces mots, la manche de toute l’équipe est perdue. C’est l’équipe adverse qui constitue au préalable la liste des mots piégés et l’orateur n’a pas le droit de voir la liste pendant son discours. Pour marquer un point, il faut réussir sa manche ET que les adversaires échouent la leur.",
+      "Voici comment se déroule une manche: dans chaque équipe, un orateur doit faire deviner un mot à l’oral à ses coéquipiers. Lorsque l’orateur fait son discours, il y a une liste de mots qui sont piégés. Si l’orateur prononce un de ces mots, la manche de toute l’équipe est perdue. C’est l’équipe adverse qui constitue au préalable la liste des mots piégés et l’orateur n’a pas le droit de voir la liste pendant son discours. Pour marquer un point, il faut réussir sa manche ET les adversaires doivent échouer la leur.",
   },
   trapperCode: {
     title: "Le Code du piégeur",
     articles: [
       {
         title:
-          "Les pièges doivent obligatoirement être liés au mot secret spécifiquement. Les mots qui pourrait être utilisés pour décrire n’importe quel mot secret ne sont pas acceptés.",
+          "Les pièges doivent obligatoirement être liés au mot secret ou à la description que l’orateur peut en faire. Il est interdit de piéger des mots qui n’aident en aucune façon à décrire le mot secret.",
         description:
-          "Si le mot à deviner est “épreuve“, piéger le mot “difficile“ n’est pas un problème, mais piéger le mot “difficile“ parce qu’un certain orateur à l’habitude de dire qu’il trouve le jeu difficile n’est pas permis. Autre exemple, les mots “chose”, “truc” ou “synonyme” pourrait être employés quelque soit la situation et pour cette raison, il n’est pas correct de les piéger.",
+          "Ainsi les mots “truc” ou “chose” ne sont pas piégeable car ils n’apportent aucun renseignement sur le mot secret. Piéger le mot “ami” parce qu’on anticipe que l’orateur va parler d’une sortie entre amis pour faire deviner le mot “addition” est correct.",
       },
       {
         title: "Un piège doit être un mot unique qui prend la forme d’un nom, un verbe ou un adjectif.",
@@ -22,7 +22,7 @@ export default {
         title:
           "Les pièges se déclenchent lorsqu’un mot avec la même éthymologie est prononcé par l’orateur. Cette dernière règle peut être invalidée par l’article 4 du Code du piègeur.",
         description:
-          "Par exemple le mot “arachnophobie” pourra être piégé par le mot “araignée” ou bien le mot “phobie”.",
+          "Par exemple le piège “manger” pourra être activé si les mots suivant sont prononcés par l’orateur: “mangeoire”, “mangeont”, “garde-manger”.",
       },
       {
         title:
@@ -54,13 +54,13 @@ export default {
     articles: [
       {
         title:
-          "Les auditeurs ne doivent pas parler ou partager leur opinion sur le mot à deviner pendant le discours de leur orateur.",
+          "Les auditeurs ne peuvent pas parler ou partager leur opinion sur le mot à deviner pendant le discours de leur orateur.",
         description:
-          "Les auditeurs ne doivent pas parler ou partager leur opinion sur le mot à deviner pendant le discours de leur orateur.",
+          "Les auditeurs sont autorisés à parler pour se partager le nombre de propositions restantes par exemple. Néanmoins, il faut veiller à déranger le moins possible l’orateur pendant son discours.",
       },
       {
         title:
-          "Les auditeurs doivent proposer l’orthographe exacte du mot secret pour réussir leur manche. Néanmoins les accents ne sont pas indispensables. ",
+          "Les auditeurs doivent proposer l’orthographe exacte du mot secret pour réussir leur manche. Le respect des accents ou autres diacritiques n’est pas indispensable.",
         description:
           "Par exemple pour le mot secret “honnêteté”, les propositions “honnête”, “honnêtement” ne seront pas valides. La proposition “honnetete” sera valide.",
       },
@@ -68,8 +68,7 @@ export default {
   },
   talkerCode: {
     title: "Le Code de l’orateur",
-    introduction:
-      "Les règles concernant le discours des orateurs peuvent paraître contraignantes, mais elles garantissent que ce que disent les orateurs reste piégeable par les adversaires. Elles sont là pour éviter qu’une équipe passe beaucoup de temps à réfléchir à ses pièges pour au final se rendre compte que rien ne pouvait être fait pour contrer un orateur.",
+    introduction: "Les règles concernant les orateurs sont pensées pour garantir que les discours restent piégeables.",
     articles: [
       {
         title: "Ne pas utiliser des mots avec la même étymologie que le mot secret.",
@@ -77,11 +76,11 @@ export default {
           "Exemples pour le mot secret parler : parlons, parloir, parlementer, pourparlers sont interdits. Les mots discuter, converser, blablater sont autorisés car ce sont simplement des synonymes.",
       },
       {
-        title: "Ne pas utiliser des mots qui n’apparraissent pas dans le dictionnaire français.",
-        description: "Exemples: le seum, lol, crush, relou…",
+        title: "Utiliser uniquement des mots trouvable dans un dictionnaire français. Éviter l’argot.",
+        description: "Exemples de mots interdits: player, kill, crush, meuf, relou…",
       },
       {
-        title: "Ne pas utiliser les noms propres et tous leurs dérivés.",
+        title: "Ne pas utiliser les noms propres et tous les mots qui en dérivent.",
         description: "Exemples : France, français, Olympe, olympique, Superman, Pokémon, Himalaya…",
       },
       {
@@ -108,7 +107,7 @@ export default {
       {
         title: "Toute forme de communication avec les auditeur est interdite.",
         description:
-          "Pendant son discours, les propositions des auditeurs doivent uniquement permettre à l’orateur d’adapter ou de réorienter sa description. Une erreur courante est de réagir aux propositions de ses auditeurs ce qui constitue une forme de communication. Dans la mesure du possible il faut essayer de parler avec le ton le plus neutre qui soi. Il est aussi interdit de rebondir sur les propositions que les auditeurs font car c’est souvent un moyen de s’éviter de dire des mots risqués.",
+          "Pendant le discours de l’orateur, les propositions des auditeurs doivent uniquement permettre à l’orateur d’adapter ou de réorienter sa description. Une erreur courante est de réagir aux propositions de ses auditeurs ce qui constitue une forme de communication. Dans la mesure du possible il faut essayer de parler avec le ton le plus neutre qui soi. Il est aussi interdit de rebondir sur les propositions que les auditeurs font pour s’éviter de dire des mots risqués.",
       },
     ],
   },
