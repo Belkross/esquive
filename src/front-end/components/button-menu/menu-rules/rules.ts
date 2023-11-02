@@ -44,8 +44,7 @@ export default {
       },
       {
         title: "Les pièges ne s’activent pas sur les propositions que font les auditeurs. ",
-        description:
-          "Aussi, pour que les choses soient justes, les orateurs ne sont pas autorisés à rebondir sur les propositions que font leurs auditeurs. En effet, cela leur permettrait de s’éviter de dire des mots potentiellement risqués. ",
+        description: "",
       },
     ],
   },
