@@ -9,7 +9,7 @@ export default {
     articles: [
       {
         title:
-          "Les pièges doivent obligatoirement être liés au mot secret ou à la description que l’orateur peut en faire. Il est interdit de piéger des mots qui n’aident en aucune façon à décrire le mot secret.",
+          "Les pièges doivent obligatoirement être liés au mot secret ou à la description que l’orateur peut en faire. Il est interdit de piéger des mots qui n’aident en aucune façon à la description du mot secret.",
         description:
           "Ainsi les mots “truc” ou “chose” ne sont pas piégeable car ils n’apportent aucun renseignement sur le mot secret. Piéger le mot “ami” parce qu’on anticipe que l’orateur va parler d’une sortie entre amis pour faire deviner le mot “addition” est correct.",
       },
