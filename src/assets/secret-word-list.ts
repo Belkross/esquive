@@ -2876,7 +2876,7 @@ tri
 triangle
 tribunal
 tribune
-tricote
+tricoter
 tricycle
 trident
 triple
