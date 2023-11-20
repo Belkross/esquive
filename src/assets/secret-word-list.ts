@@ -359,7 +359,6 @@ brosse
 brouette
 brouillard
 brouillon
-bruine
 bruit
 brume
 brun
@@ -1481,7 +1480,6 @@ jardin
 jardinier
 jean
 jet
-jetée
 jeu
 jeun
 jeunesse
@@ -1515,7 +1513,6 @@ kilt
 kinésithérapeute
 kiwi
 koala
-Kâmasûtra
 képi
 laboratoire
 labour
@@ -1530,7 +1527,6 @@ lait
 lame
 lampe
 lance
-lancement
 langage
 langue
 lanterne
@@ -1731,7 +1727,6 @@ meuble
 meule
 meurtre
 miaulement
-micro
 microbe
 microphone
 microscope
