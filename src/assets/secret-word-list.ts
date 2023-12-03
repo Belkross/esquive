@@ -49,7 +49,6 @@ aimant
 aire
 airelle
 aisselle
-ajout
 alarme
 alchimie
 alcool
@@ -1365,7 +1364,6 @@ harpe
 hasard
 herbe
 herbier
-hercule
 heure
 heureux
 hexagone
@@ -3217,13 +3215,11 @@ décompresser
 décompressage
 pression
 culpabiliser
-culminer
 manière
 maniéré
 culot
 potin
 crescendo
-charabia
 jargon
 esquive
 esquiver
@@ -3231,7 +3227,6 @@ conversion
 insinuer
 insinuation
 contresens
-subliminal
 contraste
 énerver
 énervement
@@ -3243,8 +3238,6 @@ incrustation
 obliger
 contrainte
 contraindre
-compromettre
-compromettant
 compost
 composter
 composteur
