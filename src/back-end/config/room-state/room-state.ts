@@ -67,7 +67,7 @@ export class RoomState {
   readonly highestRoundAdvancement = 6
   readonly historicLengthLimit = 400
   readonly chatMessagesLengthLimit = 600
-  readonly secretWordChangeLimit = 3
+  readonly secretWordChangeLimit = 2
   readonly playersLimit = 10
   readonly generalMessages: ChatMessage[] = []
   readonly oratorMessages: ChatMessage[] = []
