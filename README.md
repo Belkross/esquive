@@ -1,4 +1,4 @@
-# Esquive
+# Esquive Rework
 
 Esquive is a cooperative game where a player have to describe a word to his mates in a given time and they have to guess it. But the opponent team trapped a list of words and using one of them leads to failure. To add some fun and challenge, the player who describe the word can’t have access to the trapped words list.
 
