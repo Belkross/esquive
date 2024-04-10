@@ -2,7 +2,7 @@
 
 This repository is an old version of the project. I’m currently working on a new refactored version with some focus on architecture and testing strategy.
 
-![app screenshoot](./public/screenshoot.png)
+![app screenshoot](./public/screenshot.png)
 
 # Esquive
 
